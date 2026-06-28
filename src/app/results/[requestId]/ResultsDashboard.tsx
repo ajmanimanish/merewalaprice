@@ -6,13 +6,9 @@ import {
   Globe, 
   MessageCircle, 
   RotateCw, 
-  Tag, 
   HelpCircle, 
-  Check, 
   ChevronRight, 
   Clock, 
-  Sparkles,
-  Lock,
   ArrowRight
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
@@ -187,7 +183,7 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
       // Update status locally
       handleManualRefresh();
     } catch (err) {
-      alert('Dealer connect karne me problem aayi. Please retry.');
+      alert('Could not connect to dealer. Please try again.');
       console.error('Contact dealer err:', err);
     } finally {
       setContactingId(null);
@@ -197,9 +193,9 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
   // Availability label formatter
   const getAvailabilityLabel = (val: string) => {
     switch (val) {
-      case 'today': return 'Aaj hi ready! ⚡';
-      case '1-2days': return '1-2 Din me delivery';
-      case '4-5days': return '4-5 Din me delivery';
+      case 'today': return 'In Stock Today';
+      case '1-2days': return 'Delivery in 1-2 Days';
+      case '4-5days': return 'Delivery in 4-5 Days';
       default: return val;
     }
   };
@@ -210,7 +206,7 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
       inc.toLowerCase().includes('installation') || inc.toLowerCase().includes('install')
     );
     if ((product.category === 'AC' || product.category === 'WM') && !hasFreeInstallation) {
-      return oPrice + 1200; // installation cost of ₹1200 added if not included free
+      return oPrice + 1200;
     }
     return oPrice;
   };
@@ -248,31 +244,31 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
     : 0;
 
   return (
-    <div className="flex flex-col min-h-screen pb-16 bg-slate-50/50">
+    <div className="flex flex-col min-h-screen pb-16 bg-[#FAFAF8] font-sans">
       {/* Header Info */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-5 py-4 flex flex-col">
+      <header className="sticky top-0 z-30 bg-white border-b-[0.5px] border-[#EBEBEB] px-5 py-4 flex flex-col flex-shrink-0">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-extrabold text-slate-900 leading-tight">
+            <h1 className="text-[20px] font-bold text-[#141414] leading-tight tracking-tight">
               Best Deal Results
             </h1>
-            <p className="text-xs text-slate-500 font-semibold mt-0.5">
-              Request ID: <span className="font-mono text-[10px] text-slate-700">{requestId.slice(0, 8)}...</span>
+            <p className="text-[12px] text-[#6B6B6B] font-medium mt-0.5">
+              Request ID: <span className="font-mono text-[11px] text-[#141414]">{requestId.slice(0, 8)}...</span>
             </p>
           </div>
           <button 
             onClick={handleManualRefresh}
             disabled={refreshing}
-            className="p-2 border border-slate-200 hover:bg-slate-50 rounded-input transition-colors disabled:opacity-50"
+            className="p-2 border-[0.5px] border-[#EBEBEB] hover:bg-[#FAFAF8] rounded-[10px] transition-colors disabled:opacity-50"
             title="Refresh Deals"
           >
-            <RotateCw className={`w-4 h-4 text-slate-600 ${refreshing ? 'animate-spin' : ''}`} />
+            <RotateCw className={`w-4 h-4 text-[#6B6B6B] ${refreshing ? 'animate-spin' : ''}`} />
           </button>
         </div>
 
         {/* Selected Product Card Summary */}
-        <div className="bg-slate-50 rounded-card p-3 border border-slate-200/50 flex gap-3 items-center mt-3">
-          <div className="w-12 h-12 rounded bg-white overflow-hidden border border-slate-200 flex-shrink-0 flex items-center justify-center">
+        <div className="bg-white rounded-[16px] p-4 border-[0.5px] border-[#EBEBEB] flex gap-4 items-center mt-4">
+          <div className="w-12 h-12 rounded-[8px] bg-[#FAFAF8] overflow-hidden border-[0.5px] border-[#EBEBEB] flex-shrink-0 flex items-center justify-center">
             {product.image_url ? (
               <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
             ) : (
@@ -280,46 +276,43 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
             )}
           </div>
           <div className="min-w-0 flex-1">
-            <h2 className="text-xs font-black text-slate-900 truncate uppercase leading-none mb-1">
+            <h2 className="text-[12px] font-bold text-[#141414] truncate uppercase leading-none mb-1">
               {product.brand} {product.name}
             </h2>
-            <p className="text-[10px] text-slate-500 font-bold truncate">
+            <p className="text-[11px] text-[#6B6B6B] font-semibold truncate">
               Model: {product.model_number}
             </p>
           </div>
           <div className="text-right flex-shrink-0">
             {request.status === 'open' ? (
-              <span className="inline-flex items-center gap-1 text-[9px] font-bold text-orange-600 bg-orange-100/70 border border-orange-200 px-2 py-0.5 rounded-full">
-                <Clock className="w-3 h-3 animate-pulse" />
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#F0743E] bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] px-2 py-0.5 rounded-full">
+                <Clock className="w-3 h-3" />
                 {timeLeft}
               </span>
             ) : (
-              <span className="inline-block text-[9px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded-full uppercase">
+              <span className="inline-block text-[11px] font-bold text-[#6B6B6B] bg-[#EBEBEB] px-2 py-0.5 rounded-full uppercase">
                 {request.status}
               </span>
             )}
           </div>
         </div>
 
-        {/* Savings banner */}
+        {/* Savings Banner */}
         {estimatedSavings > 0 && (
-          <div className="bg-emerald-50 border border-emerald-100 rounded-card p-2.5 mt-2 flex items-center gap-2 text-emerald-800 text-xs font-extrabold shadow-sm animate-pulse">
-            <Sparkles className="w-4 h-4 text-emerald-600 fill-emerald-600 flex-shrink-0" />
-            <span>
-              Wow! Local deals me online se ₹{estimatedSavings.toLocaleString('en-IN')} bache hain! 🎉
-            </span>
+          <div className="bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] rounded-[12px] p-3 mt-3 text-[#16A34A] text-[13px] font-bold">
+            Estimated savings of ₹{estimatedSavings.toLocaleString('en-IN')} compared to online!
           </div>
         )}
       </header>
 
       {/* Tab Selectors */}
-      <div className="flex border-b border-slate-200 bg-white">
+      <div className="flex border-b border-[#EBEBEB] bg-white flex-shrink-0">
         <button
           onClick={() => setActiveTab('dealers')}
-          className={`flex-1 py-3 text-center text-sm font-extrabold border-b-2 flex items-center justify-center gap-1.5 transition-colors ${
+          className={`flex-1 py-3.5 text-center text-[14px] font-bold border-b-2 flex items-center justify-center gap-1.5 transition-colors ${
             activeTab === 'dealers'
-              ? 'border-primary text-primary'
-              : 'border-transparent text-slate-500 hover:text-slate-700'
+              ? 'border-[#F0743E] text-[#F0743E]'
+              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
           }`}
         >
           <Store className="w-4 h-4" />
@@ -327,14 +320,14 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
         </button>
         <button
           onClick={() => setActiveTab('online')}
-          className={`flex-1 py-3 text-center text-sm font-extrabold border-b-2 flex items-center justify-center gap-1.5 transition-colors ${
+          className={`flex-1 py-3.5 text-center text-[14px] font-bold border-b-2 flex items-center justify-center gap-1.5 transition-colors ${
             activeTab === 'online'
-              ? 'border-primary text-primary'
-              : 'border-transparent text-slate-500 hover:text-slate-700'
+              ? 'border-[#F0743E] text-[#F0743E]'
+              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
           }`}
         >
           <Globe className="w-4 h-4" />
-          Online Prices ({online_prices.length})
+          Online Platforms ({online_prices.length})
         </button>
       </div>
 
@@ -343,54 +336,51 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
         {activeTab === 'dealers' ? (
           <div className="space-y-4">
             {offers.length === 0 ? (
-              // Empty State
-              <div className="text-center py-16 px-4 bg-white border border-slate-100 rounded-card shadow-sm flex flex-col items-center">
-                <div className="w-14 h-14 bg-orange-50 border border-orange-100 rounded-full flex items-center justify-center text-primary mb-4 animate-bounce">
-                  <Store className="w-6 h-6" />
+              // Empty State (Task 10 geometric shape)
+              <div className="text-center py-16 px-4 bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] flex flex-col items-center">
+                <div className="w-12 h-12 bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] rounded-full flex items-center justify-center text-[#F0743E] mb-4">
+                  <Store className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-extrabold text-slate-900">Dealers को Broadcast bhej diya hai!</h3>
-                <p className="text-xs text-slate-500 font-medium max-w-xs mt-2 leading-relaxed">
-                  Bhopal ke local shopkeepers check karke offers bhej rahe hain. WhatsApp results link auto update hoga. 
+                <h3 className="text-[16px] font-bold text-[#141414]">Request broadcasted to local dealers</h3>
+                <p className="text-[12px] text-[#6B6B6B] font-medium max-w-xs mt-2 leading-relaxed">
+                  Bhopal shop owners are checking inventory to provide quotes. This page will update automatically.
                 </p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
-                  <span className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-ping"></span>
-                  Waiting for offers...
-                </div>
+                <button
+                  onClick={handleManualRefresh}
+                  className="btn-secondary h-[44px] text-[13px] px-5 mt-6 font-bold"
+                >
+                  Check Updates
+                </button>
               </div>
             ) : !showOffers ? (
-              // Threshold Hiding Page (Fix 2)
-              <div className="text-center py-12 px-4 bg-white border border-slate-100 rounded-card shadow-sm flex flex-col items-center">
-                <div className="w-14 h-14 bg-orange-50 border border-orange-100 rounded-full flex items-center justify-center text-primary mb-4 animate-pulse">
-                  <Lock className="w-6 h-6" />
+              // Waiting State (Task 9 overlapping circles + progress bar)
+              <div className="text-center py-16 px-5 bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] flex flex-col items-center">
+                {/* 3 overlapping circles */}
+                <div className="flex items-center justify-center relative w-24 h-12 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-[#CDBCDB]/60 absolute left-4"></div>
+                  <div className="w-10 h-10 rounded-full bg-[#FDDB48]/60 absolute"></div>
+                  <div className="w-10 h-10 rounded-full bg-[#F6C3AE]/60 absolute right-4"></div>
                 </div>
-                <h3 className="text-base font-extrabold text-slate-900">Dealers best price dhundh rahe hain...</h3>
+
+                <h3 className="text-[18px] font-bold text-[#141414]">Getting quotes from local dealers</h3>
                 
                 {/* Offer count */}
-                <p className="text-sm font-bold text-slate-700 mt-2">
-                  {offers.length} {offers.length === 1 ? 'dealer' : 'dealers'} ne offer diya hai.
+                <p className="text-[14px] font-bold text-[#6B6B6B] mt-2">
+                  {offers.length} of 3 responses received
                 </p>
 
-                {/* Progress bar */}
-                <div className="w-full max-w-[250px] bg-slate-100 h-2.5 rounded-full mt-4 overflow-hidden border border-slate-200">
+                {/* Thin progress bar */}
+                <div className="w-full max-w-[240px] bg-[#EBEBEB] h-[3px] rounded-full overflow-hidden mt-4">
                   <div 
-                    className="bg-primary h-full rounded-full transition-all duration-500" 
+                    className="bg-[#F0743E] h-full transition-all duration-500" 
                     style={{ width: `${Math.min(100, (offers.length / 3) * 100)}%` }}
                   ></div>
                 </div>
-                <span className="text-[10px] font-bold text-slate-400 mt-1.5 uppercase tracking-wide">
-                  {offers.length}/3 Offers Received
-                </span>
 
-                {/* Estimated time remaining message */}
-                <p className="text-xs text-slate-500 font-semibold max-w-xs mt-6 leading-relaxed bg-slate-50 p-3 rounded-card border border-slate-100">
-                  Results <span className="text-primary font-black">{timeRemainingMinutes} minutes</span> mein ya 3 offers aane par dikhenge.
+                {/* Threshold unlock warning */}
+                <p className="text-[12px] text-[#A0A0A0] font-medium max-w-[280px] mt-6 leading-relaxed">
+                  Results unlock in <span className="text-[#F0743E] font-bold">{timeRemainingMinutes} minutes</span> or when 3 dealers respond.
                 </p>
-
-                {/* Status indicator */}
-                <div className="mt-6 flex items-center gap-2 text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1.5 rounded-full">
-                  <span className="w-2.5 h-2.5 bg-orange-500 rounded-full animate-ping"></span>
-                  Waiting for threshold...
-                </div>
               </div>
             ) : (
               // Map offers ranked by true cost (price + installation if not included)
@@ -412,43 +402,39 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                       <div 
                         className={`card-premium relative overflow-hidden ${
                           isBestDeal 
-                            ? 'border-primary/40 bg-gradient-to-b from-orange-50/20 to-white ring-2 ring-primary/10' 
-                            : 'border-slate-100'
+                            ? 'border-l-4 border-l-[#F0743E] bg-[#FEF0E8]/30' 
+                            : ''
                         }`}
                       >
                         {isBestDeal && (
-                          <div className="absolute top-0 right-0 bg-primary text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-lg flex items-center gap-1 shadow-sm">
-                            <Tag className="w-3 h-3 fill-white" />
+                          <div className="absolute top-4 right-4 bg-[#FDDB48] text-[#141414] text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-[6px]">
                             Best Deal
                           </div>
                         )}
 
                         <div className="flex justify-between items-start">
                           <div>
-                            <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">
+                            <span className="text-[12px] font-bold text-[#A0A0A0] uppercase tracking-wider">
                               {offer.dealer.shop_name}
                             </span>
-                            <h4 className="text-2xl font-black text-slate-900 mt-1 leading-none">
+                            {/* Price display size 28-32px Tabular nums */}
+                            <h4 className="text-[32px] font-bold text-[#141414] mt-2 leading-none font-mono">
                               ₹{offer.price.toLocaleString('en-IN')}
                             </h4>
                             
-                            <span className="inline-block text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full mt-2">
-                              📍 {offer.dealer.area}
+                            <span className="inline-block text-[11px] font-bold text-[#6B6B6B] bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] px-2 py-0.5 rounded-full mt-3">
+                              {offer.dealer.area}
                             </span>
                             
                             {/* Display Computed True Value */}
-                            <div className="text-[10px] font-semibold text-slate-500 mt-2">
-                              True Value (Cost): <span className="font-extrabold text-slate-800">₹{trueValue.toLocaleString('en-IN')}</span> 
-                              {trueValue > offer.price && ' (+ ₹1,200 Installation)'}
+                            <div className="text-[12px] font-semibold text-[#6B6B6B] mt-3">
+                              True Cost: <span className="font-bold text-[#141414]">₹{trueValue.toLocaleString('en-IN')}</span> 
+                              {trueValue > offer.price && ' (+ ₹1,200 installation)'}
                             </div>
                           </div>
                           
-                          <div className="text-right mt-1">
-                            <span className={`text-[10px] font-bold px-2 py-1 rounded-full ${
-                              offer.availability === 'today' 
-                                ? 'text-emerald-700 bg-emerald-100/70 border border-emerald-200'
-                                : 'text-slate-600 bg-slate-100'
-                            }`}>
+                          <div className="text-right">
+                            <span className="text-[11px] font-bold px-2 py-0.5 rounded-[6px] text-[#6B6B6B] bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB]">
                               {getAvailabilityLabel(offer.availability)}
                             </span>
                           </div>
@@ -456,17 +442,16 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
 
                         {/* Inclusions */}
                         {inclusions.length > 0 && (
-                          <div className="mt-4 pt-3 border-t border-slate-100">
-                            <span className="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block mb-2">
-                              Inclusions (Free Extras)
+                          <div className="mt-4 pt-3 border-t border-[#EBEBEB]">
+                            <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider block mb-2">
+                              Included in price
                             </span>
                             <div className="flex flex-wrap gap-1.5">
                               {inclusions.map((inc) => (
                                 <span 
                                   key={inc}
-                                  className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-md flex items-center gap-1"
+                                  className="text-[11px] font-bold text-[#16A34A] bg-green-50 border-[0.5px] border-green-200 px-2.5 py-0.5 rounded-[6px]"
                                 >
-                                  <Check className="w-3 h-3 stroke-[3px]" />
                                   {inc}
                                 </span>
                               ))}
@@ -479,42 +464,38 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                           <button
                             onClick={() => handleContactDealer(offer.id)}
                             disabled={contactingId !== null}
-                            className="flex-1 btn-primary py-2.5 text-xs flex items-center justify-center gap-2 font-extrabold"
+                            className="flex-1 btn-primary text-[15px] font-bold h-[48px]"
                           >
                             {contactingId === offer.id ? (
                               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                             ) : (
-                              <MessageCircle className="w-4 h-4 fill-white text-primary" />
+                              'Contact Dealer'
                             )}
-                            Contact via WhatsApp
                           </button>
                         </div>
                       </div>
 
                       {/* Alternative Model Offer (If provided by dealer) */}
                       {offer.alternative_model && offer.alternative_price && (
-                        <div className="card-premium border-amber-300 bg-amber-50/30 relative overflow-hidden ring-1 ring-amber-200 pl-5">
-                          {/* Orange highlight side border */}
-                          <div className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500"></div>
-                          
-                          <div className="absolute top-0 right-0 bg-amber-500 text-white text-[8px] font-black uppercase tracking-wider px-2 py-0.5 rounded-bl">
-                            Alternative Option
+                        <div className="card-premium border-l-4 border-l-[#FDDB48] bg-[#FDDB48]/5 pl-5 relative overflow-hidden">
+                          <div className="absolute top-4 right-4 bg-[#FDDB48] text-[#141414] text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-[4px]">
+                            Alternative
                           </div>
 
                           <div className="flex justify-between items-start">
                             <div>
-                              <span className="text-[10px] font-bold text-amber-800 uppercase tracking-wide">
-                                {offer.dealer.shop_name} ka dusra offer:
+                              <span className="text-[11px] font-bold text-[#6B6B6B] uppercase tracking-wider">
+                                {offer.dealer.shop_name} Alternate
                               </span>
-                              <h5 className="text-sm font-extrabold text-slate-900 mt-1">
+                              <h5 className="text-[15px] font-bold text-[#141414] mt-1.5">
                                 {offer.alternative_model}
                               </h5>
-                              <h4 className="text-xl font-black text-amber-700 mt-1 leading-none">
+                              <h4 className="text-[28px] font-bold text-[#F0743E] mt-2 leading-none font-mono">
                                 ₹{offer.alternative_price.toLocaleString('en-IN')}
                               </h4>
                               
-                              <div className="text-[9px] font-semibold text-slate-500 mt-1">
-                                True Value (Cost): <span className="font-bold text-slate-700">
+                              <div className="text-[11px] font-semibold text-[#6B6B6B] mt-2">
+                                True Cost: <span className="font-bold text-[#141414]">
                                   ₹{getOfferTrueValue(offer.alternative_price, inclusions).toLocaleString('en-IN')}
                                 </span>
                               </div>
@@ -522,8 +503,8 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                           </div>
 
                           {offer.alternative_note && (
-                            <p className="text-xs text-slate-600 bg-white border border-amber-100 rounded-md p-2 mt-3 font-medium italic">
-                              💬 &ldquo;{offer.alternative_note}&rdquo;
+                            <p className="text-[13px] text-[#6B6B6B] bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-[8px] p-3 mt-3 font-normal italic">
+                              &ldquo;{offer.alternative_note}&rdquo;
                             </p>
                           )}
 
@@ -531,14 +512,13 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                             <button
                               onClick={() => handleContactDealer(offer.id, true)}
                               disabled={contactingId !== null}
-                              className="flex-1 bg-amber-600 text-white font-extrabold text-xs py-2 rounded-input flex items-center justify-center gap-1.5 hover:bg-amber-700 active:scale-[0.98] transition-all"
+                              className="flex-1 btn-secondary h-[44px] text-[13px]"
                             >
                               {contactingId === (offer.id + '-alt') ? (
-                                <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                <div className="w-3.5 h-3.5 border-2 border-[#141414] border-t-transparent rounded-full animate-spin"></div>
                               ) : (
-                                <MessageCircle className="w-3.5 h-3.5 fill-white text-amber-600" />
+                                'Accept Alternative Offer'
                               )}
-                              Accept Alt Offer
                             </button>
                           </div>
                         </div>
@@ -550,34 +530,36 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
             )}
           </div>
         ) : (
-          // Online Prices Tab (Fix 1)
+          // Online Prices Tab (Fix 1 & Task 9 card border color)
           <div className="space-y-4">
             {online_prices.length === 0 ? (
-              <div className="text-center py-16 bg-white border border-slate-100 rounded-card shadow-sm flex flex-col items-center">
-                <div className="w-14 h-14 bg-slate-50 border border-slate-200/50 rounded-full flex items-center justify-center text-slate-400 mb-4 animate-pulse">
-                  <Globe className="w-6 h-6" />
+              <div className="text-center py-16 bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] flex flex-col items-center">
+                <div className="w-12 h-12 bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-full flex items-center justify-center text-slate-400 mb-4">
+                  <Globe className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-extrabold text-slate-900">Online Prices fetching...</h3>
-                <p className="text-xs text-slate-500 font-medium max-w-xs mt-2">
-                  Amazon & Flipkart scraper is fetching latest online prices. Reload in a few seconds!
+                <h3 className="text-[16px] font-bold text-[#141414]">Fetching online prices...</h3>
+                <p className="text-[12px] text-[#6B6B6B] font-medium max-w-xs mt-2 leading-relaxed">
+                  Retrieving latest prices from online platforms. Please refresh in a moment.
                 </p>
               </div>
             ) : (
               online_prices.map((online) => {
                 const isFailed = online.fetch_status === 'failed';
+                
+                // Border accent colors per platform
+                const borderAccent = 
+                  online.platform === 'amazon' ? 'border-l-[#FF9900]' : 
+                  online.platform === 'flipkart' ? 'border-l-[#2874F0]' : 'border-l-[#CF0A2C]';
 
                 if (isFailed) {
                   return (
-                    <div key={online.id} className="card-premium border-red-100 bg-red-50/10">
-                      <span className={`inline-block text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider text-white ${
-                        online.platform === 'amazon' ? 'bg-orange-500' :
-                        online.platform === 'flipkart' ? 'bg-blue-600' : 'bg-red-600'
-                      }`}>
+                    <div key={online.id} className={`card-premium border-l-4 ${borderAccent} bg-[#FAFAF8]/50`}>
+                      <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] uppercase tracking-wider text-[#141414]">
                         {online.platform}
                       </span>
                       
-                      <p className="text-xs font-bold text-red-700 mt-3 leading-relaxed">
-                        Online price abhi fetch nahi ho saka. {online.platform === 'amazon' ? 'Amazon' : 'Flipkart'} directly check karein.
+                      <p className="text-[13px] font-semibold text-[#DC2626] mt-3 leading-relaxed">
+                        Online price could not be fetched. Check {online.platform === 'amazon' ? 'Amazon' : 'Flipkart'} directly.
                       </p>
                       
                       <button
@@ -587,9 +569,9 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                             : `https://www.flipkart.com/search?q=${encodeURIComponent(product.model_number)}`;
                           window.open(searchUrl, '_blank');
                         }}
-                        className="w-full btn-secondary text-xs font-bold py-2 mt-4 flex items-center justify-center gap-1.5"
+                        className="w-full btn-secondary h-[44px] text-[13px] mt-4"
                       >
-                        Check on {online.platform === 'amazon' ? 'Amazon' : 'Flipkart'}
+                        Search {online.platform === 'amazon' ? 'Amazon' : 'Flipkart'}
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
@@ -597,30 +579,27 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                 }
 
                 return (
-                  <div key={online.id} className="card-premium">
+                  <div key={online.id} className={`card-premium border-l-4 ${borderAccent}`}>
                     <div className="flex justify-between items-start">
                       <div>
-                        <span className={`inline-block text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider text-white ${
-                          online.platform === 'amazon' ? 'bg-orange-500' :
-                          online.platform === 'flipkart' ? 'bg-blue-600' : 'bg-red-600'
-                        }`}>
+                        <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] uppercase tracking-wider text-[#141414]">
                           {online.platform}
                         </span>
                         
                         {/* Price Details */}
-                        <div className="mt-3 flex flex-col gap-1">
-                          <div className="text-xs font-semibold text-slate-500 flex items-center justify-between gap-12">
-                            <span>Product price:</span>
-                            <span className="font-bold text-slate-700">₹{online.price ? online.price.toLocaleString('en-IN') : 'N/A'}</span>
+                        <div className="mt-3 flex flex-col gap-1.5">
+                          <div className="text-[13px] font-semibold text-[#6B6B6B] flex items-center justify-between gap-12">
+                            <span>Product Price:</span>
+                            <span className="font-bold text-[#141414]">₹{online.price ? online.price.toLocaleString('en-IN') : 'N/A'}</span>
                           </div>
-                          <div className="text-xs font-semibold text-slate-500 flex items-center justify-between">
+                          <div className="text-[13px] font-semibold text-[#6B6B6B] flex items-center justify-between">
                             <span>Installation:</span>
-                            <span className="font-bold text-slate-700">₹{online.installation_cost.toLocaleString('en-IN')}</span>
+                            <span className="font-bold text-[#141414]">₹{online.installation_cost.toLocaleString('en-IN')}</span>
                           </div>
-                          <div className="h-px bg-slate-100 my-1"></div>
-                          <div className="text-sm font-extrabold text-slate-900 flex items-center justify-between">
+                          <div className="h-[0.5px] bg-[#EBEBEB] my-1"></div>
+                          <div className="text-[14px] font-bold text-[#141414] flex items-center justify-between">
                             <span>True Cost:</span>
-                            <span className="text-base font-black text-slate-950">₹{online.true_cost ? online.true_cost.toLocaleString('en-IN') : 'N/A'}</span>
+                            <span className="text-[20px] font-bold text-[#141414] font-mono">₹{online.true_cost ? online.true_cost.toLocaleString('en-IN') : 'N/A'}</span>
                           </div>
                         </div>
                       </div>
@@ -629,7 +608,7 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
                     {online.url && (
                       <button
                         onClick={() => window.open(online.url, '_blank')}
-                        className="w-full btn-secondary py-2.5 text-xs font-extrabold mt-4 flex items-center justify-center gap-1.5"
+                        className="w-full btn-secondary h-[44px] text-[13px] mt-4"
                       >
                         Buy on {online.platform}
                         <ChevronRight className="w-3.5 h-3.5" />

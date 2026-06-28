@@ -40,7 +40,7 @@ export async function POST(request: Request) {
 
     if (!dealer.is_approved) {
       return NextResponse.json(
-        { error: 'Aapka account abhi tak approved nahi hai. Bids nahi bhej sakte.' },
+        { error: 'Your account is pending approval. You cannot submit offers yet.' },
         { status: 403 }
       );
     }
@@ -129,7 +129,7 @@ export async function POST(request: Request) {
         .select('id')
         .eq('request_id', requestId)
         .eq('channel', 'whatsapp')
-        .contains('status', ['sent']) // Already sent something
+        .eq('status', 'sent') // Already sent something
         .limit(1);
 
       // If no buyer result notification logged, send one!

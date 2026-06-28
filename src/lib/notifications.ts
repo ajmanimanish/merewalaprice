@@ -5,6 +5,10 @@ interface SendWhatsAppParams {
   messageText: string;
   dealerId?: string;
   requestId?: string;
+  productName?: string;
+  budget?: string;
+  area?: string;
+  offerLink?: string;
 }
 
 /**
@@ -15,6 +19,10 @@ export async function sendWhatsAppMessage({
   messageText,
   dealerId,
   requestId,
+  productName,
+  budget,
+  area,
+  offerLink,
 }: SendWhatsAppParams): Promise<boolean> {
   let cleanPhone = phone.replace(/[^0-9]/g, '');
   
@@ -38,14 +46,24 @@ export async function sendWhatsAppMessage({
 
   if (endpoint && apiKey) {
     try {
-      const url = `${endpoint.replace(/\/$/, '')}/api/v1/sendSessionMessage/${formattedPhone}`;
+      // TODO: Create and approve Wati template new_dealer_request before going live
+      const url = `${endpoint.replace(/\/$/, '')}/api/v1/sendTemplateMessage/${formattedPhone}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messageText }),
+        body: JSON.stringify({
+          template_name: 'new_dealer_request',
+          broadcast_name: 'dealer_request_broadcast',
+          parameters: [
+            { name: 'product_name', value: productName || 'Product' },
+            { name: 'budget', value: budget || '' },
+            { name: 'area', value: area || '' },
+            { name: 'offer_link', value: offerLink || '' }
+          ]
+        }),
       });
 
       if (response.ok) {

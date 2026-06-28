@@ -329,7 +329,7 @@ VALUES (
   ARRAY['AC', 'TV', 'WM']::product_category[],
   ARRAY['Samsung', 'LG', 'Voltas', 'Sony']::text[],
   true,
-  'active',
+  'free',
   now()
 ) ON CONFLICT (id) DO NOTHING;
 

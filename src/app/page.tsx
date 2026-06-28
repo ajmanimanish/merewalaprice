@@ -11,15 +11,15 @@ import {
   Laptop, 
   Store, 
   HelpCircle, 
-  TrendingDown, 
-  Zap, 
-  CheckCircle2, 
   ChevronRight,
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import { searchProducts, SearchProduct } from '@/lib/typesense';
 
-// Inline washing machine fallback in case lucide icon loading issues occur
+// Inline washing machine SVG icon
 const WashingMachineIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -52,11 +52,11 @@ export default function HomePage() {
 
   // Categories list
   const categories = [
-    { id: 'AC', name: 'कूलर & AC', hindi: 'एयर कंडीशनर', icon: Wind, color: 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100/70' },
-    { id: 'TV', name: 'स्मार्ट टीवी', hindi: 'टेलीविज़न', icon: Tv, color: 'bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-100/70' },
-    { id: 'FRIDGE', name: 'फ्रिज / Fridge', hindi: 'रेफ्रिजरेटर', icon: Snowflake, color: 'bg-cyan-50 text-cyan-600 border-cyan-100 hover:bg-cyan-100/70' },
-    { id: 'WM', name: 'वाशिंग मशीन', hindi: 'कपड़े धोने की मशीन', icon: WashingMachineIcon, color: 'bg-emerald-50 text-emerald-600 border-emerald-100 hover:bg-emerald-100/70' },
-    { id: 'LAPTOP', name: 'लैपटॉप', hindi: 'कंप्यूटर', icon: Laptop, color: 'bg-amber-50 text-amber-600 border-amber-100 hover:bg-amber-100/70' }
+    { id: 'AC', name: 'Air Conditioner', icon: Wind, iconBg: '#CDBCDB' },
+    { id: 'TV', name: 'Smart TV', icon: Tv, iconBg: '#FDDB48' },
+    { id: 'FRIDGE', name: 'Refrigerator', icon: Snowflake, iconBg: '#9AB2D4' },
+    { id: 'WM', name: 'Washing Machine', icon: WashingMachineIcon, iconBg: '#F6C3AE' },
+    { id: 'LAPTOP', name: 'Laptop', icon: Laptop, iconBg: '#AAD59E' }
   ];
 
   // Perform search on query change
@@ -107,131 +107,134 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pb-16 bg-slate-50/50">
+    <div className="flex flex-col min-h-screen pb-16 bg-[#FAFAF8] font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-5 py-4 flex flex-col items-center">
-        <h1 className="font-baloo text-3xl font-extrabold text-primary tracking-tight leading-none">
-          MereWalaPrice
-        </h1>
-        <p className="text-xs text-slate-500 font-medium tracking-wide mt-1.5 uppercase">
-          Bhopal ka sabse sahi price 📍
-        </p>
+      <header className="sticky top-0 z-30 bg-white h-[60px] border-b-[0.5px] border-[#EBEBEB] px-5 flex items-center justify-between flex-shrink-0">
+        <Link href="/" className="flex items-center gap-1">
+          <span className="text-[20px] font-semibold text-[#141414] tracking-tight">MereWala</span>
+          <span className="text-[20px] font-bold text-[#F0743E] tracking-tight">Price</span>
+        </Link>
+        <Link href="/dealer" className="text-xs font-bold text-[#6B6B6B] hover:text-[#F0743E] flex items-center gap-1 transition-colors">
+          <Store className="w-3.5 h-3.5" />
+          Partner Login
+        </Link>
       </header>
 
-      {/* Hero / Search Section */}
-      <div className="bg-gradient-to-b from-white to-slate-50/20 px-5 pt-8 pb-6">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-extrabold text-slate-900 leading-tight">
-            Online से भी सस्ता खरीदें,<br />
-            <span className="text-primary bg-primary-light/50 px-2 py-0.5 rounded-md inline-block mt-1">
-              भोपाल के लोकल डीलर्स से!
-            </span>
-          </h2>
-          <p className="text-slate-600 text-sm mt-3 font-medium">
-            Post your requirement & let local shopkeepers bid.
-          </p>
-        </div>
-
-        {/* Search bar container */}
-        <div className="relative" ref={dropdownRef}>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search AC, Smart TV, Fridge, Laptop..."
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setShowDropdown(true);
-              }}
-              onFocus={() => setShowDropdown(true)}
-              className="input-premium pl-11 pr-10 font-medium shadow-md shadow-slate-100"
-            />
-            <Search className="absolute left-3.5 top-3.5 text-slate-400 w-5 h-5" />
-            
-            {query && (
-              <button 
-                onClick={() => setQuery('')}
-                className="absolute right-3.5 top-3.5 text-xs text-slate-400 font-semibold hover:text-slate-600 bg-slate-100 rounded-full w-5 h-5 flex items-center justify-center"
-              >
-                ✕
-              </button>
-            )}
-          </div>
-
-          {/* Typeahead Suggestions Dropdown */}
-          {showDropdown && (
-            <div className="absolute left-0 right-0 mt-2 bg-white rounded-card border border-slate-100 shadow-2xl z-50 overflow-hidden max-h-[300px] overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-200">
-              {loading ? (
-                <div className="p-4 text-center text-sm text-slate-500 flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
-                  Searching models...
-                </div>
-              ) : suggestions.length > 0 ? (
-                <div>
-                  <div className="bg-slate-50 px-4 py-2 border-b border-slate-100">
-                    <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">
-                      {query ? 'Suggested Models' : 'Popular Models'}
-                    </span>
-                  </div>
-                  {suggestions.map((product) => (
-                    <button
-                      key={product.id}
-                      onClick={() => handleProductSelect(product.id)}
-                      className="w-full text-left px-4 py-3 hover:bg-slate-50 border-b border-slate-50 last:border-b-0 flex items-start gap-3 transition-colors duration-150"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex-shrink-0 overflow-hidden flex items-center justify-center">
-                        {product.image_url ? (
-                          <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
-                        ) : (
-                          <HelpCircle className="w-5 h-5 text-slate-400" />
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="text-sm font-bold text-slate-900 truncate leading-tight">
-                          {product.brand} {product.name}
-                        </div>
-                        <div className="text-xs text-slate-500 font-semibold mt-0.5">
-                          Model: {product.model_number} • <span className="text-primary font-bold">{product.category}</span>
-                        </div>
-                      </div>
-                      <ChevronRight className="w-4 h-4 text-slate-300 mt-2 self-center flex-shrink-0" />
-                    </button>
-                  ))}
-                </div>
-              ) : (
-                <div className="p-6 text-center">
-                  <p className="text-sm text-slate-500 font-medium">Koi matching product nahi mila 😞</p>
-                  <p className="text-xs text-slate-400 mt-1">Kuch aur search karke dekhein or contact admin.</p>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+      {/* Hero Section */}
+      <div className="bg-[#F0743E] px-5 pt-8 pb-14 flex-shrink-0">
+        <h2 className="text-[26px] font-bold text-white leading-tight tracking-tight max-w-[280px]">
+          Better price than online. From your city.
+        </h2>
+        <p className="text-white/85 text-[15px] font-normal mt-2 leading-relaxed max-w-[280px]">
+          Local dealers compete for your business.
+        </p>
       </div>
 
-      {/* Category Tiles */}
-      <div className="px-5 py-4">
-        <h3 className="text-sm font-bold text-slate-400 tracking-wider uppercase mb-3">
-          Categories
-        </h3>
-        <div className="grid grid-cols-2 gap-3">
+      {/* Floating Search Bar Overlapping Hero */}
+      <div className="px-5 -mt-6 relative z-20 flex-shrink-0" ref={dropdownRef}>
+        <div className="relative bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] h-14 flex items-center px-4">
+          <Search className="text-[#A0A0A0] w-5 h-5 flex-shrink-0" />
+          <input
+            type="text"
+            placeholder="Search AC, TV, Washing Machine..."
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setShowDropdown(true);
+            }}
+            onFocus={() => setShowDropdown(true)}
+            className="w-full h-full pl-3 bg-transparent outline-none border-none text-[15px] text-[#141414] placeholder-[#C0C0C0] font-normal focus:ring-0"
+          />
+          {query && (
+            <button 
+              onClick={() => setQuery('')}
+              className="text-xs text-[#A0A0A0] font-semibold hover:text-[#6B6B6B] bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
+        {/* Typeahead Suggestions Dropdown */}
+        {showDropdown && (
+          <div className="absolute left-5 right-5 mt-2 bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] z-50 overflow-hidden max-h-[300px] overflow-y-auto">
+            {loading ? (
+              <div className="p-5 text-center text-[14px] text-[#6B6B6B] flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-[#F0743E] border-t-transparent rounded-full animate-spin"></div>
+                Searching models...
+              </div>
+            ) : suggestions.length > 0 ? (
+              <div>
+                <div className="bg-[#FAFAF8] px-4 py-2 border-b-[0.5px] border-[#EBEBEB]">
+                  <span className="text-[10px] font-bold text-[#A0A0A0] tracking-wider uppercase">
+                    {query ? 'Suggested Models' : 'Popular Models'}
+                  </span>
+                </div>
+                {suggestions.map((product) => (
+                  <button
+                    key={product.id}
+                    onClick={() => handleProductSelect(product.id)}
+                    className="w-full text-left px-4 py-3.5 hover:bg-[#FAFAF8] active:bg-[#F8F8F6] border-b-[0.5px] border-[#EBEBEB] last:border-b-0 flex items-start gap-3 transition-colors duration-150"
+                  >
+                    <div className="w-10 h-10 rounded-[8px] bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] flex-shrink-0 overflow-hidden flex items-center justify-center">
+                      {product.image_url ? (
+                        <img src={product.image_url} alt={product.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <HelpCircle className="w-5 h-5 text-[#A0A0A0]" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-[14px] font-bold text-[#141414] truncate leading-tight">
+                        {product.brand} {product.name}
+                      </div>
+                      <div className="text-[11px] text-[#6B6B6B] font-medium mt-0.5">
+                        Model: {product.model_number} • <span className="text-[#F0743E] font-bold">{product.category}</span>
+                      </div>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-[#A0A0A0] mt-2 self-center flex-shrink-0" />
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="p-6 text-center bg-white">
+                <p className="text-[14px] text-[#6B6B6B] font-medium">No matching product found</p>
+                <p className="text-[12px] text-[#A0A0A0] mt-1">Please try searching for another model.</p>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Category Horizontal scroll row */}
+      <div className="py-6 flex flex-col gap-3">
+        <div className="px-5">
+          <span className="text-[12px] font-bold text-[#6B6B6B] tracking-wider uppercase">
+            Browse Categories
+          </span>
+        </div>
+        <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-none px-5">
           {categories.map((cat) => {
             const Icon = cat.icon;
+            const isSelected = query === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => handleCategoryClick(cat.id)}
-                className={`flex flex-col items-center justify-center p-4 border rounded-card transition-all duration-200 text-center group active:scale-[0.98] ${cat.color}`}
+                className={`flex-shrink-0 w-20 h-22 bg-white border-[0.5px] rounded-[16px] flex flex-col items-center justify-between overflow-hidden transition-all duration-150 active:bg-[#F8F8F6] ${
+                  isSelected ? 'border-[#F0743E] bg-[#FEF0E8]' : 'border-[#EBEBEB]'
+                }`}
               >
-                <div className="p-3 bg-white rounded-full shadow-sm group-hover:scale-110 transition-transform duration-200">
-                  <Icon className="w-6 h-6" />
+                <div 
+                  className="w-full h-14 flex items-center justify-center transition-colors"
+                  style={{ backgroundColor: cat.iconBg }}
+                >
+                  <Icon className="w-5 h-5 text-[#141414]" />
                 </div>
-                <span className="text-sm font-bold text-slate-800 mt-3 leading-none">
-                  {cat.name}
-                </span>
-                <span className="text-[10px] font-medium text-slate-500 mt-1">
-                  {cat.hindi}
-                </span>
+                <div className="h-8 flex items-center justify-center text-center px-1">
+                  <span className="text-[10px] font-bold text-[#141414] leading-tight">
+                    {cat.name}
+                  </span>
+                </div>
               </button>
             );
           })}
@@ -239,79 +242,78 @@ export default function HomePage() {
       </div>
 
       {/* How it Works Section */}
-      <div className="px-5 py-6 bg-white border-y border-slate-100 mt-4">
-        <h3 className="text-center text-lg font-extrabold text-slate-900 mb-6">
-          MereWalaPrice कैसे काम करता है? 🤔
+      <div className="px-5 py-6 bg-white border-y-[0.5px] border-[#EBEBEB] flex flex-col gap-6">
+        <h3 className="text-center text-[20px] font-bold text-[#141414]">
+          How MereWalaPrice Works
         </h3>
         <div className="space-y-6">
           <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-primary font-extrabold text-sm flex-shrink-0 shadow-sm">
+            <div className="w-8 h-8 rounded-full bg-[#FEF0E8] flex items-center justify-center text-[#F0743E] font-bold text-[14px] flex-shrink-0">
               1
             </div>
             <div>
-              <h4 className="text-sm font-extrabold text-slate-900">मॉडल सेलेक्ट करें 🔍</h4>
-              <p className="text-xs text-slate-500 font-medium mt-1 leading-relaxed">
-                ऊपर सर्च बार से अपना मनपसंद इलेक्ट्रॉनिक मॉडल सर्च करें और सेलेक्ट करें।
+              <h4 className="text-[15px] font-bold text-[#141414]">Select Model</h4>
+              <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
+                Search and select your desired electronic model from the catalog.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-primary font-extrabold text-sm flex-shrink-0 shadow-sm">
+            <div className="w-8 h-8 rounded-full bg-[#FEF0E8] flex items-center justify-center text-[#F0743E] font-bold text-[14px] flex-shrink-0">
               2
             </div>
             <div>
-              <h4 className="text-sm font-extrabold text-slate-900">बजट और एरिया डालें 📝</h4>
-              <p className="text-xs text-slate-500 font-medium mt-1 leading-relaxed">
-                अपना बजट, भोपाल का एरिया (जैसे MP Nagar, Kolar) और कांटेक्ट डिटेल्स भरें।
+              <h4 className="text-[15px] font-bold text-[#141414]">Enter Details</h4>
+              <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
+                Provide your expected budget, area in Bhopal, and contact details.
               </p>
             </div>
           </div>
 
           <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-primary font-extrabold text-sm flex-shrink-0 shadow-sm">
+            <div className="w-8 h-8 rounded-full bg-[#FEF0E8] flex items-center justify-center text-[#F0743E] font-bold text-[14px] flex-shrink-0">
               3
             </div>
             <div>
-              <h4 className="text-sm font-extrabold text-slate-900">लोकल बेस्ट डील पाएँ ⚡</h4>
-              <p className="text-xs text-slate-500 font-medium mt-1 leading-relaxed">
-                भोपाल के लोकल डीलर्स आपको सीधे WhatsApp पर ऑफर भेजेंगे। ऑनलाइन से कम दाम की गारंटी!
+              <h4 className="text-[15px] font-bold text-[#141414]">Get Best Local Price</h4>
+              <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
+                Approved local dealers bid to win your business. Direct chat via WhatsApp.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Social Proof Stats Counter */}
-      <div className="px-5 py-8 bg-slate-900 text-white text-center rounded-b-3xl">
-        <h3 className="text-xs font-bold text-primary tracking-widest uppercase mb-6">
+      {/* Network Stats Block */}
+      <div className="px-5 py-8 bg-[#141414] text-white text-center rounded-b-[24px]">
+        <span className="text-[12px] font-bold text-[#F0743E] tracking-widest uppercase block mb-6">
           MereWalaPrice Bhopal Network
-        </h3>
+        </span>
         <div className="grid grid-cols-3 gap-3">
-          <div className="bg-slate-800/80 p-3 rounded-card border border-slate-700/50">
-            <div className="text-xl font-black text-white">150+</div>
-            <div className="text-[10px] font-bold text-slate-400 mt-1">Verified Dealers</div>
+          <div className="bg-[#1A1A1A] p-4 rounded-[12px] border-[0.5px] border-neutral-800">
+            <div className="text-[20px] font-bold text-white">150+</div>
+            <div className="text-[10px] font-medium text-[#A0A0A0] mt-1 uppercase tracking-wide">Dealers</div>
           </div>
-          <div className="bg-slate-800/80 p-3 rounded-card border border-slate-700/50">
-            <div className="text-xl font-black text-white">3,200+</div>
-            <div className="text-[10px] font-bold text-slate-400 mt-1">Requests Sent</div>
+          <div className="bg-[#1A1A1A] p-4 rounded-[12px] border-[0.5px] border-neutral-800">
+            <div className="text-[20px] font-bold text-white">3.2k+</div>
+            <div className="text-[10px] font-medium text-[#A0A0A0] mt-1 uppercase tracking-wide">Requests</div>
           </div>
-          <div className="bg-slate-800/80 p-3 rounded-card border border-slate-700/50">
-            <div className="text-xl font-black text-primary">₹25L+</div>
-            <div className="text-[10px] font-bold text-slate-400 mt-1">Bhopal Savings</div>
+          <div className="bg-[#1A1A1A] p-4 rounded-[12px] border-[0.5px] border-neutral-800">
+            <div className="text-[20px] font-bold text-[#F0743E]">₹25L+</div>
+            <div className="text-[10px] font-medium text-[#A0A0A0] mt-1 uppercase tracking-wide">Savings</div>
           </div>
         </div>
         
-        <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col items-center">
-          <p className="text-xs text-slate-400 font-semibold">
+        <div className="mt-8 pt-6 border-t border-neutral-800 flex flex-col items-center">
+          <p className="text-[13px] text-[#A0A0A0] font-normal">
             Are you a shop owner in Bhopal?
           </p>
           <Link 
             href="/dealer"
-            className="mt-3 flex items-center gap-1.5 text-xs text-primary font-extrabold hover:underline"
+            className="mt-3 flex items-center gap-1 text-[13px] text-[#F0743E] font-bold hover:underline transition-all active:scale-[0.98]"
           >
-            <Store className="w-4 h-4" />
-            Dukaan Register karein
+            Register your shop
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

@@ -77,7 +77,7 @@ export default function DealerDashboard() {
   const [profile, setProfile] = useState<DealerProfile | null>(null);
   const [profileLoading, setProfileLoading] = useState(false);
   
-  // Current time state for live countdown (Fix 7)
+  // Current time state for live countdown
   const [currentTime, setCurrentTime] = useState(Date.now());
   
   // Login Form States
@@ -162,7 +162,6 @@ export default function DealerDashboard() {
     if (!profile || !profile.is_approved) return;
     setDataLoading(true);
     try {
-      // Fetch open and fulfilled requests matching the dealer
       const { data: reqData, error: reqErr } = await supabase
         .from('buyer_requests')
         .select(`
@@ -219,12 +218,12 @@ export default function DealerDashboard() {
     
     const cleanPhone = loginPhone.replace(/[^0-9]/g, '');
     if (cleanPhone.length !== 10) {
-      setLoginError('Kripya 10-digit phone number enter karein.');
+      setLoginError('Please enter a 10-digit mobile number.');
       return;
     }
 
     if (!loginPassword) {
-      setLoginError('Password enter karein.');
+      setLoginError('Please enter your password.');
       return;
     }
 
@@ -237,7 +236,7 @@ export default function DealerDashboard() {
         password: loginPassword,
       });
 
-      if (error) throw new Error('Password galat hai ya user nahi mila.');
+      if (error) throw new Error('Invalid phone or password.');
     } catch (err: any) {
       setLoginError(err.message || 'Login failed.');
     } finally {
@@ -267,12 +266,12 @@ export default function DealerDashboard() {
 
     if (!selectedRequest || !profile) return;
     if (!quotePrice) {
-      setModalError('Price quote dalna mandatory hai.');
+      setModalError('Price quote is required.');
       return;
     }
 
     if (hasAltModel && (!altModelName || !altModelPrice)) {
-      setModalError('Alt Model select kiya hai toh Model Name aur Price fill karein.');
+      setModalError('Please specify model name and price for alternative offer.');
       return;
     }
 
@@ -318,7 +317,7 @@ export default function DealerDashboard() {
     }
   };
 
-  // Expiration layout badges generator (Fix 7)
+  // Expiration layout badges generator (Fix 7 & urgency badge colors)
   const renderRemainingTimeBadge = (expiresAtStr: string) => {
     const expiresAt = new Date(expiresAtStr).getTime();
     const diffMs = expiresAt - currentTime;
@@ -327,25 +326,33 @@ export default function DealerDashboard() {
       return null;
     }
     
-    const diffHours = diffMs / (60000 * 60);
-    if (diffHours >= 1) {
-      const hours = Math.round(diffHours);
+    const diffMinutes = Math.max(1, Math.round(diffMs / 60000));
+    
+    if (diffMinutes < 30) {
+      // Under 30 minutes: Background #FFEBEB, text #DC2626, pulse
       return (
-        <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
-          ⏰ {hours} ghante bacha hai
+        <span className="text-[10px] font-bold text-[#DC2626] bg-[#FFEBEB] border-[0.5px] border-[#DC2626]/20 px-2.5 py-0.5 rounded-[6px] animate-pulse uppercase tracking-wider">
+          {diffMinutes} min left
+        </span>
+      );
+    } else if (diffMinutes < 60) {
+      // Under 1 hour: Background #FEF0E8, text #F0743E
+      return (
+        <span className="text-[10px] font-bold text-[#F0743E] bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] px-2.5 py-0.5 rounded-[6px] uppercase tracking-wider">
+          {diffMinutes} min left
         </span>
       );
     } else {
-      const minutes = Math.max(1, Math.round(diffMs / 60000));
+      const hours = Math.round(diffMinutes / 60);
       return (
-        <span className="text-[10px] font-black text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded animate-pulse">
-          ⚡ Sirf {minutes} minute bacha hai!
+        <span className="text-[10px] font-bold text-[#F0743E] bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] px-2.5 py-0.5 rounded-[6px] uppercase tracking-wider">
+          {hours} hours left
         </span>
       );
     }
   };
 
-  // Separate requests by active and expired status (Fix 7)
+  // Separate requests by active and expired status
   const activeRequests = requests.filter(
     (req) => req.status === 'open' && new Date(req.expires_at).getTime() > currentTime
   );
@@ -367,8 +374,8 @@ export default function DealerDashboard() {
 
   if (authLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-slate-50">
-        <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+      <div className="flex items-center justify-center min-h-screen bg-[#FAFAF8]">
+        <div className="w-8 h-8 border-4 border-[#F0743E] border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -376,39 +383,38 @@ export default function DealerDashboard() {
   // Not Logged In View
   if (!session) {
     return (
-      <div className="flex flex-col min-h-screen justify-center px-6 py-12 bg-slate-50/50">
-        <div className="w-full bg-white border border-slate-100 p-6 rounded-card shadow-lg flex flex-col">
+      <div className="flex flex-col min-h-screen justify-center px-5 py-12 bg-[#FAFAF8] font-sans">
+        <div className="w-full bg-white border-[0.5px] border-[#EBEBEB] p-6 rounded-[16px] flex flex-col">
           <div className="text-center mb-6">
-            <h1 className="font-baloo text-3xl font-extrabold text-primary">MereWalaPrice</h1>
-            <p className="text-sm font-bold text-slate-800 mt-2">Bhopal Dealer Panel Login</p>
-            <p className="text-xs text-slate-400 font-semibold mt-1">Dukaan ke offer quotes aur stats manage karein.</p>
+            <h1 className="text-[20px] font-bold text-[#141414] tracking-tight">MereWala<span className="text-[#F0743E]">Price</span></h1>
+            <p className="text-[12px] font-bold text-[#6B6B6B] uppercase tracking-wider mt-2">Dealer Login</p>
           </div>
 
           {loginError && (
-            <div className="bg-red-50 border border-red-100 text-red-700 text-xs font-semibold rounded p-3 mb-4">
-              ⚠️ {loginError}
+            <div className="bg-red-50 border-[0.5px] border-red-200 text-[#DC2626] text-xs font-semibold rounded p-3 mb-4">
+              {loginError}
             </div>
           )}
 
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5 text-primary" />
-                WhatsApp Mobile Number
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
+                Mobile Number
               </label>
               <input
                 type="tel"
-                placeholder="e.g. 9876543210"
+                placeholder="9826123456"
                 value={loginPhone}
                 onChange={(e) => setLoginPhone(e.target.value)}
-                className="input-premium py-2 text-sm font-semibold"
+                className="input-premium"
                 disabled={loginSubmitting}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1">
-                <Lock className="w-3.5 h-3.5 text-primary" />
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <Lock className="w-3.5 h-3.5 text-[#F0743E]" />
                 Password
               </label>
               <input
@@ -416,7 +422,7 @@ export default function DealerDashboard() {
                 placeholder="••••••••"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="input-premium py-2 text-sm font-semibold"
+                className="input-premium"
                 disabled={loginSubmitting}
               />
             </div>
@@ -424,15 +430,15 @@ export default function DealerDashboard() {
             <button
               type="submit"
               disabled={loginSubmitting}
-              className="w-full btn-primary py-2.5 text-sm font-extrabold"
+              className="w-full btn-primary mt-2"
             >
-              {loginSubmitting ? 'Logging in...' : 'Sign In'}
+              {loginSubmitting ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
-          <div className="text-center mt-6 pt-4 border-t border-slate-100">
-            <Link href="/dealer/register" className="text-xs text-primary font-bold hover:underline">
-              Nayi dukaan hai? Partner Register karein ➡️
+          <div className="text-center mt-6 pt-4 border-t border-[#EBEBEB]">
+            <Link href="/dealer/register" className="text-xs text-[#F0743E] font-bold hover:underline">
+              New dukaan? Register here ➡️
             </Link>
           </div>
         </div>
@@ -443,8 +449,8 @@ export default function DealerDashboard() {
   // Profile Loading View
   if (profileLoading || !profile) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-slate-50">
-        <div className="text-center font-bold text-sm text-slate-500">Loading Profile...</div>
+      <div className="flex items-center justify-center min-h-screen bg-[#FAFAF8]">
+        <div className="text-center font-bold text-sm text-[#6B6B6B]">Loading Profile...</div>
       </div>
     );
   }
@@ -452,20 +458,20 @@ export default function DealerDashboard() {
   // Profile registered but pending approval
   if (!profile.is_approved) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-slate-50">
-        <div className="p-4 bg-orange-50 text-primary border border-orange-100 rounded-full mb-6">
+      <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-[#FAFAF8] font-sans">
+        <div className="p-4 bg-[#FEF0E8] text-[#F0743E] border-[0.5px] border-[#F6C3AE] rounded-full mb-6">
           <BadgeAlert className="w-12 h-12" />
         </div>
-        <h1 className="text-xl font-extrabold text-slate-900">Registration Pending</h1>
-        <p className="text-sm font-extrabold text-slate-800 mt-2">Dukaan: {profile.shop_name}</p>
+        <h1 className="text-[20px] font-bold text-[#141414]">Registration Pending</h1>
+        <p className="text-[13px] font-semibold text-[#6B6B6B] mt-2">Shop: {profile.shop_name}</p>
         
-        <p className="text-xs text-slate-500 font-semibold mt-4 max-w-sm leading-relaxed">
-          Aapka account create ho gaya hai. Admin check karke ise 24 ghante me approve karenge. Approved hote hi active requests yahan dikhne lagenge.
+        <p className="text-[12px] text-[#A0A0A0] font-medium mt-4 max-w-sm leading-relaxed">
+          Your account has been created. Admin will review and approve within 24 hours.
         </p>
 
         <button 
           onClick={handleLogout}
-          className="btn-secondary mt-8 text-xs font-bold py-2.5 px-6 flex items-center gap-1.5"
+          className="btn-secondary mt-8 h-[44px] text-xs px-6"
         >
           <LogOut className="w-4 h-4" />
           Log Out
@@ -475,36 +481,36 @@ export default function DealerDashboard() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 pb-16">
-      {/* Logged In Header */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-5 py-4 flex items-center justify-between shadow-sm">
+    <div className="flex flex-col min-h-screen bg-[#FAFAF8] pb-16 font-sans">
+      {/* Header */}
+      <header className="sticky top-0 z-30 bg-white border-b-[0.5px] border-[#EBEBEB] px-5 py-4 flex items-center justify-between shadow-none flex-shrink-0">
         <div className="flex items-center gap-2">
-          <Store className="w-5 h-5 text-primary" />
+          <Store className="w-5 h-5 text-[#F0743E]" />
           <div>
-            <h1 className="text-sm font-extrabold text-slate-900 leading-none">{profile.shop_name}</h1>
-            <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">
-              📍 {profile.area} • APPROVED DEALER
+            <h1 className="text-[14px] font-bold text-[#141414] leading-none">{profile.shop_name}</h1>
+            <span className="text-[10px] text-[#A0A0A0] font-bold uppercase tracking-wider">
+              {profile.area} • Partner Dashboard
             </span>
           </div>
         </div>
 
         <button 
           onClick={handleLogout}
-          className="text-xs text-slate-400 hover:text-red-500 font-bold flex items-center gap-1 transition-colors"
+          className="text-xs text-[#A0A0A0] hover:text-[#DC2626] font-bold flex items-center gap-1 transition-colors"
         >
           <LogOut className="w-3.5 h-3.5" />
           Logout
         </button>
       </header>
 
-      {/* Tabs */}
-      <div className="flex border-b border-slate-200 bg-white">
+      {/* Tabs bar */}
+      <div className="flex border-b border-[#EBEBEB] bg-white flex-shrink-0">
         <button
           onClick={() => setActiveTab('requests')}
-          className={`flex-1 py-3 text-center text-xs font-extrabold border-b-2 flex items-center justify-center gap-1 transition-colors ${
+          className={`flex-1 py-3 text-center text-xs font-bold border-b-2 flex items-center justify-center gap-1 transition-colors ${
             activeTab === 'requests'
-              ? 'border-primary text-primary'
-              : 'border-transparent text-slate-500 hover:text-slate-700'
+              ? 'border-[#F0743E] text-[#F0743E]'
+              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
           }`}
         >
           <Inbox className="w-4 h-4" />
@@ -512,10 +518,10 @@ export default function DealerDashboard() {
         </button>
         <button
           onClick={() => setActiveTab('offers')}
-          className={`flex-1 py-3 text-center text-xs font-extrabold border-b-2 flex items-center justify-center gap-1 transition-colors ${
+          className={`flex-1 py-3 text-center text-xs font-bold border-b-2 flex items-center justify-center gap-1 transition-colors ${
             activeTab === 'offers'
-              ? 'border-primary text-primary'
-              : 'border-transparent text-slate-500 hover:text-slate-700'
+              ? 'border-[#F0743E] text-[#F0743E]'
+              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
           }`}
         >
           <History className="w-4 h-4" />
@@ -523,10 +529,10 @@ export default function DealerDashboard() {
         </button>
         <button
           onClick={() => setActiveTab('stats')}
-          className={`flex-1 py-3 text-center text-xs font-extrabold border-b-2 flex items-center justify-center gap-1 transition-colors ${
+          className={`flex-1 py-3 text-center text-xs font-bold border-b-2 flex items-center justify-center gap-1 transition-colors ${
             activeTab === 'stats'
-              ? 'border-primary text-primary'
-              : 'border-transparent text-slate-500 hover:text-slate-700'
+              ? 'border-[#F0743E] text-[#F0743E]'
+              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
           }`}
         >
           <BarChart3 className="w-4 h-4" />
@@ -538,8 +544,8 @@ export default function DealerDashboard() {
       <div className="p-5 flex-1">
         {dataLoading ? (
           <div className="text-center py-12 flex flex-col items-center justify-center gap-2">
-            <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-xs text-slate-400 font-bold">Refreshing data...</span>
+            <div className="w-6 h-6 border-2 border-[#F0743E] border-t-transparent rounded-full animate-spin"></div>
+            <span className="text-xs text-[#A0A0A0] font-bold">Refreshing...</span>
           </div>
         ) : activeTab === 'requests' ? (
           // Requests Listing
@@ -547,139 +553,120 @@ export default function DealerDashboard() {
             {/* Active Requests */}
             <div className="space-y-4">
               {activeRequests.length === 0 ? (
-                <div className="text-center py-12 bg-white rounded-card border border-slate-100 p-6 shadow-sm flex flex-col items-center">
-                  <div className="w-12 h-12 bg-slate-50 border border-slate-200/50 rounded-full flex items-center justify-center text-slate-400 mb-3">
+                <div className="text-center py-12 bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-6 flex flex-col items-center">
+                  <div className="w-12 h-12 bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-full flex items-center justify-center text-[#6B6B6B] mb-3">
                     <Inbox className="w-5 h-5" />
                   </div>
-                  <h3 className="text-sm font-extrabold text-slate-900">Koi Active Requests Nahi Hai</h3>
-                  <p className="text-xs text-slate-500 font-medium mt-1 max-w-[200px]">
-                    Jaise hi koi buyer aapki category me post karega, yahan notification aayega!
+                  <h3 className="text-sm font-bold text-[#141414]">No New Requests</h3>
+                  <p className="text-xs text-[#A0A0A0] font-medium mt-1 max-w-[200px] leading-relaxed">
+                    You will see requests here once buyers request products in your categories.
                   </p>
                 </div>
               ) : (
-                activeRequests.map((req) => (
-                  <div key={req.id} className="card-premium">
-                    <div className="flex justify-between items-start mb-2">
-                      <span className="inline-block text-[9px] font-black bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        {req.product.brand}
-                      </span>
-                      {renderRemainingTimeBadge(req.expires_at)}
-                    </div>
-                    <h3 className="text-sm font-extrabold text-slate-950 truncate leading-none">
-                      {req.product.name}
-                    </h3>
-                    <p className="text-[10px] text-slate-400 font-bold mt-1">
-                      Model: {req.product.model_number}
-                    </p>
-                    
-                    {/* Buyer detail panel */}
-                    <div className="bg-slate-50 border border-slate-100 rounded-card p-3 my-3.5 space-y-1.5 text-xs font-semibold text-slate-600">
-                      <div className="flex justify-between">
-                        <span>Buyer Budget:</span>
-                        <strong className="text-slate-900 font-extrabold">₹{req.budget.toLocaleString('en-IN')}</strong>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Location:</span>
-                        <span className="text-slate-800">{req.area}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Urgency:</span>
-                        <span className={`text-[10px] font-bold px-1.5 py-0.2 bg-white rounded border border-slate-200 ${
-                          req.urgency === 'today' ? 'text-red-600 border-red-200' : 'text-slate-700'
-                        }`}>
-                          {req.urgency === 'today' ? 'Aaj hi 🔥' : req.urgency === 'this_week' ? 'Is hafte' : 'Price check'}
-                        </span>
-                      </div>
-                    </div>
+                activeRequests.map((req) => {
+                  // Left border color based on urgency
+                  const urgencyBorder = 
+                    req.urgency === 'today' ? 'border-l-[#F0743E]' :
+                    req.urgency === 'this_week' ? 'border-l-[#FDDB48]' : 'border-l-[#EBEBEB]';
 
-                    <button
-                      onClick={() => setSelectedRequest(req)}
-                      className="w-full btn-primary text-xs py-2 font-extrabold flex items-center justify-center gap-1.5"
-                    >
-                      <Plus className="w-4 h-4" />
-                      Submit Offer
-                    </button>
-                  </div>
-                ))
+                  return (
+                    <div key={req.id} className={`card-premium border-l-[3px] ${urgencyBorder}`}>
+                      <div className="flex justify-between items-start mb-2">
+                        <span className="inline-block text-[9px] font-bold bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] px-2 py-0.5 rounded-full uppercase tracking-wider text-[#6B6B6B]">
+                          {req.product.brand}
+                        </span>
+                        {renderRemainingTimeBadge(req.expires_at)}
+                      </div>
+                      
+                      <h3 className="text-[15px] font-bold text-[#141414] truncate leading-none">
+                        {req.product.name}
+                      </h3>
+                      <p className="text-[11px] text-[#A0A0A0] font-bold mt-1">
+                        Model: {req.product.model_number}
+                      </p>
+                      
+                      {/* Buyer detail panel */}
+                      <div className="bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-[12px] p-3.5 my-4 space-y-1.5 text-xs font-semibold text-[#6B6B6B]">
+                        <div className="flex justify-between">
+                          <span>Buyer Budget:</span>
+                          <strong className="text-[#141414] font-bold">₹{req.budget.toLocaleString('en-IN')}</strong>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Location:</span>
+                          <span className="text-[#141414]">{req.area}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Urgency:</span>
+                          <span className="text-[#141414]">
+                            {req.urgency === 'today' ? 'Need Today' : req.urgency === 'this_week' ? 'This Week' : 'Price Check'}
+                          </span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={() => setSelectedRequest(req)}
+                        className="w-full btn-primary h-[44px] text-[13px]"
+                      >
+                        Submit Offer
+                      </button>
+                    </div>
+                  );
+                })
               )}
             </div>
 
-            {/* Fulfilled Requests Section (Fix 9) */}
+            {/* Fulfilled Requests Section */}
             {fulfilledRequests.length > 0 && (
-              <div className="pt-6 border-t border-slate-200">
-                <h4 className="text-xs font-black text-slate-400 uppercase tracking-wider mb-3">
+              <div className="pt-6 border-t border-[#EBEBEB]">
+                <h4 className="text-[12px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">
                   Fulfilled Requests ({fulfilledRequests.length})
                 </h4>
                 <div className="space-y-4">
                   {fulfilledRequests.map((req) => (
-                    <div key={req.id} className="card-premium border-slate-200 bg-slate-50/50 pl-5 relative overflow-hidden">
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
+                    <div key={req.id} className="card-premium border-l-[3px] border-l-[#EBEBEB] bg-[#FAFAF8]/50 pl-5">
                       <div className="flex justify-between items-start mb-2">
-                        <span className="inline-block text-[9px] font-black bg-slate-200 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        <span className="inline-block text-[9px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-wider">
                           {req.product.brand}
                         </span>
-                        <span className="text-[9px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
-                          ✅ Request Fulfill Ho Gayi
+                        <span className="text-[10px] font-bold text-[#16A34A] bg-green-50 border-[0.5px] border-green-200 px-2 py-0.5 rounded-[6px]">
+                          Request Fulfilled
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-slate-950 truncate leading-none">
+                      <h3 className="text-[15px] font-bold text-[#141414] truncate leading-none">
                         {req.product.name}
                       </h3>
-                      <p className="text-[10px] text-slate-400 font-bold mt-1">
+                      <p className="text-[11px] text-[#A0A0A0] font-bold mt-1">
                         Model: {req.product.model_number}
                       </p>
-                      
-                      <div className="bg-white border border-slate-100 rounded-card p-3 my-3 space-y-1 text-xs font-semibold text-slate-500">
-                        <div className="flex justify-between">
-                          <span>Budget:</span>
-                          <span className="text-slate-800">₹{req.budget.toLocaleString('en-IN')}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Location:</span>
-                          <span className="text-slate-800">{req.area}</span>
-                        </div>
-                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Expired Requests Section (Fix 7) */}
+            {/* Expired Requests Section */}
             {expiredRequests.length > 0 && (
-              <div className="pt-6 border-t border-slate-200">
-                <h4 className="text-xs font-black text-slate-400 uppercase tracking-wider mb-3">
+              <div className="pt-6 border-t border-[#EBEBEB]">
+                <h4 className="text-[12px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">
                   Expired Requests ({expiredRequests.length})
                 </h4>
-                <div className="space-y-4 opacity-70">
+                <div className="space-y-4 opacity-60">
                   {expiredRequests.map((req) => (
-                    <div key={req.id} className="card-premium border-slate-200 bg-slate-100 pl-5 relative overflow-hidden">
-                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-slate-400"></div>
+                    <div key={req.id} className="card-premium border-l-[3px] border-l-[#EBEBEB] bg-[#FAFAF8] pl-5">
                       <div className="flex justify-between items-start mb-2">
-                        <span className="inline-block text-[9px] font-black bg-slate-200 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        <span className="inline-block text-[9px] font-bold bg-[#EBEBEB] text-[#A0A0A0] px-2 py-0.5 rounded-full uppercase tracking-wider">
                           {req.product.brand}
                         </span>
-                        <span className="text-[9px] font-black text-slate-500 bg-slate-200 px-1.5 py-0.5 rounded">
-                          ⌛ Expired (Time Up)
+                        <span className="text-[10px] font-bold text-[#A0A0A0] bg-[#EBEBEB] px-2 py-0.5 rounded-[6px]">
+                          Expired
                         </span>
                       </div>
-                      <h3 className="text-sm font-extrabold text-slate-950 truncate leading-none">
+                      <h3 className="text-[15px] font-bold text-[#141414] truncate leading-none">
                         {req.product.name}
                       </h3>
-                      <p className="text-[10px] text-slate-400 font-bold mt-1">
+                      <p className="text-[11px] text-[#A0A0A0] font-bold mt-1">
                         Model: {req.product.model_number}
                       </p>
-                      
-                      <div className="bg-white border border-slate-100 rounded-card p-3 my-3 space-y-1 text-xs font-semibold text-slate-500">
-                        <div className="flex justify-between">
-                          <span>Budget:</span>
-                          <span className="text-slate-800">₹{req.budget.toLocaleString('en-IN')}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Location:</span>
-                          <span className="text-slate-800">{req.area}</span>
-                        </div>
-                      </div>
                     </div>
                   ))}
                 </div>
@@ -690,13 +677,13 @@ export default function DealerDashboard() {
           // Offers Listing
           <div className="space-y-4">
             {offers.length === 0 ? (
-              <div className="text-center py-12 bg-white rounded-card border border-slate-100 p-6 shadow-sm flex flex-col items-center">
-                <div className="w-12 h-12 bg-slate-50 border border-slate-200/50 rounded-full flex items-center justify-center text-slate-400 mb-3">
+              <div className="text-center py-12 bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-6 flex flex-col items-center">
+                <div className="w-12 h-12 bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-full flex items-center justify-center text-slate-400 mb-3">
                   <History className="w-5 h-5" />
                 </div>
-                <h3 className="text-sm font-extrabold text-slate-900">Pehle koi bids nahi kiye hain</h3>
-                <p className="text-xs text-slate-500 font-medium mt-1 max-w-[200px]">
-                  New Requests par offer submit karein, details yahan dikhenge.
+                <h3 className="text-sm font-bold text-[#141414]">No submitted offers</h3>
+                <p className="text-xs text-[#A0A0A0] font-medium mt-1 max-w-[200px] leading-relaxed">
+                  Submit offers on active requests to see your bids here.
                 </p>
               </div>
             ) : (
@@ -709,24 +696,24 @@ export default function DealerDashboard() {
                     key={offer.id} 
                     className={`card-premium relative overflow-hidden ${
                       isAccepted 
-                        ? 'border-emerald-300 bg-emerald-50/20 ring-2 ring-emerald-500/10' 
+                        ? 'border-l-4 border-l-[#16A34A] bg-green-50/10' 
                         : isRequestFulfilled 
-                        ? 'border-slate-200 bg-slate-50/30'
-                        : 'border-slate-100'
+                        ? 'bg-[#FAFAF8]/50'
+                        : ''
                     }`}
                   >
                     <div className="flex justify-between items-start">
                       <div>
-                        <h4 className="text-xs font-bold text-slate-400 truncate uppercase max-w-[180px]">
+                        <h4 className="text-[12px] font-bold text-[#A0A0A0] truncate uppercase max-w-[180px]">
                           {offer.request.product.brand} {offer.request.product.name}
                         </h4>
-                        <div className="text-lg font-black text-slate-950 mt-1 leading-none">
+                        <div className="text-[24px] font-bold text-[#141414] mt-1.5 leading-none font-mono">
                           ₹{offer.price.toLocaleString('en-IN')}
                         </div>
                       </div>
                       
-                      <div className="flex flex-col items-end gap-1">
-                        <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase ${
+                      <div className="flex flex-col items-end gap-1.5">
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
                           isAccepted ? 'text-emerald-700 bg-emerald-100' :
                           offer.status === 'rejected' ? 'text-red-700 bg-red-100' :
                           'text-orange-700 bg-orange-100'
@@ -734,39 +721,38 @@ export default function DealerDashboard() {
                           {offer.status}
                         </span>
                         
-                        {/* Display Fulfilled State Badge on other bids (Fix 9) */}
                         {isRequestFulfilled && !isAccepted && (
-                          <span className="text-[8px] font-bold text-slate-500 bg-slate-200 px-1.5 py-0.5 rounded">
-                            ✅ Yeh request fulfill ho gayi
+                          <span className="text-[10px] font-bold text-[#A0A0A0] bg-[#EBEBEB] px-1.5 py-0.5 rounded-[4px]">
+                            Request Fulfilled
                           </span>
                         )}
                       </div>
                     </div>
 
                     {offer.alternative_model && (
-                      <div className="bg-amber-50 border border-amber-100 rounded-md p-2 mt-2.5 text-xs text-amber-900 font-bold">
-                        🔄 Alternative Offered: {offer.alternative_model} (₹{offer.alternative_price?.toLocaleString('en-IN')})
+                      <div className="bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] rounded-[8px] p-2.5 mt-3.5 text-xs text-[#F0743E] font-bold">
+                        Alternate: {offer.alternative_model} (₹{offer.alternative_price?.toLocaleString('en-IN')})
                       </div>
                     )}
 
                     {/* Winner Detail panel */}
                     {isAccepted && (
-                      <div className="bg-emerald-500 text-white rounded-card p-3 mt-4 border border-emerald-600 flex flex-col gap-1.5 shadow animate-pulse">
-                        <div className="text-xs font-black uppercase flex items-center gap-1">
-                          <CheckCircle2 className="w-4 h-4 fill-white text-emerald-600" />
+                      <div className="bg-[#16A34A] text-white rounded-[12px] p-4 mt-4 flex flex-col gap-2 shadow-none">
+                        <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                          <CheckCircle2 className="w-4 h-4 fill-white text-[#16A34A]" />
                           Deal Won! Buyer Contacted
                         </div>
-                        <div className="text-xs font-bold">
-                          Buyer: {offer.request.buyer_name}
+                        <div className="text-xs font-semibold">
+                          Name: {offer.request.buyer_name}
                         </div>
-                        <div className="text-xs font-bold">
-                          Phone/WA: {offer.request.buyer_phone}
+                        <div className="text-xs font-semibold">
+                          Phone: {offer.request.buyer_phone}
                         </div>
                         <button
                           onClick={() => window.open(`https://wa.me/91${offer.request.buyer_phone}`, '_blank')}
-                          className="bg-white text-emerald-600 font-extrabold text-[10px] py-1.5 rounded text-center uppercase tracking-wider hover:bg-slate-100 transition-colors"
+                          className="bg-white text-[#16A34A] font-bold text-[11px] h-[36px] rounded-[8px] text-center uppercase tracking-wider hover:bg-slate-100 transition-colors"
                         >
-                          Chat with Buyer on WhatsApp
+                          Chat with Buyer
                         </button>
                       </div>
                     )}
@@ -778,29 +764,29 @@ export default function DealerDashboard() {
         ) : (
           // Stats Panel
           <div className="space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 tracking-wider uppercase mb-2">
+            <span className="text-[12px] font-bold text-[#A0A0A0] tracking-wider uppercase block mb-2">
               Performance Metrics
-            </h3>
+            </span>
 
-            <div className="bg-white rounded-card border border-slate-100 p-4 shadow-sm grid grid-cols-2 gap-4">
+            <div className="bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-5 grid grid-cols-2 gap-4">
               <div className="flex flex-col">
-                <span className="text-[10px] font-bold text-slate-400 uppercase">Offers Quoted</span>
-                <span className="text-2xl font-black text-slate-900 mt-1">{offersCount}</span>
+                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Offers Quoted</span>
+                <span className="text-[28px] font-bold text-[#141414] mt-1.5 leading-none font-mono">{offersCount}</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-bold text-slate-400 uppercase">Deals Won</span>
-                <span className="text-2xl font-black text-emerald-600 mt-1">{wonCount}</span>
+                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Deals Won</span>
+                <span className="text-[28px] font-bold text-[#16A34A] mt-1.5 leading-none font-mono">{wonCount}</span>
               </div>
             </div>
 
-            <div className="bg-white rounded-card border border-slate-100 p-4 shadow-sm grid grid-cols-2 gap-4">
+            <div className="bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-5 grid grid-cols-2 gap-4">
               <div className="flex flex-col">
-                <span className="text-[10px] font-bold text-slate-400 uppercase">Conversion Rate</span>
-                <span className="text-2xl font-black text-slate-900 mt-1">{conversionRate}%</span>
+                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Conversion Rate</span>
+                <span className="text-[28px] font-bold text-[#141414] mt-1.5 leading-none font-mono">{conversionRate}%</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-bold text-slate-400 uppercase">Total Sales Won</span>
-                <span className="text-2xl font-black text-primary mt-1">₹{totalValueWon.toLocaleString('en-IN')}</span>
+                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Total Sales</span>
+                <span className="text-[28px] font-bold text-[#F0743E] mt-1.5 leading-none font-mono">₹{totalValueWon.toLocaleString('en-IN')}</span>
               </div>
             </div>
           </div>
@@ -809,17 +795,17 @@ export default function DealerDashboard() {
 
       {/* Quote Submission Modal */}
       {selectedRequest && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-white w-full max-w-[390px] rounded-card shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="fixed inset-0 z-50 bg-[#141414]/40 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white w-full max-w-[390px] rounded-[16px] border-[0.5px] border-[#EBEBEB] overflow-hidden flex flex-col max-h-[90vh]">
             {/* Modal Header */}
-            <div className="bg-slate-50 border-b border-slate-100 px-4 py-3.5 flex justify-between items-center">
+            <div className="bg-[#FAFAF8] border-b border-[#EBEBEB] px-4 py-3.5 flex justify-between items-center">
               <div>
-                <h3 className="text-xs font-black text-slate-900 uppercase">Submit Best Price Quote</h3>
-                <span className="text-[10px] font-bold text-slate-400">Budget: ₹{selectedRequest.budget.toLocaleString('en-IN')}</span>
+                <h3 className="text-xs font-bold text-[#141414] uppercase tracking-wider">Submit Price Quote</h3>
+                <span className="text-[11px] font-bold text-[#A0A0A0]">Budget: ₹{selectedRequest.budget.toLocaleString('en-IN')}</span>
               </div>
               <button 
                 onClick={() => setSelectedRequest(null)}
-                className="text-xs font-semibold text-slate-400 hover:text-slate-600 bg-slate-200/50 w-5 h-5 rounded-full flex items-center justify-center"
+                className="text-xs font-bold text-[#A0A0A0] hover:text-[#141414] bg-[#EBEBEB]/50 w-5 h-5 rounded-full flex items-center justify-center"
               >
                 ✕
               </button>
@@ -828,24 +814,24 @@ export default function DealerDashboard() {
             {/* Modal Body */}
             <form onSubmit={handleQuoteSubmit} className="p-4 space-y-4 overflow-y-auto flex-1">
               {modalError && (
-                <div className="bg-red-50 border border-red-100 text-red-700 text-xs font-bold rounded p-3">
-                  ⚠️ {modalError}
+                <div className="bg-red-50 border-[0.5px] border-red-200 text-[#DC2626] text-xs font-bold rounded p-3">
+                  {modalError}
                 </div>
               )}
 
               {/* Price field */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1">
-                  <IndianRupee className="w-3.5 h-3.5 text-primary" />
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <IndianRupee className="w-3.5 h-3.5 text-[#F0743E]" />
                   Your Price Quote (GST Incl.)
                 </label>
-                <div className="relative rounded-input shadow-sm">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span className="text-slate-500 font-extrabold text-sm">₹</span>
+                <div className="relative rounded-[12px]">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                    <span className="text-[#6B6B6B] font-bold text-sm">₹</span>
                   </div>
                   <input
                     type="number"
-                    placeholder="34,200"
+                    placeholder="34200"
                     value={quotePrice}
                     onChange={(e) => setQuotePrice(e.target.value)}
                     className="input-premium pl-7 py-2 font-bold text-sm"
@@ -857,22 +843,22 @@ export default function DealerDashboard() {
 
               {/* Inclusions checklist */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5">
-                  Offer Inclusions (Check all that apply)
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2">
+                  Offer Inclusions
                 </label>
-                <div className="grid grid-cols-2 gap-2 bg-slate-50 p-2.5 rounded-card border border-slate-100">
+                <div className="grid grid-cols-2 gap-2 bg-[#FAFAF8] p-3 rounded-[12px] border-[0.5px] border-[#EBEBEB]">
                   {[
                     'Free Installation',
                     'Extra Warranty',
                     'Free Stabilizer',
                     '0% EMI Offer'
                   ].map((inc) => (
-                    <label key={inc} className="flex items-center gap-2 cursor-pointer select-none text-[10px] font-bold text-slate-700">
+                    <label key={inc} className="flex items-center gap-2 cursor-pointer select-none text-[11px] font-bold text-[#141414]">
                       <input
                         type="checkbox"
                         checked={quoteInclusions.includes(inc)}
                         onChange={() => handleInclusionToggle(inc)}
-                        className="w-3 h-3 rounded text-primary focus:ring-primary border-slate-300"
+                        className="w-3.5 h-3.5 rounded text-[#F0743E] focus:ring-[#F0743E]/20 border-[#EBEBEB]"
                         disabled={modalSubmitting}
                       />
                       <span>{inc}</span>
@@ -883,23 +869,23 @@ export default function DealerDashboard() {
 
               {/* Availability selection */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1.5">
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2">
                   Stock Availability
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   {[
-                    { id: 'today', label: 'Aaj (Today) ⚡' },
-                    { id: '1-2days', label: '1-2 Din' },
-                    { id: '4-5days', label: '4-5 Din' }
+                    { id: 'today', label: 'In Stock' },
+                    { id: '1-2days', label: '1-2 Days' },
+                    { id: '4-5days', label: '4-5 Days' }
                   ].map((opt) => (
                     <button
                       key={opt.id}
                       type="button"
                       onClick={() => setQuoteAvailability(opt.id)}
-                      className={`py-1.5 rounded-input border text-[10px] font-bold transition-all ${
+                      className={`pill-selector border-none text-[11px] font-bold ${
                         quoteAvailability === opt.id
-                          ? 'border-primary bg-primary-light/40 text-primary font-black'
-                          : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50'
+                          ? 'pill-selector-active'
+                          : 'bg-[#FAFAF8] text-[#6B6B6B] hover:bg-[#EBEBEB]/40'
                       }`}
                       disabled={modalSubmitting}
                     >
@@ -910,59 +896,59 @@ export default function DealerDashboard() {
               </div>
 
               {/* Alternative model toggle */}
-              <div className="pt-2 border-t border-slate-100">
-                <label className="flex items-center gap-2 cursor-pointer select-none text-xs font-bold text-slate-700">
+              <div className="pt-2 border-t border-[#EBEBEB]">
+                <label className="flex items-center gap-2 cursor-pointer select-none text-xs font-bold text-[#6B6B6B] uppercase tracking-wider">
                   <input
                     type="checkbox"
                     checked={hasAltModel}
                     onChange={() => setHasAltModel(!hasAltModel)}
-                    className="w-3.5 h-3.5 rounded text-primary focus:ring-primary border-slate-300"
+                    className="w-3.5 h-3.5 rounded text-[#F0743E] focus:ring-[#F0743E]/20 border-[#EBEBEB]"
                     disabled={modalSubmitting}
                   />
-                  <span>🔄 Dusra/Alternative model offer karein?</span>
+                  <span>Offer Alternative Model</span>
                 </label>
               </div>
 
               {/* Alternative model fields */}
               {hasAltModel && (
-                <div className="bg-slate-50 border border-slate-150 p-3 rounded-card space-y-3 mt-2 animate-in fade-in slide-in-from-top-1 duration-200">
+                <div className="bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] p-3.5 rounded-[12px] space-y-3.5 mt-2">
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-600 mb-1">
-                      Alt Model Name (Make & Model)
+                    <label className="block text-[10px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
+                      Alt Model Name
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Samsung Inverter 1.5T (AR18C)"
+                      placeholder="e.g. LG Inverter 1.5T"
                       value={altModelName}
                       onChange={(e) => setAltModelName(e.target.value)}
-                      className="input-premium py-1.5 text-xs font-semibold bg-white"
+                      className="input-premium bg-white"
                       disabled={modalSubmitting}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-600 mb-1">
-                      Alt Model Price (₹)
+                    <label className="block text-[10px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
+                      Alt Model Price
                     </label>
                     <input
                       type="number"
-                      placeholder="32,999"
+                      placeholder="32000"
                       value={altModelPrice}
                       onChange={(e) => setAltModelPrice(e.target.value)}
-                      className="input-premium py-1.5 text-xs font-bold bg-white"
+                      className="input-premium bg-white"
                       disabled={modalSubmitting}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-600 mb-1">
+                    <label className="block text-[10px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
                       Alt Note/Offer (Inclusions)
                     </label>
                     <textarea
-                      placeholder="e.g. Copper coil, stabilizer and installation is free!"
+                      placeholder="e.g. Copper coil, stabilizer included!"
                       value={altModelNote}
                       onChange={(e) => setAltModelNote(e.target.value)}
-                      className="input-premium py-1.5 text-xs font-semibold bg-white resize-none h-16"
+                      className="input-premium bg-white resize-none h-16 py-2"
                       disabled={modalSubmitting}
                     />
                   </div>
@@ -975,7 +961,7 @@ export default function DealerDashboard() {
                 disabled={modalSubmitting}
                 className="w-full btn-primary text-xs py-2.5 font-extrabold mt-4"
               >
-                {modalSubmitting ? 'Offer bheja ja raha hai...' : 'Bhopal Best Price Bhejein'}
+                {modalSubmitting ? 'Submitting Quote...' : 'Submit Quote'}
               </button>
             </form>
           </div>

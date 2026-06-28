@@ -3,45 +3,73 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a; /* Slate 900 for nicer reading contrast */
+  --background: #FAFAF8;
+  --foreground: #141414;
+  --primary: #F0743E;
+  --primary-light: #FEF0E8;
+  --accent: #FDDB48;
+  --viola: #CDBCDB;
+  --text-secondary: #6B6B6B;
+  --text-tertiary: #A0A0A0;
+  --border: #EBEBEB;
+  --success: #16A34A;
+  --error: #DC2626;
 }
 
 body {
   color: var(--foreground);
+  background-color: #FAFAF8;
 }
 
 /* Custom scrollbar to keep it looking like a clean app */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 4px;
+  height: 4px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
+  background: #EBEBEB;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #CDBCDB;
+}
+
+/* Font override classes */
+.font-sans {
+  font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-instrument-serif), Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 /* Base custom utility classes */
 @layer components {
   .btn-primary {
-    @apply flex items-center justify-center gap-2 bg-primary text-white font-semibold px-4 py-3 rounded-input transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none shadow-md shadow-orange-500/10 hover:shadow-orange-500/20;
+    @apply flex h-[54px] items-center justify-center gap-2 bg-[#F0743E] text-white font-bold text-base px-6 rounded-[14px] border-none outline-none transition-all duration-100 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none focus:ring-0;
   }
   
   .btn-secondary {
-    @apply flex items-center justify-center gap-2 border border-slate-200 bg-white text-slate-700 font-semibold px-4 py-3 rounded-input transition-all duration-200 hover:bg-slate-50 active:scale-[0.98] disabled:opacity-60 disabled:pointer-events-none;
+    @apply flex h-[54px] items-center justify-center gap-2 border-[0.5px] border-[#EBEBEB] bg-white text-[#141414] font-bold text-[15px] px-6 rounded-[14px] outline-none transition-all duration-100 active:scale-[0.97] active:bg-[#FAFAF8] disabled:opacity-50 disabled:pointer-events-none focus:ring-0;
   }
   
   .card-premium {
-    @apply bg-white border border-slate-100 rounded-card p-4 shadow-sm hover:shadow-md transition-shadow duration-200;
+    @apply bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] p-5 transition-all duration-150 active:bg-[#F8F8F6] shadow-none;
   }
   
   .input-premium {
-    @apply w-full border border-slate-200 rounded-input px-3.5 py-3 outline-none focus:border-primary focus:ring-2 focus:ring-primary-light/50 transition-all duration-200 text-base placeholder-slate-400 bg-slate-50/50 focus:bg-white;
+    @apply w-full h-[52px] border-[1.5px] border-[#EBEBEB] rounded-[12px] px-4 py-3 outline-none focus:border-[#F0743E] focus:bg-white focus:ring-0 transition-all duration-200 text-[15px] font-normal placeholder-[#C0C0C0] bg-[#FAFAF8] text-[#141414];
+  }
+  
+  /* Pill selectors (Fix 8 urgency/purchase type styling) */
+  .pill-selector {
+    @apply inline-flex items-center justify-center bg-white border-[1.5px] border-[#EBEBEB] rounded-[24px] px-[18px] py-[10px] text-[14px] font-medium text-[#141414] cursor-pointer transition-all duration-100 select-none hover:bg-slate-50;
+  }
+  
+  .pill-selector-active {
+    @apply bg-[#F0743E] border-[#F0743E] text-white font-bold;
   }
 }

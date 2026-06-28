@@ -52,6 +52,8 @@ export interface SearchProduct {
  */
 export async function searchProducts(query: string): Promise<SearchProduct[]> {
   const cleanQuery = query?.trim() || '';
+  console.log('searchProducts called with cleanQuery:', cleanQuery);
+  console.log('typesenseClient is:', typesenseClient ? 'defined' : 'null');
 
   if (!cleanQuery) {
     // Return a default set of products if no query is present
@@ -62,14 +64,15 @@ export async function searchProducts(query: string): Promise<SearchProduct[]> {
       .limit(10);
     
     if (error) {
-      console.error('Error fetching default products:', error);
+      console.error('Error fetching default products:', error.message, error.details);
       return [];
     }
     return (data || []) as SearchProduct[];
   }
 
-  if (typesenseClient) {
-    try {
+  // Wrap the entire Typesense block in a try-catch to ensure we always fall through to Supabase
+  try {
+    if (typesenseClient) {
       const searchResults = await typesenseClient
         .collections('products')
         .documents()
@@ -80,14 +83,18 @@ export async function searchProducts(query: string): Promise<SearchProduct[]> {
         });
 
       if (searchResults.hits && searchResults.hits.length > 0) {
+        console.log('Typesense search results:', searchResults.hits.length, 'products found');
         return searchResults.hits.map((hit: any) => hit.document as SearchProduct);
+      } else {
+        console.log('Typesense search returned 0 hits, falling through to Supabase...');
       }
-    } catch (error) {
-      console.warn('Typesense search failed, falling back to Supabase:', error);
     }
+  } catch (error) {
+    console.error('Typesense search block error, falling back to Supabase:', error);
   }
 
   // Fallback: search Supabase products
+  console.log('Executing Supabase fallback query...');
   const { data, error } = await supabase
     .from('products')
     .select('*')
@@ -96,9 +103,10 @@ export async function searchProducts(query: string): Promise<SearchProduct[]> {
     .limit(10);
 
   if (error) {
-    console.error('Supabase fallback search error:', error);
+    console.error('Supabase search error:', error.message, error.details);
     return [];
   }
 
+  console.log('Supabase search results:', data?.length, 'products found');
   return (data || []) as SearchProduct[];
 }

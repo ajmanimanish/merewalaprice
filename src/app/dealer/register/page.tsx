@@ -89,7 +89,7 @@ export default function DealerRegisterPage() {
   const handleSendOTP = () => {
     const cleanPhone = whatsapp.replace(/[^0-9]/g, '');
     if (cleanPhone.length !== 10) {
-      setError('Kripya ek valid 10-digit WhatsApp number enter karein (Invalid number).');
+      setError('Please enter a valid 10-digit WhatsApp number.');
       return;
     }
     setError('');
@@ -113,7 +113,7 @@ export default function DealerRegisterPage() {
       setOtpAlert(false);
       setError('');
     } else {
-      setError('Invalid OTP code. Kripya correct 6-digit number enter karein.');
+      setError('Invalid OTP code. Please enter the correct 6-digit verification code.');
     }
   };
 
@@ -122,12 +122,12 @@ export default function DealerRegisterPage() {
     setError('');
 
     if (!shopName || !ownerName || !whatsapp || !password || !area) {
-      setError('Sabhi fields bharna compulsory hai.');
+      setError('All fields are required.');
       return;
     }
 
     if (selectedCategories.length === 0) {
-      setError('Kam se kam ek Category select karein.');
+      setError('Please select at least one product category.');
       return;
     }
 
@@ -158,107 +158,107 @@ export default function DealerRegisterPage() {
 
       setSuccess(true);
     } catch (err: any) {
-      setError(err.message || 'Registration failed. Kripya check karein.');
+      setError(err.message || 'Registration failed. Please check details.');
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen pb-16 bg-slate-50/50">
+    <div className="flex flex-col min-h-screen pb-16 bg-[#FAFAF8] font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-100 px-4 py-4 flex items-center gap-3">
-        <Link href="/dealer" className="p-1 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft className="w-5 h-5 text-slate-700" />
+      <header className="sticky top-0 z-30 bg-white h-[60px] border-b-[0.5px] border-[#EBEBEB] px-4 flex items-center gap-3 flex-shrink-0">
+        <Link href="/dealer" className="p-1 hover:bg-[#FAFAF8] rounded-full transition-colors">
+          <ArrowLeft className="w-5 h-5 text-[#141414]" />
         </Link>
         <div>
-          <h1 className="text-base font-extrabold text-slate-900 leading-tight">
-            Register Dukaan
+          <h1 className="text-[16px] font-bold text-[#141414] leading-tight">
+            Shop Registration
           </h1>
-          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">
+          <p className="text-[10px] text-[#6B6B6B] font-bold uppercase tracking-wider">
             MereWalaPrice Bhopal
           </p>
         </div>
       </header>
 
       {/* Main Container */}
-      <div className="px-5 pt-4">
+      <div className="px-5 pt-6">
         {/* OTP Mock Notification Banner */}
         {otpAlert && (
-          <div className="bg-amber-500 text-white font-extrabold text-xs rounded-card p-3 mb-5 border border-amber-600 flex flex-col gap-1 shadow-lg animate-bounce">
+          <div className="bg-[#FDDB48] text-[#141414] font-bold text-[12px] rounded-[12px] p-4 mb-5 border-[0.5px] border-[#EBEBEB] flex flex-col gap-1 shadow-none">
             <span>💬 [WHATSAPP SMS SIMULATION]</span>
-            <span>OTP sent to +91 {whatsapp}: <strong className="text-sm bg-white text-amber-700 px-2 py-0.5 rounded ml-1 tracking-widest">{otpCode}</strong></span>
+            <span>OTP sent to +91 {whatsapp}: <strong className="text-[13px] bg-white border-[0.5px] border-[#EBEBEB] px-2 py-0.5 rounded ml-1 tracking-widest">{otpCode}</strong></span>
           </div>
         )}
 
         {/* Error Alert */}
         {error && (
-          <div className="bg-red-50 border border-red-100 text-red-700 text-sm font-semibold rounded-card p-3.5 mb-5">
-            ⚠️ {error}
+          <div className="bg-red-50 border-[0.5px] border-red-200 text-[#DC2626] text-[13px] font-semibold rounded-[12px] p-4 mb-5">
+            {error}
           </div>
         )}
 
         {success ? (
           // Success Registration Message
-          <div className="bg-white border border-slate-100 rounded-card p-6 shadow-md text-center py-10 flex flex-col items-center">
-            <div className="w-16 h-16 bg-emerald-50 text-emerald-500 border border-emerald-100 rounded-full flex items-center justify-center mb-4">
+          <div className="bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] p-6 text-center py-10 flex flex-col items-center">
+            <div className="w-16 h-16 bg-green-50 text-[#16A34A] border-[0.5px] border-green-200 rounded-full flex items-center justify-center mb-4">
               <CheckCircle className="w-8 h-8" />
             </div>
-            <h2 className="text-xl font-extrabold text-slate-900">Registration Request Sent!</h2>
-            <p className="text-sm text-slate-600 font-medium mt-4 leading-relaxed max-w-xs">
-              Thank you! Aapki details check karke <strong>MereWalaPrice Admin</strong> ise approve karenge.
+            <h2 className="text-[20px] font-bold text-[#141414]">Registration Request Sent!</h2>
+            <p className="text-[13px] text-[#6B6B6B] font-medium mt-4 leading-relaxed max-w-xs">
+              Thank you! MereWalaPrice Admin will review and approve your registration request shortly.
             </p>
-            <p className="text-xs text-slate-400 font-semibold mt-2 max-w-xs">
-              Approval notification aapke WhatsApp number (+91 {whatsapp}) par bhej di jayegi.
+            <p className="text-[12px] text-[#A0A0A0] font-medium mt-2 max-w-xs">
+              An approval notification will be sent to your WhatsApp number (+91 {whatsapp}).
             </p>
 
             <Link 
               href="/dealer" 
-              className="btn-secondary w-full text-xs font-extrabold mt-8"
+              className="btn-secondary w-full text-xs font-bold mt-8 h-[48px]"
             >
               Back to Dealer Hub
             </Link>
           </div>
         ) : (
           // Registration Form
-          <form onSubmit={handleRegister} className="space-y-5">
+          <form onSubmit={handleRegister} className="space-y-6">
             {/* Shop Details */}
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-extrabold text-slate-800 mb-1.5 flex items-center gap-1">
-                  <Store className="w-4 h-4 text-primary" />
-                  Dukaan ka Naam (Shop Name)
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <Store className="w-4 h-4 text-[#F0743E]" />
+                  Shop Name
                 </label>
                 <input
                   type="text"
                   placeholder="e.g. Sharma Electronics"
                   value={shopName}
                   onChange={(e) => setShopName(e.target.value)}
-                  className="input-premium font-semibold"
+                  className="input-premium"
                   disabled={loading}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-extrabold text-slate-800 mb-1.5 flex items-center gap-1">
-                  <User className="w-4 h-4 text-primary" />
-                  Owner ka Naam (Owner Name)
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <User className="w-4 h-4 text-[#F0743E]" />
+                  Owner Name
                 </label>
                 <input
                   type="text"
                   placeholder="e.g. Ramesh Sharma"
                   value={ownerName}
                   onChange={(e) => setOwnerName(e.target.value)}
-                  className="input-premium font-semibold"
+                  className="input-premium"
                   disabled={loading}
                 />
               </div>
             </div>
 
             {/* WhatsApp Verification Section */}
-            <div className="bg-white border border-slate-100 p-4 rounded-card shadow-sm space-y-4">
+            <div className="bg-white border-[0.5px] border-[#EBEBEB] p-5 rounded-[16px] space-y-4">
               <div>
-                <label className="block text-sm font-extrabold text-slate-800 mb-1.5 flex items-center gap-1">
-                  <Phone className="w-4 h-4 text-primary" />
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <Phone className="w-4 h-4 text-[#F0743E]" />
                   WhatsApp Number
                 </label>
                 <div className="flex gap-2">
@@ -271,14 +271,14 @@ export default function DealerRegisterPage() {
                       setOtpSent(false);
                       setOtpVerified(false);
                     }}
-                    className="input-premium font-semibold flex-1"
+                    className="input-premium flex-1"
                     disabled={loading || otpVerified}
                   />
                   {!otpVerified && (
                     <button
                       type="button"
                       onClick={handleSendOTP}
-                      className="bg-primary text-white text-xs font-bold px-3 py-3 rounded-input hover:bg-primary-hover transition-colors whitespace-nowrap"
+                      className="bg-[#F0743E] hover:bg-[#D4622E] text-white text-[13px] font-bold px-4 rounded-[12px] transition-colors whitespace-nowrap active:scale-[0.97]"
                     >
                       {otpSent ? 'Send Again' : 'Send OTP'}
                     </button>
@@ -287,8 +287,8 @@ export default function DealerRegisterPage() {
               </div>
 
               {otpSent && !otpVerified && (
-                <div className="border-t border-slate-100 pt-3 animate-in fade-in slide-in-from-top-1 duration-200">
-                  <label className="block text-xs font-bold text-slate-600 mb-1">
+                <div className="border-t border-[#EBEBEB] pt-4">
+                  <label className="block text-[11px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
                     Enter Verification OTP
                   </label>
                   <div className="flex gap-2">
@@ -297,13 +297,13 @@ export default function DealerRegisterPage() {
                       placeholder="6 digit OTP"
                       value={otpInput}
                       onChange={(e) => setOtpInput(e.target.value)}
-                      className="input-premium font-semibold flex-1 py-1.5 text-sm"
+                      className="input-premium flex-1 text-sm font-bold"
                       maxLength={6}
                     />
                     <button
                       type="button"
                       onClick={handleVerifyOTP}
-                      className="bg-slate-800 text-white text-xs font-bold px-4 py-2 rounded-input hover:bg-slate-900 transition-colors"
+                      className="bg-[#141414] text-white text-[13px] font-bold px-4 rounded-[12px] hover:bg-neutral-800 transition-colors active:scale-[0.97]"
                     >
                       Verify
                     </button>
@@ -312,8 +312,8 @@ export default function DealerRegisterPage() {
               )}
 
               {otpVerified && (
-                <div className="bg-emerald-50 border border-emerald-100 text-emerald-800 text-xs font-bold rounded p-2.5 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <div className="bg-green-50 border-[0.5px] border-green-200 text-[#16A34A] text-[12px] font-bold rounded-[8px] p-3 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#16A34A] flex-shrink-0" />
                   WhatsApp Number Verified!
                 </div>
               )}
@@ -321,8 +321,8 @@ export default function DealerRegisterPage() {
 
             {/* Login Password */}
             <div>
-              <label className="block text-sm font-extrabold text-slate-800 mb-1.5 flex items-center gap-1">
-                <Lock className="w-4 h-4 text-primary" />
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <Lock className="w-4 h-4 text-[#F0743E]" />
                 Password (Dashboard Access)
               </label>
               <input
@@ -330,24 +330,24 @@ export default function DealerRegisterPage() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input-premium font-semibold"
+                className="input-premium"
                 disabled={loading}
               />
             </div>
 
             {/* Bhopal Area Dropdown */}
             <div>
-              <label className="block text-sm font-extrabold text-slate-800 mb-1.5 flex items-center gap-1">
-                <MapPin className="w-4 h-4 text-primary" />
-                Bhopal me aapka Area
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <MapPin className="w-4 h-4 text-[#F0743E]" />
+                Shop Area in Bhopal
               </label>
               <select
                 value={area}
                 onChange={(e) => setArea(e.target.value)}
-                className="input-premium font-semibold bg-white cursor-pointer"
+                className="input-premium bg-[#FAFAF8] cursor-pointer"
                 disabled={loading}
               >
-                <option value="">-- Apna Area Select Karein --</option>
+                <option value="">-- Select Your Area --</option>
                 {bhopalAreas.map((loc) => (
                   <option key={loc} value={loc}>
                     {loc}
@@ -358,20 +358,20 @@ export default function DealerRegisterPage() {
 
             {/* Categories Checkboxes */}
             <div>
-              <label className="block text-sm font-extrabold text-slate-800 mb-2.5">
-                Handled Categories (Select all that apply)
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2 flex items-center gap-1">
+                Handled Categories
               </label>
-              <div className="bg-white border border-slate-100 p-4 rounded-card shadow-sm space-y-3">
+              <div className="bg-white border-[0.5px] border-[#EBEBEB] p-5 rounded-[16px] space-y-3.5">
                 {categories.map((cat) => (
-                  <label key={cat.id} className="flex items-center gap-3 cursor-pointer select-none">
+                  <label key={cat.id} className="flex items-center gap-3 cursor-pointer select-none text-[13px] font-bold text-[#141414]">
                     <input
                       type="checkbox"
                       checked={selectedCategories.includes(cat.id)}
                       onChange={() => handleCategoryChange(cat.id)}
-                      className="w-4 h-4 rounded text-primary focus:ring-primary border-slate-300"
+                      className="w-4 h-4 rounded text-[#F0743E] focus:ring-[#F0743E]/20 border-[#EBEBEB]"
                       disabled={loading}
                     />
-                    <span className="text-xs font-bold text-slate-700">{cat.label}</span>
+                    <span>{cat.label}</span>
                   </label>
                 ))}
               </div>
@@ -379,20 +379,20 @@ export default function DealerRegisterPage() {
 
             {/* Brands Checkboxes */}
             <div>
-              <label className="block text-sm font-extrabold text-slate-800 mb-2.5">
-                Brands Stocked (Select all that apply)
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2 flex items-center gap-1">
+                Brands Stocked
               </label>
-              <div className="bg-white border border-slate-100 p-4 rounded-card shadow-sm grid grid-cols-2 gap-3">
+              <div className="bg-white border-[0.5px] border-[#EBEBEB] p-5 rounded-[16px] grid grid-cols-2 gap-3.5">
                 {brands.map((brand) => (
-                  <label key={brand} className="flex items-center gap-2.5 cursor-pointer select-none">
+                  <label key={brand} className="flex items-center gap-2.5 cursor-pointer select-none text-[13px] font-bold text-[#141414]">
                     <input
                       type="checkbox"
                       checked={selectedBrands.includes(brand)}
                       onChange={() => handleBrandChange(brand)}
-                      className="w-4 h-4 rounded text-primary focus:ring-primary border-slate-300"
+                      className="w-4 h-4 rounded text-[#F0743E] focus:ring-[#F0743E]/20 border-[#EBEBEB]"
                       disabled={loading}
                     />
-                    <span className="text-xs font-bold text-slate-700">{brand}</span>
+                    <span>{brand}</span>
                   </label>
                 ))}
               </div>
@@ -402,21 +402,21 @@ export default function DealerRegisterPage() {
             <button
               type="submit"
               disabled={loading || !otpVerified}
-              className="w-full btn-primary text-sm py-3.5 font-extrabold mt-6"
+              className="w-full btn-primary mt-6"
             >
-              {loading ? 'Dukaan Register ho rahi hai...' : 'Submit Registration'}
+              {loading ? 'Registering Shop...' : 'Submit Registration'}
             </button>
             
             {!otpVerified && (
-              <p className="text-[10px] text-red-500 font-semibold text-center mt-1.5">
-                Note: Registration ke liye WhatsApp number verify karna compulsory hai.
+              <p className="text-[11px] text-[#DC2626] font-bold text-center mt-2 animate-pulse">
+                Note: WhatsApp verification is required to complete registration.
               </p>
             )}
           </form>
         )}
         
-        <div className="text-center mt-8">
-          <Link href="/dealer/dashboard" className="text-xs text-primary font-bold hover:underline">
+        <div className="text-center mt-8 pt-4 border-t border-[#EBEBEB]">
+          <Link href="/dealer/dashboard" className="text-xs text-[#F0743E] font-bold hover:underline">
             Already registered? Login to Dashboard ➡️
           </Link>
         </div>

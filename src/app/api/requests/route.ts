@@ -132,6 +132,10 @@ Offer submit karne ke liye link pe click karein:
           messageText,
           dealerId: dealer.id,
           requestId: newRequest.id,
+          productName: `${product.brand} ${product.name}`,
+          budget: `₹${newRequest.budget.toLocaleString('en-IN')}`,
+          area: newRequest.area,
+          offerLink: offerLink,
         });
       });
 

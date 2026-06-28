@@ -1,24 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Baloo_2 } from "next/font/google";
+import { Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
 import PWARegistration from "@/components/PWARegistration";
 import "./globals.css";
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-plus-jakarta",
   display: "swap",
 });
 
-const baloo = Baloo_2({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-baloo-2",
-  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-instrument-serif",
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "MereWalaPrice - Bhopal ka sabse sahi price",
-  description: "Bhopal's hyperlocal price comparison platform. Connect with local dealers for appliances and electronics, and get prices lower than Amazon & Flipkart!",
+  title: "MereWalaPrice - Hyperlocal Price Comparison",
+  description: "Bhopal's hyperlocal price comparison platform. Connect with local dealers for appliances and electronics, and get prices lower than online!",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FF6B00",
+  themeColor: "#F0743E",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -47,9 +48,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       <body
-        className={`${inter.variable} ${baloo.variable} font-sans bg-gradient-to-tr from-orange-50 via-slate-100 to-orange-100 min-h-screen antialiased flex flex-col justify-start items-center`}
+        className={`${plusJakartaSans.variable} ${instrumentSerif.variable} font-sans bg-slate-100 min-h-screen antialiased flex flex-col justify-start items-center`}
       >
-        <div className="w-full max-w-[420px] min-h-screen bg-white shadow-2xl flex flex-col relative">
+        <div className="w-full max-w-[420px] min-h-screen bg-[#FAFAF8] flex flex-col relative border-x border-[#EBEBEB] shadow-sm">
           {children}
           <PWARegistration />
         </div>
