@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MereWalaPrice - Partner Dealer Pitch</title>
+  <!-- Google Fonts Inter & Baloo 2 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brick: #F0743E;
+      --viola: #CDBCDB;
+      --sunshine: #FDDB48;
+      --rosehip: #F6C3AE;
+      --dark: #1A1A1A;
+      --light-bg: #FFFDFB;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark);
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 1.25rem;
+    }
+
+    /* Header with Redesigned Logo */
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    header img {
+      max-height: 55px;
+      object-fit: contain;
+    }
+
+    /* Main Container (fits exactly on mobile viewports) */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+
+    /* Headline Styling with Warm Baloo 2 feel */
+    .headline {
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-align: center;
+      color: var(--brick);
+      line-height: 1.25;
+      padding: 0 0.5rem;
+    }
+
+    /* Benefits List */
+    .benefits-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .benefit-card {
+      background: white;
+      border: 1px solid rgba(240, 116, 62, 0.12);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: 0 4px 10px rgba(240, 116, 62, 0.04);
+    }
+
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      background-color: var(--viola);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .benefit-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.35;
+    }
+
+    .benefit-highlight {
+      color: var(--brick);
+    }
+
+    /* CTA Section */
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .btn-register {
+      width: 100%;
+      background-color: var(--brick);
+      color: white;
+      font-family: 'Baloo 2', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      padding: 0.85rem;
+      border-radius: 30px;
+      box-shadow: 0 6px 15px rgba(240, 116, 62, 0.25);
+      border: none;
+      cursor: pointer;
+      display: block;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-register:active {
+      transform: scale(0.98);
+      background-color: #d85c27;
+    }
+
+    .btn-subtitle {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--brick);
+      background-color: rgba(253, 219, 72, 0.25);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      margin-top: 0.25rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding-top: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #7A7A7A;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      flex-shrink: 0;
+    }
+
+    footer a {
+      color: var(--brick);
+      text-decoration: none;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Redesigned Logo -->
+  <header>
+    <img src="/logo.jpg" alt="MereWalaPrice Logo">
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <!-- Pitch Headline -->
+    <h2 class="headline">Aapki dukaan ko ready customers chahiye?</h2>
+
+    <!-- Benefits List -->
+    <div class="benefits-container">
+      <div class="benefit-card">
+        <span class="benefit-icon">🎯</span>
+        <p class="benefit-text">Sirf serious buyers — jo <span class="benefit-highlight">aaj kharidne</span> aate hain</p>
+      </div>
+      
+      <div class="benefit-card">
+        <span class="benefit-icon">🤝</span>
+        <p class="benefit-text">Aapka price sirf customer dekhta hai — <span class="benefit-highlight">competitor nahi</span></p>
+      </div>
+      
+      <div class="benefit-card">
+        <span class="benefit-icon">🎉</span>
+        <p class="benefit-text">Pehle 3 mahine bilkul <span class="benefit-highlight">FREE</span></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Call to Action Footer Panel -->
+  <div class="cta-container">
+    <a href="/dealer/register" class="btn-register">Register Karo</a>
+    <span class="btn-subtitle">🔥 Limited Slots Available in Bhopal</span>
+  </div>
+
+  <!-- Footer Contact Info -->
+  <footer>
+    Sawaal? Call/WhatsApp: <a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a>
+  </footer>
+
+</body>
+</html>
