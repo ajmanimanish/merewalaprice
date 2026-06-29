@@ -18,6 +18,7 @@ import {
   Zap
 } from 'lucide-react';
 import { searchProducts, SearchProduct } from '@/lib/typesense';
+import { supabase } from '@/lib/supabase';
 
 // Inline washing machine SVG icon
 const WashingMachineIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -45,10 +46,26 @@ const WashingMachineIcon = (props: React.SVGProps<SVGSVGElement>) => (
 export default function HomePage() {
   const router = useRouter();
   const [query, setQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [suggestions, setSuggestions] = useState<SearchProduct[]>([]);
   const [loading, setLoading] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user || null);
+      }
+    );
+    // Get initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user || null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   // Categories list
   const categories = [
@@ -101,9 +118,30 @@ export default function HomePage() {
     router.push(`/request/${productId}`);
   };
 
-  const handleCategoryClick = (categoryId: string) => {
-    setQuery(categoryId);
+  const handleCategoryClick = async (categoryId: string) => {
     setShowDropdown(true);
+    setLoading(true);
+    setSelectedCategory(categoryId);
+    try {
+      // Search by category using Supabase directly
+      const { createClient } = await import('@supabase/supabase-js');
+      const supabaseClient = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      );
+      const { data } = await supabaseClient
+        .from('products')
+        .select('*')
+        .eq('category', categoryId)
+        .eq('is_active', true)
+        .limit(10);
+      setSuggestions(data || []);
+      setQuery(''); // Clear query so search bar shows placeholder
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -114,10 +152,37 @@ export default function HomePage() {
           <span className="text-[20px] font-semibold text-[#141414] tracking-tight">MereWala</span>
           <span className="text-[20px] font-bold text-[#F0743E] tracking-tight">Price</span>
         </Link>
-        <Link href="/dealer" className="text-xs font-bold text-[#6B6B6B] hover:text-[#F0743E] flex items-center gap-1 transition-colors">
-          <Store className="w-3.5 h-3.5" />
-          Partner Login
-        </Link>
+        <div className="flex items-center gap-3">
+          {user ? (
+            <div className="flex items-center gap-2">
+              {/* User avatar circle */}
+              <div className="w-8 h-8 rounded-full bg-[#F0743E] flex items-center justify-center text-white text-[13px] font-bold">
+                {user.user_metadata?.full_name?.[0]?.toUpperCase() || 
+                 user.email?.[0]?.toUpperCase() || 'U'}
+              </div>
+              <button
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  setUser(null);
+                }}
+                className="text-[11px] font-semibold text-[#6B6B6B] hover:text-[#DC2626] transition-colors"
+              >
+                Sign out
+              </button>
+            </div>
+          ) : (
+            <Link 
+              href="/auth" 
+              className="text-[12px] font-bold text-[#F0743E] border border-[#F0743E] rounded-full px-3 py-1 hover:bg-[#FEF0E8] transition-colors"
+            >
+              Sign in
+            </Link>
+          )}
+          <Link href="/dealer" className="text-xs font-bold text-[#6B6B6B] hover:text-[#F0743E] flex items-center gap-1 transition-colors">
+            <Store className="w-3.5 h-3.5" />
+            For Dealers
+          </Link>
+        </div>
       </header>
 
       {/* Hero Section */}
@@ -140,6 +205,7 @@ export default function HomePage() {
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
+              setSelectedCategory('');
               setShowDropdown(true);
             }}
             onFocus={() => setShowDropdown(true)}
@@ -215,7 +281,7 @@ export default function HomePage() {
         <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-none px-5">
           {categories.map((cat) => {
             const Icon = cat.icon;
-            const isSelected = query === cat.id;
+            const isSelected = selectedCategory === cat.id;
             return (
               <button
                 key={cat.id}

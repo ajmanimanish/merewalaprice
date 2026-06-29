@@ -9,41 +9,48 @@ export default function AuthCallbackPage() {
 
   useEffect(() => {
     async function handleAuthCallback() {
-      const url = new URL(window.location.href);
-      const code = url.searchParams.get('code');
+      let returnUrl = '/';
+      try {
+        returnUrl = localStorage.getItem('mwp_return_url') || '/';
+        const url = new URL(window.location.href);
+        const code = url.searchParams.get('code');
 
-      if (code) {
-        await supabase.auth.exchangeCodeForSession(code);
-      }
-
-      // Check if session exists
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      // Auto-create or fetch user profile
-      if (session?.user) {
-        const user = session.user;
-        
-        // Let's check if the profile exists
-        const { data: existingProfile } = await supabase
-          .from('user_profiles')
-          .select('id')
-          .eq('id', user.id)
-          .maybeSingle();
-
-        if (!existingProfile) {
-          // Create user profile
-          const fullName = user.user_metadata?.full_name || user.user_metadata?.name || '';
-          await supabase.from('user_profiles').insert({
-            id: user.id,
-            full_name: fullName,
-            city: 'Bhopal'
-          });
+        if (code) {
+          await supabase.auth.exchangeCodeForSession(code);
         }
-      }
 
-      const returnUrl = localStorage.getItem('mwp_return_url') || '/';
-      localStorage.removeItem('mwp_return_url');
-      router.push(returnUrl);
+        // Check if session exists
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        // Auto-create or fetch user profile
+        if (session?.user) {
+          const user = session.user;
+          
+          // Let's check if the profile exists using limit(1) to be 100% safe
+          const { data: existingProfiles, error: fetchError } = await supabase
+            .from('user_profiles')
+            .select('id')
+            .eq('id', user.id)
+            .limit(1);
+
+          const existingProfile = existingProfiles?.[0] || null;
+
+          if (!fetchError && !existingProfile) {
+            // Create user profile
+            const fullName = user.user_metadata?.full_name || user.user_metadata?.name || '';
+            await supabase.from('user_profiles').insert({
+              id: user.id,
+              full_name: fullName,
+              city: 'Bhopal'
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Auth callback error caught safely:', err);
+      } finally {
+        localStorage.removeItem('mwp_return_url');
+        router.push(returnUrl);
+      }
     }
 
     handleAuthCallback();
