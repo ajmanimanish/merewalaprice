@@ -103,96 +103,90 @@ export default function DealerRegisterPage() {
     );
   };
 
-  // Dynamically load Google Maps script if API key is present
-  React.useEffect(() => {
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-    if (!apiKey) return;
-
-    const scriptId = 'google-maps-script';
-    if (document.getElementById(scriptId)) {
-      setMapsLoaded(true);
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.id = scriptId;
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      setMapsLoaded(true);
-    };
-    document.head.appendChild(script);
-  }, []);
-
-  React.useEffect(() => {
-    if (mapsLoaded && autocompleteInputRef.current && window.google) {
-      const autocomplete = new window.google.maps.places.Autocomplete(
-        autocompleteInputRef.current,
-        {
-          componentRestrictions: { country: 'in' },
-          fields: ['address_components', 'geometry', 'formatted_address'],
-          types: ['establishment', 'geocode']
-        }
-      );
-
-      autocomplete.addListener('place_changed', () => {
-        const place = autocomplete.getPlace();
-        if (!place.geometry || !place.geometry.location) return;
-
-        const formattedAddress = place.formatted_address || '';
-        setAddress(formattedAddress);
-        setLatitude(place.geometry.location.lat());
-        setLongitude(place.geometry.location.lng());
-
-        // Extract sublocality or fallback area
-        let foundArea = '';
-        if (place.address_components) {
-          for (const comp of place.address_components) {
-            const types = comp.types;
-            if (types.includes('sublocality') || types.includes('sublocality_level_1')) {
-              foundArea = comp.long_name;
-              break;
-            }
-          }
-        }
-        
-        const matchedArea = bhopalAreas.find(a => 
-          a.toLowerCase() === foundArea.toLowerCase() || 
-          formattedAddress.toLowerCase().includes(a.toLowerCase())
-        );
-        if (matchedArea) {
-          setArea(matchedArea);
-        } else {
-          setArea('Other');
-        }
-      });
-    }
-  }, [mapsLoaded]);
-
-  // Handle address input typing
-  const handleAddressChange = (val: string) => {
+  // Handle address input typing using secure server-side Ola Maps proxy
+  const handleAddressChange = async (val: string) => {
     setAddress(val);
-    if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
-      if (val.trim().length > 1) {
+    
+    if (val.trim().length > 1) {
+      try {
+        const response = await fetch(`/api/places/autocomplete?input=${encodeURIComponent(val)}`);
+        const data = await response.json();
+        
+        if (data.predictions && data.predictions.length > 0) {
+          setAddressSuggestions(data.predictions);
+          setShowSuggestions(true);
+        } else {
+          // Fallback to local Bhopal landmarks
+          const filtered = bhopalLandmarks.filter(item => 
+            item.name.toLowerCase().includes(val.toLowerCase())
+          );
+          setAddressSuggestions(filtered);
+          setShowSuggestions(filtered.length > 0);
+        }
+      } catch (err) {
+        console.error('Ola Maps Autocomplete fetch failed, falling back:', err);
         const filtered = bhopalLandmarks.filter(item => 
           item.name.toLowerCase().includes(val.toLowerCase())
         );
         setAddressSuggestions(filtered);
-        setShowSuggestions(true);
-      } else {
-        setAddressSuggestions([]);
-        setShowSuggestions(false);
+        setShowSuggestions(filtered.length > 0);
       }
+    } else {
+      setAddressSuggestions([]);
+      setShowSuggestions(false);
     }
   };
 
-  const handleSuggestionSelect = (item: any) => {
-    setAddress(item.name);
-    setLatitude(item.lat);
-    setLongitude(item.lng);
-    setArea(item.area);
-    setShowSuggestions(false);
+  // Handle selection of address suggestion
+  const handleSuggestionSelect = async (item: any) => {
+    if (item.place_id) {
+      // Real Ola Maps prediction -> Fetch detailed coordinates & exact address
+      setAddress(item.description || '');
+      setShowSuggestions(false);
+      
+      try {
+        const response = await fetch(`/api/places/details?place_id=${encodeURIComponent(item.place_id)}`);
+        const data = await response.json();
+        
+        if (data.result && data.result.geometry && data.result.geometry.location) {
+          const loc = data.result.geometry.location;
+          setAddress(data.result.formatted_address || item.description);
+          setLatitude(loc.lat);
+          setLongitude(loc.lng);
+          
+          // Attempt to extract sublocality matching to Bhopal areas
+          const formattedAddress = data.result.formatted_address || '';
+          let foundArea = '';
+          if (data.result.address_components) {
+            for (const comp of data.result.address_components) {
+              const types = comp.types || [];
+              if (types.includes('sublocality') || types.includes('sublocality_level_1')) {
+                foundArea = comp.long_name;
+                break;
+              }
+            }
+          }
+          const matchedArea = bhopalAreas.find(a => 
+            a.toLowerCase() === foundArea.toLowerCase() || 
+            formattedAddress.toLowerCase().includes(a.toLowerCase())
+          );
+          if (matchedArea) {
+            setArea(matchedArea);
+          } else {
+            setArea('Other');
+          }
+        }
+      } catch (err) {
+        console.error('Ola Maps details query failed:', err);
+      }
+    } else {
+      // Mock local landmark selection
+      setAddress(item.name);
+      setLatitude(item.lat);
+      setLongitude(item.lng);
+      setArea(item.area);
+      setShowSuggestions(false);
+    }
   };
 
   const handleRegister = async (e: React.FormEvent) => {
@@ -363,7 +357,7 @@ export default function DealerRegisterPage() {
             <div className="relative">
               <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
                 <MapPin className="w-4 h-4 text-[#F0743E]" />
-                Shop Address (Google Maps / Places)
+                Shop Address (Ola Maps)
               </label>
               <input
                 ref={autocompleteInputRef}
@@ -372,7 +366,7 @@ export default function DealerRegisterPage() {
                 value={address}
                 onChange={(e) => handleAddressChange(e.target.value)}
                 onFocus={() => {
-                  if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && address.trim().length > 1) {
+                  if (addressSuggestions.length > 0) {
                     setShowSuggestions(true);
                   }
                 }}
@@ -386,12 +380,12 @@ export default function DealerRegisterPage() {
                 <div className="absolute left-0 right-0 mt-1 bg-white border border-[#EBEBEB] rounded-[12px] shadow-lg z-50 overflow-hidden max-h-[200px] overflow-y-auto">
                   {addressSuggestions.map((item) => (
                     <button
-                      key={item.name}
+                      key={item.place_id || item.name}
                       type="button"
                       onClick={() => handleSuggestionSelect(item)}
-                      className="w-full text-left px-4 py-3 hover:bg-[#FAFAF8] text-[13px] border-b border-[#EBEBEB] last:border-0 font-medium text-[#141414]"
+                      className="w-full text-left px-4 py-3 hover:bg-[#FAFAF8] text-[13px] border-b border-[#EBEBEB] last:border-0 font-medium text-[#141414] truncate"
                     >
-                      {item.name}
+                      {item.description || item.name}
                     </button>
                   ))}
                 </div>
