@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { supabase } from '@/lib/supabase';
 import { 
   ArrowLeft, 
   MapPin, 
@@ -31,7 +32,12 @@ interface RequestFormProps {
 export default function RequestForm({ product }: RequestFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<React.ReactNode>('');
+  
+  // Auth state
+  const [user, setUser] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null);
+  const [sessionChecking, setSessionChecking] = useState(true);
   
   // Form fields state
   const [budget, setBudget] = useState('');
@@ -40,6 +46,44 @@ export default function RequestForm({ product }: RequestFormProps) {
   const [purchaseType, setPurchaseType] = useState('personal');
   const [buyerName, setBuyerName] = useState('');
   const [buyerPhone, setBuyerPhone] = useState('');
+
+  useEffect(() => {
+    async function checkUserSession() {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          // Save current URL and redirect to auth
+          localStorage.setItem('mwp_return_url', window.location.pathname + window.location.search);
+          router.push(`/auth?returnUrl=${encodeURIComponent(window.location.pathname + window.location.search)}`);
+        } else {
+          setUser(session.user);
+          setBuyerName(session.user.user_metadata?.full_name || session.user.user_metadata?.name || '');
+          
+          // Fetch user profile from database
+          const { data: userProfile } = await supabase
+            .from('user_profiles')
+            .select('*')
+            .eq('id', session.user.id)
+            .maybeSingle();
+
+          if (userProfile) {
+            setProfile(userProfile);
+            if (userProfile.phone) {
+              setBuyerPhone(userProfile.phone);
+            }
+            if (userProfile.preferred_area) {
+              setArea(userProfile.preferred_area);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Session check error:', err);
+      } finally {
+        setSessionChecking(false);
+      }
+    }
+    checkUserSession();
+  }, [router]);
 
   // Inline Validation Errors
   const [budgetError, setBudgetError] = useState('');
@@ -123,7 +167,30 @@ export default function RequestForm({ product }: RequestFormProps) {
       const data = await response.json();
 
       if (!response.ok) {
+        if (response.status === 409) {
+          setError(
+            <span>
+              You already have an active request for this product.{' '}
+              <Link href={`/results/${data.existingRequestId}?token=${data.accessToken}`} className="underline font-bold text-[#F0743E]">
+                View Existing Results
+              </Link>
+            </span>
+          );
+          setLoading(false);
+          return;
+        }
         throw new Error(data.error || 'Server error occurred');
+      }
+
+      // Save/upsert preferred area and phone to user_profiles
+      if (user) {
+        await supabase.from('user_profiles').upsert({
+          id: user.id,
+          full_name: buyerName,
+          phone: cleanPhone,
+          preferred_area: area,
+          updated_at: new Date().toISOString()
+        });
       }
 
       // Successful creation, redirect to results page
@@ -295,50 +362,87 @@ export default function RequestForm({ product }: RequestFormProps) {
           <div className="h-[0.5px] bg-[#EBEBEB] my-4"></div>
 
           {/* Buyer Details */}
-          <div className="space-y-4">
-            <div>
-              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <User className="w-3.5 h-3.5 text-[#F0743E]" />
-                Your Full Name
-              </label>
-              <input
-                type="text"
-                placeholder="Ramesh Sharma"
-                value={buyerName}
-                onChange={(e) => setBuyerName(e.target.value)}
-                className={`input-premium ${nameError ? 'border-[#DC2626] focus:border-[#DC2626]' : ''}`}
-                disabled={loading}
-              />
-              {nameError && (
-                <p className="text-[#DC2626] text-[12px] font-bold mt-1">
-                  {nameError}
-                </p>
-              )}
-            </div>
+          {user ? (
+            <div className="bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] p-5 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-[#FEF0E8] text-[#F0743E] rounded-full flex items-center justify-center font-bold text-lg">
+                  {buyerName ? buyerName.charAt(0).toUpperCase() : 'U'}
+                </div>
+                <div>
+                  <h4 className="text-[14px] font-bold text-[#141414]">Requesting as {buyerName}</h4>
+                  <p className="text-[12px] text-[#6B6B6B]">{user.email}</p>
+                </div>
+              </div>
 
-            <div>
-              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
-                WhatsApp Mobile Number
-              </label>
-              <input
-                type="tel"
-                placeholder="9826123456"
-                value={buyerPhone}
-                onChange={(e) => setBuyerPhone(e.target.value)}
-                className={`input-premium ${phoneError ? 'border-[#DC2626] focus:border-[#DC2626]' : ''}`}
-                disabled={loading}
-              />
-              {phoneError && (
-                <p className="text-[#DC2626] text-[12px] font-bold mt-1">
-                  {phoneError}
+              <div>
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
+                  WhatsApp Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="9826123456"
+                  value={buyerPhone}
+                  onChange={(e) => setBuyerPhone(e.target.value)}
+                  className={`input-premium ${phoneError ? 'border-[#DC2626] focus:border-[#DC2626]' : ''}`}
+                  disabled={loading}
+                />
+                {phoneError && (
+                  <p className="text-[#DC2626] text-[12px] font-bold mt-1">
+                    {phoneError}
+                  </p>
+                )}
+                <p className="text-[10px] text-[#A0A0A0] font-medium mt-1.5">
+                  Required to receive local dealer offers via WhatsApp.
                 </p>
-              )}
-              <p className="text-[10px] text-[#A0A0A0] font-medium mt-1.5">
-                Note: Results URL will be sent directly via WhatsApp.
-              </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="space-y-4">
+              <div>
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <User className="w-3.5 h-3.5 text-[#F0743E]" />
+                  Your Full Name
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ramesh Sharma"
+                  value={buyerName}
+                  onChange={(e) => setBuyerName(e.target.value)}
+                  className={`input-premium ${nameError ? 'border-[#DC2626] focus:border-[#DC2626]' : ''}`}
+                  disabled={loading}
+                />
+                {nameError && (
+                  <p className="text-[#DC2626] text-[12px] font-bold mt-1">
+                    {nameError}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
+                  WhatsApp Mobile Number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="9826123456"
+                  value={buyerPhone}
+                  onChange={(e) => setBuyerPhone(e.target.value)}
+                  className={`input-premium ${phoneError ? 'border-[#DC2626] focus:border-[#DC2626]' : ''}`}
+                  disabled={loading}
+                />
+                {phoneError && (
+                  <p className="text-[#DC2626] text-[12px] font-bold mt-1">
+                    {phoneError}
+                  </p>
+                )}
+                <p className="text-[10px] text-[#A0A0A0] font-medium mt-1.5">
+                  Note: Results URL will be sent directly via WhatsApp.
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Submit Button */}
           <button

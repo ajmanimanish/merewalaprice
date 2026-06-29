@@ -45,11 +45,11 @@ export async function POST(request: Request) {
       const origin = request.headers.get('origin') || 'http://localhost:3000';
       const dashboardLink = `${origin}/dealer/dashboard`;
 
-      const approvalText = `🎉 Badhai Ho!
+      const approvalText = `Congratulations!
 
-Aapki dukaan "${dealer.shop_name}" approve ho gayi hai.
+Your shop "${dealer.shop_name}" has been approved.
 
-Ab aap Bhopal buyers ke requirements dekh kar direct price quotes bhej sakte hain. Dashboard par log in karke deals bhejna shuru karein:
+You can now view buyer requests and send direct quotes. Log in to your dashboard to start bidding:
 🔗 ${dashboardLink}`;
 
       // Send WhatsApp message to dealer

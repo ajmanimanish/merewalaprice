@@ -16,16 +16,33 @@ export async function POST(request: Request) {
       quantity = 1,
     } = body;
 
+    const supabaseAdmin = getSupabaseService();
+
+    // 1. Basic system rate limiting (Fix 7)
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = forwarded ? forwarded.split(',')[0] : 'unknown';
+
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    const { count } = await supabaseAdmin
+      .from('buyer_requests')
+      .select('*', { count: 'exact', head: true })
+      .gte('created_at', oneHourAgo);
+
+    if (count && count > 50) {
+      return NextResponse.json(
+        { error: 'System is busy. Please try again in a few minutes.' },
+        { status: 429 }
+      );
+    }
+
     if (!productId || !buyerName || !buyerPhone || !budget || !area || !urgency || !purchaseType) {
       return NextResponse.json(
-        { error: 'Sabhi fields bharna zaroori hai (All fields are required).' },
+        { error: 'All fields are required.' },
         { status: 400 }
       );
     }
 
-    const supabaseAdmin = getSupabaseService();
-
-    // 1. Fetch product details
+    // 2. Fetch product details
     const { data: product, error: productError } = await supabaseAdmin
       .from('products')
       .select('*')
@@ -34,12 +51,30 @@ export async function POST(request: Request) {
 
     if (productError || !product) {
       return NextResponse.json(
-        { error: 'Product nahi mila (Product not found).' },
+        { error: 'Product not found.' },
         { status: 404 }
       );
     }
 
-    // 2. Create the buyer request
+    // 3. Prevent duplicate requests (Fix 5)
+    const { data: existing } = await supabaseAdmin
+      .from('buyer_requests')
+      .select('id, access_token')
+      .eq('product_id', productId)
+      .eq('buyer_phone', buyerPhone)
+      .eq('status', 'open')
+      .gte('created_at', new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString())
+      .maybeSingle();
+
+    if (existing) {
+      return NextResponse.json({
+        error: 'You already have an active request for this product. Check your existing results.',
+        existingRequestId: existing.id,
+        accessToken: existing.access_token
+      }, { status: 409 });
+    }
+
+    // 4. Create the buyer request
     const expiresAt = new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(); // 2 hours from now
     const { data: newRequest, error: insertError } = await supabaseAdmin
       .from('buyer_requests')
@@ -104,28 +139,26 @@ export async function POST(request: Request) {
         
         // Translating urgency enum for WhatsApp friendly view
         const urgencyLabel = 
-          urgency === 'today' ? 'Aaj hi 🔥' : 
-          urgency === 'this_week' ? 'Is hafte (1-2 days)' : 
-          'Sirf price check';
+          urgency === 'today' ? 'Today' : 
+          urgency === 'this_week' ? 'This Week (1-2 days)' : 
+          'Price Check Only';
 
         // Translating purchase type
         const typeLabel = 
-          purchaseType === 'personal' ? 'Ghar ke liye' : 
-          purchaseType === 'business' ? 'Resale ke liye' : 
-          'Bulk (3+ units)';
+          purchaseType === 'personal' ? 'For Home' : 
+          purchaseType === 'business' ? 'For Resale' : 
+          'Bulk Purchase';
 
-        const messageText = `🔔 Naya Customer Request!
+        const messageText = `🔔 New Request — ${product.brand} ${product.name}
+Budget: ₹${newRequest.budget.toLocaleString('en-IN')}
+Area: ${newRequest.area}
+Urgency: ${urgencyLabel}
+Type: ${typeLabel}
 
-📦 Product: ${product.brand} ${product.name}
-💰 Budget: ₹${newRequest.budget.toLocaleString('en-IN')}
-📍 Location: ${newRequest.area}
-⚡ Urgency: ${urgencyLabel}
-👤 Type: ${typeLabel}
+Submit your best offer:
+${offerLink}
 
-Offer submit karne ke liye link pe click karein:
-🔗 ${offerLink}
-
-⏰ Sirf 2 ghante bache hain!`;
+⏰ 2 hours remaining`;
 
         return sendWhatsAppMessage({
           phone: dealer.whatsapp || dealer.phone,

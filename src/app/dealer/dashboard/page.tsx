@@ -61,7 +61,6 @@ interface DealerOffer {
   alternative_note?: string;
   request: {
     buyer_name: string;
-    buyer_phone: string;
     status: string;
     product: {
       name: string;
@@ -81,7 +80,7 @@ export default function DealerDashboard() {
   const [currentTime, setCurrentTime] = useState(Date.now());
   
   // Login Form States
-  const [loginPhone, setLoginPhone] = useState('');
+  const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [loginSubmitting, setLoginSubmitting] = useState(false);
@@ -183,7 +182,7 @@ export default function DealerDashboard() {
         .select(`
           id, price, inclusions, availability, status, created_at, alternative_model, alternative_price, alternative_note,
           request:buyer_requests(
-            buyer_name, buyer_phone, status,
+            buyer_name, status,
             product:products(name, brand, model_number)
           )
         `)
@@ -216,9 +215,8 @@ export default function DealerDashboard() {
     e.preventDefault();
     setLoginError('');
     
-    const cleanPhone = loginPhone.replace(/[^0-9]/g, '');
-    if (cleanPhone.length !== 10) {
-      setLoginError('Please enter a 10-digit mobile number.');
+    if (!loginEmail || !loginEmail.includes('@')) {
+      setLoginError('Please enter a valid email address.');
       return;
     }
 
@@ -230,13 +228,12 @@ export default function DealerDashboard() {
     setLoginSubmitting(true);
     
     try {
-      const email = `${cleanPhone}@merawalaprice.in`;
       const { error } = await supabase.auth.signInWithPassword({
-        email,
+        email: loginEmail.trim().toLowerCase(),
         password: loginPassword,
       });
 
-      if (error) throw new Error('Invalid phone or password.');
+      if (error) throw new Error('Invalid email or password.');
     } catch (err: any) {
       setLoginError(err.message || 'Login failed.');
     } finally {
@@ -399,14 +396,14 @@ export default function DealerDashboard() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
-                Mobile Number
+                <Store className="w-3.5 h-3.5 text-[#F0743E]" />
+                Email Address
               </label>
               <input
-                type="tel"
-                placeholder="9826123456"
-                value={loginPhone}
-                onChange={(e) => setLoginPhone(e.target.value)}
+                type="email"
+                placeholder="dealer@example.com"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
                 className="input-premium"
                 disabled={loginSubmitting}
               />
@@ -740,20 +737,14 @@ export default function DealerDashboard() {
                       <div className="bg-[#16A34A] text-white rounded-[12px] p-4 mt-4 flex flex-col gap-2 shadow-none">
                         <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                           <CheckCircle2 className="w-4 h-4 fill-white text-[#16A34A]" />
-                          Deal Won! Buyer Contacted
+                          Deal Won!
                         </div>
                         <div className="text-xs font-semibold">
-                          Name: {offer.request.buyer_name}
+                          Buyer Name: {offer.request.buyer_name ? offer.request.buyer_name.split(' ')[0] : 'Buyer'}
                         </div>
-                        <div className="text-xs font-semibold">
-                          Phone: {offer.request.buyer_phone}
-                        </div>
-                        <button
-                          onClick={() => window.open(`https://wa.me/91${offer.request.buyer_phone}`, '_blank')}
-                          className="bg-white text-[#16A34A] font-bold text-[11px] h-[36px] rounded-[8px] text-center uppercase tracking-wider hover:bg-slate-100 transition-colors"
-                        >
-                          Chat with Buyer
-                        </button>
+                        <p className="text-[11px] text-emerald-100 font-medium">
+                          The buyer has been shared your contact details. They will contact you directly via WhatsApp shortly.
+                        </p>
                       </div>
                     )}
                   </div>

@@ -53,14 +53,14 @@ export async function POST(request: Request) {
     const dealer = dealerOffer.dealers;
 
     // 3. Dispatch WhatsApp Winner Notification to Dealer (Flow 3)
-    const dealerNotificationText = `🎉 Customer aapke paas aa raha hai!
+    const dealerNotificationText = `✅ A buyer has chosen your offer!
 
-👤 ${buyerName} ne aapka offer accept kiya.
-📦 Product: ${productName}
-💰 Aapka quoted price: ₹${quotedPrice.toLocaleString('en-IN')}
-📞 Customer WhatsApp: ${buyerPhone}
+👤 ${buyerName} accepted your quote
+📦 Product: ${productName}  
+💰 Your quoted price: ₹${quotedPrice.toLocaleString('en-IN')}
+📞 Buyer WhatsApp: ${buyerPhone}
 
-Aap customer ko contact karein ya unke message ka wait karein!`;
+Please reach out or wait for their message.`;
 
     // Trigger background send to dealer
     sendWhatsAppMessage({
@@ -91,7 +91,7 @@ Aap customer ko contact karein ya unke message ka wait karein!`;
         .neq('id', offerId);
 
       if (otherOffers && otherOffers.length > 0) {
-        const otherDealersMsg = `Is baar nahi hua, agli baar zaroor! Naya request aane par aapko notify karenge.`;
+        const otherDealersMsg = `Better luck next time! We'll notify you when a new request comes in.`;
         const notifyPromises = otherOffers.map((offerItem) => {
           if (offerItem.dealers) {
             return sendWhatsAppMessage({
@@ -120,7 +120,7 @@ Aap customer ko contact karein ya unke message ka wait karein!`;
         ? `91${cleanDealerPhone}`
         : cleanDealerPhone;
 
-    const greetingText = `Hello ${dealer.shop_name}, maine MereWalaPrice par aapka ${productName} ke liye ₹${quotedPrice.toLocaleString('en-IN')} ka offer accept kiya hai. Aap se deal karni hai.`;
+    const greetingText = `Hi ${dealer.shop_name}, I accepted your offer of ₹${quotedPrice.toLocaleString('en-IN')} for ${productName} on MereWalaPrice. Please confirm availability.`;
     const whatsappRedirectUrl = `https://wa.me/${formattedDealerPhone}?text=${encodeURIComponent(
       greetingText
     )}`;

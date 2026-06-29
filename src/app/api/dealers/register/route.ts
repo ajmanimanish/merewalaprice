@@ -9,15 +9,16 @@ export async function POST(request: Request) {
       shopName,
       ownerName,
       whatsapp,
+      email,
       password,
       area,
       categories = [],
       brands = [],
     } = body;
 
-    if (!shopName || !ownerName || !whatsapp || !password || !area) {
+    if (!shopName || !ownerName || !whatsapp || !email || !password || !area) {
       return NextResponse.json(
-        { error: 'Sabhi mandatory fields bharein (Mandatory fields are missing).' },
+        { error: 'Mandatory fields are missing.' },
         { status: 400 }
       );
     }
@@ -25,15 +26,15 @@ export async function POST(request: Request) {
     const cleanPhone = whatsapp.replace(/[^0-9]/g, '');
     if (cleanPhone.length !== 10) {
       return NextResponse.json(
-        { error: 'WhatsApp number 10-digit hona chahiye.' },
+        { error: 'WhatsApp number must be 10 digits.' },
         { status: 400 }
       );
     }
 
     const supabaseAdmin = getSupabaseService();
 
-    // 1. Create a Supabase Auth user with a shadow email format
-    const shadowEmail = `${cleanPhone}@merawalaprice.in`;
+    // 1. Create a Supabase Auth user with the actual email
+    const shadowEmail = email.trim().toLowerCase();
     
     // Check if user already exists in auth
     const { data: existingUser } = await supabaseAdmin.auth.admin.listUsers();
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
 
     if (userExists) {
       return NextResponse.json(
-        { error: 'Yeh number pehle se registered hai (This number is already registered).' },
+        { error: 'This email is already registered.' },
         { status: 400 }
       );
     }
@@ -57,12 +58,12 @@ export async function POST(request: Request) {
     if (authError || !authData.user) {
       console.error('Auth create user error:', authError);
       return NextResponse.json(
-        { error: 'Auth credentials create karne me fail (Auth registration failed).' },
+        { error: 'Auth registration failed.' },
         { status: 500 }
       );
     }
 
-    // 2. Insert profile record in dealers table
+    // 2. Insert profile record in dealers table (including email)
     const { data: dealer, error: dbError } = await supabaseAdmin
       .from('dealers')
       .insert({
@@ -71,6 +72,7 @@ export async function POST(request: Request) {
         owner_name: ownerName,
         phone: cleanPhone,
         whatsapp: cleanPhone,
+        email: shadowEmail,
         area: area,
         city: 'Bhopal',
         categories: categories,
@@ -92,12 +94,12 @@ export async function POST(request: Request) {
     }
 
     // 3. Send WhatsApp Confirmation to Dealer
-    const welcomeMessage = `🔔 MereWalaPrice Par Registration Safal!
+    const welcomeMessage = `MereWalaPrice Registration Submitted!
 
 Shop Name: ${shopName}
-Owner: ${ownerName} ji
+Owner: ${ownerName}
 
-Aapki registration request admin panel pe bhej di gayi hai. Approval milte hi aap Bhopal requests par deals quote kar sakenge! 👍`;
+Your registration request has been sent to the admin. You will be able to submit quotes once approved!`;
 
     sendWhatsAppMessage({
       phone: cleanPhone,
@@ -107,14 +109,14 @@ Aapki registration request admin panel pe bhej di gayi hai. Approval milte hi aa
 
     // 4. Send WhatsApp Notification to Admin
     // Construct message to inform admin of pending request
-    const adminMessage = `📢 Naya Dealer Registration!
+    const adminMessage = `New Dealer Registration Request!
 
-Dukaan: ${shopName}
+Shop: ${shopName}
 Owner: ${ownerName}
 Area: ${area}
 WhatsApp: ${cleanPhone}
 
-Approve karne ke liye admin panel check karein.`;
+Check the admin panel to approve this dealer.`;
 
     // Send to admin mock - phone: 919999999999
     sendWhatsAppMessage({

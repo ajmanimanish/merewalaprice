@@ -1,6 +1,6 @@
 import { getSupabaseService } from '@/lib/supabase';
 import RequestForm from './RequestForm';
-import { notFound } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 interface RequestPageProps {
   params: {
@@ -17,10 +17,11 @@ export default async function RequestPage({ params }: RequestPageProps) {
     .from('products')
     .select('*')
     .eq('id', params.productId)
+    .eq('is_active', true)
     .single();
 
   if (error || !product) {
-    notFound();
+    redirect('/');
   }
 
   return <RequestForm product={product} />;

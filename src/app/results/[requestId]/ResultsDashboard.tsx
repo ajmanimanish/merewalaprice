@@ -335,6 +335,44 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
       <div className="p-5 flex-1">
         {activeTab === 'dealers' ? (
           <div className="space-y-4">
+            {request.status === 'fulfilled' && (
+              <div className="bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] p-5 space-y-4">
+                <h3 className="text-[16px] font-bold text-[#141414] tracking-tight">Deal Summary</h3>
+                <p className="text-[12px] text-[#6B6B6B] font-medium leading-relaxed">
+                  Congratulations on your purchase! You selected the best price quote. Here is a summary of all local offers received:
+                </p>
+                <div className="space-y-3">
+                  {offers.map((offer) => {
+                    const isChosen = offer.status === 'accepted';
+                    return (
+                      <div 
+                        key={offer.id} 
+                        className={`flex items-center justify-between p-3 rounded-[12px] border-[0.5px] ${
+                          isChosen 
+                            ? 'bg-green-50/20 border-green-200 text-[#16A34A]' 
+                            : 'bg-[#FAFAF8] border-[#EBEBEB] text-[#6B6B6B]'
+                        }`}
+                      >
+                        <div>
+                          <h4 className="text-[13px] font-bold text-[#141414]">{offer.dealer.shop_name} {isChosen && '✅ (Chosen)'}</h4>
+                          <p className="text-[11px] text-[#6B6B6B] mt-0.5">{offer.dealer.area} • {getAvailabilityLabel(offer.availability)}</p>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-[15px] font-bold font-mono text-[#141414]">₹{offer.price.toLocaleString('en-IN')}</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {showOffers && offers.length > 0 && (
+              <div className="bg-white border-[0.5px] border-[#EBEBEB] rounded-[12px] p-4 text-[13px] text-[#6B6B6B] font-bold">
+                {offers.length} local {offers.length === 1 ? 'dealer has' : 'dealers have'} responded to your request.
+              </div>
+            )}
+
             {offers.length === 0 ? (
               // Empty State (Task 10 geometric shape)
               <div className="text-center py-16 px-4 bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] flex flex-col items-center">

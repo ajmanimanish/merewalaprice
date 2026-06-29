@@ -70,7 +70,7 @@ export default function PWARegistration() {
         <div>
           <h4 className="text-xs font-black uppercase tracking-wider">MereWalaPrice App</h4>
           <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
-            Quick access ke liye Screen pe add karein!
+            Add to your home screen for quick access!
           </p>
         </div>
       </div>

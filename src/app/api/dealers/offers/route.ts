@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     if (!requestId || !dealerId || !price || !availability) {
       return NextResponse.json(
-        { error: 'Mandatory parameters missing (Price aur Availability bharein).' },
+        { error: 'Mandatory parameters missing.' },
         { status: 400 }
       );
     }
@@ -61,7 +61,7 @@ export async function POST(request: Request) {
 
     if (buyerRequest.status !== 'open') {
       return NextResponse.json(
-        { error: 'Yeh request ab close/expire ho chuki hai.' },
+        { error: 'This request has expired or is closed.' },
         { status: 400 }
       );
     }
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
     const requestCategory = buyerRequest.products.category;
     if (!dealer.categories.includes(requestCategory)) {
       return NextResponse.json(
-        { error: 'Aap is category ke products me deal nahi karte hain.' },
+        { error: 'You do not deal in this category of products.' },
         { status: 400 }
       );
     }
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
 
     if (existingOffer) {
       return NextResponse.json(
-        { error: 'Aapne is request par pehle hi offer de diya hai.' },
+        { error: 'You have already submitted an offer for this request.' },
         { status: 400 }
       );
     }
@@ -110,7 +110,7 @@ export async function POST(request: Request) {
     if (insertError || !newOffer) {
       console.error('Insert offer error:', insertError);
       return NextResponse.json(
-        { error: 'Offer submit karne me problem aayi.' },
+        { error: 'Failed to submit offer.' },
         { status: 500 }
       );
     }
@@ -164,13 +164,13 @@ export async function POST(request: Request) {
           const saving = bestOnline ? (bestOnline.true_cost - bestOffer.price) : 0;
           const savingText = saving > 0 ? `₹${saving.toLocaleString('en-IN')}` : 'Bachat!';
 
-          const buyerNotifyMsg = `✅ ${buyerName} ji, aapke ${productName} ke liye ${n} offers aa gaye!
+          const buyerNotifyMsg = `Hello ${buyerName}, you have received ${n} offers for your ${productName}!
 
 Best local price: ₹${bestPrice.toLocaleString('en-IN')} (${dealerName})
-Online best: ₹${onlineBest.toLocaleString('en-IN')}
-Aap bachate hain: ${savingText}
+Online best: ₹${onlineBest ? onlineBest.toLocaleString('en-IN') : 'N/A'}
+Estimated Savings: ${saving > 0 ? `₹${saving.toLocaleString('en-IN')}` : 'Great Savings!'}
 
-Offers aur dealer contact dekhne ke liye link open karein:
+Click the link to view details and contact dealers:
 🔗 ${resultsLink}`;
 
           // Send message to buyer phone

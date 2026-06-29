@@ -308,6 +308,23 @@ BEGIN
   JOIN products p ON p.id = r.product_id
   WHERE r.id = req_id AND r.access_token = token;
   
-  RETURN result;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- 7. user_profiles table and policies
+CREATE TABLE IF NOT EXISTS user_profiles (
+  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  full_name TEXT,
+  phone TEXT,
+  preferred_area TEXT,
+  city TEXT DEFAULT 'Bhopal',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+ALTER TABLE user_profiles ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users can view own profile" ON user_profiles FOR SELECT USING (auth.uid() = id);
+CREATE POLICY "Users can update own profile" ON user_profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Users can insert own profile" ON user_profiles FOR INSERT WITH CHECK (auth.uid() = id);
+
+-- 8. Add email column to dealers table
+ALTER TABLE dealers ADD COLUMN IF NOT EXISTS email TEXT;

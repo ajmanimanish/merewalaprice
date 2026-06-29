@@ -31,7 +31,7 @@ export default async function ResultsPage({ params, searchParams }: ResultsPageP
 
   if (error || !data || !data.request) {
     console.error('RPC Error or invalid token:', error);
-    return <AccessDenied reason="Kripya link check karein - ya toh link purana hai ya galat token hai (Invalid token or request link)." />;
+    return <AccessDenied reason="Invalid token or expired request link. Please check your URL and try again." />;
   }
 
   return (

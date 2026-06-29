@@ -28,6 +28,7 @@ export default function DealerRegisterPage() {
   const [shopName, setShopName] = useState('');
   const [ownerName, setOwnerName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [area, setArea] = useState('');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -121,7 +122,7 @@ export default function DealerRegisterPage() {
     e.preventDefault();
     setError('');
 
-    if (!shopName || !ownerName || !whatsapp || !password || !area) {
+    if (!shopName || !ownerName || !whatsapp || !email || !password || !area) {
       setError('All fields are required.');
       return;
     }
@@ -143,6 +144,7 @@ export default function DealerRegisterPage() {
           shopName,
           ownerName,
           whatsapp,
+          email,
           password,
           area,
           categories: selectedCategories,
@@ -248,6 +250,21 @@ export default function DealerRegisterPage() {
                   placeholder="e.g. Ramesh Sharma"
                   value={ownerName}
                   onChange={(e) => setOwnerName(e.target.value)}
+                  className="input-premium"
+                  disabled={loading}
+                />
+              </div>
+
+              <div>
+                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                  <User className="w-4 h-4 text-[#F0743E]" />
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  placeholder="dealer@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="input-premium"
                   disabled={loading}
                 />
