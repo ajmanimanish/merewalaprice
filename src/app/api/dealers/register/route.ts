@@ -14,6 +14,9 @@ export async function POST(request: Request) {
       area,
       categories = [],
       brands = [],
+      address = '',
+      latitude = null,
+      longitude = null,
     } = body;
 
     if (!shopName || !ownerName || !whatsapp || !email || !password || !area) {
@@ -63,7 +66,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 2. Insert profile record in dealers table (including email)
+    // 2. Insert profile record in dealers table (including email, address, geo)
     const { data: dealer, error: dbError } = await supabaseAdmin
       .from('dealers')
       .insert({
@@ -78,6 +81,9 @@ export async function POST(request: Request) {
         categories: categories,
         brands: brands,
         is_approved: false, // Must be approved by admin
+        address: address,
+        latitude: latitude ? parseFloat(latitude) : null,
+        longitude: longitude ? parseFloat(longitude) : null,
       })
       .select('*')
       .single();
@@ -88,7 +94,7 @@ export async function POST(request: Request) {
       await supabaseAdmin.auth.admin.deleteUser(authData.user.id);
       
       return NextResponse.json(
-        { error: 'Dukaan record create karne me error (Failed to create profile).' },
+        { error: 'Failed to create profile record.' },
         { status: 500 }
       );
     }

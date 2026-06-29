@@ -328,3 +328,8 @@ CREATE POLICY "Users can insert own profile" ON user_profiles FOR INSERT WITH CH
 
 -- 8. Add email column to dealers table
 ALTER TABLE dealers ADD COLUMN IF NOT EXISTS email TEXT;
+
+-- 9. Add address, latitude, and longitude to dealers table
+ALTER TABLE dealers ADD COLUMN IF NOT EXISTS address TEXT;
+ALTER TABLE dealers ADD COLUMN IF NOT EXISTS latitude DOUBLE PRECISION;
+ALTER TABLE dealers ADD COLUMN IF NOT EXISTS longitude DOUBLE PRECISION;

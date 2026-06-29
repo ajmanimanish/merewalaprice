@@ -34,12 +34,14 @@ export default function DealerRegisterPage() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
-  // OTP Mock States
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpCode, setOtpCode] = useState('');
-  const [otpInput, setOtpInput] = useState('');
-  const [otpVerified, setOtpVerified] = useState(false);
-  const [otpAlert, setOtpAlert] = useState(false);
+  // Maps / Location States
+  const [address, setAddress] = useState('');
+  const [latitude, setLatitude] = useState<number | null>(null);
+  const [longitude, setLongitude] = useState<number | null>(null);
+  const [mapsLoaded, setMapsLoaded] = useState(false);
+  const [addressSuggestions, setAddressSuggestions] = useState<any[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const autocompleteInputRef = React.useRef<HTMLInputElement>(null);
 
   const bhopalAreas = [
     'MP Nagar',
@@ -50,6 +52,21 @@ export default function DealerRegisterPage() {
     'New Market',
     'Habibganj',
     'Other'
+  ];
+
+  // List of real landmarks in Bhopal for local testing suggestion fallback
+  const bhopalLandmarks = [
+    { name: 'Sharma Electronics, MP Nagar Zone 1, Bhopal', area: 'MP Nagar', lat: 23.2323, lng: 77.4318 },
+    { name: 'Kolar Plaza, Kolar Road, Bhopal', area: 'Kolar Road', lat: 23.1772, lng: 77.4184 },
+    { name: 'Arera Colony, E-7, Bhopal', area: 'Arera Colony', lat: 23.2128, lng: 77.4332 },
+    { name: 'DB City Mall, Maharana Pratap Nagar, Bhopal', area: 'MP Nagar', lat: 23.2335, lng: 77.4301 },
+    { name: 'New Market, TT Nagar, Bhopal', area: 'New Market', lat: 23.2425, lng: 77.3995 },
+    { name: 'Bittan Market, E-5, Arera Colony, Bhopal', area: 'Bittan Market', lat: 23.2178, lng: 77.4298 },
+    { name: 'Shahpura Lake Road, Shahpura, Bhopal', area: 'Shahpura', lat: 23.1994, lng: 77.4243 },
+    { name: 'Habibganj Railway Station, Habibganj, Bhopal', area: 'Habibganj', lat: 23.2198, lng: 77.4389 },
+    { name: 'Indrapuri Sector C, BHEL, Bhopal', area: 'Other', lat: 23.2504, lng: 77.4649 },
+    { name: 'Lalghati Square, Bhopal', area: 'Other', lat: 23.2721, lng: 77.3694 },
+    { name: 'Bairagarh Main Road, Bhopal', area: 'Other', lat: 23.2687, lng: 77.3242 }
   ];
 
   const categories = [
@@ -86,43 +103,103 @@ export default function DealerRegisterPage() {
     );
   };
 
-  // Mock sending OTP via WhatsApp
-  const handleSendOTP = () => {
-    const cleanPhone = whatsapp.replace(/[^0-9]/g, '');
-    if (cleanPhone.length !== 10) {
-      setError('Please enter a valid 10-digit WhatsApp number.');
+  // Dynamically load Google Maps script if API key is present
+  React.useEffect(() => {
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    if (!apiKey) return;
+
+    const scriptId = 'google-maps-script';
+    if (document.getElementById(scriptId)) {
+      setMapsLoaded(true);
       return;
     }
-    setError('');
-    
-    // Generate a random 6 digit code
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-    setOtpCode(code);
-    setOtpSent(true);
-    setOtpAlert(true); // Shows OTP on screen for developer testing
 
-    // Automatically hide OTP alert after 10 seconds
-    setTimeout(() => {
-      setOtpAlert(false);
-    }, 10000);
+    const script = document.createElement('script');
+    script.id = scriptId;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      setMapsLoaded(true);
+    };
+    document.head.appendChild(script);
+  }, []);
+
+  React.useEffect(() => {
+    if (mapsLoaded && autocompleteInputRef.current && window.google) {
+      const autocomplete = new window.google.maps.places.Autocomplete(
+        autocompleteInputRef.current,
+        {
+          componentRestrictions: { country: 'in' },
+          fields: ['address_components', 'geometry', 'formatted_address'],
+          types: ['establishment', 'geocode']
+        }
+      );
+
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        if (!place.geometry || !place.geometry.location) return;
+
+        const formattedAddress = place.formatted_address || '';
+        setAddress(formattedAddress);
+        setLatitude(place.geometry.location.lat());
+        setLongitude(place.geometry.location.lng());
+
+        // Extract sublocality or fallback area
+        let foundArea = '';
+        if (place.address_components) {
+          for (const comp of place.address_components) {
+            const types = comp.types;
+            if (types.includes('sublocality') || types.includes('sublocality_level_1')) {
+              foundArea = comp.long_name;
+              break;
+            }
+          }
+        }
+        
+        const matchedArea = bhopalAreas.find(a => 
+          a.toLowerCase() === foundArea.toLowerCase() || 
+          formattedAddress.toLowerCase().includes(a.toLowerCase())
+        );
+        if (matchedArea) {
+          setArea(matchedArea);
+        } else {
+          setArea('Other');
+        }
+      });
+    }
+  }, [mapsLoaded]);
+
+  // Handle address input typing
+  const handleAddressChange = (val: string) => {
+    setAddress(val);
+    if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
+      if (val.trim().length > 1) {
+        const filtered = bhopalLandmarks.filter(item => 
+          item.name.toLowerCase().includes(val.toLowerCase())
+        );
+        setAddressSuggestions(filtered);
+        setShowSuggestions(true);
+      } else {
+        setAddressSuggestions([]);
+        setShowSuggestions(false);
+      }
+    }
   };
 
-  const handleVerifyOTP = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (otpInput === otpCode) {
-      setOtpVerified(true);
-      setOtpAlert(false);
-      setError('');
-    } else {
-      setError('Invalid OTP code. Please enter the correct 6-digit verification code.');
-    }
+  const handleSuggestionSelect = (item: any) => {
+    setAddress(item.name);
+    setLatitude(item.lat);
+    setLongitude(item.lng);
+    setArea(item.area);
+    setShowSuggestions(false);
   };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    if (!shopName || !ownerName || !whatsapp || !email || !password || !area) {
+    if (!shopName || !ownerName || !whatsapp || !email || !password || !area || !address) {
       setError('All fields are required.');
       return;
     }
@@ -149,6 +226,9 @@ export default function DealerRegisterPage() {
           area,
           categories: selectedCategories,
           brands: selectedBrands,
+          address,
+          latitude,
+          longitude,
         }),
       });
 
@@ -184,14 +264,6 @@ export default function DealerRegisterPage() {
 
       {/* Main Container */}
       <div className="px-5 pt-6">
-        {/* OTP Mock Notification Banner */}
-        {otpAlert && (
-          <div className="bg-[#FDDB48] text-[#141414] font-bold text-[12px] rounded-[12px] p-4 mb-5 border-[0.5px] border-[#EBEBEB] flex flex-col gap-1 shadow-none">
-            <span>💬 [WHATSAPP SMS SIMULATION]</span>
-            <span>OTP sent to +91 {whatsapp}: <strong className="text-[13px] bg-white border-[0.5px] border-[#EBEBEB] px-2 py-0.5 rounded ml-1 tracking-widest">{otpCode}</strong></span>
-          </div>
-        )}
-
         {/* Error Alert */}
         {error && (
           <div className="bg-red-50 border-[0.5px] border-red-200 text-[#DC2626] text-[13px] font-semibold rounded-[12px] p-4 mb-5">
@@ -271,68 +343,66 @@ export default function DealerRegisterPage() {
               </div>
             </div>
 
-            {/* WhatsApp Verification Section */}
-            <div className="bg-white border-[0.5px] border-[#EBEBEB] p-5 rounded-[16px] space-y-4">
-              <div>
-                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                  <Phone className="w-4 h-4 text-[#F0743E]" />
-                  WhatsApp Number
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    type="tel"
-                    placeholder="9876543210"
-                    value={whatsapp}
-                    onChange={(e) => {
-                      setWhatsapp(e.target.value);
-                      setOtpSent(false);
-                      setOtpVerified(false);
-                    }}
-                    className="input-premium flex-1"
-                    disabled={loading || otpVerified}
-                  />
-                  {!otpVerified && (
-                    <button
-                      type="button"
-                      onClick={handleSendOTP}
-                      className="bg-[#F0743E] hover:bg-[#D4622E] text-white text-[13px] font-bold px-4 rounded-[12px] transition-colors whitespace-nowrap active:scale-[0.97]"
-                    >
-                      {otpSent ? 'Send Again' : 'Send OTP'}
-                    </button>
-                  )}
-                </div>
-              </div>
+            {/* WhatsApp Details */}
+            <div>
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <Phone className="w-4 h-4 text-[#F0743E]" />
+                WhatsApp Number
+              </label>
+              <input
+                type="tel"
+                placeholder="e.g. 9826123456"
+                value={whatsapp}
+                onChange={(e) => setWhatsapp(e.target.value)}
+                className="input-premium"
+                disabled={loading}
+              />
+            </div>
 
-              {otpSent && !otpVerified && (
-                <div className="border-t border-[#EBEBEB] pt-4">
-                  <label className="block text-[11px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
-                    Enter Verification OTP
-                  </label>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      placeholder="6 digit OTP"
-                      value={otpInput}
-                      onChange={(e) => setOtpInput(e.target.value)}
-                      className="input-premium flex-1 text-sm font-bold"
-                      maxLength={6}
-                    />
+            {/* Google Places Shop Address & Autocomplete */}
+            <div className="relative">
+              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <MapPin className="w-4 h-4 text-[#F0743E]" />
+                Shop Address (Google Maps / Places)
+              </label>
+              <input
+                ref={autocompleteInputRef}
+                type="text"
+                placeholder="Start typing your shop address or landmark..."
+                value={address}
+                onChange={(e) => handleAddressChange(e.target.value)}
+                onFocus={() => {
+                  if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && address.trim().length > 1) {
+                    setShowSuggestions(true);
+                  }
+                }}
+                className="input-premium"
+                disabled={loading}
+                autoComplete="off"
+              />
+              
+              {/* Mock Suggestions dropdown */}
+              {showSuggestions && addressSuggestions.length > 0 && (
+                <div className="absolute left-0 right-0 mt-1 bg-white border border-[#EBEBEB] rounded-[12px] shadow-lg z-50 overflow-hidden max-h-[200px] overflow-y-auto">
+                  {addressSuggestions.map((item) => (
                     <button
+                      key={item.name}
                       type="button"
-                      onClick={handleVerifyOTP}
-                      className="bg-[#141414] text-white text-[13px] font-bold px-4 rounded-[12px] hover:bg-neutral-800 transition-colors active:scale-[0.97]"
+                      onClick={() => handleSuggestionSelect(item)}
+                      className="w-full text-left px-4 py-3 hover:bg-[#FAFAF8] text-[13px] border-b border-[#EBEBEB] last:border-0 font-medium text-[#141414]"
                     >
-                      Verify
+                      {item.name}
                     </button>
-                  </div>
+                  ))}
                 </div>
               )}
 
-              {otpVerified && (
-                <div className="bg-green-50 border-[0.5px] border-green-200 text-[#16A34A] text-[12px] font-bold rounded-[8px] p-3 flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4 text-[#16A34A] flex-shrink-0" />
-                  WhatsApp Number Verified!
-                </div>
+              {/* Coordinates indicator */}
+              {latitude && longitude && (
+                <p className="text-[10px] text-[#16A34A] font-bold mt-1.5 flex items-center gap-1">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-ping"></span>
+                  Location Verified: Lat {latitude.toFixed(4)}, Lng {longitude.toFixed(4)}
+                </p>
               )}
             </div>
 
@@ -418,17 +488,11 @@ export default function DealerRegisterPage() {
             {/* Register Action CTA */}
             <button
               type="submit"
-              disabled={loading || !otpVerified}
+              disabled={loading}
               className="w-full btn-primary mt-6"
             >
               {loading ? 'Registering Shop...' : 'Submit Registration'}
             </button>
-            
-            {!otpVerified && (
-              <p className="text-[11px] text-[#DC2626] font-bold text-center mt-2 animate-pulse">
-                Note: WhatsApp verification is required to complete registration.
-              </p>
-            )}
           </form>
         )}
         
