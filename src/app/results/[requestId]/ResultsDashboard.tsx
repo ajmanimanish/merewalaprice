@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   Store, 
   Globe, 
@@ -9,7 +10,8 @@ import {
   HelpCircle, 
   ChevronRight, 
   Clock, 
-  ArrowRight
+  ArrowRight,
+  ArrowLeft
 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
@@ -85,6 +87,7 @@ interface ResultsDashboardProps {
 }
 
 export default function ResultsDashboard({ initialData, requestId, token }: ResultsDashboardProps) {
+  const router = useRouter();
   const [data, setData] = useState<DashboardData>(initialData);
   const [activeTab, setActiveTab] = useState<'dealers' | 'online'>('dealers');
   const [refreshing, setRefreshing] = useState(false);
@@ -248,13 +251,22 @@ export default function ResultsDashboard({ initialData, requestId, token }: Resu
       {/* Header Info */}
       <header className="sticky top-0 z-30 bg-white border-b-[0.5px] border-[#EBEBEB] px-5 py-4 flex flex-col flex-shrink-0">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-[20px] font-bold text-[#141414] leading-tight tracking-tight">
-              Best Deal Results
-            </h1>
-            <p className="text-[12px] text-[#6B6B6B] font-medium mt-0.5">
-              Request ID: <span className="font-mono text-[11px] text-[#141414]">{requestId.slice(0, 8)}...</span>
-            </p>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => router.push('/')}
+              className="p-2 -ml-2 hover:bg-[#FAFAF8] rounded-full transition-colors flex items-center justify-center"
+              title="Go to Home"
+            >
+              <ArrowLeft className="w-5 h-5 text-[#141414]" />
+            </button>
+            <div>
+              <h1 className="text-[20px] font-bold text-[#141414] leading-tight tracking-tight">
+                Best Deal Results
+              </h1>
+              <p className="text-[12px] text-[#6B6B6B] font-medium mt-0.5">
+                Request ID: <span className="font-mono text-[11px] text-[#141414]">{requestId.slice(0, 8)}...</span>
+              </p>
+            </div>
           </div>
           <button 
             onClick={handleManualRefresh}
