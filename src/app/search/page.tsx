@@ -97,47 +97,66 @@ export default function SearchPage() {
       }
       setLoading(true);
       try {
-        const { data, error } = await supabase
-          .from('products')
-          .select(`
-            id,
-            brand,
-            model_number,
-            name,
-            category,
-            image_url,
-            online_prices ( price )
-          `)
-          .eq('is_active', true)
-          .or(`name.ilike.%${q}%,model_number.ilike.%${q}%,brand.ilike.%${q}%,category.ilike.%${q}%`)
-          .limit(30);
+        // PostgREST .or() breaks with spaces in values — use separate queries merged client-side
+        const pat = `%${q}%`;
 
-        if (data) {
-          const mapped: SearchResult[] = data.map((p: any) => {
-            const onlinePrices = p.online_prices || [];
-            const dealerPrices = (p.dealer_prices || []).filter((d: any) => d.stock_status !== 'out_of_stock');
-            const allPrices = [
-              ...onlinePrices.map((o: any) => o.price),
-              ...dealerPrices.map((d: any) => d.price),
-            ];
-            const lowest = allPrices.length > 0 ? Math.min(...allPrices) : 0;
-            return {
-              id: p.id,
-              brand: p.brand,
-              model_number: p.model_number,
-              name: p.name || p.model_number,
-              category: p.category,
-              lowest_price: lowest,
-              image_url: p.image_url || null,
-            };
-          });
-          setResults(mapped);
-        }
+        // Run 3 parallel queries: by brand, by name, by model_number
+        const [byBrand, byName, byModel] = await Promise.all([
+          supabase
+            .from('products')
+            .select(`id, brand, model_number, name, category, image_url, online_prices ( price )`)
+            .eq('is_active', true)
+            .ilike('brand', pat)
+            .limit(20),
+          supabase
+            .from('products')
+            .select(`id, brand, model_number, name, category, image_url, online_prices ( price )`)
+            .eq('is_active', true)
+            .ilike('name', pat)
+            .limit(20),
+          supabase
+            .from('products')
+            .select(`id, brand, model_number, name, category, image_url, online_prices ( price )`)
+            .eq('is_active', true)
+            .ilike('model_number', pat)
+            .limit(20),
+        ]);
+
+        // Merge and deduplicate by id
+        const allRows = [
+          ...(byBrand.data || []),
+          ...(byName.data || []),
+          ...(byModel.data || []),
+        ];
+        const seen = new Set<string>();
+        const deduped = allRows.filter(p => {
+          if (seen.has(p.id)) return false;
+          seen.add(p.id);
+          return true;
+        });
+
+        const mapped: SearchResult[] = deduped.map((p: any) => {
+          const onlinePrices = p.online_prices || [];
+          const lowest = onlinePrices.length > 0
+            ? Math.min(...onlinePrices.map((o: any) => o.price).filter(Boolean))
+            : 0;
+          return {
+            id: p.id,
+            brand: p.brand,
+            model_number: p.model_number,
+            name: p.name || p.model_number,
+            category: p.category,
+            lowest_price: lowest,
+            image_url: p.image_url || null,
+          };
+        });
+        setResults(mapped);
       } catch (err) {
         console.error('Error searching:', err);
       } finally {
         setLoading(false);
       }
+
     }, 300);
 
     return () => clearTimeout(delayDebounce);
