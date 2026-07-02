@@ -81,8 +81,12 @@ export default function CategoryPage() {
             ),
             dealer_prices (
               price,
-              is_active,
-              is_out_of_stock
+              stock_status,
+              dealers (
+                shop_name,
+                area,
+                is_approved
+              )
             )
           `)
           .eq('category', categoryCode)
@@ -91,7 +95,9 @@ export default function CategoryPage() {
         if (dbProducts) {
           const cards: ProductCard[] = dbProducts.map((p: any) => {
             const onlinePrices = p.online_prices || [];
-            const dealerPrices = p.dealer_prices || [];
+            const dealerPrices = (p.dealer_prices || []).filter(
+              (dp: any) => dp.dealers?.is_approved
+            );
             
             const lowestOnline = onlinePrices.length > 0
               ? Math.min(...onlinePrices.map((o: any) => o.price).filter(Boolean))
