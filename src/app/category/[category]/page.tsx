@@ -91,22 +91,22 @@ export default function CategoryPage() {
         if (dbProducts) {
           const cards: ProductCard[] = dbProducts.map((p: any) => {
             const onlinePrices = p.online_prices || [];
-            const dealerPrices = (p.dealer_prices || []).filter((d: any) => d.is_active && !d.is_out_of_stock);
+            const dealerPrices = p.dealer_prices || [];
             
-            // Find cheapest price
-            const allPrices = [
-              ...onlinePrices.map((o: any) => o.price),
-              ...dealerPrices.map((d: any) => d.price)
-            ];
-            const lowestPrice = allPrices.length > 0 ? Math.min(...allPrices) : 0;
-            
-            // Pick a comparison online price
-            const amzPrice = onlinePrices.find((o: any) => o.platform === 'amazon')?.price;
-            const fkPrice = onlinePrices.find((o: any) => o.platform === 'flipkart')?.price;
-            const onlineRef = amzPrice || fkPrice || (onlinePrices[0]?.price) || 0;
-            const onlinePlatform = amzPrice ? 'Amazon' : fkPrice ? 'Flipkart' : (onlinePrices[0]?.platform || 'Online');
-            
-            const saving = onlineRef > lowestPrice ? (onlineRef - lowestPrice) : 0;
+            const lowestOnline = onlinePrices.length > 0
+              ? Math.min(...onlinePrices.map((o: any) => o.price).filter(Boolean))
+              : 0;
+
+            const lowestDealer = dealerPrices.length > 0
+              ? Math.min(...dealerPrices.map((d: any) => d.price).filter(Boolean))
+              : 0;
+
+            const lowestPrice = lowestDealer || lowestOnline || 0;
+            const saving = lowestDealer && lowestOnline && lowestDealer < lowestOnline
+              ? lowestOnline - lowestDealer
+              : 0;
+
+            const onlinePlatform = onlinePrices[0]?.platform || 'Online';
             const dealersCount = dealerPrices.length;
 
             return {
@@ -117,7 +117,7 @@ export default function CategoryPage() {
               category: p.category,
               specs: p.specs || {},
               lowest_price: lowestPrice,
-              online_price: onlineRef,
+              online_price: lowestOnline,
               online_platform: onlinePlatform,
               dealers_count: dealersCount,
               saving: saving,
@@ -327,21 +327,25 @@ export default function CategoryPage() {
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '9px' }}>
-                    <span style={{ fontSize: '20px', fontWeight: 800 }}>₹ {p.lowest_price.toLocaleString()}</span>
-                    {p.online_price > p.lowest_price && (
+                    <span style={{ fontSize: '20px', fontWeight: 800 }}>
+                      {p.lowest_price > 0 
+                        ? `From ₹${p.lowest_price.toLocaleString('en-IN')}`
+                        : 'Price coming soon'}
+                    </span>
+                    {p.online_price > p.lowest_price && p.lowest_price > 0 && (
                       <span style={{ fontSize: '11px', color: '#6B6B6B', textDecoration: 'line-through' }}>
-                        {p.online_platform} ₹ {p.online_price.toLocaleString()}
+                        {p.online_platform} ₹{p.online_price.toLocaleString('en-IN')}
                       </span>
                     )}
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '9px' }}>
                     {p.saving > 0 ? (
                       <span style={{ display: 'inline-flex', background: '#E7F6ED', color: '#16A34A', fontSize: '10px', fontWeight: 700, padding: '4px 9px', borderRadius: '999px' }}>
-                        Save ₹ {p.saving.toLocaleString()} vs online
+                        Save ₹{p.saving.toLocaleString('en-IN')} vs online
                       </span>
                     ) : (
                       <span style={{ display: 'inline-flex', background: '#FAFAF8', border: '1px solid #EBEBEB', color: '#6B6B6B', fontSize: '10px', fontWeight: 700, padding: '4px 9px', borderRadius: '999px' }}>
-                        Best Price
+                        Official Model
                       </span>
                     )}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
