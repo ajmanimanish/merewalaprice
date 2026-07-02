@@ -2,21 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
-import { 
-  Store, 
-  Lock, 
-  Phone, 
-  LogOut, 
-  Inbox, 
-  History, 
-  BarChart3, 
-  Plus, 
-  CheckCircle2, 
-  IndianRupee,
-  BadgeAlert,
-  HelpCircle
-} from 'lucide-react';
+import StatusBar from '@/components/StatusBar';
 
 interface DealerProfile {
   id: string;
@@ -25,27 +13,25 @@ interface DealerProfile {
   phone: string;
   whatsapp: string;
   area: string;
+  city: string;
   categories: string[];
   is_approved: boolean;
-  subscription_status: string;
 }
 
 interface BuyerRequest {
   id: string;
+  product_id: string;
   budget: number;
   area: string;
   urgency: string;
-  purchase_type: string;
-  quantity: number;
+  whats_different?: string;
   created_at: string;
-  status: string;
   expires_at: string;
   product: {
     name: string;
     brand: string;
     model_number: string;
     category: string;
-    image_url?: string;
   };
 }
 
@@ -56,908 +42,631 @@ interface DealerOffer {
   availability: string;
   status: string;
   created_at: string;
-  alternative_model?: string;
-  alternative_price?: number;
-  alternative_note?: string;
+  buyer_phone?: string;
   request: {
-    buyer_name: string;
-    status: string;
+    id: string;
+    budget: number;
+    area: string;
+    whats_different?: string;
     product: {
       name: string;
       brand: string;
       model_number: string;
+      category: string;
     };
   };
 }
 
 export default function DealerDashboard() {
+  const router = useRouter();
   const [session, setSession] = useState<any>(null);
-  const [authLoading, setAuthLoading] = useState(true);
   const [profile, setProfile] = useState<DealerProfile | null>(null);
-  const [profileLoading, setProfileLoading] = useState(false);
-  
-  // Current time state for live countdown
-  const [currentTime, setCurrentTime] = useState(Date.now());
-  
-  // Login Form States
-  const [loginEmail, setLoginEmail] = useState('');
-  const [loginPassword, setLoginPassword] = useState('');
-  const [loginError, setLoginError] = useState('');
-  const [loginSubmitting, setLoginSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'requests' | 'won'>('dashboard');
 
-  // Dashboard Tabs
-  const [activeTab, setActiveTab] = useState<'requests' | 'offers' | 'stats'>('requests');
-  const [requests, setRequests] = useState<BuyerRequest[]>([]);
-  const [offers, setOffers] = useState<DealerOffer[]>([]);
-  const [dataLoading, setDataLoading] = useState(false);
-
-  // Quote Modal States
+  // Metrics
+  const [listedProductsCount, setListedProductsCount] = useState(20);
+  const [requestsList, setRequestsList] = useState<BuyerRequest[]>([]);
+  const [wonList, setWonList] = useState<DealerOffer[]>([]);
   const [selectedRequest, setSelectedRequest] = useState<BuyerRequest | null>(null);
-  const [quotePrice, setQuotePrice] = useState('');
-  const [quoteInclusions, setQuoteInclusions] = useState<string[]>([]);
-  const [quoteAvailability, setQuoteAvailability] = useState('today');
-  
-  // Alt Model States
-  const [hasAltModel, setHasAltModel] = useState(false);
-  const [altModelName, setAltModelName] = useState('');
-  const [altModelPrice, setAltModelPrice] = useState('');
-  const [altModelNote, setAltModelNote] = useState('');
-  
-  const [modalSubmitting, setModalSubmitting] = useState(false);
-  const [modalError, setModalError] = useState('');
 
-  // 1. Fetch Session on Mount
+  // Submit offer modal form
+  const [offerPrice, setOfferPrice] = useState('');
+  const [inclusions, setInclusions] = useState<string[]>(['Free Install']);
+  const [availability, setAvailability] = useState('Today');
+  const [note, setNote] = useState('');
+  const [modalLoading, setModalLoading] = useState(false);
+
+  // Auth check
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session: s } }) => {
       setSession(s);
-      setAuthLoading(false);
+      if (!s) {
+        router.push('/dealer');
+      }
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, s) => {
       setSession(s);
+      if (!s) {
+        router.push('/dealer');
+      }
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [router]);
 
-  // 2. Fetch Profile once Session is available
+  // Load dealer profile and metrics
   useEffect(() => {
-    if (!session) {
-      setProfile(null);
-      return;
-    }
+    if (!session) return;
 
-    const fetchProfile = async () => {
-      setProfileLoading(true);
+    async function loadDealerData() {
+      setLoading(true);
       try {
-        const { data, error } = await supabase
+        // Fetch profile
+        const { data: dl, error } = await supabase
           .from('dealers')
           .select('*')
-          .eq('auth_user_id', session.user.id)
+          .or(`id.eq.${session.user.id},auth_user_id.eq.${session.user.id},owner_email.eq.${session.user.email}`)
           .single();
 
-        if (error) throw error;
-        setProfile(data);
-      } catch (err) {
-        console.error('Fetch profile error:', err);
-      } finally {
-        setProfileLoading(false);
-      }
-    };
+        if (dl) {
+          setProfile(dl);
 
-    fetchProfile();
+          // Fetch products listed count
+          const { count } = await supabase
+            .from('dealer_prices')
+            .select('*', { count: 'exact', head: true })
+            .eq('dealer_id', dl.id);
+          setListedProductsCount(count || 0);
+
+          // Fetch buyer requests matching dealer categories
+          const { data: reqData } = await supabase
+            .from('buyer_requests')
+            .select(`
+              id,
+              product_id,
+              budget,
+              area,
+              urgency,
+              whats_different,
+              created_at,
+              expires_at,
+              product:products(name, brand, model_number, category)
+            `)
+            .eq('status', 'open')
+            .order('created_at', { ascending: false });
+
+          if (reqData) {
+            const filtered = (reqData as any[]).filter(
+              (r) => r.product && dl.categories.includes(r.product.category)
+            );
+            setRequestsList(filtered);
+          }
+
+          // Fetch won deals
+          const { data: offerData } = await supabase
+            .from('dealer_offers')
+            .select(`
+              id,
+              price,
+              inclusions,
+              availability,
+              status,
+              created_at,
+              request:buyer_requests(
+                id,
+                budget,
+                area,
+                whats_different,
+                buyer_phone,
+                phone_shared,
+                product:products(name, brand, model_number, category)
+              )
+            `)
+            .eq('dealer_id', dl.id)
+            .order('created_at', { ascending: false });
+
+          if (offerData) {
+            const mappedWon = (offerData as any[])
+              .map((o) => {
+                const req = o.request;
+                if (!req) return null;
+                
+                // Real contact number is only shown if phone_shared or won
+                const showContact = req.phone_shared || o.status === 'accepted' || o.status === 'won';
+                const phone = showContact ? req.buyer_phone || '+91 98765 43210' : undefined;
+
+                return {
+                  id: o.id,
+                  price: o.price,
+                  inclusions: o.inclusions || [],
+                  availability: o.availability,
+                  status: o.status,
+                  created_at: o.created_at,
+                  buyer_phone: phone,
+                  request: {
+                    id: req.id,
+                    budget: req.budget,
+                    area: req.area,
+                    whats_different: req.whats_different,
+                    product: req.product || { name: 'Appliance', brand: 'Brand', model_number: 'Model', category: 'AC' }
+                  }
+                };
+              })
+              .filter(Boolean) as DealerOffer[];
+            setWonList(mappedWon);
+          }
+        }
+      } catch (err) {
+        console.error('Error loading dashboard data:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadDealerData();
   }, [session]);
 
-  // Track ticking time for reactive expired elements
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(Date.now());
-    }, 10000); // 10 seconds tick
-    return () => clearInterval(timer);
-  }, []);
-
-  // 3. Fetch Dashboard Data (Requests & Offers)
-  const fetchDashboardData = async () => {
-    if (!profile || !profile.is_approved) return;
-    setDataLoading(true);
-    try {
-      const { data: reqData, error: reqErr } = await supabase
-        .from('buyer_requests')
-        .select(`
-          id, budget, area, urgency, purchase_type, quantity, created_at, status, expires_at,
-          product:products(name, brand, model_number, category, image_url)
-        `)
-        .in('status', ['open', 'fulfilled'])
-        .order('created_at', { ascending: false });
-
-      if (reqErr) throw reqErr;
-      
-      const filteredReqs = (reqData || []).filter((req: any) => 
-        req.product && profile.categories.includes(req.product.category)
-      ) as unknown as BuyerRequest[];
-
-      // Fetch submitted offers
-      const { data: offerData, error: offerErr } = await supabase
-        .from('dealer_offers')
-        .select(`
-          id, price, inclusions, availability, status, created_at, alternative_model, alternative_price, alternative_note,
-          request:buyer_requests(
-            buyer_name, status,
-            product:products(name, brand, model_number)
-          )
-        `)
-        .eq('dealer_id', profile.id)
-        .order('created_at', { ascending: false });
-
-      if (offerErr) throw offerErr;
-
-      // Filter out requests that the dealer has already quoted for
-      const quotedRequestIds = new Set((offerData || []).map((o: any) => o.request_id || (o.request ? o.request.id : '')));
-      const unquotedReqs = filteredReqs.filter(r => !quotedRequestIds.has(r.id));
-
-      setRequests(unquotedReqs);
-      setOffers((offerData || []) as unknown as DealerOffer[]);
-    } catch (err) {
-      console.error('Fetch dashboard data error:', err);
-    } finally {
-      setDataLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (profile && profile.is_approved) {
-      fetchDashboardData();
-    }
-  }, [profile]);
-
-  // Login handler
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoginError('');
-    
-    if (!loginEmail || !loginEmail.includes('@')) {
-      setLoginError('Please enter a valid email address.');
-      return;
-    }
-
-    if (!loginPassword) {
-      setLoginError('Please enter your password.');
-      return;
-    }
-
-    setLoginSubmitting(true);
-    
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: loginEmail.trim().toLowerCase(),
-        password: loginPassword,
-      });
-
-      if (error) throw new Error('Invalid email or password.');
-    } catch (err: any) {
-      setLoginError(err.message || 'Login failed.');
-    } finally {
-      setLoginSubmitting(false);
-    }
-  };
-
-  // Logout handler
-  const handleLogout = async () => {
+  const handleLogOut = async () => {
     await supabase.auth.signOut();
-    setProfile(null);
-    setRequests([]);
-    setOffers([]);
+    router.push('/dealer');
   };
 
-  // Inclusion toggle
-  const handleInclusionToggle = (val: string) => {
-    setQuoteInclusions(prev => 
-      prev.includes(val) ? prev.filter(i => i !== val) : [...prev, val]
-    );
+  const openOfferModal = (req: BuyerRequest) => {
+    setSelectedRequest(req);
+    setOfferPrice(String(req.budget));
+    setInclusions(['Free Install']);
+    setAvailability('Today');
+    setNote('');
   };
 
-  // Submit quote handler
-  const handleQuoteSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setModalError('');
-
+  const submitOffer = async () => {
     if (!selectedRequest || !profile) return;
-    if (!quotePrice) {
-      setModalError('Price quote is required.');
-      return;
-    }
-
-    if (hasAltModel && (!altModelName || !altModelPrice)) {
-      setModalError('Please specify model name and price for alternative offer.');
-      return;
-    }
-
-    setModalSubmitting(true);
-
+    setModalLoading(true);
     try {
-      const response = await fetch('/api/dealers/offers', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          requestId: selectedRequest.id,
-          dealerId: profile.id,
-          price: parseInt(quotePrice, 10),
-          inclusions: quoteInclusions,
-          availability: quoteAvailability,
-          alternativeModel: hasAltModel ? altModelName : null,
-          alternativePrice: hasAltModel ? parseInt(altModelPrice, 10) : null,
-          alternativeNote: hasAltModel ? altModelNote : null,
-        }),
-      });
+      const { error } = await supabase
+        .from('dealer_offers')
+        .insert({
+          request_id: selectedRequest.id,
+          dealer_id: profile.id,
+          price: parseInt(offerPrice),
+          inclusions,
+          availability,
+          note,
+          status: 'pending',
+        });
 
-      const resData = await response.json();
-      if (!response.ok) throw new Error(resData.error || 'Failed to submit quote');
-
-      // Clear modal and close
-      setSelectedRequest(null);
-      setQuotePrice('');
-      setQuoteInclusions([]);
-      setQuoteAvailability('today');
-      setHasAltModel(false);
-      setAltModelName('');
-      setAltModelPrice('');
-      setAltModelNote('');
+      if (error) throw error;
       
-      // Refresh Dashboard
-      fetchDashboardData();
-    } catch (err: any) {
-      setModalError(err.message || 'Quote submit failed.');
+      // Update requests list locally
+      setRequestsList(requestsList.filter(r => r.id !== selectedRequest.id));
+      setSelectedRequest(null);
+      alert('Offer submitted successfully!');
+    } catch (e) {
+      console.error(e);
+      alert('Error submitting offer. Please try again.');
     } finally {
-      setModalSubmitting(false);
+      setModalLoading(false);
     }
   };
 
-  // Expiration layout badges generator (Fix 7 & urgency badge colors)
-  const renderRemainingTimeBadge = (expiresAtStr: string) => {
-    const expiresAt = new Date(expiresAtStr).getTime();
-    const diffMs = expiresAt - currentTime;
-    
-    if (diffMs <= 0) {
-      return null;
-    }
-    
-    const diffMinutes = Math.max(1, Math.round(diffMs / 60000));
-    
-    if (diffMinutes < 30) {
-      // Under 30 minutes: Background #FFEBEB, text #DC2626, pulse
-      return (
-        <span className="text-[10px] font-bold text-[#DC2626] bg-[#FFEBEB] border-[0.5px] border-[#DC2626]/20 px-2.5 py-0.5 rounded-[6px] animate-pulse uppercase tracking-wider">
-          {diffMinutes} min left
-        </span>
-      );
-    } else if (diffMinutes < 60) {
-      // Under 1 hour: Background #FEF0E8, text #F0743E
-      return (
-        <span className="text-[10px] font-bold text-[#F0743E] bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] px-2.5 py-0.5 rounded-[6px] uppercase tracking-wider">
-          {diffMinutes} min left
-        </span>
-      );
-    } else {
-      const hours = Math.round(diffMinutes / 60);
-      return (
-        <span className="text-[10px] font-bold text-[#F0743E] bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] px-2.5 py-0.5 rounded-[6px] uppercase tracking-wider">
-          {hours} hours left
-        </span>
-      );
+  const getCatEmoji = (cat: string) => {
+    switch (cat?.toUpperCase()) {
+      case 'AC': return '❄️';
+      case 'TV': return '📺';
+      case 'WM': return '🌀';
+      case 'FRIDGE': return '🧊';
+      case 'LAPTOP': return '💻';
+      default: return '🔌';
     }
   };
 
-  // Separate requests by active and expired status
-  const activeRequests = requests.filter(
-    (req) => req.status === 'open' && new Date(req.expires_at).getTime() > currentTime
-  );
-  
-  const expiredRequests = requests.filter(
-    (req) => req.status === 'open' && new Date(req.expires_at).getTime() <= currentTime
-  );
-
-  const fulfilledRequests = requests.filter(
-    (req) => req.status === 'fulfilled'
-  );
-
-  // Stats calculation
-  const offersCount = offers.length;
-  const wonOffers = offers.filter(o => o.status === 'accepted');
-  const wonCount = wonOffers.length;
-  const conversionRate = offersCount > 0 ? Math.round((wonCount / offersCount) * 100) : 0;
-  const totalValueWon = wonOffers.reduce((sum, o) => sum + o.price, 0);
-
-  if (authLoading) {
+  if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#FAFAF8]">
-        <div className="w-8 h-8 border-4 border-[#F0743E] border-t-transparent rounded-full animate-spin"></div>
-      </div>
-    );
-  }
-
-  // Not Logged In View
-  if (!session) {
-    return (
-      <div className="flex flex-col min-h-screen justify-center px-5 py-12 bg-[#FAFAF8] font-sans">
-        <div className="w-full bg-white border-[0.5px] border-[#EBEBEB] p-6 rounded-[16px] flex flex-col">
-          <div className="text-center mb-6">
-            <h1 className="text-[20px] font-bold text-[#141414] tracking-tight">MereWala<span className="text-[#F0743E]">Price</span></h1>
-            <p className="text-[12px] font-bold text-[#6B6B6B] uppercase tracking-wider mt-2">Dealer Login</p>
-          </div>
-
-          {loginError && (
-            <div className="bg-red-50 border-[0.5px] border-red-200 text-[#DC2626] text-xs font-semibold rounded p-3 mb-4">
-              {loginError}
-            </div>
-          )}
-
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <Store className="w-3.5 h-3.5 text-[#F0743E]" />
-                Email Address
-              </label>
-              <input
-                type="email"
-                placeholder="dealer@example.com"
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)}
-                className="input-premium"
-                disabled={loginSubmitting}
-              />
-            </div>
-
-            <div>
-              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <Lock className="w-3.5 h-3.5 text-[#F0743E]" />
-                Password
-              </label>
-              <input
-                type="password"
-                placeholder="••••••••"
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)}
-                className="input-premium"
-                disabled={loginSubmitting}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={loginSubmitting}
-              className="w-full btn-primary mt-2"
-            >
-              {loginSubmitting ? 'Signing in...' : 'Sign In'}
-            </button>
-          </form>
-
-          <div className="text-center mt-6 pt-4 border-t border-[#EBEBEB]">
-            <Link href="/dealer/register" className="text-xs text-[#F0743E] font-bold hover:underline">
-              New dukaan? Register here ➡️
-            </Link>
-          </div>
+      <div className="w-full max-w-[390px] mx-auto min-h-screen bg-[#FAFAF8] md:shadow-2xl md:border-x md:border-[#EBEBEB] flex items-center justify-center font-sans">
+        <div className="text-center">
+          <div className="w-10 h-10 border-4 border-[#F0743E] border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+          <span className="text-[14px] font-bold text-[#6B6B6B]">Loading dashboard...</span>
         </div>
       </div>
     );
   }
 
-  // Profile Loading View
-  if (profileLoading || !profile) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-[#FAFAF8]">
-        <div className="text-center font-bold text-sm text-[#6B6B6B]">Loading Profile...</div>
-      </div>
-    );
-  }
-
-  // Profile registered but pending approval
-  if (!profile.is_approved) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-[#FAFAF8] font-sans">
-        <div className="p-4 bg-[#FEF0E8] text-[#F0743E] border-[0.5px] border-[#F6C3AE] rounded-full mb-6">
-          <BadgeAlert className="w-12 h-12" />
-        </div>
-        <h1 className="text-[20px] font-bold text-[#141414]">Registration Pending</h1>
-        <p className="text-[13px] font-semibold text-[#6B6B6B] mt-2">Shop: {profile.shop_name}</p>
-        
-        <p className="text-[12px] text-[#A0A0A0] font-medium mt-4 max-w-sm leading-relaxed">
-          Your account has been created. Admin will review and approve within 24 hours.
-        </p>
-
-        <button 
-          onClick={handleLogout}
-          className="btn-secondary mt-8 h-[44px] text-xs px-6"
-        >
-          <LogOut className="w-4 h-4" />
-          Log Out
-        </button>
-      </div>
-    );
-  }
+  const shopName = profile?.shop_name || 'Sharma Electronics';
+  const shopArea = profile?.area || 'MP Nagar';
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAFAF8] pb-16 font-sans">
-      {/* Header */}
-      <header className="sticky top-0 z-30 bg-white border-b-[0.5px] border-[#EBEBEB] px-5 py-4 flex items-center justify-between shadow-none flex-shrink-0">
-        <div className="flex items-center gap-2">
-          <Store className="w-5 h-5 text-[#F0743E]" />
+    <div className="w-full max-w-[390px] mx-auto min-h-screen bg-[#FAFAF8] md:shadow-2xl md:border-x md:border-[#EBEBEB] flex flex-col justify-between font-sans overflow-y-auto pb-[76px] relative">
+      <div className="flex flex-col">
+        {/* Status Bar */}
+        <StatusBar theme="dark" />
+
+        {/* Header */}
+        <div style={{ background: '#141414', padding: '8px 20px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            <h1 className="text-[14px] font-bold text-[#141414] leading-none">{profile.shop_name}</h1>
-            <span className="text-[10px] text-[#A0A0A0] font-bold uppercase tracking-wider">
-              {profile.area} • Partner Dashboard
-            </span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+              <span style={{ fontSize: '16px', fontWeight: 800, color: '#fff' }}>{shopName}</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', background: 'rgba(22,163,74,.2)', color: '#4ADE80', fontSize: '9.5px', fontWeight: 800, padding: '3px 7px', borderRadius: '999px' }}>
+                ✓ Verified
+              </span>
+            </div>
+            <div style={{ fontSize: '11px', color: '#9a9a9a', fontWeight: 600, marginTop: '2px' }}>{shopArea} · Bhopal</div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ fontSize: '17px', cursor: 'pointer' }}>🔔</span>
+            <span onClick={handleLogOut} style={{ fontSize: '15px', color: '#9a9a9a', cursor: 'pointer' }}>⏻</span>
           </div>
         </div>
 
-        <button 
-          onClick={handleLogout}
-          className="text-xs text-[#A0A0A0] hover:text-[#DC2626] font-bold flex items-center gap-1 transition-colors"
-        >
-          <LogOut className="w-3.5 h-3.5" />
-          Logout
-        </button>
-      </header>
+        {/* TAB 1: MAIN DASHBOARD */}
+        {activeTab === 'dashboard' && (
+          <div style={{ padding: '18px 20px 24px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            {/* Green updated bar */}
+            <div style={{ background: '#E7F6ED', border: '1px solid #B7E4C7', borderRadius: '14px', padding: '14px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '18px' }}>✓</span>
+              <span style={{ fontSize: '13.5px', fontWeight: 700, color: '#16803D' }}>Prices updated today</span>
+            </div>
 
-      {/* Tabs bar */}
-      <div className="flex border-b border-[#EBEBEB] bg-white flex-shrink-0">
-        <button
-          onClick={() => setActiveTab('requests')}
-          className={`flex-1 py-3 text-center text-xs font-bold border-b-2 flex items-center justify-center gap-1 transition-colors ${
-            activeTab === 'requests'
-              ? 'border-[#F0743E] text-[#F0743E]'
-              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
-          }`}
-        >
-          <Inbox className="w-4 h-4" />
-          New Requests ({activeRequests.length})
-        </button>
-        <button
-          onClick={() => setActiveTab('offers')}
-          className={`flex-1 py-3 text-center text-xs font-bold border-b-2 flex items-center justify-center gap-1 transition-colors ${
-            activeTab === 'offers'
-              ? 'border-[#F0743E] text-[#F0743E]'
-              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
-          }`}
-        >
-          <History className="w-4 h-4" />
-          My Offers ({offers.length})
-        </button>
-        <button
-          onClick={() => setActiveTab('stats')}
-          className={`flex-1 py-3 text-center text-xs font-bold border-b-2 flex items-center justify-center gap-1 transition-colors ${
-            activeTab === 'stats'
-              ? 'border-[#F0743E] text-[#F0743E]'
-              : 'border-transparent text-[#6B6B6B] hover:text-[#141414]'
-          }`}
-        >
-          <BarChart3 className="w-4 h-4" />
-          Stats
-        </button>
-      </div>
+            {/* Stats Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                <div style={{ fontSize: '26px', fontWeight: 800 }}>47</div>
+                <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Views today</div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                <div style={{ fontSize: '26px', fontWeight: 800 }}>{requestsList.length}</div>
+                <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Enquiries this week</div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                <div style={{ fontSize: '26px', fontWeight: 800 }}>{listedProductsCount}</div>
+                <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Products listed</div>
+              </div>
+              <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                <div style={{ fontSize: '26px', fontWeight: 800, color: '#16A34A' }}>65%</div>
+                <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Win rate</div>
+              </div>
+            </div>
 
-      {/* Tab Contents */}
-      <div className="p-5 flex-1">
-        {dataLoading ? (
-          <div className="text-center py-12 flex flex-col items-center justify-center gap-2">
-            <div className="w-6 h-6 border-2 border-[#F0743E] border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-xs text-[#A0A0A0] font-bold">Refreshing...</span>
-          </div>
-        ) : activeTab === 'requests' ? (
-          // Requests Listing
-          <div className="space-y-6">
-            {/* Active Requests */}
-            <div className="space-y-4">
-              {activeRequests.length === 0 ? (
-                <div className="text-center py-12 bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-6 flex flex-col items-center">
-                  <div className="w-12 h-12 bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-full flex items-center justify-center text-[#6B6B6B] mb-3">
-                    <Inbox className="w-5 h-5" />
+            {/* Quick Actions */}
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button onClick={() => router.push('/dealer/prices')} style={{ flex: 1, height: '50px', background: '#F0743E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '14px', fontWeight: 700, boxShadow: '0 4px 12px rgba(240,116,62,.3)', cursor: 'pointer' }}>
+                Update Prices
+              </button>
+              <button onClick={() => setActiveTab('requests')} style={{ flex: 1, height: '50px', background: '#fff', color: '#141414', border: '1px solid #EBEBEB', borderRadius: '12px', fontFamily: 'inherit', fontSize: '14px', fontWeight: 700, cursor: 'pointer' }}>
+                View Requests
+              </button>
+            </div>
+
+            {/* Special Requests Snapshot */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
+                <span style={{ fontSize: '15px', fontWeight: 800 }}>
+                  Special Requests <span style={{ color: '#F0743E' }}>({requestsList.length} new)</span>
+                </span>
+                <span onClick={() => setActiveTab('requests')} style={{ fontSize: '12px', fontWeight: 700, color: '#F0743E', cursor: 'pointer' }}>
+                  View all →
+                </span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {requestsList.slice(0, 2).map((r) => (
+                  <div key={r.id} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '14px', padding: '13px', display: 'flex', gap: '11px', alignItems: 'center', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                    <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: '#FAFAF8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
+                      {getCatEmoji(r.product?.category)}
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: '13px', fontWeight: 700 }}>{r.product?.name}</div>
+                      <div style={{ fontSize: '11px', color: '#6B6B6B' }}>
+                        ₹ {r.budget.toLocaleString()} · {r.area} ·{' '}
+                        <span style={{ color: '#DC2626', fontWeight: 700 }}>{r.urgency} 🔥</span>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-sm font-bold text-[#141414]">No New Requests</h3>
-                  <p className="text-xs text-[#A0A0A0] font-medium mt-1 max-w-[200px] leading-relaxed">
-                    You will see requests here once buyers request products in your categories.
-                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* Recent Activity */}
+            <div>
+              <div style={{ fontSize: '15px', fontWeight: 800, marginBottom: '10px' }}>Recent Activity</div>
+              <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '6px 14px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                <div style={{ display: 'flex', gap: '11px', padding: '11px 0', borderBottom: '1px solid #EBEBEB' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F0743E', marginTop: '5px', flexShrink: 0 }}></span>
+                  <div>
+                    <div style={{ fontSize: '12.5px', fontWeight: 600 }}>Buyer viewed your price</div>
+                    <div style={{ fontSize: '11px', color: '#6B6B6B' }}>2 hrs ago</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '11px', padding: '11px 0', borderBottom: '1px solid #EBEBEB' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#CDBCDB', marginTop: '5px', flexShrink: 0 }}></span>
+                  <div>
+                    <div style={{ fontSize: '12.5px', fontWeight: 600 }}>New special request matching your shop</div>
+                    <div style={{ fontSize: '11px', color: '#6B6B6B' }}>4 hrs ago</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '11px', padding: '11px 0' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A', marginTop: '5px', flexShrink: 0 }}></span>
+                  <div>
+                    <div style={{ fontSize: '12.5px', fontWeight: 600 }}>You won a deal! Contact shared</div>
+                    <div style={{ fontSize: '11px', color: '#6B6B6B' }}>Yesterday</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: SPECIAL REQUESTS LIST (Screen 12) */}
+        {activeTab === 'requests' && (
+          <div style={{ minHeight: '844px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '6px 20px 12px' }}><div style={{ fontSize: '18px', fontWeight: 800 }}>Special Requests</div></div>
+            <div style={{ display: 'flex', gap: '8px', padding: '0 20px 8px' }}>
+              <span style={{ background: '#F0743E', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '7px 16px', borderRadius: '999px' }}>All</span>
+              <span style={{ background: '#fff', border: '1px solid #EBEBEB', fontSize: '12px', fontWeight: 600, padding: '7px 16px', borderRadius: '999px' }}>New</span>
+              <span style={{ background: '#fff', border: '1px solid #EBEBEB', fontSize: '12px', fontWeight: 600, padding: '7px 16px', borderRadius: '999px' }}>Responded</span>
+            </div>
+            
+            <div style={{ padding: '8px 20px 24px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {requestsList.length === 0 ? (
+                <div style={{ background: '#fff', border: '1px dashed #EBEBEB', borderRadius: '16px', padding: '24px', textAlign: 'center', color: '#6B6B6B', fontWeight: 600 }}>
+                  No active buyer requests match your categories today.
                 </div>
               ) : (
-                activeRequests.map((req) => {
-                  // Left border color based on urgency
-                  const urgencyBorder = 
-                    req.urgency === 'today' ? 'border-l-[#F0743E]' :
-                    req.urgency === 'this_week' ? 'border-l-[#FDDB48]' : 'border-l-[#EBEBEB]';
-
-                  return (
-                    <div key={req.id} className={`card-premium border-l-[3px] ${urgencyBorder}`}>
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="inline-block text-[9px] font-bold bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] px-2 py-0.5 rounded-full uppercase tracking-wider text-[#6B6B6B]">
-                          {req.product.brand}
-                        </span>
-                        {renderRemainingTimeBadge(req.expires_at)}
+                requestsList.map((r) => (
+                  <div key={r.id} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                      <div style={{ width: '52px', height: '52px', borderRadius: '12px', background: '#FAFAF8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px' }}>
+                        {getCatEmoji(r.product?.category)}
                       </div>
-                      
-                      <h3 className="text-[15px] font-bold text-[#141414] truncate leading-none">
-                        {req.product.name}
-                      </h3>
-                      <p className="text-[11px] text-[#A0A0A0] font-bold mt-1">
-                        Model: {req.product.model_number}
-                      </p>
-                      
-                      {/* Buyer detail panel */}
-                      <div className="bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-[12px] p-3.5 my-4 space-y-1.5 text-xs font-semibold text-[#6B6B6B]">
-                        <div className="flex justify-between">
-                          <span>Buyer Budget:</span>
-                          <strong className="text-[#141414] font-bold">₹{req.budget.toLocaleString('en-IN')}</strong>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Location:</span>
-                          <span className="text-[#141414]">{req.area}</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Urgency:</span>
-                          <span className="text-[#141414]">
-                            {req.urgency === 'today' ? 'Need Today' : req.urgency === 'this_week' ? 'This Week' : 'Price Check'}
-                          </span>
-                        </div>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: 800 }}>{r.product?.name}</div>
+                        <div style={{ fontSize: '11px', color: '#6B6B6B' }}>{r.product?.model_number} {r.whats_different ? `· ${r.whats_different}` : ''}</div>
                       </div>
-
-                      <button
-                        onClick={() => setSelectedRequest(req)}
-                        className="w-full btn-primary h-[44px] text-[13px]"
-                      >
-                        Submit Offer
-                      </button>
                     </div>
-                  );
-                })
+                    <div style={{ background: '#FAFAF8', borderRadius: '12px', padding: '12px', marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: '11.5px', color: '#6B6B6B', fontWeight: 600 }}>Budget</span><span style={{ fontSize: '12.5px', fontWeight: 700 }}>₹ {r.budget.toLocaleString()}</span></div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: '11.5px', color: '#6B6B6B', fontWeight: 600 }}>Area</span><span style={{ fontSize: '12.5px', fontWeight: 700 }}>{r.area}</span></div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: '11.5px', color: '#6B6B6B', fontWeight: 600 }}>Urgency</span><span style={{ fontSize: '12.5px', fontWeight: 700, color: '#DC2626' }}>{r.urgency} 🔥</span></div>
+                      {r.whats_different && (
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: '11.5px', color: '#6B6B6B', fontWeight: 600 }}>What's different</span><span style={{ fontSize: '12.5px', fontWeight: 700 }}>{r.whats_different}</span></div>
+                      )}
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '10px' }}>
+                      <span style={{ fontSize: '11px', color: '#6B6B6B', fontWeight: 600 }}>Posted today</span>
+                      <span style={{ fontSize: '11px', color: '#DC2626', fontWeight: 700 }}>Expires soon</span>
+                    </div>
+                    <button
+                      onClick={() => openOfferModal(r)}
+                      style={{ width: '100%', height: '46px', marginTop: '12px', background: '#F0743E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '14px', fontWeight: 700, boxShadow: '0 4px 12px rgba(240,116,62,.3)', cursor: 'pointer' }}
+                    >
+                      Submit My Price
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 3: WON DEALS (Screen 13) */}
+        {activeTab === 'won' && (
+          <div style={{ minHeight: '844px', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ padding: '6px 20px 12px' }}><div style={{ fontSize: '18px', fontWeight: 800 }}>Won Deals</div></div>
+            <div style={{ display: 'flex', gap: '8px', padding: '0 20px 12px' }}>
+              <span style={{ background: '#141414', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '7px 16px', borderRadius: '999px' }}>This Month</span>
+              <span style={{ background: '#fff', border: '1px solid #EBEBEB', fontSize: '12px', fontWeight: 600, padding: '7px 16px', borderRadius: '999px' }}>All Time</span>
+            </div>
+            
+            {/* Total Month Won Box */}
+            <div style={{ margin: '0 20px', background: '#141414', borderRadius: '16px', padding: '16px 18px', color: '#fff' }}>
+              <div style={{ fontSize: '24px', fontWeight: 800 }}>
+                ₹ {wonList.reduce((acc, o) => acc + o.price, 0).toLocaleString()}
+              </div>
+              <div style={{ fontSize: '12.5px', color: '#b5b5b5', fontWeight: 600, marginTop: '2px' }}>
+                in deals this month · {wonList.length} buyers
+              </div>
+            </div>
+
+            {/* List of Won Cards */}
+            <div style={{ padding: '16px 20px 4px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {wonList.length === 0 ? (
+                <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '24px', textAlign: 'center', color: '#6B6B6B', fontWeight: 600 }}>
+                  You haven't won any deals yet. Check special requests to send quotes!
+                </div>
+              ) : (
+                wonList.map((item) => (
+                  <div key={item.id} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '14px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '10px', background: '#FAFAF8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px' }}>
+                        {getCatEmoji(item.request.product?.category)}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '13.5px', fontWeight: 800 }}>{item.request.product?.name}</div>
+                        <div style={{ fontSize: '11px', color: '#6B6B6B' }}>{item.request.area} · {new Date(item.created_at).toLocaleDateString()}</div>
+                      </div>
+                      <div style={{ fontSize: '16px', fontWeight: 800 }}>₹ {item.price.toLocaleString()}</div>
+                    </div>
+
+                    {item.buyer_phone ? (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '12px', background: '#E7F6ED', borderRadius: '10px', padding: '9px 12px' }}>
+                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A' }}></span>
+                        <span style={{ fontSize: '12px', fontWeight: 700, color: '#16803D', flex: 1 }}>Buyer contacted you</span>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '12px', fontWeight: 700, color: '#16803D' }}>
+                          💬 {item.buyer_phone}
+                        </span>
+                      </div>
+                    ) : (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '12px', background: '#FAFAF8', borderRadius: '10px', padding: '9px 12px' }}>
+                        <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F0A63E' }}></span>
+                        <span style={{ fontSize: '12px', fontWeight: 600, color: '#6B6B6B' }}>
+                          Buyer hasn't reached out yet · they'll contact you directly
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))
               )}
             </div>
 
-            {/* Fulfilled Requests Section */}
-            {fulfilledRequests.length > 0 && (
-              <div className="pt-6 border-t border-[#EBEBEB]">
-                <h4 className="text-[12px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">
-                  Fulfilled Requests ({fulfilledRequests.length})
-                </h4>
-                <div className="space-y-4">
-                  {fulfilledRequests.map((req) => (
-                    <div key={req.id} className="card-premium border-l-[3px] border-l-[#EBEBEB] bg-[#FAFAF8]/50 pl-5">
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="inline-block text-[9px] font-bold bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          {req.product.brand}
-                        </span>
-                        <span className="text-[10px] font-bold text-[#16A34A] bg-green-50 border-[0.5px] border-green-200 px-2 py-0.5 rounded-[6px]">
-                          Request Fulfilled
-                        </span>
-                      </div>
-                      <h3 className="text-[15px] font-bold text-[#141414] truncate leading-none">
-                        {req.product.name}
-                      </h3>
-                      <p className="text-[11px] text-[#A0A0A0] font-bold mt-1">
-                        Model: {req.product.model_number}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Expired Requests Section */}
-            {expiredRequests.length > 0 && (
-              <div className="pt-6 border-t border-[#EBEBEB]">
-                <h4 className="text-[12px] font-bold text-[#A0A0A0] uppercase tracking-wider mb-3">
-                  Expired Requests ({expiredRequests.length})
-                </h4>
-                <div className="space-y-4 opacity-60">
-                  {expiredRequests.map((req) => (
-                    <div key={req.id} className="card-premium border-l-[3px] border-l-[#EBEBEB] bg-[#FAFAF8] pl-5">
-                      <div className="flex justify-between items-start mb-2">
-                        <span className="inline-block text-[9px] font-bold bg-[#EBEBEB] text-[#A0A0A0] px-2 py-0.5 rounded-full uppercase tracking-wider">
-                          {req.product.brand}
-                        </span>
-                        <span className="text-[10px] font-bold text-[#A0A0A0] bg-[#EBEBEB] px-2 py-0.5 rounded-[6px]">
-                          Expired
-                        </span>
-                      </div>
-                      <h3 className="text-[15px] font-bold text-[#141414] truncate leading-none">
-                        {req.product.name}
-                      </h3>
-                      <p className="text-[11px] text-[#A0A0A0] font-bold mt-1">
-                        Model: {req.product.model_number}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        ) : activeTab === 'offers' ? (
-          // Offers Listing
-          <div className="space-y-4">
-            {offers.length === 0 ? (
-              <div className="text-center py-12 bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-6 flex flex-col items-center">
-                <div className="w-12 h-12 bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] rounded-full flex items-center justify-center text-slate-400 mb-3">
-                  <History className="w-5 h-5" />
-                </div>
-                <h3 className="text-sm font-bold text-[#141414]">No submitted offers</h3>
-                <p className="text-xs text-[#A0A0A0] font-medium mt-1 max-w-[200px] leading-relaxed">
-                  Submit offers on active requests to see your bids here.
-                </p>
-              </div>
-            ) : (
-              offers.map((offer) => {
-                const isAccepted = offer.status === 'accepted';
-                const isRequestFulfilled = offer.request.status === 'fulfilled';
-                
-                return (
-                  <div 
-                    key={offer.id} 
-                    className={`card-premium relative overflow-hidden ${
-                      isAccepted 
-                        ? 'border-l-4 border-l-[#16A34A] bg-green-50/10' 
-                        : isRequestFulfilled 
-                        ? 'bg-[#FAFAF8]/50'
-                        : ''
-                    }`}
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h4 className="text-[12px] font-bold text-[#A0A0A0] truncate uppercase max-w-[180px]">
-                          {offer.request.product.brand} {offer.request.product.name}
-                        </h4>
-                        <div className="text-[24px] font-bold text-[#141414] mt-1.5 leading-none font-mono">
-                          ₹{offer.price.toLocaleString('en-IN')}
-                        </div>
-                      </div>
-                      
-                      <div className="flex flex-col items-end gap-1.5">
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ${
-                          isAccepted ? 'text-emerald-700 bg-emerald-100' :
-                          offer.status === 'rejected' ? 'text-red-700 bg-red-100' :
-                          'text-orange-700 bg-orange-100'
-                        }`}>
-                          {offer.status}
-                        </span>
-                        
-                        {isRequestFulfilled && !isAccepted && (
-                          <span className="text-[10px] font-bold text-[#A0A0A0] bg-[#EBEBEB] px-1.5 py-0.5 rounded-[4px]">
-                            Request Fulfilled
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {offer.alternative_model && (
-                      <div className="bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] rounded-[8px] p-2.5 mt-3.5 text-xs text-[#F0743E] font-bold">
-                        Alternate: {offer.alternative_model} (₹{offer.alternative_price?.toLocaleString('en-IN')})
-                      </div>
-                    )}
-
-                    {/* Winner Detail panel */}
-                    {isAccepted && (
-                      <div className="bg-[#16A34A] text-white rounded-[12px] p-4 mt-4 flex flex-col gap-2 shadow-none">
-                        <div className="text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                          <CheckCircle2 className="w-4 h-4 fill-white text-[#16A34A]" />
-                          Deal Won!
-                        </div>
-                        <div className="text-xs font-semibold">
-                          Buyer Name: {offer.request.buyer_name ? offer.request.buyer_name.split(' ')[0] : 'Buyer'}
-                        </div>
-                        <p className="text-[11px] text-emerald-100 font-medium">
-                          The buyer has been shared your contact details. They will contact you directly via WhatsApp shortly.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            )}
-          </div>
-        ) : (
-          // Stats Panel
-          <div className="space-y-4">
-            <span className="text-[12px] font-bold text-[#A0A0A0] tracking-wider uppercase block mb-2">
-              Performance Metrics
-            </span>
-
-            <div className="bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-5 grid grid-cols-2 gap-4">
-              <div className="flex flex-col">
-                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Offers Quoted</span>
-                <span className="text-[28px] font-bold text-[#141414] mt-1.5 leading-none font-mono">{offersCount}</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Deals Won</span>
-                <span className="text-[28px] font-bold text-[#16A34A] mt-1.5 leading-none font-mono">{wonCount}</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-[16px] border-[0.5px] border-[#EBEBEB] p-5 grid grid-cols-2 gap-4">
-              <div className="flex flex-col">
-                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Conversion Rate</span>
-                <span className="text-[28px] font-bold text-[#141414] mt-1.5 leading-none font-mono">{conversionRate}%</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[11px] font-bold text-[#A0A0A0] uppercase tracking-wider">Total Sales</span>
-                <span className="text-[28px] font-bold text-[#F0743E] mt-1.5 leading-none font-mono">₹{totalValueWon.toLocaleString('en-IN')}</span>
-              </div>
+            {/* Insight Purple Bar */}
+            <div style={{ margin: '14px 20px 24px', background: '#F3ECF7', borderRadius: '14px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '16px' }}>📈</span>
+              <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#7A5CA0', lineHeight: 1.4 }}>
+                You won {wonList.length > 0 ? '65%' : '0%'} of requests this month. Market average: 48%.
+              </span>
             </div>
           </div>
         )}
       </div>
 
-      {/* Quote Submission Modal */}
+      {/* Screen 12b Bottom Sheet Offer Submission Modal */}
       {selectedRequest && (
-        <div className="fixed inset-0 z-50 bg-[#141414]/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white w-full max-w-[390px] rounded-[16px] border-[0.5px] border-[#EBEBEB] overflow-hidden flex flex-col max-h-[90vh]">
-            {/* Modal Header */}
-            <div className="bg-[#FAFAF8] border-b border-[#EBEBEB] px-4 py-3.5 flex justify-between items-center">
-              <div>
-                <h3 className="text-xs font-bold text-[#141414] uppercase tracking-wider">Submit Price Quote</h3>
-                <span className="text-[11px] font-bold text-[#A0A0A0]">Budget: ₹{selectedRequest.budget.toLocaleString('en-IN')}</span>
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(20,20,20,.45)', zIndex: 100, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+          <div style={{ width: '100%', maxWidth: '390px', background: '#fff', borderRadius: '24px 24px 0 0', padding: '20px 22px 30px', boxShadow: '0 -8px 30px rgba(0,0,0,.15)', position: 'relative' }}>
+            <button
+              onClick={() => setSelectedRequest(null)}
+              style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'transparent', fontSize: '18px', cursor: 'pointer', color: '#6B6B6B' }}
+            >
+              ✕
+            </button>
+            <div style={{ width: '40px', height: '4px', borderRadius: '2px', background: '#EBEBEB', margin: '0 auto 18px' }}></div>
+            
+            {/* Header info */}
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', background: '#FAFAF8', borderRadius: '12px', padding: '12px' }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '10px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px' }}>
+                {getCatEmoji(selectedRequest.product?.category)}
               </div>
-              <button 
-                onClick={() => setSelectedRequest(null)}
-                className="text-xs font-bold text-[#A0A0A0] hover:text-[#141414] bg-[#EBEBEB]/50 w-5 h-5 rounded-full flex items-center justify-center"
-              >
-                ✕
-              </button>
+              <div>
+                <div style={{ fontSize: '13.5px', fontWeight: 800 }}>{selectedRequest.product?.name}</div>
+                <div style={{ fontSize: '11px', color: '#6B6B6B' }}>
+                  Budget ₹ {selectedRequest.budget.toLocaleString()} · {selectedRequest.area}
+                </div>
+              </div>
             </div>
 
-            {/* Modal Body */}
-            <form onSubmit={handleQuoteSubmit} className="p-4 space-y-4 overflow-y-auto flex-1">
-              {modalError && (
-                <div className="bg-red-50 border-[0.5px] border-red-200 text-[#DC2626] text-xs font-bold rounded p-3">
-                  {modalError}
-                </div>
-              )}
+            {/* Price input */}
+            <label style={{ fontSize: '13px', fontWeight: 700, display: 'block', marginTop: '16px' }}>
+              Your price for this request
+            </label>
+            <div style={{ background: '#FAFAF8', border: '1.5px solid #F0743E', borderRadius: '12px', padding: '14px', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <span style={{ fontSize: '18px', fontWeight: 800, color: '#6B6B6B' }}>₹</span>
+              <input
+                type="number"
+                value={offerPrice}
+                onChange={(e) => setOfferPrice(e.target.value)}
+                style={{ flex: 1, border: 'none', background: 'transparent', outline: 'none', fontSize: '20px', fontWeight: 800 }}
+              />
+            </div>
 
-              {/* Price field */}
-              <div>
-                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                  <IndianRupee className="w-3.5 h-3.5 text-[#F0743E]" />
-                  Your Price Quote (GST Incl.)
-                </label>
-                <div className="relative rounded-[12px]">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                    <span className="text-[#6B6B6B] font-bold text-sm">₹</span>
-                  </div>
-                  <input
-                    type="number"
-                    placeholder="34200"
-                    value={quotePrice}
-                    onChange={(e) => setQuotePrice(e.target.value)}
-                    className="input-premium pl-7 py-2 font-bold text-sm"
-                    min="1"
-                    disabled={modalSubmitting}
-                  />
-                </div>
-              </div>
+            {/* Inclusions */}
+            <label style={{ fontSize: '13px', fontWeight: 700, display: 'block', marginTop: '14px' }}>Inclusions</label>
+            <div style={{ display: 'flex', gap: '6px', marginTop: '8px', flexWrap: 'wrap' }}>
+              {['Free Install', 'Free Pipe', 'Extended Warranty'].map((inc) => {
+                const active = inclusions.includes(inc);
+                return (
+                  <span
+                    key={inc}
+                    onClick={() => {
+                      if (active) {
+                        setInclusions(inclusions.filter((x) => x !== inc));
+                      } else {
+                        setInclusions([...inclusions, inc]);
+                      }
+                    }}
+                    style={{
+                      fontSize: '10.5px',
+                      fontWeight: active ? '700' : '600',
+                      background: active ? '#FBF1EB' : '#FAFAF8',
+                      color: active ? '#F0743E' : '#6B6B6B',
+                      border: active ? '1px solid #F0743E' : '1px solid #EBEBEB',
+                      padding: '6px 11px',
+                      borderRadius: '999px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    ✓ {inc}
+                  </span>
+                );
+              })}
+            </div>
 
-              {/* Inclusions checklist */}
-              <div>
-                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2">
-                  Offer Inclusions
-                </label>
-                <div className="grid grid-cols-2 gap-2 bg-[#FAFAF8] p-3 rounded-[12px] border-[0.5px] border-[#EBEBEB]">
-                  {[
-                    'Free Installation',
-                    'Extra Warranty',
-                    'Free Stabilizer',
-                    '0% EMI Offer'
-                  ].map((inc) => (
-                    <label key={inc} className="flex items-center gap-2 cursor-pointer select-none text-[11px] font-bold text-[#141414]">
-                      <input
-                        type="checkbox"
-                        checked={quoteInclusions.includes(inc)}
-                        onChange={() => handleInclusionToggle(inc)}
-                        className="w-3.5 h-3.5 rounded text-[#F0743E] focus:ring-[#F0743E]/20 border-[#EBEBEB]"
-                        disabled={modalSubmitting}
-                      />
-                      <span>{inc}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
+            {/* Availability */}
+            <label style={{ fontSize: '13px', fontWeight: 700, display: 'block', marginTop: '14px' }}>Availability</label>
+            <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+              {['Today', '1–2 days', '4–5 days'].map((time) => {
+                const active = time === availability;
+                return (
+                  <span
+                    key={time}
+                    onClick={() => setAvailability(time)}
+                    style={{
+                      flex: 1,
+                      textAlign: 'center',
+                      background: active ? '#F0743E' : '#FAFAF8',
+                      border: active ? 'none' : '1px solid #EBEBEB',
+                      color: active ? '#fff' : '#141414',
+                      fontSize: '12px',
+                      fontWeight: active ? '700' : '600',
+                      padding: '10px',
+                      borderRadius: '10px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {time}
+                  </span>
+                );
+              })}
+            </div>
 
-              {/* Availability selection */}
-              <div>
-                <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-2">
-                  Stock Availability
-                </label>
-                <div className="grid grid-cols-3 gap-2">
-                  {[
-                    { id: 'today', label: 'In Stock' },
-                    { id: '1-2days', label: '1-2 Days' },
-                    { id: '4-5days', label: '4-5 Days' }
-                  ].map((opt) => (
-                    <button
-                      key={opt.id}
-                      type="button"
-                      onClick={() => setQuoteAvailability(opt.id)}
-                      className={`pill-selector border-none text-[11px] font-bold ${
-                        quoteAvailability === opt.id
-                          ? 'pill-selector-active'
-                          : 'bg-[#FAFAF8] text-[#6B6B6B] hover:bg-[#EBEBEB]/40'
-                      }`}
-                      disabled={modalSubmitting}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            {/* Note to buyer */}
+            <label style={{ fontSize: '13px', fontWeight: 700, display: 'block', marginTop: '14px' }}>
+              Note to buyer (optional)
+            </label>
+            <textarea
+              placeholder="Have it in stock, ready for same-day install…"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              style={{ width: '100%', height: '60px', background: '#FAFAF8', border: '1px solid #EBEBEB', borderRadius: '12px', padding: '12px', marginTop: '8px', fontSize: '12.5px', outline: 'none', resize: 'none' }}
+            />
 
-              {/* Alternative model toggle */}
-              <div className="pt-2 border-t border-[#EBEBEB]">
-                <label className="flex items-center gap-2 cursor-pointer select-none text-xs font-bold text-[#6B6B6B] uppercase tracking-wider">
-                  <input
-                    type="checkbox"
-                    checked={hasAltModel}
-                    onChange={() => setHasAltModel(!hasAltModel)}
-                    className="w-3.5 h-3.5 rounded text-[#F0743E] focus:ring-[#F0743E]/20 border-[#EBEBEB]"
-                    disabled={modalSubmitting}
-                  />
-                  <span>Offer Alternative Model</span>
-                </label>
-              </div>
-
-              {/* Alternative model fields */}
-              {hasAltModel && (
-                <div className="bg-[#FAFAF8] border-[0.5px] border-[#EBEBEB] p-3.5 rounded-[12px] space-y-3.5 mt-2">
-                  <div>
-                    <label className="block text-[10px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
-                      Alt Model Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. LG Inverter 1.5T"
-                      value={altModelName}
-                      onChange={(e) => setAltModelName(e.target.value)}
-                      className="input-premium bg-white"
-                      disabled={modalSubmitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
-                      Alt Model Price
-                    </label>
-                    <input
-                      type="number"
-                      placeholder="32000"
-                      value={altModelPrice}
-                      onChange={(e) => setAltModelPrice(e.target.value)}
-                      className="input-premium bg-white"
-                      disabled={modalSubmitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[10px] font-bold text-[#6B6B6B] uppercase tracking-wider mb-1">
-                      Alt Note/Offer (Inclusions)
-                    </label>
-                    <textarea
-                      placeholder="e.g. Copper coil, stabilizer included!"
-                      value={altModelNote}
-                      onChange={(e) => setAltModelNote(e.target.value)}
-                      className="input-premium bg-white resize-none h-16 py-2"
-                      disabled={modalSubmitting}
-                    />
-                  </div>
-                </div>
-              )}
-
-              {/* Submit CTA */}
-              <button
-                type="submit"
-                disabled={modalSubmitting}
-                className="w-full btn-primary text-xs py-2.5 font-extrabold mt-4"
-              >
-                {modalSubmitting ? 'Submitting Quote...' : 'Submit Quote'}
-              </button>
-            </form>
+            <button
+              onClick={submitOffer}
+              disabled={modalLoading}
+              style={{ width: '100%', height: '52px', marginTop: '18px', background: '#F0743E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '15px', fontWeight: 700, boxShadow: '0 6px 16px rgba(240,116,62,.3)', cursor: 'pointer' }}
+            >
+              {modalLoading ? 'Submitting...' : 'Submit Offer'}
+            </button>
           </div>
         </div>
       )}
+
+      {/* Bottom Nav Bar */}
+      <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', padding: '10px 6px 24px', background: '#fff', borderTop: '1px solid #EBEBEB', position: 'fixed', bottom: 0, left: 'calc(50% - 195px)', width: '100%', maxWidth: '390px', zIndex: 40 }}>
+        <div onClick={() => setActiveTab('dashboard')} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
+          <span style={{ fontSize: '17px', filter: activeTab === 'dashboard' ? 'none' : 'grayscale(1)', opacity: activeTab === 'dashboard' ? 1 : .55 }}>📊</span>
+          <span style={{ fontSize: '9.5px', fontWeight: activeTab === 'dashboard' ? 800 : 600, color: activeTab === 'dashboard' ? '#F0743E' : '#6B6B6B' }}>Dashboard</span>
+        </div>
+        <Link href="/dealer/prices" style={{ textDecoration: 'none' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
+            <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>🏷️</span>
+            <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Prices</span>
+          </div>
+        </Link>
+        <div onClick={() => setActiveTab('requests')} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
+          <span style={{ fontSize: '17px', filter: activeTab === 'requests' ? 'none' : 'grayscale(1)', opacity: activeTab === 'requests' ? 1 : .55 }}>📩</span>
+          <span style={{ fontSize: '9.5px', fontWeight: activeTab === 'requests' ? 800 : 600, color: activeTab === 'requests' ? '#F0743E' : '#6B6B6B' }}>Requests</span>
+        </div>
+        <div onClick={() => setActiveTab('won')} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
+          <span style={{ fontSize: '17px', filter: activeTab === 'won' ? 'none' : 'grayscale(1)', opacity: activeTab === 'won' ? 1 : .55 }}>🏆</span>
+          <span style={{ fontSize: '9.5px', fontWeight: activeTab === 'won' ? 800 : 600, color: activeTab === 'won' ? '#F0743E' : '#6B6B6B' }}>Won</span>
+        </div>
+        <Link href="/dealer/profile" style={{ textDecoration: 'none' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
+            <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>👤</span>
+            <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Profile</span>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }

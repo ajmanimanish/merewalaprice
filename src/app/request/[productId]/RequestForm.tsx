@@ -46,6 +46,7 @@ export default function RequestForm({ product }: RequestFormProps) {
   const [purchaseType, setPurchaseType] = useState('personal');
   const [buyerName, setBuyerName] = useState('');
   const [buyerPhone, setBuyerPhone] = useState('');
+  const [whatsDifferent, setWhatsDifferent] = useState('different_variant');
 
   useEffect(() => {
     async function checkUserSession() {
@@ -160,7 +161,9 @@ export default function RequestForm({ product }: RequestFormProps) {
           area,
           urgency,
           purchaseType,
-          quantity: 1
+          whatsDifferent,
+          quantity: 1,
+          userId: user?.id || null
         })
       });
 
@@ -358,6 +361,24 @@ export default function RequestForm({ product }: RequestFormProps) {
             </div>
           </div>
 
+          {/* What's different about what you need */}
+          <div>
+            <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+              What's different about what you need?
+            </label>
+            <select
+              value={whatsDifferent}
+              onChange={(e) => setWhatsDifferent(e.target.value)}
+              className="input-premium font-semibold bg-[#FAFAF8] cursor-pointer"
+              disabled={loading}
+            >
+              <option value="different_variant">Different year/model variant</option>
+              <option value="different_color">Different color</option>
+              <option value="capacity_change">Larger/smaller capacity</option>
+              <option value="specific_feature">Specific feature needed</option>
+            </select>
+          </div>
+
           {/* Divider */}
           <div className="h-[0.5px] bg-[#EBEBEB] my-4"></div>
 
@@ -377,7 +398,7 @@ export default function RequestForm({ product }: RequestFormProps) {
               <div>
                 <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
                   <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
-                  WhatsApp Mobile Number
+                  Mobile Number
                 </label>
                 <input
                   type="tel"
@@ -393,7 +414,7 @@ export default function RequestForm({ product }: RequestFormProps) {
                   </p>
                 )}
                 <p className="text-[10px] text-[#A0A0A0] font-medium mt-1.5">
-                  Required to receive local dealer offers via WhatsApp.
+                  We'll share your number with the dealer ONLY when you choose to select them.
                 </p>
               </div>
             </div>
@@ -422,7 +443,7 @@ export default function RequestForm({ product }: RequestFormProps) {
               <div>
                 <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
                   <Phone className="w-3.5 h-3.5 text-[#F0743E]" />
-                  WhatsApp Mobile Number
+                  Mobile Number
                 </label>
                 <input
                   type="tel"
@@ -438,7 +459,7 @@ export default function RequestForm({ product }: RequestFormProps) {
                   </p>
                 )}
                 <p className="text-[10px] text-[#A0A0A0] font-medium mt-1.5">
-                  Note: Results URL will be sent directly via WhatsApp.
+                  We'll share your number with the dealer ONLY when you choose to select them.
                 </p>
               </div>
             </div>

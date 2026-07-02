@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="df5332f1-d165-41a7-97b4-5ce27d40564f"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("5e00b2c2-7d97-4f95-ac0c-e19492a2cd51") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("0c699b3b-6b5f-46a8-bda4-7241a1d17853") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("48143a0e-34f5-4b93-a90a-7109bec0ea7f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("33043217-85c6-4156-8cc5-d8cd45092a9d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("5e00b2c2-7d97-4f95-ac0c-e19492a2cd51") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("0c699b3b-6b5f-46a8-bda4-7241a1d17853") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("48143a0e-34f5-4b93-a90a-7109bec0ea7f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("33043217-85c6-4156-8cc5-d8cd45092a9d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("5e00b2c2-7d97-4f95-ac0c-e19492a2cd51") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("0c699b3b-6b5f-46a8-bda4-7241a1d17853") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("48143a0e-34f5-4b93-a90a-7109bec0ea7f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("33043217-85c6-4156-8cc5-d8cd45092a9d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("5e00b2c2-7d97-4f95-ac0c-e19492a2cd51") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("0c699b3b-6b5f-46a8-bda4-7241a1d17853") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("48143a0e-34f5-4b93-a90a-7109bec0ea7f") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("33043217-85c6-4156-8cc5-d8cd45092a9d") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+  <style>
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-8px) rotate(-4deg); } }
+    @keyframes floaty2 { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    .scrollx::-webkit-scrollbar { display: none; }
+  </style>
+</helmet>
+<div style="background: #E9E8E3; font-family: 'Plus Jakarta Sans', sans-serif; color: #141414; padding: 64px 80px 120px;">
+
+  <!-- Wall header -->
+  <div style="max-width: 1280px; margin: 0 auto 12px;">
+    <div style="display: inline-flex; align-items: center; gap: 10px; background: #141414; color: #FFFFFF; padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 700;">
+      <span style="width: 8px; height: 8px; border-radius: 50%; background: #F0743E;"></span>
+      MereWalaPrice — Product UI
+    </div>
+    <h1 style="margin: 18px 0 6px; font-size: 44px; font-weight: 800; letter-spacing: -0.03em;">Complete UI System <span style="color:#F0743E;">·</span> 18 Screens</h1>
+    <p style="margin: 0; font-size: 15px; color: #6B6B6B; font-weight: 600;">Hyperlocal appliance price comparison · Bhopal · Buyers, Dealers &amp; Admin</p>
+  </div>
+
+  <!-- ===== BUYER ===== -->
+  <div style="max-width: 1400px; margin: 56px auto 0; display: flex; align-items: center; gap: 14px;">
+    <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F0743E;">Buyer app</span>
+    <span style="font-size: 13px; font-weight: 600; color: #6B6B6B;">Mobile · 390px · Screens 1–8</span>
+    <div style="flex: 1; height: 1px; background: #D8D7D1;"></div>
+  </div>
+  <div style="max-width: 1400px; margin: 28px auto 0; display: flex; flex-wrap: wrap; gap: 48px;">
+<!-- ============ SCREEN 1 · ONBOARDING ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">01</span>
+        <span style="font-size:14px;font-weight:700;">Onboarding</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div style="min-height:844px;display:flex;flex-direction:column;position:relative;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0;">
+            <span style="font-size:14px;font-weight:800;">9:41</span>
+            <div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div>
+          </div>
+          <div style="display:flex;justify-content:flex-end;padding:4px 22px 0;"><span style="font-size:14px;font-weight:600;color:#6B6B6B;">Skip</span></div>
+          <div style="padding:8px 24px 0;">
+            <div style="position:relative;height:268px;border-radius:24px;background:linear-gradient(160deg,#F3ECF7 0%,#FBF3EF 100%);overflow:hidden;display:flex;align-items:center;justify-content:center;">
+              <div style="position:absolute;width:150px;height:150px;border-radius:50%;background:#CDBCDB;opacity:.35;top:-40px;left:-30px;"></div>
+              <div style="position:absolute;width:120px;height:120px;border-radius:50%;background:#FDDB48;opacity:.30;bottom:-30px;right:-20px;"></div>
+              <div style="position:relative;z-index:2;width:172px;background:#fff;border-radius:20px;box-shadow:0 12px 30px rgba(20,20,20,.12);padding:14px;animation:floaty 5s ease-in-out infinite;">
+                <div style="height:78px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:34px;">❄️</div>
+                <div style="font-size:9px;font-weight:700;letter-spacing:.06em;color:#F0743E;text-transform:uppercase;">Blue Star</div>
+                <div style="font-size:11px;font-weight:700;margin-top:3px;line-height:1.3;">1.5T 5★ Inverter AC</div>
+                <div style="display:flex;align-items:baseline;gap:6px;margin-top:8px;"><span style="font-size:17px;font-weight:800;">₹35,800</span><span style="font-size:10px;color:#6B6B6B;text-decoration:line-through;">₹38,990</span></div>
+                <div style="margin-top:8px;display:inline-flex;align-items:center;gap:4px;background:#E7F6ED;color:#16A34A;font-size:9px;font-weight:700;padding:4px 8px;border-radius:999px;">💰 Save ₹3,190</div>
+              </div>
+              <div style="position:absolute;z-index:3;top:34px;right:30px;width:60px;height:60px;border-radius:18px;background:#F0743E;box-shadow:0 8px 18px rgba(240,116,62,.4);display:flex;align-items:center;justify-content:center;font-size:28px;animation:floaty2 4s ease-in-out infinite;">🏪</div>
+              <div style="position:absolute;z-index:3;bottom:28px;left:26px;display:inline-flex;align-items:center;gap:5px;background:#fff;box-shadow:0 6px 14px rgba(20,20,20,.10);padding:7px 11px;border-radius:999px;"><span style="font-size:12px;">📍</span><span style="font-size:11px;font-weight:700;">Bhopal</span></div>
+            </div>
+          </div>
+          <div style="padding:26px 24px 0;flex:1;">
+            <h1 style="margin:0;font-size:27px;line-height:1.18;font-weight:800;letter-spacing:-.02em;">Better price than online.<br>From <span style="color:#F0743E;">Bhopal dealers.</span></h1>
+            <p style="margin:12px 0 0;font-size:14px;line-height:1.5;color:#6B6B6B;font-weight:500;">Compare local dealer prices with Amazon, Flipkart &amp; Croma — instantly.</p>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;border-radius:11px;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.06);">🏪</div><span style="font-size:13.5px;font-weight:600;">Local dealer prices updated daily</span></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;border-radius:11px;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.06);">💰</div><span style="font-size:13.5px;font-weight:600;">See true price after card discounts</span></div>
+              <div style="display:flex;align-items:center;gap:12px;"><div style="width:38px;height:38px;border-radius:11px;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.06);">📍</div><span style="font-size:13.5px;font-weight:600;">Bhopal-specific — not generic India prices</span></div>
+            </div>
+          </div>
+          <div style="padding:18px 24px 30px;flex-shrink:0;">
+            <button style="width:100%;height:54px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(240,116,62,.32);">Browse Products</button>
+            <button style="width:100%;height:50px;margin-top:12px;background:#fff;color:#141414;border:1px solid #EBEBEB;border-radius:12px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;"><span style="width:18px;height:18px;border-radius:50%;background:conic-gradient(#EA4335 0deg 90deg,#FBBC05 90deg 180deg,#34A853 180deg 270deg,#4285F4 270deg 360deg);display:inline-block;"></span> Sign in with Google</button>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 2 · HOME / BROWSE ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">02</span>
+        <span style="font-size:14px;font-weight:700;">Home / Browse</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Home" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0;background:#FAFAF8;">
+            <span style="font-size:14px;font-weight:800;">9:41</span>
+            <div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div>
+          </div>
+          <!-- header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 20px 10px;">
+            <span style="font-size:20px;font-weight:800;letter-spacing:-.02em;">MereWala<span style="color:#F0743E;">Price</span></span>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:16px;">🔍</div>
+              <div style="width:38px;height:38px;border-radius:50%;background:#E4E4E1;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#6B6B6B;">?</div>
+            </div>
+          </div>
+          <!-- location pill -->
+          <div style="padding:0 20px;">
+            <div style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #EBEBEB;padding:8px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <span style="font-size:12px;">📍</span><span style="font-size:13px;font-weight:700;">Bhopal</span><span style="font-size:13px;color:#6B6B6B;">·</span><span style="font-size:13px;font-weight:700;color:#F0743E;">Change</span>
+            </div>
+          </div>
+          <!-- hero -->
+          <div style="padding:18px 20px 6px;">
+            <h2 style="margin:0;font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.2;">Best price. Local dealer. <span style="color:#F0743E;">Today.</span></h2>
+            <p style="margin:8px 0 0;font-size:13px;font-weight:600;color:#6B6B6B;">47 dealers · 312 products listed today</p>
+          </div>
+          <!-- category grid -->
+          <div style="padding:14px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="background:#F0743E;border-radius:16px;padding:14px;box-shadow:0 4px 12px rgba(240,116,62,.28);"><div style="font-size:24px;">❄️</div><div style="font-size:14px;font-weight:700;color:#fff;margin-top:8px;">AC</div><div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.85);margin-top:2px;">43 products</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:24px;">📺</div><div style="font-size:14px;font-weight:700;margin-top:8px;">TV</div><div style="font-size:11px;font-weight:600;color:#6B6B6B;margin-top:2px;">61 products</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:24px;">🌀</div><div style="font-size:14px;font-weight:700;margin-top:8px;">Washing Machine</div><div style="font-size:11px;font-weight:600;color:#6B6B6B;margin-top:2px;">38 products</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:24px;">🧊</div><div style="font-size:14px;font-weight:700;margin-top:8px;">Fridge</div><div style="font-size:11px;font-weight:600;color:#6B6B6B;margin-top:2px;">52 products</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:24px;">💻</div><div style="font-size:14px;font-weight:700;margin-top:8px;">Laptop</div><div style="font-size:11px;font-weight:600;color:#6B6B6B;margin-top:2px;">44 products</div></div>
+            <div style="background:#fff;border:1px dashed #CDBCDB;border-radius:16px;padding:14px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;"><div style="font-size:22px;color:#F0743E;">⋯</div><div style="font-size:14px;font-weight:700;margin-top:6px;">View All</div><div style="font-size:11px;font-weight:600;color:#6B6B6B;margin-top:2px;">312 total</div></div>
+          </div>
+          <!-- popular -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 20px 12px;">
+            <span style="font-size:16px;font-weight:800;">Popular Right Now</span>
+            <span style="font-size:12px;font-weight:700;color:#F0743E;">See all</span>
+          </div>
+          <div class="scrollx" style="display:flex;gap:12px;overflow-x:auto;padding:0 20px 4px;">
+            <div style="flex:0 0 160px;background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;">
+              <div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">🤍</div>
+              <div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">❄️</div>
+              <div style="font-size:11px;font-weight:700;color:#F0743E;text-transform:uppercase;margin-top:10px;">Voltas</div>
+              <div style="font-size:12.5px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1T 3★ Inverter Vectra</div>
+              <div style="font-size:15px;font-weight:800;margin-top:8px;">From ₹28,499</div>
+              <div style="margin-top:8px;display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;">₹3,491 less than Amazon</div>
+            </div>
+            <div style="flex:0 0 160px;background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;">
+              <div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">❤️</div>
+              <div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">📺</div>
+              <div style="font-size:11px;font-weight:700;color:#F0743E;text-transform:uppercase;margin-top:10px;">Samsung</div>
+              <div style="font-size:12.5px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">55" Crystal 4K UHD</div>
+              <div style="font-size:15px;font-weight:800;margin-top:8px;">From ₹42,990</div>
+              <div style="margin-top:8px;display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;">₹5,000 less than Amazon</div>
+            </div>
+            <div style="flex:0 0 160px;background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;">
+              <div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">🤍</div>
+              <div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">🧊</div>
+              <div style="font-size:11px;font-weight:700;color:#F0743E;text-transform:uppercase;margin-top:10px;">LG</div>
+              <div style="font-size:12.5px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">260L Frost-Free Fridge</div>
+              <div style="font-size:15px;font-weight:800;margin-top:8px;">From ₹24,700</div>
+              <div style="margin-top:8px;display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;">₹2,300 less than Amazon</div>
+            </div>
+          </div>
+          <div style="flex:1;min-height:20px;"></div>
+          <!-- bottom tab bar -->
+          <div style="display:flex;justify-content:space-around;align-items:center;padding:10px 8px 24px;background:#fff;border-top:1px solid #EBEBEB;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:18px;">🏠</span><span style="font-size:10px;font-weight:800;color:#F0743E;">Home</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:18px;filter:grayscale(1);opacity:.55;">🗂️</span><span style="font-size:10px;font-weight:600;color:#6B6B6B;">Browse</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:18px;filter:grayscale(1);opacity:.55;">🔍</span><span style="font-size:10px;font-weight:600;color:#6B6B6B;">Search</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:18px;filter:grayscale(1);opacity:.55;">📩</span><span style="font-size:10px;font-weight:600;color:#6B6B6B;">Requests</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:18px;filter:grayscale(1);opacity:.55;">👤</span><span style="font-size:10px;font-weight:600;color:#6B6B6B;">Profile</span></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+<!-- ============ SCREEN 2b · SEARCH — INITIAL ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">2b</span>
+        <span style="font-size:14px;font-weight:700;">Search · Initial</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Search Initial" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 18px 12px;">
+            <div style="flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><span style="font-size:15px;">🔍</span><span style="font-size:14px;color:#9a9a9a;font-weight:500;">Search AC, TV, fridge…</span></div>
+            <span style="font-size:13px;font-weight:700;color:#F0743E;">Cancel</span>
+          </div>
+          <div style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:24px;">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;"><span style="font-size:15px;font-weight:800;">Recent Searches</span><span style="font-size:12px;font-weight:700;color:#6B6B6B;">Clear</span></div>
+              <div style="display:flex;flex-direction:column;">
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EBEBEB;"><span style="font-size:15px;color:#6B6B6B;">🕔</span><span style="flex:1;font-size:13.5px;font-weight:600;">Blue Star 1.5 Ton inverter</span><span style="font-size:14px;color:#9a9a9a;">↗</span></div>
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #EBEBEB;"><span style="font-size:15px;color:#6B6B6B;">🕔</span><span style="flex:1;font-size:13.5px;font-weight:600;">Samsung 55 inch 4K</span><span style="font-size:14px;color:#9a9a9a;">↗</span></div>
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 0;"><span style="font-size:15px;color:#6B6B6B;">🕔</span><span style="flex:1;font-size:13.5px;font-weight:600;">HP Pavilion laptop</span><span style="font-size:14px;color:#9a9a9a;">↗</span></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:15px;font-weight:800;margin-bottom:12px;">Popular Searches</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">🔥 1.5 Ton AC</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">📺 55" 4K TV</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">🧊 Double door fridge</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">🌀 Front load WM</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">💻 Gaming laptop</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:700;padding:9px 14px;border-radius:999px;box-shadow:0 1px 3px rgba(0,0,0,.06);">❄️ Window AC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 2b · SEARCH — RESULTS ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">2b</span>
+        <span style="font-size:14px;font-weight:700;">Search · Results</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Search Results" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 18px 10px;">
+            <div style="flex:1;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #F0743E;border-radius:12px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><span style="font-size:15px;">🔍</span><span style="flex:1;font-size:14px;color:#141414;font-weight:700;">samsung 43</span><span style="width:20px;height:20px;border-radius:50%;background:#EBEBEB;color:#6B6B6B;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;">✕</span></div>
+            <span style="font-size:13px;font-weight:700;color:#F0743E;">Cancel</span>
+          </div>
+          <div style="font-size:12px;color:#6B6B6B;font-weight:600;padding:0 20px 8px;">4 results for “samsung 43”</div>
+          <div style="padding:6px 18px 24px;display:flex;flex-direction:column;gap:22px;">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:0 2px;"><span style="font-size:14px;">📺</span><span style="font-size:13.5px;font-weight:800;">Televisions</span><span style="font-size:11px;font-weight:700;color:#fff;background:#F0743E;padding:2px 8px;border-radius:999px;">4</span></div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="width:56px;height:56px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">📺</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Samsung</div><div style="font-size:13px;font-weight:700;line-height:1.2;">43" Crystal 4K UHD Smart TV</div><div style="font-size:11px;color:#6B6B6B;">UA43CUE60</div></div><div style="text-align:right;flex-shrink:0;"><div style="font-size:10px;color:#6B6B6B;">From</div><div style="font-size:15px;font-weight:800;">₹27,490</div></div></div>
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="width:56px;height:56px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">📺</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Samsung</div><div style="font-size:13px;font-weight:700;line-height:1.2;">43" Crystal 4K iSmart (2024)</div><div style="font-size:11px;color:#6B6B6B;">UA43DUE77</div></div><div style="text-align:right;flex-shrink:0;"><div style="font-size:10px;color:#6B6B6B;">From</div><div style="font-size:15px;font-weight:800;">₹29,990</div></div></div>
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="width:56px;height:56px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">📺</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Samsung</div><div style="font-size:13px;font-weight:700;line-height:1.2;">43" Full HD Smart LED TV</div><div style="font-size:11px;color:#6B6B6B;">UA43T5410</div></div><div style="text-align:right;flex-shrink:0;"><div style="font-size:10px;color:#6B6B6B;">From</div><div style="font-size:15px;font-weight:800;">₹23,200</div></div></div>
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="width:56px;height:56px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;">📺</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Samsung</div><div style="font-size:13px;font-weight:700;line-height:1.2;">43" The Frame QLED</div><div style="font-size:11px;color:#6B6B6B;">QA43LS03D</div></div><div style="text-align:right;flex-shrink:0;"><div style="font-size:10px;color:#6B6B6B;">From</div><div style="font-size:15px;font-weight:800;">₹48,900</div></div></div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:0 2px;"><span style="font-size:14px;">❄️</span><span style="font-size:13.5px;font-weight:800;">Air Conditioners</span><span style="font-size:11px;font-weight:700;color:#6B6B6B;background:#F0F0EE;padding:2px 8px;border-radius:999px;">0</span></div>
+              <div style="background:#fff;border:1px dashed #EBEBEB;border-radius:16px;padding:22px 16px;text-align:center;">
+                <div style="font-size:26px;margin-bottom:6px;">🔍</div>
+                <div style="font-size:13px;font-weight:700;">No AC matches “samsung 43”</div>
+                <div style="font-size:11.5px;color:#6B6B6B;font-weight:600;margin-top:3px;">Samsung doesn't sell a 43-series AC. Try “Samsung 1.5 Ton”.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 3 · CATEGORY BROWSE ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">03</span>
+        <span style="font-size:14px;font-weight:700;">Category Browse · AC</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Category" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <!-- header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 18px 12px;">
+            <div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:16px;">←</div>
+            <span style="font-size:16px;font-weight:800;">Air Conditioners <span style="color:#6B6B6B;font-weight:700;">(43)</span></span>
+            <div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:15px;">⚙️</div>
+          </div>
+          <!-- filter chips -->
+          <div class="scrollx" style="display:flex;gap:8px;overflow-x:auto;padding:0 18px 4px;">
+            <span style="flex:0 0 auto;background:#F0743E;color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border-radius:999px;">All</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">1 Ton</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">1.5 Ton</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">2 Ton</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">3★</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">5★</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">Inverter</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;color:#141414;font-size:12px;font-weight:600;padding:8px 14px;border-radius:999px;">Under ₹35K</span>
+          </div>
+          <!-- sort -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px 4px;">
+            <span style="font-size:13px;font-weight:700;">Sort: <span style="color:#F0743E;">Best Savings ▾</span></span>
+            <span style="font-size:12px;font-weight:600;color:#6B6B6B;">43 results</span>
+          </div>
+          <!-- list -->
+          <div style="padding:8px 18px 24px;display:flex;flex-direction:column;gap:12px;">
+            <!-- card template repeated -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;gap:14px;">
+              <div style="width:80px;height:80px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;">❄️</div>
+              <div style="flex:1;min-width:0;">
+                <span style="font-size:9px;font-weight:800;letter-spacing:.06em;color:#F0743E;text-transform:uppercase;">Blue Star</span>
+                <div style="font-size:14px;font-weight:700;margin-top:2px;line-height:1.25;">1.5 Ton 5★ Inverter Split AC</div>
+                <div style="font-size:11px;color:#6B6B6B;margin-top:1px;">IE518PNU</div>
+                <div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;"><span style="font-size:9px;font-weight:600;color:#6B6B6B;background:#FAFAF8;border:1px solid #EBEBEB;padding:3px 7px;border-radius:6px;">1.5T · 5★ · Inverter · R32</span></div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-top:9px;"><span style="font-size:20px;font-weight:800;">₹35,800</span><span style="font-size:11px;color:#6B6B6B;text-decoration:line-through;">Amazon ₹38,990</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:9px;"><span style="display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:10px;font-weight:700;padding:4px 9px;border-radius:999px;">Save ₹3,190 vs online</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;font-weight:600;color:#6B6B6B;">3 dealers</span><span style="font-size:15px;">🤍</span></div></div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;gap:14px;">
+              <div style="width:80px;height:80px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;">❄️</div>
+              <div style="flex:1;min-width:0;">
+                <span style="font-size:9px;font-weight:800;letter-spacing:.06em;color:#F0743E;text-transform:uppercase;">LG</span>
+                <div style="font-size:14px;font-weight:700;margin-top:2px;line-height:1.25;">1.5 Ton 5★ Inverter Split AC</div>
+                <div style="font-size:11px;color:#6B6B6B;margin-top:1px;">US-Q19YNZE</div>
+                <div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;"><span style="font-size:9px;font-weight:600;color:#6B6B6B;background:#FAFAF8;border:1px solid #EBEBEB;padding:3px 7px;border-radius:6px;">1.5T · 5★ · Inverter · R32</span></div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-top:9px;"><span style="font-size:20px;font-weight:800;">₹37,490</span><span style="font-size:11px;color:#6B6B6B;text-decoration:line-through;">Amazon ₹41,990</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:9px;"><span style="display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:10px;font-weight:700;padding:4px 9px;border-radius:999px;">Save ₹4,500 vs online</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;font-weight:600;color:#6B6B6B;">4 dealers</span><span style="font-size:15px;">❤️</span></div></div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;gap:14px;">
+              <div style="width:80px;height:80px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;">❄️</div>
+              <div style="flex:1;min-width:0;">
+                <span style="font-size:9px;font-weight:800;letter-spacing:.06em;color:#F0743E;text-transform:uppercase;">Voltas</span>
+                <div style="font-size:14px;font-weight:700;margin-top:2px;line-height:1.25;">1 Ton 3★ Inverter Vectra</div>
+                <div style="font-size:11px;color:#6B6B6B;margin-top:1px;">123V Vectra</div>
+                <div style="display:flex;gap:5px;margin-top:7px;flex-wrap:wrap;"><span style="font-size:9px;font-weight:600;color:#6B6B6B;background:#FAFAF8;border:1px solid #EBEBEB;padding:3px 7px;border-radius:6px;">1T · 3★ · Inverter · R32</span></div>
+                <div style="display:flex;align-items:baseline;gap:8px;margin-top:9px;"><span style="font-size:20px;font-weight:800;">₹28,499</span><span style="font-size:11px;color:#6B6B6B;text-decoration:line-through;">Amazon ₹31,990</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:9px;"><span style="display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:10px;font-weight:700;padding:4px 9px;border-radius:999px;">Save ₹3,491 vs online</span><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:11px;font-weight:600;color:#6B6B6B;">5 dealers</span><span style="font-size:15px;">🤍</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 4 · PRODUCT DETAIL ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">04</span>
+        <span style="font-size:14px;font-weight:700;">Product Detail</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;position:relative;">
+        <div data-screen-label="Product Detail" style="display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#fff;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <!-- header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 18px 8px;background:#fff;">
+            <div style="width:38px;height:38px;border-radius:50%;background:#FAFAF8;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:16px;">←</div>
+            <div style="display:flex;gap:10px;"><div style="width:38px;height:38px;border-radius:50%;background:#FAFAF8;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:14px;">↗</div><div style="width:38px;height:38px;border-radius:50%;background:#FAFAF8;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:14px;">🤍</div></div>
+          </div>
+          <!-- image -->
+          <div style="height:240px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:90px;">❄️</div>
+          <!-- info -->
+          <div style="padding:18px 20px 14px;background:#FAFAF8;">
+            <span style="display:inline-flex;font-size:10px;font-weight:800;letter-spacing:.06em;color:#fff;background:#F0743E;text-transform:uppercase;padding:4px 9px;border-radius:6px;">Blue Star</span>
+            <h2 style="margin:10px 0 0;font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-.01em;">1.5 Ton 5 Star Inverter Split AC</h2>
+            <div style="font-size:13px;color:#6B6B6B;margin-top:4px;">IE518PNU</div>
+            <div style="font-size:12px;color:#6B6B6B;margin-top:6px;font-weight:600;">View on Blue Star website →</div>
+            <div class="scrollx" style="display:flex;gap:6px;overflow-x:auto;margin-top:14px;">
+              <span style="flex:0 0 auto;font-size:11px;font-weight:600;background:#fff;border:1px solid #EBEBEB;padding:6px 11px;border-radius:8px;">1.5 Ton</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:600;background:#fff;border:1px solid #EBEBEB;padding:6px 11px;border-radius:8px;">5 Star</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:600;background:#fff;border:1px solid #EBEBEB;padding:6px 11px;border-radius:8px;">Inverter</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:600;background:#fff;border:1px solid #EBEBEB;padding:6px 11px;border-radius:8px;">R32</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:600;background:#fff;border:1px solid #EBEBEB;padding:6px 11px;border-radius:8px;">Copper Coil</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:600;background:#fff;border:1px solid #EBEBEB;padding:6px 11px;border-radius:8px;">10yr Compressor</span>
+            </div>
+          </div>
+          <!-- best price bhopal -->
+          <div style="padding:6px 20px 4px;background:#FAFAF8;">
+            <div style="font-size:16px;font-weight:800;">📍 Best Price in Bhopal Today</div>
+            <div style="font-size:12.5px;color:#6B6B6B;font-weight:600;margin-top:2px;">3 dealers have this in stock</div>
+          </div>
+          <div style="padding:12px 20px 4px;background:#FAFAF8;display:flex;flex-direction:column;gap:12px;">
+            <!-- dealer 1 BEST DEAL -->
+            <div style="background:#fff;border:1.5px solid #F0743E;border-radius:16px;padding:16px;box-shadow:0 4px 14px rgba(240,116,62,.14);position:relative;">
+              <span style="position:absolute;top:-11px;left:16px;background:#FDDB48;color:#141414;font-size:10px;font-weight:800;padding:4px 10px;border-radius:999px;">★ BEST DEAL</span>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:34px;height:34px;border-radius:50%;background:#F0743E;color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;">1</div>
+                <div style="flex:1;"><div style="font-size:15px;font-weight:800;">Sharma Electronics</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;">MP Nagar</div></div>
+                <div style="font-size:24px;font-weight:800;">₹35,800</div>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;"><span style="font-size:10px;font-weight:700;background:#F3ECF7;color:#7A5CA0;padding:5px 10px;border-radius:999px;">Free Install</span><span style="font-size:10px;font-weight:700;background:#F3ECF7;color:#7A5CA0;padding:5px 10px;border-radius:999px;">Free Copper Pipe</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;"><div style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;"></span><span style="font-size:12px;font-weight:700;color:#16A34A;">In Stock Today</span></div><span style="font-size:11px;color:#6B6B6B;">Updated 2 hours ago</span></div>
+              <button style="width:100%;height:46px;margin-top:12px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(240,116,62,.3);">Show Contact</button>
+            </div>
+            <!-- dealer 2 -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:34px;height:34px;border-radius:50%;background:#E4E4E1;color:#6B6B6B;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;">2</div>
+                <div style="flex:1;"><div style="font-size:15px;font-weight:800;">Bansal Home Appliances</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;">Bittan Market</div></div>
+                <div style="font-size:22px;font-weight:800;">₹36,200</div>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;"><span style="font-size:10px;font-weight:700;background:#F3ECF7;color:#7A5CA0;padding:5px 10px;border-radius:999px;">Free Install</span></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;"><div style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;"></span><span style="font-size:12px;font-weight:700;color:#16A34A;">In Stock Today</span></div><span style="font-size:11px;color:#6B6B6B;">Updated 5 hours ago</span></div>
+              <button style="width:100%;height:42px;margin-top:10px;background:#fff;color:#F0743E;border:1px solid #F0743E;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;">Show Contact</button>
+            </div>
+            <!-- dealer 3 -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:34px;height:34px;border-radius:50%;background:#E4E4E1;color:#6B6B6B;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;">3</div>
+                <div style="flex:1;"><div style="font-size:15px;font-weight:800;">Cool Point Kolar</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;">Kolar Road</div></div>
+                <div style="font-size:22px;font-weight:800;">₹36,900</div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;"><div style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#F0A63E;"></span><span style="font-size:12px;font-weight:700;color:#B77400;">Limited Stock</span></div><span style="font-size:11px;color:#6B6B6B;">Updated 1 day ago</span></div>
+              <button style="width:100%;height:42px;margin-top:10px;background:#fff;color:#F0743E;border:1px solid #F0743E;border-radius:12px;font-family:inherit;font-size:13px;font-weight:700;">Show Contact</button>
+            </div>
+            <div style="text-align:center;font-size:12.5px;font-weight:700;color:#6B6B6B;padding:4px;">+ 1 more dealer ▾</div>
+          </div>
+          <!-- online prices -->
+          <div style="padding:14px 20px 4px;background:#FAFAF8;">
+            <div style="font-size:16px;font-weight:800;">🌐 Online Prices</div>
+          </div>
+          <div style="padding:12px 20px 14px;background:#FAFAF8;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:4px;width:34px;border-radius:2px;background:#FF9900;"></div><div style="font-size:13px;font-weight:800;margin-top:8px;">Amazon</div><div style="font-size:15px;font-weight:700;color:#6B6B6B;margin-top:6px;">₹38,990</div><div style="font-size:10.5px;font-weight:700;color:#16A34A;margin-top:4px;">HDFC saves ₹1,500</div><div style="font-size:11px;color:#6B6B6B;margin-top:6px;">True price</div><div style="font-size:17px;font-weight:800;">₹37,490</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:4px;width:34px;border-radius:2px;background:#2874F0;"></div><div style="font-size:13px;font-weight:800;margin-top:8px;">Flipkart</div><div style="font-size:15px;font-weight:700;color:#6B6B6B;margin-top:6px;">₹37,490</div><div style="font-size:10.5px;font-weight:700;color:#16A34A;margin-top:4px;">ICICI saves ₹750</div><div style="font-size:11px;color:#6B6B6B;margin-top:6px;">True price</div><div style="font-size:17px;font-weight:800;">₹36,740</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:4px;width:34px;border-radius:2px;background:#12B3B3;"></div><div style="font-size:13px;font-weight:800;margin-top:8px;">Croma</div><div style="font-size:15px;font-weight:700;color:#6B6B6B;margin-top:6px;">₹41,200</div><div style="font-size:10.5px;font-weight:700;color:#16A34A;margin-top:4px;">SBI saves ₹2,000</div><div style="font-size:11px;color:#6B6B6B;margin-top:6px;">True price</div><div style="font-size:17px;font-weight:800;">₹39,200</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:4px;width:34px;border-radius:2px;background:#E4032E;"></div><div style="font-size:13px;font-weight:800;margin-top:8px;">Reliance</div><div style="font-size:15px;font-weight:700;color:#6B6B6B;margin-top:6px;">₹39,990</div><div style="font-size:10.5px;font-weight:700;color:#16A34A;margin-top:4px;">Axis saves ₹1,000</div><div style="font-size:11px;color:#6B6B6B;margin-top:6px;">True price</div><div style="font-size:17px;font-weight:800;">₹38,990</div></div>
+          </div>
+          <!-- sticky bottom (special request) -->
+          <div style="padding:14px 20px 22px;background:#141414;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <span style="font-size:13px;font-weight:700;color:#fff;line-height:1.35;">Need 2 Ton or different colour?</span>
+            <button style="flex-shrink:0;background:#F0743E;color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:12.5px;font-weight:700;padding:10px 14px;">Post Request →</button>
+          </div>
+        </div>
+        <!-- AI chat bubble -->
+        <div style="position:absolute;right:16px;bottom:84px;width:52px;height:52px;border-radius:50%;background:#CDBCDB;box-shadow:0 8px 20px rgba(20,20,20,.2);display:flex;align-items:center;justify-content:center;font-size:22px;">✨</div>
+      </div>
+    </figure>
+<!-- ============ SCREEN 4b · CONTACT MODAL ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">4b</span>
+        <span style="font-size:14px;font-weight:700;">Share Contact · Bottom Sheet</span>
+      </div>
+      <div style="width:390px;height:600px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:0;background:rgba(20,20,20,.45);"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:24px 24px 0 0;padding:20px 22px 30px;box-shadow:0 -8px 30px rgba(0,0,0,.15);">
+          <div style="width:40px;height:4px;border-radius:2px;background:#EBEBEB;margin:0 auto 18px;"></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:#FBF1EB;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px;">🔒</div>
+          <h3 style="margin:0;font-size:19px;font-weight:800;line-height:1.25;">Share your number with Sharma Electronics?</h3>
+          <p style="margin:8px 0 0;font-size:13.5px;color:#6B6B6B;font-weight:500;line-height:1.5;">They'll only use it to confirm this deal. Your number is never shown publicly.</p>
+          <button style="width:100%;height:52px;margin-top:20px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;box-shadow:0 6px 16px rgba(240,116,62,.3);">Yes, share my number</button>
+          <button style="width:100%;height:50px;margin-top:12px;background:#fff;color:#141414;border:1px solid #EBEBEB;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;">No, just show their number</button>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 5 · SPECIAL REQUEST FORM ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">05</span>
+        <span style="font-size:14px;font-weight:700;">Special Request Form</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Special Request" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 18px 12px;"><div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:16px;">←</div><span style="font-size:17px;font-weight:800;">Post Special Request</span></div>
+          <div style="padding:4px 20px 24px;display:flex;flex-direction:column;gap:18px;">
+            <!-- product summary -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="width:56px;height:56px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:28px;">❄️</div>
+              <div><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Blue Star</div><div style="font-size:13.5px;font-weight:700;margin-top:2px;">1.5T 5★ Inverter Split AC</div><div style="font-size:11px;color:#6B6B6B;">IE518PNU</div></div>
+            </div>
+            <!-- what's different -->
+            <div>
+              <label style="font-size:14px;font-weight:700;">What's different about what you need?</label>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+                <div style="display:flex;align-items:center;gap:10px;background:#F0743E;border:1.5px solid #F0743E;border-radius:12px;padding:13px 14px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #fff;display:flex;align-items:center;justify-content:center;"><span style="width:8px;height:8px;border-radius:50%;background:#fff;"></span></span><span style="font-size:13px;font-weight:700;color:#fff;">Different capacity (1T / 2T instead of 1.5T)</span></div>
+                <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:13px 14px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #D8D7D1;"></span><span style="font-size:13px;font-weight:600;">Different colour or finish</span></div>
+                <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:13px 14px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #D8D7D1;"></span><span style="font-size:13px;font-weight:600;">Specific year / model variant</span></div>
+                <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:13px 14px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #D8D7D1;"></span><span style="font-size:13px;font-weight:600;">Special feature (WiFi, HEPA filter…)</span></div>
+                <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:13px 14px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #D8D7D1;"></span><span style="font-size:13px;font-weight:600;">Other</span></div>
+              </div>
+            </div>
+            <!-- budget -->
+            <div>
+              <label style="font-size:14px;font-weight:700;">Your budget</label>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:14px;margin-top:10px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:22px;font-weight:800;">₹38,000</span><span style="font-size:12px;color:#6B6B6B;font-weight:600;">approx.</span></div>
+                <div style="position:relative;height:6px;background:#EBEBEB;border-radius:3px;margin-top:14px;"><div style="position:absolute;left:0;top:0;bottom:0;width:62%;background:#F0743E;border-radius:3px;"></div><div style="position:absolute;left:62%;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid #F0743E;box-shadow:0 2px 6px rgba(0,0,0,.15);"></div></div>
+                <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:#6B6B6B;font-weight:600;"><span>₹20,000</span><span>₹60,000</span></div>
+              </div>
+            </div>
+            <!-- area -->
+            <div>
+              <label style="font-size:14px;font-weight:700;">Your area in Bhopal</label>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:14px;margin-top:10px;display:flex;align-items:center;justify-content:space-between;"><span style="font-size:14px;font-weight:600;">Arera Colony</span><span style="font-size:14px;color:#6B6B6B;">▾</span></div>
+              <div style="font-size:11px;color:#6B6B6B;margin-top:6px;">📍 Powered by Ola Maps</div>
+            </div>
+            <!-- urgency -->
+            <div>
+              <label style="font-size:14px;font-weight:700;">Urgency</label>
+              <div style="display:flex;gap:8px;margin-top:10px;">
+                <div style="flex:1;text-align:center;background:#F0743E;color:#fff;border-radius:12px;padding:12px 6px;font-size:12.5px;font-weight:700;">Today</div>
+                <div style="flex:1;text-align:center;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 6px;font-size:12.5px;font-weight:600;">This week</div>
+                <div style="flex:1;text-align:center;background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:12px 6px;font-size:12.5px;font-weight:600;">Just checking</div>
+              </div>
+            </div>
+            <!-- phone -->
+            <div>
+              <label style="font-size:14px;font-weight:700;">Your phone number</label>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:12px;padding:14px;margin-top:10px;font-size:14px;font-weight:600;">+91 98260 45XXX</div>
+              <div style="display:flex;align-items:flex-start;gap:7px;margin-top:8px;background:#F3ECF7;border-radius:10px;padding:10px 12px;"><span style="font-size:13px;">🔒</span><span style="font-size:11.5px;color:#7A5CA0;font-weight:600;line-height:1.4;">Only shared with the dealer you choose. Never shown publicly.</span></div>
+            </div>
+            <button style="width:100%;height:54px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:16px;font-weight:700;box-shadow:0 6px 16px rgba(240,116,62,.3);">Notify Dealers</button>
+            <p style="margin:0;text-align:center;font-size:12px;color:#6B6B6B;font-weight:600;">Dealers will respond on this platform. No spam calls.</p>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 6 · LOGIN / AUTH ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">06</span>
+        <span style="font-size:14px;font-weight:700;">Login / Auth</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Login" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 28px;">
+            <div style="text-align:center;margin-bottom:36px;">
+              <div style="width:64px;height:64px;border-radius:18px;background:#F0743E;box-shadow:0 8px 20px rgba(240,116,62,.32);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 16px;">🏪</div>
+              <div style="font-size:22px;font-weight:800;">MereWala<span style="color:#F0743E;">Price</span></div>
+              <div style="font-size:13px;color:#6B6B6B;font-weight:600;margin-top:4px;">Better price. Local dealer.</div>
+            </div>
+            <h2 style="margin:0;text-align:center;font-size:20px;font-weight:800;line-height:1.3;">Sign in to track prices<br>&amp; save favourites</h2>
+            <button style="width:100%;height:54px;margin-top:28px;background:#fff;color:#141414;border:1px solid #EBEBEB;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:11px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><span style="width:20px;height:20px;border-radius:50%;background:conic-gradient(#EA4335 0deg 90deg,#FBBC05 90deg 180deg,#34A853 180deg 270deg,#4285F4 270deg 360deg);display:inline-block;"></span> Continue with Google</button>
+            <div style="display:flex;align-items:center;gap:12px;margin:22px 0;"><div style="flex:1;height:1px;background:#EBEBEB;"></div><span style="font-size:12px;color:#6B6B6B;font-weight:600;">or</span><div style="flex:1;height:1px;background:#EBEBEB;"></div></div>
+            <div style="text-align:center;font-size:14px;font-weight:700;color:#6B6B6B;">Browse without signing in →</div>
+            <div style="display:flex;align-items:flex-start;gap:8px;margin-top:36px;background:#F3ECF7;border-radius:12px;padding:12px 14px;"><span style="font-size:13px;">🔒</span><span style="font-size:11.5px;color:#7A5CA0;font-weight:600;line-height:1.45;">We never share your data with dealers without your permission.</span></div>
+          </div>
+          <div style="text-align:center;padding:0 28px 30px;"><span style="font-size:12.5px;color:#6B6B6B;font-weight:600;">For dealers: <span style="color:#F0743E;font-weight:700;">Sign in at the dealer portal →</span></span></div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 7 · PROFILE / DASHBOARD ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">07</span>
+        <span style="font-size:14px;font-weight:700;">Profile / Dashboard</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Profile" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="padding:6px 20px 10px;"><span style="font-size:22px;font-weight:800;">My Account</span></div>
+          <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:20px;">
+            <!-- profile card -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="width:54px;height:54px;border-radius:50%;background:#F0743E;color:#fff;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;">AK</div>
+              <div style="flex:1;"><div style="font-size:16px;font-weight:800;">Ankit Kushwaha</div><div style="font-size:12px;color:#6B6B6B;">ankit.k@gmail.com</div><div style="display:inline-flex;align-items:center;gap:4px;margin-top:5px;background:#F3ECF7;color:#7A5CA0;font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;">📍 Bhopal</div></div>
+              <span style="font-size:12px;font-weight:700;color:#F0743E;">Edit</span>
+            </div>
+            <!-- stats -->
+            <div style="display:flex;background:#fff;border:1px solid #EBEBEB;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="flex:1;text-align:center;padding:14px 4px;"><div style="font-size:20px;font-weight:800;">12</div><div style="font-size:11px;color:#6B6B6B;font-weight:600;">searches</div></div>
+              <div style="width:1px;background:#EBEBEB;"></div>
+              <div style="flex:1;text-align:center;padding:14px 4px;"><div style="font-size:20px;font-weight:800;">3</div><div style="font-size:11px;color:#6B6B6B;font-weight:600;">requests</div></div>
+              <div style="width:1px;background:#EBEBEB;"></div>
+              <div style="flex:1;text-align:center;padding:14px 4px;"><div style="font-size:20px;font-weight:800;">5</div><div style="font-size:11px;color:#6B6B6B;font-weight:600;">favourites</div></div>
+            </div>
+            <!-- favourites -->
+            <div>
+              <div style="font-size:15px;font-weight:800;margin-bottom:10px;">My Favourites</div>
+              <div class="scrollx" style="display:flex;gap:10px;overflow-x:auto;">
+                <div style="flex:0 0 120px;background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:64px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:28px;">📺</div><div style="font-size:11px;font-weight:700;margin-top:8px;">Samsung 55" 4K</div><div style="font-size:12px;font-weight:800;color:#F0743E;margin-top:2px;">₹42,990</div></div>
+                <div style="flex:0 0 120px;background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:64px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:28px;">❄️</div><div style="font-size:11px;font-weight:700;margin-top:8px;">Blue Star 1.5T</div><div style="font-size:12px;font-weight:800;color:#F0743E;margin-top:2px;">₹35,800</div></div>
+                <div style="flex:0 0 120px;background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="height:64px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:28px;">🧊</div><div style="font-size:11px;font-weight:700;margin-top:8px;">LG 260L Fridge</div><div style="font-size:12px;font-weight:800;color:#F0743E;margin-top:2px;">₹24,700</div></div>
+              </div>
+            </div>
+            <!-- recent searches -->
+            <div>
+              <div style="font-size:15px;font-weight:800;margin-bottom:10px;">Recent Searches</div>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid #EBEBEB;"><div style="width:40px;height:40px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:20px;">❄️</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">Blue Star 1.5T Inverter AC</div><div style="font-size:11px;color:#6B6B6B;">viewed 2 days ago</div></div><span style="font-size:12px;font-weight:700;color:#F0743E;">→ View</span></div>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;"><div style="width:40px;height:40px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:20px;">💻</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">HP Pavilion 15 Laptop</div><div style="font-size:11px;color:#6B6B6B;">viewed 4 days ago</div></div><span style="font-size:12px;font-weight:700;color:#F0743E;">→ View</span></div>
+              </div>
+            </div>
+            <!-- special requests -->
+            <div>
+              <div style="font-size:15px;font-weight:800;margin-bottom:10px;">My Special Requests</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;font-weight:700;">Blue Star 2 Ton AC</span><span style="font-size:10px;font-weight:800;background:#E7F6ED;color:#16A34A;padding:4px 9px;border-radius:999px;">2 Offers</span></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">2 dealers responded</span><span style="font-size:12px;font-weight:700;color:#F0743E;">View offers →</span></div></div>
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;font-weight:700;">LG 55" OLED TV</span><span style="font-size:10px;font-weight:800;background:#FBF1EB;color:#B77400;padding:4px 9px;border-radius:999px;">Open</span></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Waiting for dealers…</span></div></div>
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;font-weight:700;">Whirlpool Washing Machine</span><span style="font-size:10px;font-weight:800;background:#F0F0EE;color:#6B6B6B;padding:4px 9px;border-radius:999px;">Fulfilled</span></div></div>
+              </div>
+            </div>
+            <div style="text-align:center;padding:6px;"><span style="font-size:13px;font-weight:700;color:#6B6B6B;">Sign out</span></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 8 · FAVOURITES ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">08</span>
+        <span style="font-size:14px;font-weight:700;">Favourites</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Favourites" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 18px 14px;"><div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:16px;">←</div><span style="font-size:17px;font-weight:800;">My Favourites <span style="color:#6B6B6B;font-weight:700;">(5)</span></span></div>
+          <div style="padding:4px 18px 24px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;"><div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">❤️</div><div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">❄️</div><div style="font-size:12.5px;font-weight:700;margin-top:10px;line-height:1.25;">Blue Star 1.5T 5★ Inverter</div><div style="font-size:15px;font-weight:800;margin-top:6px;">₹35,800</div><div style="margin-top:6px;display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:999px;">Price dropped ₹200</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;"><div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">❤️</div><div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">📺</div><div style="font-size:12.5px;font-weight:700;margin-top:10px;line-height:1.25;">Samsung 55" Crystal 4K</div><div style="font-size:15px;font-weight:800;margin-top:6px;">₹42,990</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;"><div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">❤️</div><div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">🧊</div><div style="font-size:12.5px;font-weight:700;margin-top:10px;line-height:1.25;">LG 260L Frost-Free</div><div style="font-size:15px;font-weight:800;margin-top:6px;">₹24,700</div><div style="margin-top:6px;display:inline-flex;background:#E7F6ED;color:#16A34A;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:999px;">Price dropped ₹500</div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);position:relative;"><div style="position:absolute;top:18px;right:18px;width:28px;height:28px;border-radius:50%;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:13px;">❤️</div><div style="height:96px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:40px;">💻</div><div style="font-size:12.5px;font-weight:700;margin-top:10px;line-height:1.25;">HP Pavilion 15</div><div style="font-size:15px;font-weight:800;margin-top:6px;">₹58,400</div></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <!--BUYER-->
+  </div>
+
+  <!-- ===== DEALER ===== -->
+  <div style="max-width: 1400px; margin: 72px auto 0; display: flex; align-items: center; gap: 14px;">
+    <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F0743E;">Dealer portal</span>
+    <span style="font-size: 13px; font-weight: 600; color: #6B6B6B;">Mobile · 390px · Screens 9–14</span>
+    <div style="flex: 1; height: 1px; background: #D8D7D1;"></div>
+  </div>
+  <div style="max-width: 1400px; margin: 28px auto 0; display: flex; flex-wrap: wrap; gap: 48px;">
+<!-- ============ SCREEN 9 · DEALER LOGIN ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">09</span>
+        <span style="font-size:14px;font-weight:700;">Dealer Login</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Dealer Login" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#141414;"><span style="font-size:14px;font-weight:800;color:#fff;">9:41</span><div style="display:flex;align-items:center;gap:5px;color:#fff;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #fff;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#fff;border-radius:1px;"></div></div></div></div>
+          <!-- dark header -->
+          <div style="background:#141414;padding:16px 24px 26px;">
+            <div style="display:flex;align-items:center;gap:8px;"><span style="font-size:16px;font-weight:800;color:#fff;">MereWala<span style="color:#F0743E;">Price</span></span><span style="font-size:11px;font-weight:700;color:#9a9a9a;">· Dealer Portal</span></div>
+          </div>
+          <div style="flex:1;padding:28px 24px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:22px;box-shadow:0 4px 14px rgba(0,0,0,.08);">
+              <h2 style="margin:0 0 20px;font-size:20px;font-weight:800;">Welcome back, dealer</h2>
+              <label style="font-size:12.5px;font-weight:700;color:#6B6B6B;">Email</label>
+              <div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:12px;padding:13px 14px;margin-top:6px;font-size:14px;font-weight:600;">sharma.electronics@gmail.com</div>
+              <label style="font-size:12.5px;font-weight:700;color:#6B6B6B;display:block;margin-top:16px;">Password</label>
+              <div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:12px;padding:13px 14px;margin-top:6px;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:space-between;"><span style="letter-spacing:2px;">••••••••</span><span style="font-size:12px;font-weight:700;color:#F0743E;">Show</span></div>
+              <div style="text-align:right;margin-top:10px;"><span style="font-size:12px;font-weight:700;color:#F0743E;">Forgot password?</span></div>
+              <button style="width:100%;height:52px;margin-top:18px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;box-shadow:0 6px 16px rgba(240,116,62,.3);">Sign In</button>
+            </div>
+            <div style="text-align:center;margin-top:22px;"><span style="font-size:13.5px;font-weight:600;color:#6B6B6B;">New dealer? <span style="color:#F0743E;font-weight:700;">Register your shop →</span></span></div>
+          </div>
+          <div style="text-align:center;padding:0 24px 30px;"><span style="font-size:12.5px;color:#6B6B6B;font-weight:600;">For buyers: <span style="color:#141414;font-weight:700;">Go to main site →</span></span></div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 10 · DEALER DASHBOARD ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">10</span>
+        <span style="font-size:14px;font-weight:700;">Dealer Dashboard</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Dealer Dashboard" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#141414;"><span style="font-size:14px;font-weight:800;color:#fff;">9:41</span><div style="display:flex;align-items:center;gap:5px;color:#fff;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #fff;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#fff;border-radius:1px;"></div></div></div></div>
+          <!-- header -->
+          <div style="background:#141414;padding:8px 20px 18px;display:flex;align-items:center;justify-content:space-between;">
+            <div><div style="display:flex;align-items:center;gap:7px;"><span style="font-size:16px;font-weight:800;color:#fff;">Sharma Electronics</span><span style="display:inline-flex;align-items:center;gap:3px;background:rgba(22,163,74,.2);color:#4ADE80;font-size:9.5px;font-weight:800;padding:3px 7px;border-radius:999px;">✓ Verified</span></div><div style="font-size:11px;color:#9a9a9a;font-weight:600;margin-top:2px;">MP Nagar · Bhopal</div></div>
+            <div style="display:flex;align-items:center;gap:12px;"><span style="font-size:17px;">🔔</span><span style="font-size:15px;color:#9a9a9a;">⏻</span></div>
+          </div>
+          <div style="padding:18px 20px 24px;display:flex;flex-direction:column;gap:18px;">
+            <!-- status bar green -->
+            <div style="background:#E7F6ED;border:1px solid #B7E4C7;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">✓</span><span style="font-size:13.5px;font-weight:700;color:#16803D;">Prices updated today at 9:14am</span></div>
+            <!-- stats grid -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:26px;font-weight:800;">47</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;margin-top:2px;">Views today</div></div>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:26px;font-weight:800;">8</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;margin-top:2px;">Enquiries this week</div></div>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:26px;font-weight:800;">20</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;margin-top:2px;">Products listed</div></div>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:26px;font-weight:800;color:#16A34A;">65%</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;margin-top:2px;">Win rate</div></div>
+            </div>
+            <!-- quick actions -->
+            <div style="display:flex;gap:12px;">
+              <button style="flex:1;height:50px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(240,116,62,.3);">Update Prices</button>
+              <button style="flex:1;height:50px;background:#fff;color:#141414;border:1px solid #EBEBEB;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;">View Requests</button>
+            </div>
+            <!-- special requests -->
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><span style="font-size:15px;font-weight:800;">Special Requests <span style="color:#F0743E;">(3 new)</span></span><span style="font-size:12px;font-weight:700;color:#F0743E;">View all →</span></div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:13px;display:flex;gap:11px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="width:44px;height:44px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:22px;">❄️</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">Blue Star 2 Ton AC</div><div style="font-size:11px;color:#6B6B6B;">₹42,000 · Arera Colony · <span style="color:#DC2626;font-weight:700;">Today 🔥</span></div></div></div>
+                <div style="background:#fff;border:1px solid #EBEBEB;border-radius:14px;padding:13px;display:flex;gap:11px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="width:44px;height:44px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:22px;">📺</div><div style="flex:1;"><div style="font-size:13px;font-weight:700;">LG 55" OLED TV</div><div style="font-size:11px;color:#6B6B6B;">₹1,10,000 · Kolar Road · This week</div></div></div>
+              </div>
+            </div>
+            <!-- recent activity -->
+            <div>
+              <div style="font-size:15px;font-weight:800;margin-bottom:10px;">Recent Activity</div>
+              <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:6px 14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+                <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #EBEBEB;"><span style="width:8px;height:8px;border-radius:50%;background:#F0743E;margin-top:5px;flex-shrink:0;"></span><div><div style="font-size:12.5px;font-weight:600;">Buyer viewed your Blue Star AC price</div><div style="font-size:11px;color:#6B6B6B;">2 hrs ago</div></div></div>
+                <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid #EBEBEB;"><span style="width:8px;height:8px;border-radius:50%;background:#CDBCDB;margin-top:5px;flex-shrink:0;"></span><div><div style="font-size:12.5px;font-weight:600;">New special request for LG TV</div><div style="font-size:11px;color:#6B6B6B;">4 hrs ago</div></div></div>
+                <div style="display:flex;gap:11px;padding:11px 0;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;margin-top:5px;flex-shrink:0;"></span><div><div style="font-size:12.5px;font-weight:600;">You won a deal · Whirlpool WM</div><div style="font-size:11px;color:#6B6B6B;">Yesterday</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div style="flex:1;min-height:8px;"></div>
+          <!-- bottom nav -->
+          <div style="display:flex;justify-content:space-around;align-items:center;padding:10px 6px 24px;background:#fff;border-top:1px solid #EBEBEB;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:17px;">📊</span><span style="font-size:9.5px;font-weight:800;color:#F0743E;">Dashboard</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:17px;filter:grayscale(1);opacity:.55;">🏷️</span><span style="font-size:9.5px;font-weight:600;color:#6B6B6B;">Prices</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:17px;filter:grayscale(1);opacity:.55;">📩</span><span style="font-size:9.5px;font-weight:600;color:#6B6B6B;">Requests</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:17px;filter:grayscale(1);opacity:.55;">🏆</span><span style="font-size:9.5px;font-weight:600;color:#6B6B6B;">Won</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;"><span style="font-size:17px;filter:grayscale(1);opacity:.55;">👤</span><span style="font-size:9.5px;font-weight:600;color:#6B6B6B;">Profile</span></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 11 · PRICE MANAGER ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">11</span>
+        <span style="font-size:14px;font-weight:700;">Price Manager</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Price Manager" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="padding:6px 20px 6px;"><div style="font-size:18px;font-weight:800;">My Price List</div><div style="font-size:12px;color:#16A34A;font-weight:700;margin-top:2px;">Last updated: Today 9:14am ✓</div></div>
+          <!-- category tabs -->
+          <div class="scrollx" style="display:flex;gap:8px;overflow-x:auto;padding:12px 20px 6px;">
+            <span style="flex:0 0 auto;background:#F0743E;color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;">All</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">AC</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">TV</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">WM</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">Fridge</span>
+            <span style="flex:0 0 auto;background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">Laptop</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 20px 4px;"><span style="font-size:12px;font-weight:700;color:#6B6B6B;">20 products</span><span style="font-size:12px;font-weight:700;color:#F0743E;">Mark all In Stock</span></div>
+          <!-- product rows -->
+          <div style="padding:8px 18px 90px;display:flex;flex-direction:column;gap:12px;">
+            <!-- listed row -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:48px;height:48px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">❄️</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Blue Star</div><div style="font-size:13px;font-weight:700;line-height:1.2;">1.5T 5★ Inverter Split AC</div><div style="font-size:10.5px;color:#6B6B6B;">IE518PNU</div></div><span style="font-size:10px;font-weight:700;color:#16A34A;">Saved ✓</span></div>
+              <div style="display:flex;gap:8px;margin-top:12px;"><div style="flex:1;background:#FAFAF8;border:1.5px solid #F0743E;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:4px;"><span style="font-size:14px;font-weight:800;color:#6B6B6B;">₹</span><span style="font-size:15px;font-weight:800;">35,800</span></div><div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px;"><span style="width:7px;height:7px;border-radius:50%;background:#16A34A;"></span>In Stock ▾</div></div>
+              <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;"><span style="font-size:10px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:5px 10px;border-radius:999px;">✓ Free Install</span><span style="font-size:10px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:5px 10px;border-radius:999px;">✓ Free Pipe</span><span style="font-size:10px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:5px 10px;border-radius:999px;">Warranty</span><span style="font-size:10px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:5px 10px;border-radius:999px;">EMI</span></div>
+            </div>
+            <!-- listed row 2 -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:48px;height:48px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">📺</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#F0743E;text-transform:uppercase;">Samsung</div><div style="font-size:13px;font-weight:700;line-height:1.2;">55" Crystal 4K UHD TV</div><div style="font-size:10.5px;color:#6B6B6B;">UA55CUE60</div></div></div>
+              <div style="display:flex;gap:8px;margin-top:12px;"><div style="flex:1;background:#FAFAF8;border:1px solid #EBEBEB;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:4px;"><span style="font-size:14px;font-weight:800;color:#6B6B6B;">₹</span><span style="font-size:15px;font-weight:800;">42,990</span></div><div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:5px;"><span style="width:7px;height:7px;border-radius:50%;background:#F0A63E;"></span>Limited ▾</div></div>
+              <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;"><span style="font-size:10px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:5px 10px;border-radius:999px;">✓ Free Delivery</span><span style="font-size:10px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:5px 10px;border-radius:999px;">Wall Mount</span><span style="font-size:10px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:5px 10px;border-radius:999px;">EMI</span></div>
+            </div>
+            <!-- unlisted row -->
+            <div style="background:#fff;border:1px dashed #CDBCDB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:48px;height:48px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;opacity:.6;">🧊</div><div style="flex:1;min-width:0;"><div style="font-size:9px;font-weight:800;color:#6B6B6B;text-transform:uppercase;">LG</div><div style="font-size:13px;font-weight:700;line-height:1.2;">260L Frost-Free Fridge</div><div style="font-size:10.5px;color:#6B6B6B;">GL-B281BPZX</div></div></div>
+              <button style="width:100%;height:40px;margin-top:12px;background:#fff;color:#F0743E;border:1.5px solid #F0743E;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;">+ Add my price</button>
+            </div>
+          </div>
+          <!-- sticky save -->
+          <div style="position:sticky;bottom:0;padding:12px 20px 24px;background:linear-gradient(#FAFAF8bb,#FAFAF8);"><button style="width:100%;height:52px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;box-shadow:0 6px 16px rgba(240,116,62,.3);">Save All</button></div>
+        </div>
+      </div>
+    </figure>
+<!-- ============ SCREEN 12 · SPECIAL REQUESTS (DEALER) ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">12</span>
+        <span style="font-size:14px;font-weight:700;">Special Requests · Dealer</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Dealer Requests" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="padding:6px 20px 12px;"><div style="font-size:18px;font-weight:800;">Special Requests</div></div>
+          <div style="display:flex;gap:8px;padding:0 20px 8px;">
+            <span style="background:#F0743E;color:#fff;font-size:12px;font-weight:700;padding:7px 16px;border-radius:999px;">All</span>
+            <span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 16px;border-radius:999px;">New</span>
+            <span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 16px;border-radius:999px;">Responded</span>
+          </div>
+          <div style="padding:8px 20px 24px;display:flex;flex-direction:column;gap:14px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:52px;height:52px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:26px;">❄️</div><div><div style="font-size:14px;font-weight:800;">Blue Star 2 Ton AC</div><div style="font-size:11px;color:#6B6B6B;">IE524PNU · 2 Ton variant</div></div></div>
+              <div style="background:#FAFAF8;border-radius:12px;padding:12px;margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Budget</span><span style="font-size:12.5px;font-weight:700;">₹42,000</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Area</span><span style="font-size:12.5px;font-weight:700;">Arera Colony</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Urgency</span><span style="font-size:12.5px;font-weight:700;color:#DC2626;">Today 🔥</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">What's different</span><span style="font-size:12.5px;font-weight:700;">2 Ton variant</span></div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;"><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Posted 45 min ago</span><span style="font-size:11px;color:#DC2626;font-weight:700;">Expires in 1h 15m</span></div>
+              <button style="width:100%;height:46px;margin-top:12px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(240,116,62,.3);">Submit My Price</button>
+            </div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:52px;height:52px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:26px;">📺</div><div><div style="font-size:14px;font-weight:800;">LG 55" OLED TV</div><div style="font-size:11px;color:#6B6B6B;">OLED55B4 · specific model</div></div></div>
+              <div style="background:#FAFAF8;border-radius:12px;padding:12px;margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Budget</span><span style="font-size:12.5px;font-weight:700;">₹1,10,000</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Area</span><span style="font-size:12.5px;font-weight:700;">Kolar Road</span></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:11.5px;color:#6B6B6B;font-weight:600;">Urgency</span><span style="font-size:12.5px;font-weight:700;">This week</span></div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:10px;"><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Posted 3 hrs ago</span><span style="font-size:11px;color:#6B6B6B;font-weight:700;">Expires in 2 days</span></div>
+              <button style="width:100%;height:46px;margin-top:12px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:14px;font-weight:700;box-shadow:0 4px 12px rgba(240,116,62,.3);">Submit My Price</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 12b · SUBMIT PRICE MODAL ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">12b</span>
+        <span style="font-size:14px;font-weight:700;">Submit Offer · Bottom Sheet</span>
+      </div>
+      <div style="width:390px;height:700px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;position:relative;">
+        <div style="position:absolute;inset:0;background:rgba(20,20,20,.45);"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:24px 24px 0 0;padding:20px 22px 30px;box-shadow:0 -8px 30px rgba(0,0,0,.15);">
+          <div style="width:40px;height:4px;border-radius:2px;background:#EBEBEB;margin:0 auto 18px;"></div>
+          <div style="display:flex;gap:12px;align-items:center;background:#FAFAF8;border-radius:12px;padding:12px;"><div style="width:44px;height:44px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;">❄️</div><div><div style="font-size:13.5px;font-weight:800;">Blue Star 2 Ton AC</div><div style="font-size:11px;color:#6B6B6B;">Budget ₹42,000 · Arera Colony</div></div></div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-top:16px;">Your price for this request</label>
+          <div style="background:#FAFAF8;border:1.5px solid #F0743E;border-radius:12px;padding:14px;margin-top:8px;display:flex;align-items:center;gap:5px;"><span style="font-size:18px;font-weight:800;color:#6B6B6B;">₹</span><span style="font-size:20px;font-weight:800;">41,500</span></div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-top:14px;">Inclusions</label>
+          <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;"><span style="font-size:10.5px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:6px 11px;border-radius:999px;">✓ Free Install</span><span style="font-size:10.5px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:6px 11px;border-radius:999px;">✓ Free Pipe</span><span style="font-size:10.5px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:6px 11px;border-radius:999px;">Warranty</span></div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-top:14px;">Availability</label>
+          <div style="display:flex;gap:8px;margin-top:8px;"><span style="flex:1;text-align:center;background:#F0743E;color:#fff;font-size:12px;font-weight:700;padding:10px;border-radius:10px;">Today</span><span style="flex:1;text-align:center;background:#FAFAF8;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:10px;border-radius:10px;">1–2 days</span><span style="flex:1;text-align:center;background:#FAFAF8;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:10px;border-radius:10px;">4–5 days</span></div>
+          <label style="font-size:13px;font-weight:700;display:block;margin-top:14px;">Note to buyer (optional)</label>
+          <div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:12px;padding:12px;margin-top:8px;font-size:12.5px;color:#9a9a9a;">Have it in white, ready for same-day install…</div>
+          <button style="width:100%;height:52px;margin-top:18px;background:#F0743E;color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;box-shadow:0 6px 16px rgba(240,116,62,.3);">Submit Offer</button>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 13 · WON DEALS ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">13</span>
+        <span style="font-size:14px;font-weight:700;">Won Deals</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Won Deals" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="padding:6px 20px 12px;"><div style="font-size:18px;font-weight:800;">Won Deals</div></div>
+          <div style="display:flex;gap:8px;padding:0 20px 12px;"><span style="background:#141414;color:#fff;font-size:12px;font-weight:700;padding:7px 16px;border-radius:999px;">This Month</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 16px;border-radius:999px;">All Time</span></div>
+          <!-- summary -->
+          <div style="margin:0 20px;background:#141414;border-radius:16px;padding:16px 18px;color:#fff;"><div style="font-size:24px;font-weight:800;">₹2,45,000</div><div style="font-size:12.5px;color:#b5b5b5;font-weight:600;margin-top:2px;">in deals this month · 8 buyers</div></div>
+          <div style="padding:16px 20px 4px;display:flex;flex-direction:column;gap:12px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:48px;height:48px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:24px;">❄️</div><div style="flex:1;"><div style="font-size:13.5px;font-weight:800;">Blue Star 1.5T AC</div><div style="font-size:11px;color:#6B6B6B;">Arera Colony · 28 Jun</div></div><div style="font-size:16px;font-weight:800;">₹35,800</div></div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:12px;background:#E7F6ED;border-radius:10px;padding:9px 12px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;"></span><span style="font-size:12px;font-weight:700;color:#16803D;flex:1;">Buyer contacted you</span><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#16803D;">💬 +91 98XXX 45012</span></div>
+            </div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:48px;height:48px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:24px;">🌀</div><div style="flex:1;"><div style="font-size:13.5px;font-weight:800;">Whirlpool 7kg Washing Machine</div><div style="font-size:11px;color:#6B6B6B;">Bittan Market · 25 Jun</div></div><div style="font-size:16px;font-weight:800;">₹18,200</div></div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:12px;background:#FAFAF8;border-radius:10px;padding:9px 12px;"><span style="width:8px;height:8px;border-radius:50%;background:#F0A63E;"></span><span style="font-size:12px;font-weight:600;color:#6B6B6B;">Buyer hasn't reached out yet · they'll contact you directly</span></div>
+            </div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;gap:12px;align-items:center;"><div style="width:48px;height:48px;border-radius:10px;background:#FAFAF8;display:flex;align-items:center;justify-content:center;font-size:24px;">🧊</div><div style="flex:1;"><div style="font-size:13.5px;font-weight:800;">LG 260L Fridge</div><div style="font-size:11px;color:#6B6B6B;">Kolar Road · 21 Jun</div></div><div style="font-size:16px;font-weight:800;">₹24,700</div></div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:12px;background:#E7F6ED;border-radius:10px;padding:9px 12px;"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;"></span><span style="font-size:12px;font-weight:700;color:#16803D;flex:1;">Buyer contacted you</span><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#16803D;">💬 +91 99XXX 71204</span></div>
+            </div>
+          </div>
+          <!-- insight -->
+          <div style="margin:14px 20px 24px;background:#F3ECF7;border-radius:14px;padding:14px 16px;display:flex;gap:10px;align-items:flex-start;"><span style="font-size:16px;">📈</span><span style="font-size:12.5px;font-weight:700;color:#7A5CA0;line-height:1.4;">You won 65% of requests this month. Market average: 48%.</span></div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 14 · DEALER PROFILE / SETTINGS ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:390px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">14</span>
+        <span style="font-size:14px;font-weight:700;">Dealer Profile / Settings</span>
+      </div>
+      <div style="width:390px;background:#FAFAF8;border-radius:40px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:7px solid #1b1b1b;overflow:hidden;">
+        <div data-screen-label="Dealer Profile" style="min-height:844px;display:flex;flex-direction:column;">
+          <div style="height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#FAFAF8;"><span style="font-size:14px;font-weight:800;">9:41</span><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;">📶</span><span style="font-size:11px;">🛜</span><div style="width:22px;height:11px;border:1.5px solid #141414;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#141414;border-radius:1px;"></div></div></div></div>
+          <div style="padding:6px 20px 14px;"><div style="font-size:18px;font-weight:800;">My Profile</div></div>
+          <div style="padding:0 20px 24px;display:flex;flex-direction:column;gap:16px;">
+            <!-- shop details -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;"><span style="font-size:14px;font-weight:800;">Shop Details</span><span style="font-size:12px;font-weight:700;color:#F0743E;">Edit</span></div>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#6B6B6B;font-weight:600;">Shop name</span><span style="font-size:13px;font-weight:700;">Sharma Electronics</span></div>
+                <div style="height:1px;background:#EBEBEB;"></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#6B6B6B;font-weight:600;">Owner name</span><span style="font-size:13px;font-weight:700;">Rakesh Sharma</span></div>
+                <div style="height:1px;background:#EBEBEB;"></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#6B6B6B;font-weight:600;">Phone</span><span style="font-size:13px;font-weight:700;">+91 98260 45012</span></div>
+                <div style="height:1px;background:#EBEBEB;"></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#6B6B6B;font-weight:600;">WhatsApp</span><span style="font-size:13px;font-weight:700;">+91 98260 45012</span></div>
+                <div style="height:1px;background:#EBEBEB;"></div>
+                <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#6B6B6B;font-weight:600;">Area</span><span style="font-size:13px;font-weight:700;">MP Nagar</span></div>
+                <div style="height:1px;background:#EBEBEB;"></div>
+                <div style="display:flex;justify-content:space-between;gap:16px;"><span style="font-size:12px;color:#6B6B6B;font-weight:600;flex-shrink:0;">Address</span><span style="font-size:12.5px;font-weight:700;text-align:right;">Zone-II, MP Nagar, Bhopal 462011</span></div>
+              </div>
+            </div>
+            <!-- categories -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="font-size:14px;font-weight:800;margin-bottom:12px;">Categories I sell</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;"><span style="font-size:11.5px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:7px 13px;border-radius:999px;">AC ✓</span><span style="font-size:11.5px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:7px 13px;border-radius:999px;">TV ✓</span><span style="font-size:11.5px;font-weight:700;background:#FBF1EB;color:#F0743E;border:1px solid #F0743E;padding:7px 13px;border-radius:999px;">WM ✓</span><span style="font-size:11.5px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:7px 13px;border-radius:999px;">Fridge</span><span style="font-size:11.5px;font-weight:600;background:#FAFAF8;color:#6B6B6B;border:1px solid #EBEBEB;padding:7px 13px;border-radius:999px;">Laptop</span></div>
+            </div>
+            <!-- working hours -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:between;justify-content:space-between;"><span style="font-size:14px;font-weight:800;">Working hours</span><span style="font-size:13px;font-weight:700;color:#6B6B6B;">9am – 8pm ✎</span></div>
+            <!-- notification pref -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="font-size:14px;font-weight:800;margin-bottom:12px;">Notification preference</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="display:flex;align-items:center;gap:10px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #F0743E;display:flex;align-items:center;justify-content:center;"><span style="width:9px;height:9px;border-radius:50%;background:#F0743E;"></span></span><span style="font-size:13px;font-weight:700;">Notify me for every request</span></div>
+                <div style="display:flex;align-items:center;gap:10px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #D8D7D1;"></span><span style="font-size:13px;font-weight:600;color:#6B6B6B;">Send daily summary only</span></div>
+                <div style="display:flex;align-items:center;gap:10px;"><span style="width:18px;height:18px;border-radius:50%;border:2px solid #D8D7D1;"></span><span style="font-size:13px;font-weight:600;color:#6B6B6B;">Only requests above ₹30,000</span></div>
+              </div>
+            </div>
+            <!-- account -->
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="padding:14px 16px;border-bottom:1px solid #EBEBEB;font-size:13.5px;font-weight:700;">Change password</div>
+              <div style="padding:14px 16px;font-size:13.5px;font-weight:700;color:#6B6B6B;">Sign out</div>
+            </div>
+            <!-- danger -->
+            <div style="border:1px solid #F3C6C6;background:#FDF3F3;border-radius:16px;padding:16px;"><div style="font-size:12px;font-weight:800;color:#DC2626;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Danger zone</div><div style="font-size:13.5px;font-weight:700;color:#DC2626;">Pause my listings temporarily</div></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <!--DEALER-->
+  </div>
+
+  <!-- ===== ADMIN ===== -->
+  <div style="max-width: 1400px; margin: 72px auto 0; display: flex; align-items: center; gap: 14px;">
+    <span style="font-size: 13px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #F0743E;">Admin console</span>
+    <span style="font-size: 13px; font-weight: 600; color: #6B6B6B;">Desktop · 1280px · Screens 15–18</span>
+    <div style="flex: 1; height: 1px; background: #D8D7D1;"></div>
+  </div>
+  <div style="max-width: 1400px; margin: 28px auto 0; display: flex; flex-direction: column; gap: 56px;">
+<!-- ============ SCREEN 15 · ADMIN LOGIN ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:1280px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">15</span>
+        <span style="font-size:14px;font-weight:700;">Admin Login <span style="color:#6B6B6B;font-weight:600;">· /admin</span></span>
+      </div>
+      <div style="width:1280px;height:720px;background:#141414;border-radius:20px;box-shadow:0 16px 50px rgba(20,20,20,0.16);overflow:hidden;display:flex;align-items:center;justify-content:center;">
+        <div style="width:400px;">
+          <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:8px;"><span style="font-size:19px;font-weight:800;color:#fff;">MereWala<span style="color:#F0743E;">Price</span></span><span style="font-size:12px;font-weight:700;color:#7a7a7a;">· Admin</span></div>
+          <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 10px 40px rgba(0,0,0,.3);">
+            <h2 style="margin:0 0 20px;font-size:20px;font-weight:800;">Sign in</h2>
+            <label style="font-size:12.5px;font-weight:700;color:#6B6B6B;">Email</label>
+            <div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:10px;padding:12px 14px;margin-top:6px;font-size:14px;font-weight:600;">admin@merewalaprice.in</div>
+            <label style="font-size:12.5px;font-weight:700;color:#6B6B6B;display:block;margin-top:16px;">Password</label>
+            <div style="background:#FAFAF8;border:1px solid #EBEBEB;border-radius:10px;padding:12px 14px;margin-top:6px;font-size:14px;letter-spacing:2px;">••••••••••</div>
+            <button style="width:100%;height:48px;margin-top:20px;background:#F0743E;color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:15px;font-weight:700;">Sign In</button>
+          </div>
+          <div style="text-align:center;font-size:12px;color:#7a7a7a;font-weight:600;margin-top:16px;">Authorised personnel only</div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 16 · ADMIN DASHBOARD ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:1280px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">16</span>
+        <span style="font-size:14px;font-weight:700;">Admin Dashboard</span>
+      </div>
+      <div style="width:1280px;background:#FAFAF8;border-radius:20px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:1px solid #EBEBEB;overflow:hidden;display:flex;">
+        <!-- sidebar -->
+        <div style="width:230px;background:#141414;flex-shrink:0;padding:24px 16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 8px 20px;"><span style="width:9px;height:9px;border-radius:50%;background:#F0743E;"></span><span style="font-size:15px;font-weight:800;color:#fff;">MereWala<span style="color:#F0743E;">Price</span></span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;background:rgba(240,116,62,.16);"><span style="font-size:15px;">📊</span><span style="font-size:13.5px;font-weight:700;color:#F0743E;">Dashboard</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">🏪</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Dealers</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📦</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Products</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">💳</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Bank Offers</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📩</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Requests</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">⚙️</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Settings</span></div>
+        </div>
+        <!-- main -->
+        <div style="flex:1;padding:28px 32px;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;"><div><h2 style="margin:0;font-size:24px;font-weight:800;">Dashboard</h2><div style="font-size:13px;color:#6B6B6B;font-weight:600;margin-top:2px;">Tuesday, 2 July 2026</div></div><div style="width:40px;height:40px;border-radius:50%;background:#141414;color:#fff;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;">A</div></div>
+          <!-- KPI cards -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:12.5px;color:#6B6B6B;font-weight:700;">Active Dealers</div><div style="display:flex;align-items:baseline;gap:10px;margin-top:6px;"><span style="font-size:30px;font-weight:800;">12</span><span style="font-size:12px;font-weight:700;color:#B77400;background:#FBF1EB;padding:3px 8px;border-radius:999px;">3 pending</span></div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:12.5px;color:#6B6B6B;font-weight:700;">Products in catalog</div><div style="display:flex;align-items:baseline;gap:10px;margin-top:6px;"><span style="font-size:30px;font-weight:800;">50</span><span style="font-size:12px;font-weight:700;color:#16A34A;background:#E7F6ED;padding:3px 8px;border-radius:999px;">47/50 priced today</span></div></div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);"><div style="font-size:12.5px;color:#6B6B6B;font-weight:700;">Buyer requests today</div><div style="display:flex;align-items:baseline;gap:10px;margin-top:6px;"><span style="font-size:30px;font-weight:800;">23</span><span style="font-size:12px;font-weight:700;color:#7A5CA0;background:#F3ECF7;padding:3px 8px;border-radius:999px;">7 special open</span></div></div>
+          </div>
+          <!-- charts -->
+          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:16px;">
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="font-size:14px;font-weight:800;margin-bottom:16px;">Requests per day</div>
+              <div style="display:flex;align-items:stretch;justify-content:space-between;gap:12px;height:150px;">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:58%;background:#F0743E;border-radius:6px 6px 0 0;opacity:.55;"></div><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Wed</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:72%;background:#F0743E;border-radius:6px 6px 0 0;opacity:.55;"></div><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Thu</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:48%;background:#F0743E;border-radius:6px 6px 0 0;opacity:.55;"></div><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Fri</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:88%;background:#F0743E;border-radius:6px 6px 0 0;opacity:.55;"></div><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Sat</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:80%;background:#F0743E;border-radius:6px 6px 0 0;opacity:.55;"></div><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Sun</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:64%;background:#F0743E;border-radius:6px 6px 0 0;opacity:.55;"></div><span style="font-size:11px;color:#6B6B6B;font-weight:600;">Mon</span></div>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;"><div style="width:100%;height:100%;background:#F0743E;border-radius:6px 6px 0 0;"></div><span style="font-size:11px;color:#141414;font-weight:800;">Tue</span></div>
+              </div>
+            </div>
+            <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+              <div style="font-size:14px;font-weight:800;margin-bottom:14px;">Platform price coverage</div>
+              <div style="display:flex;align-items:center;gap:18px;">
+                <div style="width:110px;height:110px;border-radius:50%;background:conic-gradient(#F0743E 0deg 235deg,#EBEBEB 235deg 360deg);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:70px;height:70px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;"><span style="font-size:18px;font-weight:800;">66%</span><span style="font-size:9px;color:#6B6B6B;font-weight:600;">avg</span></div></div>
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                  <div style="display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:2px;background:#FF9900;"></span><span style="font-size:12px;font-weight:700;">Amazon</span><span style="font-size:12px;color:#6B6B6B;margin-left:auto;">94%</span></div>
+                  <div style="display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:2px;background:#2874F0;"></span><span style="font-size:12px;font-weight:700;">Flipkart</span><span style="font-size:12px;color:#6B6B6B;margin-left:auto;">100%</span></div>
+                  <div style="display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:2px;background:#12B3B3;"></span><span style="font-size:12px;font-weight:700;">Croma</span><span style="font-size:12px;color:#6B6B6B;margin-left:auto;">72%</span></div>
+                  <div style="display:flex;align-items:center;gap:7px;"><span style="width:9px;height:9px;border-radius:2px;background:#E4032E;"></span><span style="font-size:12px;font-weight:700;">Reliance</span><span style="font-size:12px;color:#6B6B6B;margin-left:auto;">0%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- dealers needing attention -->
+          <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;padding:18px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+            <div style="font-size:14px;font-weight:800;margin-bottom:14px;">Dealers needing attention</div>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr 1.2fr 0.9fr 0.9fr;gap:8px;font-size:11px;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:.04em;padding:0 8px 10px;border-bottom:1px solid #EBEBEB;"><span>Name</span><span>Area</span><span>Last price update</span><span>Products</span><span>Action</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr 1.2fr 0.9fr 0.9fr;gap:8px;align-items:center;padding:12px 8px;background:#FBF1EB;border-radius:8px;margin-top:6px;"><span style="font-size:13px;font-weight:700;">Cool Point Kolar</span><span style="font-size:12.5px;color:#6B6B6B;">Kolar Road</span><span style="font-size:12.5px;font-weight:700;color:#B77400;">4 days ago</span><span style="font-size:12.5px;color:#6B6B6B;">14</span><span style="font-size:12px;font-weight:700;color:#F0743E;">Send reminder</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr 1.2fr 0.9fr 0.9fr;gap:8px;align-items:center;padding:12px 8px;"><span style="font-size:13px;font-weight:700;">Verma Appliances</span><span style="font-size:12.5px;color:#6B6B6B;">Bittan Market</span><span style="font-size:12.5px;font-weight:700;color:#B77400;">3 days ago</span><span style="font-size:12.5px;color:#6B6B6B;">9</span><span style="font-size:12px;font-weight:700;color:#F0743E;">Send reminder</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr 1.2fr 0.9fr 0.9fr;gap:8px;align-items:center;padding:12px 8px;"><span style="font-size:13px;font-weight:700;">Bansal Home Appliances</span><span style="font-size:12.5px;color:#6B6B6B;">Bittan Market</span><span style="font-size:12.5px;color:#6B6B6B;">Yesterday</span><span style="font-size:12.5px;color:#6B6B6B;">22</span><span style="font-size:12px;font-weight:700;color:#F0743E;">Send reminder</span></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 17 · DEALER MANAGEMENT ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:1280px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">17</span>
+        <span style="font-size:14px;font-weight:700;">Dealer Management</span>
+      </div>
+      <div style="width:1280px;background:#FAFAF8;border-radius:20px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:1px solid #EBEBEB;overflow:hidden;display:flex;">
+        <div style="width:230px;background:#141414;flex-shrink:0;padding:24px 16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 8px 20px;"><span style="width:9px;height:9px;border-radius:50%;background:#F0743E;"></span><span style="font-size:15px;font-weight:800;color:#fff;">MereWala<span style="color:#F0743E;">Price</span></span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📊</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Dashboard</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;background:rgba(240,116,62,.16);"><span style="font-size:15px;">🏪</span><span style="font-size:13.5px;font-weight:700;color:#F0743E;">Dealers</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📦</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Products</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">💳</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Bank Offers</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📩</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Requests</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">⚙️</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Settings</span></div>
+        </div>
+        <div style="flex:1;padding:28px 32px;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;"><h2 style="margin:0;font-size:24px;font-weight:800;">Dealers</h2><div style="display:flex;gap:10px;"><button style="background:#fff;color:#141414;border:1px solid #EBEBEB;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;">Export CSV</button><button style="background:#fff;color:#F0743E;border:1px solid #F0743E;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;padding:9px 14px;">Send reminder to inactive</button></div></div>
+          <!-- tabs -->
+          <div style="display:flex;gap:8px;margin-bottom:18px;"><span style="background:#141414;color:#fff;font-size:12.5px;font-weight:700;padding:8px 16px;border-radius:999px;">All Dealers</span><span style="background:#FBF1EB;color:#B77400;font-size:12.5px;font-weight:700;padding:8px 16px;border-radius:999px;">Pending Approval (3)</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:999px;">Active</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12.5px;font-weight:600;padding:8px 16px;border-radius:999px;">Paused</span></div>
+          <!-- pending card -->
+          <div style="background:#FBF1EB;border:1px solid #F3D9C6;border-radius:16px;padding:18px;margin-bottom:18px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:14px;"><div style="width:44px;height:44px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;">🏪</div><div><div style="font-size:15px;font-weight:800;">Ganesh Electronics &amp; Cooling</div><div style="font-size:12px;color:#6B6B6B;font-weight:600;">Owner: Manoj Patidar · New Market · +91 94250 33xxx · AC, Fridge</div></div></div>
+              <div style="display:flex;align-items:center;gap:10px;"><label style="display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:#6B6B6B;"><span style="width:16px;height:16px;border-radius:4px;background:#F0743E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;">✓</span>Send Welcome WhatsApp</label><button style="background:#16A34A;color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;padding:9px 18px;">Approve</button><button style="background:#fff;color:#DC2626;border:1px solid #DC2626;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;padding:9px 16px;">Reject</button></div>
+            </div>
+          </div>
+          <!-- table -->
+          <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+            <div style="display:grid;grid-template-columns:1.5fr 1.1fr 1fr 1fr 0.8fr 0.9fr 0.7fr 0.9fr;gap:8px;font-size:10.5px;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:.03em;padding:14px 18px;border-bottom:1px solid #EBEBEB;background:#FAFAF8;"><span>Shop</span><span>Owner</span><span>Area</span><span>Categories</span><span>Joined</span><span>Last active</span><span>Listed</span><span>Status</span></div>
+            <div style="display:grid;grid-template-columns:1.5fr 1.1fr 1fr 1fr 0.8fr 0.9fr 0.7fr 0.9fr;gap:8px;align-items:center;padding:13px 18px;border-bottom:1px solid #EBEBEB;"><span style="font-size:13px;font-weight:700;">Sharma Electronics</span><span style="font-size:12px;color:#6B6B6B;">Rakesh Sharma</span><span style="font-size:12px;color:#6B6B6B;">MP Nagar</span><span style="font-size:12px;color:#6B6B6B;">AC·TV·WM</span><span style="font-size:12px;color:#6B6B6B;">Jan 26</span><span style="font-size:12px;color:#16A34A;font-weight:700;">Today</span><span style="font-size:12px;color:#6B6B6B;">20</span><span><span style="font-size:10.5px;font-weight:700;color:#16A34A;background:#E7F6ED;padding:3px 9px;border-radius:999px;">Active</span></span></div>
+            <div style="display:grid;grid-template-columns:1.5fr 1.1fr 1fr 1fr 0.8fr 0.9fr 0.7fr 0.9fr;gap:8px;align-items:center;padding:13px 18px;border-bottom:1px solid #EBEBEB;"><span style="font-size:13px;font-weight:700;">Bansal Home Appliances</span><span style="font-size:12px;color:#6B6B6B;">Vinod Bansal</span><span style="font-size:12px;color:#6B6B6B;">Bittan Market</span><span style="font-size:12px;color:#6B6B6B;">AC·Fridge</span><span style="font-size:12px;color:#6B6B6B;">Feb 26</span><span style="font-size:12px;color:#6B6B6B;">Yesterday</span><span style="font-size:12px;color:#6B6B6B;">22</span><span><span style="font-size:10.5px;font-weight:700;color:#16A34A;background:#E7F6ED;padding:3px 9px;border-radius:999px;">Active</span></span></div>
+            <div style="display:grid;grid-template-columns:1.5fr 1.1fr 1fr 1fr 0.8fr 0.9fr 0.7fr 0.9fr;gap:8px;align-items:center;padding:13px 18px;border-bottom:1px solid #EBEBEB;"><span style="font-size:13px;font-weight:700;">Cool Point Kolar</span><span style="font-size:12px;color:#6B6B6B;">Sanjay Yadav</span><span style="font-size:12px;color:#6B6B6B;">Kolar Road</span><span style="font-size:12px;color:#6B6B6B;">AC·TV</span><span style="font-size:12px;color:#6B6B6B;">Mar 26</span><span style="font-size:12px;color:#B77400;font-weight:700;">4 days ago</span><span style="font-size:12px;color:#6B6B6B;">14</span><span><span style="font-size:10.5px;font-weight:700;color:#B77400;background:#FBF1EB;padding:3px 9px;border-radius:999px;">Inactive</span></span></div>
+            <div style="display:grid;grid-template-columns:1.5fr 1.1fr 1fr 1fr 0.8fr 0.9fr 0.7fr 0.9fr;gap:8px;align-items:center;padding:13px 18px;"><span style="font-size:13px;font-weight:700;">Verma Appliances</span><span style="font-size:12px;color:#6B6B6B;">Ashok Verma</span><span style="font-size:12px;color:#6B6B6B;">Bittan Market</span><span style="font-size:12px;color:#6B6B6B;">TV·WM·Laptop</span><span style="font-size:12px;color:#6B6B6B;">Apr 26</span><span style="font-size:12px;color:#6B6B6B;">2 days ago</span><span style="font-size:12px;color:#6B6B6B;">9</span><span><span style="font-size:10.5px;font-weight:700;color:#6B6B6B;background:#F0F0EE;padding:3px 9px;border-radius:999px;">Paused</span></span></div>
+          </div>
+          <div style="font-size:11.5px;color:#6B6B6B;font-weight:600;margin-top:12px;">Click any dealer to open the detail panel — full profile, price update history, won deals &amp; buyer feedback.</div>
+        </div>
+      </div>
+    </figure>
+
+    <!-- ============ SCREEN 18 · BANK OFFERS MANAGEMENT ============ -->
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px;width:1280px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 8px;background:#141414;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">18</span>
+        <span style="font-size:14px;font-weight:700;">Bank Offers Management</span>
+      </div>
+      <div style="width:1280px;background:#FAFAF8;border-radius:20px;box-shadow:0 16px 50px rgba(20,20,20,0.14);border:1px solid #EBEBEB;overflow:hidden;display:flex;">
+        <div style="width:230px;background:#141414;flex-shrink:0;padding:24px 16px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 8px 20px;"><span style="width:9px;height:9px;border-radius:50%;background:#F0743E;"></span><span style="font-size:15px;font-weight:800;color:#fff;">MereWala<span style="color:#F0743E;">Price</span></span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📊</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Dashboard</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">🏪</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Dealers</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📦</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Products</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;background:rgba(240,116,62,.16);"><span style="font-size:15px;">💳</span><span style="font-size:13.5px;font-weight:700;color:#F0743E;">Bank Offers</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">📩</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Requests</span></div>
+          <div style="display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;"><span style="font-size:15px;opacity:.6;filter:grayscale(1);">⚙️</span><span style="font-size:13.5px;font-weight:600;color:#b5b5b5;">Settings</span></div>
+        </div>
+        <div style="flex:1;padding:28px 32px;min-width:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;"><h2 style="margin:0;font-size:24px;font-weight:800;">Bank Offers</h2><button style="background:#F0743E;color:#fff;border:none;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;padding:10px 18px;box-shadow:0 4px 12px rgba(240,116,62,.3);">+ Add New Offer</button></div>
+          <div style="font-size:12.5px;color:#6B6B6B;font-weight:600;margin-bottom:16px;">Last updated: 1 July 2026 · Update monthly</div>
+          <!-- note banner -->
+          <div style="background:#F3ECF7;border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;"><span style="font-size:15px;">⚠️</span><span style="font-size:12.5px;font-weight:700;color:#7A5CA0;">These offers affect true-price calculation for all buyers. Update by the 1st of each month.</span></div>
+          <!-- filters + bulk -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <div style="display:flex;gap:8px;"><span style="background:#141414;color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;">All</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">Amazon</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">Flipkart</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">Croma</span><span style="background:#fff;border:1px solid #EBEBEB;font-size:12px;font-weight:600;padding:7px 14px;border-radius:999px;">Reliance</span></div>
+            <span style="font-size:12px;font-weight:700;color:#DC2626;">Mark all as inactive</span>
+          </div>
+          <!-- table -->
+          <div style="background:#fff;border:1px solid #EBEBEB;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr 0.8fr 0.9fr 0.9fr 0.9fr 0.6fr 0.5fr;gap:8px;font-size:10px;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:.02em;padding:13px 18px;border-bottom:1px solid #EBEBEB;background:#FAFAF8;"><span>Platform</span><span>Bank</span><span>Card</span><span>Offer type</span><span>Discount</span><span>Max ₹</span><span>Min order</span><span>Valid until</span><span>Active</span><span>Edit</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr 0.8fr 0.9fr 0.9fr 0.9fr 0.6fr 0.5fr;gap:8px;align-items:center;padding:13px 18px;border-bottom:1px solid #EBEBEB;"><span style="font-size:12.5px;font-weight:700;">Amazon</span><span style="font-size:12px;color:#6B6B6B;">HDFC</span><span style="font-size:12px;color:#6B6B6B;">Credit</span><span style="font-size:12px;color:#6B6B6B;">Instant discount</span><span style="font-size:12px;font-weight:700;">10%</span><span style="font-size:12px;color:#6B6B6B;">₹1,500</span><span style="font-size:12px;color:#6B6B6B;">₹10,000</span><span style="font-size:12px;color:#6B6B6B;">31 Jul</span><span><span style="width:34px;height:20px;border-radius:999px;background:#16A34A;display:flex;align-items:center;padding:2px;justify-content:flex-end;"><span style="width:16px;height:16px;border-radius:50%;background:#fff;"></span></span></span><span style="font-size:13px;color:#F0743E;">✎</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr 0.8fr 0.9fr 0.9fr 0.9fr 0.6fr 0.5fr;gap:8px;align-items:center;padding:13px 18px;border-bottom:1px solid #EBEBEB;"><span style="font-size:12.5px;font-weight:700;">Flipkart</span><span style="font-size:12px;color:#6B6B6B;">ICICI</span><span style="font-size:12px;color:#6B6B6B;">Credit/Debit</span><span style="font-size:12px;color:#6B6B6B;">Instant discount</span><span style="font-size:12px;font-weight:700;">5%</span><span style="font-size:12px;color:#6B6B6B;">₹750</span><span style="font-size:12px;color:#6B6B6B;">₹5,000</span><span style="font-size:12px;color:#6B6B6B;">31 Jul</span><span><span style="width:34px;height:20px;border-radius:999px;background:#16A34A;display:flex;align-items:center;padding:2px;justify-content:flex-end;"><span style="width:16px;height:16px;border-radius:50%;background:#fff;"></span></span></span><span style="font-size:13px;color:#F0743E;">✎</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr 0.8fr 0.9fr 0.9fr 0.9fr 0.6fr 0.5fr;gap:8px;align-items:center;padding:13px 18px;border-bottom:1px solid #EBEBEB;"><span style="font-size:12.5px;font-weight:700;">Croma</span><span style="font-size:12px;color:#6B6B6B;">SBI</span><span style="font-size:12px;color:#6B6B6B;">Credit</span><span style="font-size:12px;color:#6B6B6B;">Cashback</span><span style="font-size:12px;font-weight:700;">7%</span><span style="font-size:12px;color:#6B6B6B;">₹2,000</span><span style="font-size:12px;color:#6B6B6B;">₹15,000</span><span style="font-size:12px;color:#6B6B6B;">31 Jul</span><span><span style="width:34px;height:20px;border-radius:999px;background:#16A34A;display:flex;align-items:center;padding:2px;justify-content:flex-end;"><span style="width:16px;height:16px;border-radius:50%;background:#fff;"></span></span></span><span style="font-size:13px;color:#F0743E;">✎</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr 0.8fr 0.9fr 0.9fr 0.9fr 0.6fr 0.5fr;gap:8px;align-items:center;padding:13px 18px;"><span style="font-size:12.5px;font-weight:700;">Reliance</span><span style="font-size:12px;color:#6B6B6B;">Axis</span><span style="font-size:12px;color:#6B6B6B;">Credit</span><span style="font-size:12px;color:#6B6B6B;">Instant discount</span><span style="font-size:12px;font-weight:700;">6%</span><span style="font-size:12px;color:#6B6B6B;">₹1,000</span><span style="font-size:12px;color:#6B6B6B;">₹12,000</span><span style="font-size:12px;color:#6B6B6B;">31 Jul</span><span><span style="width:34px;height:20px;border-radius:999px;background:#D8D7D1;display:flex;align-items:center;padding:2px;justify-content:flex-start;"><span style="width:16px;height:16px;border-radius:50%;background:#fff;"></span></span></span><span style="font-size:13px;color:#F0743E;">✎</span></div>
+          </div>
+        </div>
+      </div>
+    </figure>
+    <!--ADMIN-->
+  </div>
+
+</div>
+
+</x-dc>
+
+
+</body></html>

@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import { getSupabaseService } from '@/lib/supabase';
-import { sendWhatsAppMessage } from '@/lib/notifications';
 
 export async function POST(request: Request) {
   try {
@@ -13,7 +12,9 @@ export async function POST(request: Request) {
       area,
       urgency,
       purchaseType,
+      whatsDifferent,
       quantity = 1,
+      userId = null,
     } = body;
 
     const supabaseAdmin = getSupabaseService();
@@ -86,6 +87,7 @@ export async function POST(request: Request) {
         area,
         urgency,
         purchase_type: purchaseType,
+        whats_different: whatsDifferent,
         quantity: parseInt(quantity, 10),
         status: 'open',
         expires_at: expiresAt,
@@ -96,12 +98,27 @@ export async function POST(request: Request) {
     if (insertError || !newRequest) {
       console.error('Insert request error:', insertError);
       return NextResponse.json(
-        { error: 'Request create karne me dikkat aayi (Could not create request).' },
+        { error: 'Could not create request. Please try again.' },
         { status: 500 }
       );
     }
 
-    // 3. Trigger Scraper Asynchronously (Fire and Forget)
+    // 5. Log Search History with Access Token (Correction 5)
+    if (userId) {
+      const { error: searchError } = await supabaseAdmin
+        .from('user_searches')
+        .insert({
+          user_id: userId,
+          product_id: productId,
+          search_query: `${product.brand} ${product.name} ${product.model_number} (${whatsDifferent?.replace(/_/g, ' ') || ''})`,
+          access_token: newRequest.access_token
+        });
+      if (searchError) {
+        console.error('Logging request search error:', searchError);
+      }
+    }
+
+    // 6. Trigger Scraper Asynchronously (Fire and Forget)
     const scraperUrl = process.env.NEXT_PUBLIC_SCRAPER_URL || 'http://localhost:8000';
     fetch(`${scraperUrl.replace(/\/$/, '')}/scrape`, {
       method: 'POST',
@@ -118,67 +135,7 @@ export async function POST(request: Request) {
       console.error('Asynchronous Scraper trigger error:', err.message);
     });
 
-    // 4. Trigger Dealer Broadcast (Flow 1)
-    // Find all approved dealers where categories overlap AND city = Bhopal
-    const { data: dealers, error: dealersError } = await supabaseAdmin
-      .from('dealers')
-      .select('*')
-      .eq('is_approved', true)
-      .eq('city', 'Bhopal')
-      .contains('categories', [product.category]);
-
-    if (dealersError) {
-      console.error('Dealers lookup error:', dealersError);
-    } else if (dealers && dealers.length > 0) {
-      // Get base URL for offer link
-      const origin = request.headers.get('origin') || 'http://localhost:3000';
-      
-      // Send broadcast to each matching dealer
-      const broadcastPromises = dealers.map((dealer) => {
-        const offerLink = `${origin}/dealer/dashboard?requestId=${newRequest.id}`;
-        
-        // Translating urgency enum for WhatsApp friendly view
-        const urgencyLabel = 
-          urgency === 'today' ? 'Today' : 
-          urgency === 'this_week' ? 'This Week (1-2 days)' : 
-          'Price Check Only';
-
-        // Translating purchase type
-        const typeLabel = 
-          purchaseType === 'personal' ? 'For Home' : 
-          purchaseType === 'business' ? 'For Resale' : 
-          'Bulk Purchase';
-
-        const messageText = `🔔 New Request — ${product.brand} ${product.name}
-Budget: ₹${newRequest.budget.toLocaleString('en-IN')}
-Area: ${newRequest.area}
-Urgency: ${urgencyLabel}
-Type: ${typeLabel}
-
-Submit your best offer:
-${offerLink}
-
-⏰ 2 hours remaining`;
-
-        return sendWhatsAppMessage({
-          phone: dealer.whatsapp || dealer.phone,
-          messageText,
-          dealerId: dealer.id,
-          requestId: newRequest.id,
-          productName: `${product.brand} ${product.name}`,
-          budget: `₹${newRequest.budget.toLocaleString('en-IN')}`,
-          area: newRequest.area,
-          offerLink: offerLink,
-        });
-      });
-
-      // Execute broadcasts in background without delaying user response
-      Promise.all(broadcastPromises).catch((err) => {
-        console.error('Broadcast error:', err);
-      });
-    }
-
-    // 5. Return created request identifier & access token
+    // 7. Return created request identifier & access token
     return NextResponse.json({
       requestId: newRequest.id,
       accessToken: newRequest.access_token,

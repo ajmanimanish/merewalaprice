@@ -1,166 +1,160 @@
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { 
-  Store, 
-  ShieldCheck, 
-  Sparkles, 
-  TrendingUp, 
-  ArrowRight, 
-  Award,
-  CircleDollarSign,
-  ArrowLeft
-} from 'lucide-react';
-import { getSupabaseService } from '@/lib/supabase';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
+import StatusBar from '@/components/StatusBar';
 
-export const revalidate = 0; // Fresh metrics each load
+export default function DealerLoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
-export default async function DealerLandingPage() {
-  // Fallbacks in case DB is unpopulated during development
-  let dealersCount = 150;
-  let requestsThisWeek = 420;
-
-  try {
-    const supabaseAdmin = getSupabaseService();
-    
-    // Count total dealers
-    const { count: dCount } = await supabaseAdmin
-      .from('dealers')
-      .select('*', { count: 'exact', head: true });
-    
-    if (dCount !== null && dCount > 0) {
-      dealersCount = dCount;
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !password) {
+      setError('Please fill in all fields');
+      return;
     }
 
-    // Count requests this week (last 7 days)
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    const { count: rCount } = await supabaseAdmin
-      .from('buyer_requests')
-      .select('*', { count: 'exact', head: true })
-      .gte('created_at', sevenDaysAgo.toISOString());
+    setLoading(true);
+    setError(null);
+    try {
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (rCount !== null && rCount > 0) {
-      requestsThisWeek = rCount;
+      if (authError) {
+        setError(authError.message);
+        return;
+      }
+
+      if (data?.user) {
+        // Verify if user is actually a dealer
+        const { data: dealer, error: dealerError } = await supabase
+          .from('dealers')
+          .select('*')
+          .eq('owner_email', email)
+          .single();
+
+        // If they are not found as a dealer, check user metadata or just check if dealer exists
+        if (dealerError || !dealer) {
+          // Check if there is any dealer associated with this user ID
+          const { data: dealerById } = await supabase
+            .from('dealers')
+            .select('*')
+            .eq('id', data.user.id)
+            .single();
+
+          if (!dealerById) {
+            setError('Access Denied: This account is not registered as a dealer.');
+            await supabase.auth.signOut();
+            return;
+          }
+        }
+        
+        router.push('/dealer/dashboard');
+      }
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred');
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    console.error('Error fetching live stats for dealer landing:', err);
-  }
+  };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAFAF8] pb-12 font-sans">
-      {/* Header */}
-      <header className="sticky top-0 z-30 bg-white h-[60px] border-b-[0.5px] border-[#EBEBEB] px-4 flex items-center gap-3 flex-shrink-0">
-        <Link href="/" className="p-1 hover:bg-[#FAFAF8] rounded-full transition-colors">
-          <ArrowLeft className="w-5 h-5 text-[#141414]" />
-        </Link>
-        <div>
-          <h1 className="text-[16px] font-bold text-[#141414] leading-tight">
-            Dealer Hub
-          </h1>
-          <p className="text-[10px] text-[#6B6B6B] font-bold uppercase tracking-wider">
-            MereWalaPrice Bhopal
-          </p>
-        </div>
-      </header>
+    <div className="w-full max-w-[390px] mx-auto min-h-screen bg-[#FAFAF8] md:shadow-2xl md:border-x md:border-[#EBEBEB] flex flex-col justify-between font-sans overflow-y-auto">
+      <div className="flex flex-col">
+        {/* Status Bar */}
+        <StatusBar theme="dark" />
 
-      {/* Hero Section */}
-      <div className="bg-[#FAFAF8] px-5 pt-8 pb-6 text-center flex flex-col items-center">
-        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-[#F0743E] bg-[#FEF0E8] border-[0.5px] border-[#F6C3AE] px-3 py-1 rounded-full uppercase tracking-wider mb-4">
-          <Award className="w-3.5 h-3.5" />
-          Bhopal Retail Partner Program
-        </span>
-        <h2 className="text-[28px] font-bold text-[#141414] leading-tight tracking-tight">
-          Want ready customers <br />
-          for your shop?
-        </h2>
-        <p className="text-[#6B6B6B] text-[15px] mt-4 max-w-xs mx-auto leading-relaxed font-normal">
-          Don't wait for walk-in customers. Get direct buyer requirements, send quotes, and close deals instantly.
-        </p>
-        
-        <Link 
-          href="/dealer/register"
-          className="btn-primary mt-6 text-[15px] font-bold w-full py-3.5 flex justify-center items-center gap-2"
-        >
-          Register Your Shop (3 Months Free)
-          <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-
-      {/* Stats Counter Cards */}
-      <div className="px-5 grid grid-cols-2 gap-4 my-6">
-        <div className="bg-white p-5 rounded-[16px] border-[0.5px] border-[#EBEBEB] flex flex-col items-center text-center">
-          <div className="w-10 h-10 bg-[#FEF0E8] text-[#F0743E] rounded-full flex items-center justify-center mb-2">
-            <Store className="w-5 h-5" />
-          </div>
-          <span className="text-[20px] font-bold text-[#141414] font-mono">{dealersCount}+</span>
-          <span className="text-[11px] font-bold text-[#6B6B6B] mt-1 uppercase tracking-wider">Dealers Joined</span>
-        </div>
-
-        <div className="bg-white p-5 rounded-[16px] border-[0.5px] border-[#EBEBEB] flex flex-col items-center text-center">
-          <div className="w-10 h-10 bg-[#FEF0E8] text-[#F0743E] rounded-full flex items-center justify-center mb-2">
-            <TrendingUp className="w-5 h-5" />
-          </div>
-          <span className="text-[20px] font-bold text-[#141414] font-mono">{requestsThisWeek}+</span>
-          <span className="text-[11px] font-bold text-[#6B6B6B] mt-1 uppercase tracking-wider">Active Enquiries</span>
-        </div>
-      </div>
-
-      {/* Benefits Checklist */}
-      <div className="px-5 space-y-4">
-        <span className="text-[12px] font-bold text-[#A0A0A0] tracking-wider uppercase block mb-2">
-          Partner Benefits
-        </span>
-
-        {/* Benefit 1 */}
-        <div className="bg-white p-5 rounded-[16px] border-[0.5px] border-[#EBEBEB] flex items-start gap-4">
-          <div className="w-8 h-8 rounded-full bg-[#FEF0E8] flex items-center justify-center text-[#F0743E] flex-shrink-0">
-            <CircleDollarSign className="w-4 h-4" />
-          </div>
-          <div>
-            <h4 className="text-[15px] font-bold text-[#141414]">3 Months FREE Trial</h4>
-            <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
-              Completely free for the first 3 months! Send unlimited quotes without any transaction fees.
-            </p>
+        {/* Dark Header */}
+        <div style={{ background: '#141414', padding: '16px 24px 26px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '16px', fontWeight: 800, color: '#fff' }}>
+              MereWala<span style={{ color: '#F0743E' }}>Price</span>
+            </span>
+            <span style={{ fontSize: '11px', fontWeight: 700, color: '#9a9a9a' }}>· Dealer Portal</span>
           </div>
         </div>
 
-        {/* Benefit 2 */}
-        <div className="bg-white p-5 rounded-[16px] border-[0.5px] border-[#EBEBEB] flex items-start gap-4">
-          <div className="w-8 h-8 rounded-full bg-[#FEF0E8] flex items-center justify-center text-[#F0743E] flex-shrink-0">
-            <ShieldCheck className="w-4 h-4" />
-          </div>
-          <div>
-            <h4 className="text-[15px] font-bold text-[#141414]">100% Verified Local Buyers</h4>
-            <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
-              Only receive requests from verified local buyers with valid requirements.
-            </p>
-          </div>
-        </div>
+        {/* Form Container */}
+        <div style={{ padding: '28px 24px' }}>
+          <form onSubmit={handleSignIn} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '22px', boxShadow: '0 4px 14px rgba(0,0,0,.08)' }}>
+            <h2 style={{ margin: '0 0 20px', fontSize: '20px', fontWeight: 800 }}>Welcome back, dealer</h2>
+            
+            {error && (
+              <div className="text-red-500 text-xs font-semibold mb-4 bg-red-50 p-3 rounded-lg border border-red-100">
+                ⚠️ {error}
+              </div>
+            )}
 
-        {/* Benefit 3 */}
-        <div className="bg-white p-5 rounded-[16px] border-[0.5px] border-[#EBEBEB] flex items-start gap-4">
-          <div className="w-8 h-8 rounded-full bg-[#FEF0E8] flex items-center justify-center text-[#F0743E] flex-shrink-0">
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <div>
-            <h4 className="text-[15px] font-bold text-[#141414]">No Middleman Commissions</h4>
-            <p className="text-[13px] text-[#6B6B6B] mt-1 leading-relaxed">
-              Keep 100% of your profits. The platform connects you directly with the buyer via WhatsApp.
-            </p>
+            <label style={{ fontSize: '12.5px', fontWeight: 700, color: '#6B6B6B', display: 'block' }}>Email</label>
+            <input
+              type="email"
+              placeholder="sharma.electronics@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              style={{ width: '100%', background: '#FAFAF8', border: '1px solid #EBEBEB', borderRadius: '12px', padding: '13px 14px', marginTop: '6px', fontSize: '14px', fontWeight: 600, outline: 'none' }}
+              className="focus:border-[#F0743E] transition-colors"
+            />
+
+            <label style={{ fontSize: '12.5px', fontWeight: 700, color: '#6B6B6B', display: 'block', marginTop: '16px' }}>Password</label>
+            <div style={{ background: '#FAFAF8', border: '1px solid #EBEBEB', borderRadius: '12px', padding: '13px 14px', marginTop: '6px', fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ flex: 1, border: 'none', background: 'transparent', outline: 'none', fontWeight: 600 }}
+              />
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{ fontSize: '12px', fontWeight: 700, color: '#F0743E', cursor: 'pointer', userSelect: 'none' }}
+              >
+                {showPassword ? 'Hide' : 'Show'}
+              </span>
+            </div>
+
+            <div style={{ textAlign: 'right', marginTop: '10px' }}>
+              <span style={{ fontSize: '12px', fontWeight: 700, color: '#F0743E', cursor: 'pointer' }}>Forgot password?</span>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              style={{ width: '100%', height: '52px', marginTop: '18px', background: '#F0743E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '15px', fontWeight: 700, boxShadow: '0 6px 16px rgba(240,116,62,.3)', cursor: 'pointer' }}
+              className="active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
+            >
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+                'Sign In'
+              )}
+            </button>
+          </form>
+
+          <div style={{ textAlign: 'center', marginTop: '22px' }}>
+            <Link href="/dealer/register">
+              <span style={{ fontSize: '13.5px', fontWeight: 600, color: '#6B6B6B', cursor: 'pointer' }}>
+                New dealer? <span style={{ color: '#F0743E', fontWeight: 700 }}>Register your shop →</span>
+              </span>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* CTA Footer */}
-      <div className="px-5 mt-8 flex flex-col items-center">
-        <Link 
-          href="/dealer/register" 
-          className="w-full btn-primary"
-        >
-          Register Your Shop
+      <div style={{ textAlign: 'center', padding: '0 24px 30px' }}>
+        <Link href="/">
+          <span style={{ fontSize: '12.5px', color: '#6B6B6B', fontWeight: 600, cursor: 'pointer' }}>
+            For buyers: <span style={{ color: '#141414', fontWeight: 700 }}>Go to main site →</span>
+          </span>
         </Link>
-        <span className="text-[12px] text-[#6B6B6B] font-semibold mt-3 text-center">
-          Already registered? <Link href="/dealer/dashboard" className="text-[#F0743E] hover:underline font-bold">Login to Dashboard</Link>
-        </span>
       </div>
     </div>
   );

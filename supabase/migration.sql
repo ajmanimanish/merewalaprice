@@ -333,3 +333,135 @@ ALTER TABLE dealers ADD COLUMN IF NOT EXISTS email TEXT;
 ALTER TABLE dealers ADD COLUMN IF NOT EXISTS address TEXT;
 ALTER TABLE dealers ADD COLUMN IF NOT EXISTS latitude DOUBLE PRECISION;
 ALTER TABLE dealers ADD COLUMN IF NOT EXISTS longitude DOUBLE PRECISION;
+
+-- 10. dealer_prices table
+CREATE TABLE IF NOT EXISTS dealer_prices (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  dealer_id UUID NOT NULL REFERENCES dealers(id) ON DELETE CASCADE,
+  product_id UUID NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+  price INTEGER NOT NULL,
+  stock_status TEXT DEFAULT 'in_stock' 
+    CHECK (stock_status IN ('in_stock', 'out_of_stock', 'limited')),
+  inclusions TEXT[] DEFAULT '{}',
+  notes TEXT,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  UNIQUE(dealer_id, product_id)
+);
+ALTER TABLE dealer_prices ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public can view dealer prices" ON dealer_prices 
+  FOR SELECT USING (true);
+CREATE POLICY "Dealers manage own prices" ON dealer_prices 
+  FOR ALL USING (
+    dealer_id IN (SELECT id FROM dealers WHERE auth_user_id = auth.uid())
+  );
+
+-- 11. product_views
+CREATE TABLE IF NOT EXISTS product_views (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  product_id UUID NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+  user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL,
+  viewed_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+  city TEXT DEFAULT 'Bhopal'
+);
+ALTER TABLE product_views ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public can insert views" ON product_views FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public can read views" ON product_views FOR SELECT USING (true);
+
+-- 12. user_searches
+CREATE TABLE IF NOT EXISTS user_searches (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  product_id UUID REFERENCES products(id) ON DELETE SET NULL,
+  search_query TEXT,
+  access_token TEXT,
+  searched_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+ALTER TABLE user_searches ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users see own searches" ON user_searches 
+  FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users insert own searches" ON user_searches 
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+-- 13. Add phone_shared to buyer_requests
+ALTER TABLE buyer_requests 
+  ADD COLUMN IF NOT EXISTS phone_shared BOOLEAN DEFAULT false;
+
+-- 14. Add short_code to buyer_requests
+ALTER TABLE buyer_requests 
+  ADD COLUMN IF NOT EXISTS short_code TEXT;
+
+-- 14b. Add whats_different to buyer_requests
+ALTER TABLE buyer_requests
+  ADD COLUMN IF NOT EXISTS whats_different TEXT;
+
+-- 15. Add unique constraint on dealer_offers for upsert
+ALTER TABLE dealer_offers 
+  ADD CONSTRAINT unique_dealer_request 
+  UNIQUE (dealer_id, request_id);
+
+-- 16. ai_waitlist table
+CREATE TABLE IF NOT EXISTS ai_waitlist (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email TEXT UNIQUE NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+ALTER TABLE ai_waitlist ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Anyone can join waitlist" ON ai_waitlist 
+  FOR INSERT WITH CHECK (true);
+
+-- 17. Add missing columns to products
+ALTER TABLE products ADD COLUMN IF NOT EXISTS asin TEXT;
+ALTER TABLE products ADD COLUMN IF NOT EXISTS brand_url TEXT;
+ALTER TABLE products ADD COLUMN IF NOT EXISTS year INTEGER DEFAULT 2025;
+ALTER TABLE products ADD COLUMN IF NOT EXISTS mrp INTEGER;
+
+-- 18. Add fetched_at column alias for staleness check
+ALTER TABLE online_prices ADD COLUMN IF NOT EXISTS fetched_at 
+  TIMESTAMP WITH TIME ZONE DEFAULT now();
+
+-- 19. Expand online_platform enum to include more retailers
+ALTER TABLE online_prices ALTER COLUMN platform TYPE TEXT;
+DROP TYPE IF EXISTS online_platform CASCADE;
+CREATE TYPE online_platform AS ENUM ('amazon', 'flipkart', 'croma', 'reliance', 'lotus');
+ALTER TABLE online_prices ALTER COLUMN platform TYPE online_platform 
+  USING platform::online_platform;
+
+-- 20. Bank offers table
+CREATE TABLE IF NOT EXISTS bank_offers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  platform TEXT NOT NULL,
+  bank TEXT NOT NULL,
+  card_type TEXT NOT NULL DEFAULT 'Credit',
+  offer_type TEXT NOT NULL DEFAULT 'instant',
+  discount_percent INTEGER,
+  max_discount INTEGER,
+  min_order INTEGER DEFAULT 0,
+  emi_months INTEGER,
+  offer_text TEXT NOT NULL,
+  valid_from DATE DEFAULT CURRENT_DATE,
+  valid_until DATE,
+  is_active BOOLEAN DEFAULT true,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+ALTER TABLE bank_offers ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public read bank offers" ON bank_offers FOR SELECT USING (true);
+CREATE POLICY "Service manages bank offers" ON bank_offers 
+  FOR ALL USING (auth.role() = 'service_role');
+
+-- 21. Seed July 2025 bank offers
+INSERT INTO bank_offers 
+  (platform, bank, card_type, offer_type, discount_percent, max_discount, min_order, offer_text) 
+VALUES
+('amazon','HDFC','Credit','instant',10,1500,5000,'Get 10% instant discount up to ₹1,500 on HDFC Bank Credit Cards on orders above ₹5,000'),
+('amazon','ICICI','Credit','instant',10,1250,5000,'Get 10% instant discount up to ₹1,250 on ICICI Bank Credit Cards'),
+('amazon','SBI','Credit','instant',10,1500,5000,'Get 10% instant discount up to ₹1,500 on SBI Credit Cards'),
+('amazon','Axis','Credit','cashback',5,750,3000,'Get 5% cashback up to ₹750 on Axis Bank Credit Cards'),
+('amazon','HDFC','All','emi',NULL,NULL,10000,'No Cost EMI on HDFC Bank Cards — 3, 6, 9 months'),
+('flipkart','ICICI','Credit','instant',5,750,5000,'Get 5% instant discount up to ₹750 on ICICI Bank Credit Cards'),
+('flipkart','Axis','Credit','instant',5,500,3000,'Get 5% instant discount up to ₹500 on Axis Bank MyZone Credit Cards'),
+('flipkart','HDFC','All','emi',NULL,NULL,10000,'No Cost EMI on HDFC Bank Cards — 3, 6, 9, 12 months'),
+('croma','SBI','Credit','instant',NULL,2000,35000,'Get ₹2,000 off on SBI Credit Cards on purchases above ₹35,000'),
+('croma','HDFC','Credit','cashback',10,1500,20000,'Get 10% cashback up to ₹1,500 on HDFC Credit Cards'),
+('croma','ICICI','All','emi',NULL,NULL,15000,'No Cost EMI on ICICI Bank Cards'),
+('reliance','HDFC','Credit','instant',10,1500,15000,'Get 10% instant discount up to ₹1,500 on HDFC Bank Credit Cards'),
+('reliance','Kotak','Credit','instant',7,1000,10000,'Get 7% instant discount up to ₹1,000 on Kotak Bank Cards');
