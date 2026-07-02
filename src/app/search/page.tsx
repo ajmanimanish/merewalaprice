@@ -106,8 +106,7 @@ export default function SearchPage() {
             name,
             category,
             image_url,
-            online_prices ( price ),
-            dealer_prices ( price, stock_status )
+            online_prices ( price )
           `)
           .eq('is_active', true)
           .or(`name.ilike.%${q}%,model_number.ilike.%${q}%,brand.ilike.%${q}%,category.ilike.%${q}%`)

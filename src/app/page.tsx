@@ -93,7 +93,7 @@ export default function HomePage() {
           setCategoryCounts(counts);
         }
 
-        // Fetch popular products (with online and dealer prices)
+        // Fetch popular products (with online prices)
         const { data: popData } = await supabase
           .from('products')
           .select(`
@@ -105,9 +105,6 @@ export default function HomePage() {
             image_url,
             online_prices (
               platform,
-              price
-            ),
-            dealer_prices (
               price
             )
           `)

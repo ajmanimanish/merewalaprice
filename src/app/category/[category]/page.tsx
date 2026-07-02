@@ -17,8 +17,7 @@ export default async function CategoryPage({ params }: { params: { category: str
     .from('products')
     .select(`
       id, brand, model_number, name, category, specs, image_url,
-      online_prices ( platform, price ),
-      dealer_prices ( price, stock_status )
+      online_prices ( platform, price )
     `)
     .eq('category', categoryCode)
     .eq('is_active', true);
