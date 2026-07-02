@@ -78,15 +78,6 @@ export default function CategoryPage() {
             online_prices (
               platform,
               price
-            ),
-            dealer_prices (
-              price,
-              stock_status,
-              dealers (
-                shop_name,
-                area,
-                is_approved
-              )
             )
           `)
           .eq('category', categoryCode)
