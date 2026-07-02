@@ -20,17 +20,25 @@ export default async function CategoryPage({ params }: { params: { category: str
       online_prices ( platform, price )
     `)
     .eq('category', categoryCode)
-    .eq('is_active', true);
+    .eq('is_active', true)
+    .order('brand', { ascending: true });
 
-  const { data: bankOffers } = await supabase
-    .from('bank_offers')
-    .select('*')
-    .eq('is_active', true);
+  // bank_offers may not exist yet — gracefully return empty array
+  let bankOffers: any[] = [];
+  try {
+    const { data } = await supabase
+      .from('bank_offers')
+      .select('*')
+      .eq('is_active', true);
+    bankOffers = data || [];
+  } catch (_) {
+    bankOffers = [];
+  }
 
   return (
     <CategoryClient
       initialProducts={products || []}
-      bankOffers={bankOffers || []}
+      bankOffers={bankOffers}
       categoryCode={categoryCode}
     />
   );
