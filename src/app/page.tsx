@@ -15,6 +15,7 @@ interface PopularProduct {
   category: string;
   price: number;
   diffText: string;
+  image_url: string | null;
 }
 
 export default function HomePage() {
@@ -101,6 +102,7 @@ export default function HomePage() {
             model_number,
             name,
             category,
+            image_url,
             online_prices (
               platform,
               price
@@ -146,6 +148,7 @@ export default function HomePage() {
                 category: p.category,
                 price: minPrice,
                 diffText,
+                image_url: p.image_url || null,
               };
             })
             .filter(Boolean) as PopularProduct[];
@@ -291,8 +294,25 @@ export default function HomePage() {
               style={{ flex: '0 0 160px', background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,.06)', position: 'relative', cursor: 'pointer' }}
             >
               <div style={{ position: 'absolute', top: '18px', right: '18px', width: '28px', height: '28px', borderRadius: '50%', background: '#FAFAF8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px' }}>🤍</div>
-              <div style={{ height: '96px', borderRadius: '12px', background: '#FAFAF8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '40px' }}>
-                {getCatEmoji(p.category)}
+              <div style={{
+                height: '96px', borderRadius: '12px', background: '#F5F5F5',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                overflow: 'hidden',
+              }}>
+                {p.image_url ? (
+                  <img
+                    src={p.image_url}
+                    alt={`${p.brand} ${p.model}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = 'none';
+                      (e.target as HTMLImageElement).parentElement!.innerHTML = 
+                        `<span style="font-size:40px">${getCatEmoji(p.category)}</span>`;
+                    }}
+                  />
+                ) : (
+                  <span style={{ fontSize: '40px' }}>{getCatEmoji(p.category)}</span>
+                )}
               </div>
               <div style={{ fontSize: '11px', fontWeight: 700, color: '#F0743E', textTransform: 'uppercase', marginTop: '10px' }}>{p.brand}</div>
               <div style={{ fontSize: '12.5px', fontWeight: 700, marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.model}</div>

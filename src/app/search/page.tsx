@@ -14,6 +14,7 @@ interface SearchResult {
   name: string;
   category: string;
   lowest_price: number;
+  image_url: string | null;
 }
 
 const getCatEmoji = (cat: string) => {
@@ -104,8 +105,9 @@ export default function SearchPage() {
             model_number,
             name,
             category,
+            image_url,
             online_prices ( price ),
-            dealer_prices ( price, is_active, is_out_of_stock )
+            dealer_prices ( price, stock_status )
           `)
           .eq('is_active', true)
           .or(`name.ilike.%${q}%,model_number.ilike.%${q}%,brand.ilike.%${q}%,category.ilike.%${q}%`)
@@ -114,7 +116,7 @@ export default function SearchPage() {
         if (data) {
           const mapped: SearchResult[] = data.map((p: any) => {
             const onlinePrices = p.online_prices || [];
-            const dealerPrices = (p.dealer_prices || []).filter((d: any) => d.is_active && !d.is_out_of_stock);
+            const dealerPrices = (p.dealer_prices || []).filter((d: any) => d.stock_status !== 'out_of_stock');
             const allPrices = [
               ...onlinePrices.map((o: any) => o.price),
               ...dealerPrices.map((d: any) => d.price),
@@ -127,6 +129,7 @@ export default function SearchPage() {
               name: p.name || p.model_number,
               category: p.category,
               lowest_price: lowest,
+              image_url: p.image_url || null,
             };
           });
           setResults(mapped);
@@ -303,8 +306,26 @@ export default function SearchPage() {
                                 }}
                                 style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '12px', display: 'flex', gap: '12px', alignItems: 'center', boxShadow: '0 1px 3px rgba(0,0,0,.06)', cursor: 'pointer' }}
                               >
-                                <div style={{ width: '56px', height: '56px', borderRadius: '12px', background: '#FAFAF8', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '26px', flexShrink: 0 }}>
-                                  {emoji}
+                                <div style={{
+                                  width: '56px', height: '56px', borderRadius: '12px',
+                                  background: '#F5F5F5', flexShrink: 0,
+                                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                  overflow: 'hidden',
+                                }}>
+                                  {item.image_url ? (
+                                    <img
+                                      src={item.image_url}
+                                      alt={`${item.brand} ${item.model_number}`}
+                                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                      onError={(e) => {
+                                        (e.target as HTMLImageElement).style.display = 'none';
+                                        (e.target as HTMLImageElement).parentElement!.innerHTML = 
+                                          `<span style="font-size:26px">${emoji}</span>`;
+                                      }}
+                                    />
+                                  ) : (
+                                    <span style={{ fontSize: '26px' }}>{emoji}</span>
+                                  )}
                                 </div>
                                 <div style={{ flex: 1, minWidth: 0 }}>
                                   <div style={{ fontSize: '9px', fontWeight: 800, color: '#F0743E', textTransform: 'uppercase' }}>

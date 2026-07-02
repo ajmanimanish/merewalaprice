@@ -93,7 +93,7 @@ export default async function ProductPage({ params }: PageProps) {
   const getCardOffer = (platform: string, price: number) => {
     if (!price || !bankOffers) return null;
     const platformOffers = bankOffers.filter(
-      (o: any) => o.platform === platform && 
+      (o: any) => o.platform?.toLowerCase() === platform?.toLowerCase() && 
       o.offer_type !== 'emi' && 
       price >= o.min_order &&
       o.discount_percent
