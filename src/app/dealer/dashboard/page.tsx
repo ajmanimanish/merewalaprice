@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import StatusBar from '@/components/StatusBar';
 
@@ -59,11 +59,18 @@ interface DealerOffer {
 
 export default function DealerDashboard() {
   const router = useRouter();
+  const pathname = usePathname();
+  const isPricesActive = pathname === '/dealer/prices';
   const [session, setSession] = useState<any>(null);
   const [profile, setProfile] = useState<DealerProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'requests' | 'won'>('dashboard');
   const [requestsFilter, setRequestsFilter] = useState<'all' | 'new' | 'responded'>('new');
+
+  const [winRate, setWinRate] = useState(0);
+  const [viewsToday, setViewsToday] = useState(0);
+  const [priceUpdatedAt, setPriceUpdatedAt] = useState<Date | null>(null);
+  const [offerSuccess, setOfferSuccess] = useState(false);
 
   // Load active tab from URL query params if present
   useEffect(() => {
@@ -208,7 +215,32 @@ export default function DealerDashboard() {
               })
               .filter(Boolean) as DealerOffer[];
             setWonList(mappedWon);
+
+            // Calculate win rate
+            const won = mappedWon.filter((o: any) => 
+              o.status === 'accepted' || o.status === 'won'
+            ).length || 0;
+            const total = mappedWon.length || 0;
+            setWinRate(total > 0 ? Math.round((won / total) * 100) : 0);
           }
+
+          // Fetch today's views from product_views
+          const todayStr = new Date().toISOString().split('T')[0];
+          const { count: views } = await supabase
+            .from('product_views')
+            .select('*', { count: 'exact', head: true })
+            .gte('viewed_at', todayStr);
+          setViewsToday(views || 0);
+
+          // Fetch latest price update time
+          const { data: latestPrice } = await supabase
+            .from('dealer_prices')
+            .select('updated_at')
+            .eq('dealer_id', dl.id)
+            .order('updated_at', { ascending: false })
+            .limit(1)
+            .maybeSingle();
+          if (latestPrice) setPriceUpdatedAt(new Date(latestPrice.updated_at));
         }
       } catch (err) {
         console.error('Error loading dashboard data:', err);
@@ -227,7 +259,7 @@ export default function DealerDashboard() {
 
   const openOfferModal = (req: BuyerRequest) => {
     setSelectedRequest(req);
-    setOfferPrice(String(req.budget));
+    setOfferPrice('');
     setInclusions(['Free Install']);
     setAvailability('Today');
     setNote('');
@@ -276,8 +308,11 @@ export default function DealerDashboard() {
       };
 
       setWonList([newOffer, ...wonList]);
-      setSelectedRequest(null);
-      alert('Offer submitted successfully!');
+      setOfferSuccess(true);
+      setTimeout(() => {
+        setOfferSuccess(false);
+        setSelectedRequest(null);
+      }, 2000);
     } catch (e: any) {
       console.error(e);
       alert(e.message || 'Error submitting offer. Please try again.');
@@ -337,16 +372,45 @@ export default function DealerDashboard() {
         {/* TAB 1: MAIN DASHBOARD */}
         {activeTab === 'dashboard' && (
           <div style={{ padding: '18px 20px 24px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
-            {/* Green updated bar */}
-            <div style={{ background: '#E7F6ED', border: '1px solid #B7E4C7', borderRadius: '14px', padding: '14px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ fontSize: '18px' }}>✓</span>
-              <span style={{ fontSize: '13.5px', fontWeight: 700, color: '#16803D' }}>Prices updated today</span>
-            </div>
+            {/* Dynamic price freshness indicator */}
+            {(() => {
+              const now = new Date();
+              const hoursSince = priceUpdatedAt 
+                ? (now.getTime() - priceUpdatedAt.getTime()) / (1000 * 60 * 60)
+                : 999;
+              
+              if (hoursSince < 24) return (
+                <div style={{ background: '#E7F6ED', border: '1px solid #B7E4C7', borderRadius: '14px', padding: '14px 16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '18px' }}>✓</span>
+                  <span style={{ fontSize: '13.5px', fontWeight: 700, color: '#16803D' }}>
+                    Prices updated today at {priceUpdatedAt?.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                </div>
+              );
+              if (hoursSince < 72) return (
+                <div style={{ background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: '14px', padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span>⚠️</span>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#92400E' }}>Prices updated {Math.floor(hoursSince)} hours ago</span>
+                  </div>
+                  <button onClick={() => router.push('/dealer/prices')} style={{ background: '#F59E0B', color: '#fff', border: 'none', borderRadius: '8px', padding: '6px 12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}>Update</button>
+                </div>
+              );
+              return (
+                <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '14px', padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span>🔴</span>
+                    <span style={{ fontSize: '13px', fontWeight: 700, color: '#DC2626' }}>Buyers see your prices as outdated</span>
+                  </div>
+                  <button onClick={() => router.push('/dealer/prices')} style={{ background: '#DC2626', color: '#fff', border: 'none', borderRadius: '8px', padding: '6px 12px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}>Update Now</button>
+                </div>
+              );
+            })()}
 
             {/* Stats Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
-                <div style={{ fontSize: '26px', fontWeight: 800 }}>47</div>
+                <div style={{ fontSize: '26px', fontWeight: 800 }}>{viewsToday}</div>
                 <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Views today</div>
               </div>
               <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
@@ -358,7 +422,7 @@ export default function DealerDashboard() {
                 <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Products listed</div>
               </div>
               <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
-                <div style={{ fontSize: '26px', fontWeight: 800, color: '#16A34A' }}>65%</div>
+                <div style={{ fontSize: '26px', fontWeight: 800, color: '#16A34A' }}>{winRate}%</div>
                 <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Win rate</div>
               </div>
             </div>
@@ -401,31 +465,48 @@ export default function DealerDashboard() {
               </div>
             </div>
 
-            {/* Recent Activity */}
+            {/* Recent Activity — built from real data */}
             <div>
               <div style={{ fontSize: '15px', fontWeight: 800, marginBottom: '10px' }}>Recent Activity</div>
               <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '6px 14px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
-                <div style={{ display: 'flex', gap: '11px', padding: '11px 0', borderBottom: '1px solid #EBEBEB' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F0743E', marginTop: '5px', flexShrink: 0 }}></span>
-                  <div>
-                    <div style={{ fontSize: '12.5px', fontWeight: 600 }}>Buyer viewed your price</div>
-                    <div style={{ fontSize: '11px', color: '#6B6B6B' }}>2 hrs ago</div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '11px', padding: '11px 0', borderBottom: '1px solid #EBEBEB' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#CDBCDB', marginTop: '5px', flexShrink: 0 }}></span>
-                  <div>
-                    <div style={{ fontSize: '12.5px', fontWeight: 600 }}>New special request matching your shop</div>
-                    <div style={{ fontSize: '11px', color: '#6B6B6B' }}>4 hrs ago</div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '11px', padding: '11px 0' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#16A34A', marginTop: '5px', flexShrink: 0 }}></span>
-                  <div>
-                    <div style={{ fontSize: '12.5px', fontWeight: 600 }}>You won a deal! Contact shared</div>
-                    <div style={{ fontSize: '11px', color: '#6B6B6B' }}>Yesterday</div>
-                  </div>
-                </div>
+                {(() => {
+                  const items = [
+                    // Won/submitted deals
+                    ...wonList.slice(0, 2).map(o => ({
+                      dot: '#16A34A',
+                      text: `Offer submitted for ${o.request.product?.name}`,
+                      time: new Date(o.created_at),
+                    })),
+                    // New requests
+                    ...requestsList.slice(0, 2).map(r => ({
+                      dot: '#CDBCDB',
+                      text: `New request: ${r.product?.name} — Budget ₹${r.budget.toLocaleString('en-IN')}`,
+                      time: new Date(r.created_at),
+                    })),
+                  ]
+                  .sort((a, b) => b.time.getTime() - a.time.getTime())
+                  .slice(0, 4);
+
+                  if (items.length === 0) {
+                    return (
+                      <div style={{ padding: '14px 0', fontSize: '12.5px', color: '#6B6B6B', fontWeight: 600 }}>
+                        No activity yet. Update your prices to start appearing in buyer searches.
+                      </div>
+                    );
+                  }
+
+                  return items.map((item, i, arr) => (
+                    <div key={i} style={{ display: 'flex', gap: '11px', padding: '11px 0', borderBottom: i < arr.length - 1 ? '1px solid #EBEBEB' : 'none' }}>
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.dot, marginTop: '5px', flexShrink: 0 }}></span>
+                      <div>
+                        <div style={{ fontSize: '12.5px', fontWeight: 600 }}>{item.text}</div>
+                        <div style={{ fontSize: '11px', color: '#6B6B6B' }}>
+                          {item.time.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
+                        </div>
+                      </div>
+                    </div>
+                  ));
+                })()}
               </div>
             </div>
           </div>
@@ -539,11 +620,11 @@ export default function DealerDashboard() {
 
         {/* TAB 3: WON DEALS (Screen 13) */}
         {activeTab === 'won' && (() => {
-          const wonDeals = wonList.filter((o) => o.status === 'accepted' || o.status === 'won');
+          const wonDeals = wonList; // Show everything dealer submitted
 
           return (
             <div style={{ minHeight: '844px', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ padding: '6px 20px 12px' }}><div style={{ fontSize: '18px', fontWeight: 800 }}>Won Deals</div></div>
+              <div style={{ padding: '6px 20px 12px' }}><div style={{ fontSize: '18px', fontWeight: 800 }}>My Submitted Offers</div></div>
               <div style={{ display: 'flex', gap: '8px', padding: '0 20px 12px' }}>
                 <span style={{ background: '#141414', color: '#fff', fontSize: '12px', fontWeight: 700, padding: '7px 16px', borderRadius: '999px' }}>This Month</span>
                 <span style={{ background: '#fff', border: '1px solid #EBEBEB', fontSize: '12px', fontWeight: 600, padding: '7px 16px', borderRadius: '999px' }}>All Time</span>
@@ -555,7 +636,7 @@ export default function DealerDashboard() {
                   ₹ {wonDeals.reduce((acc, o) => acc + o.price, 0).toLocaleString()}
                 </div>
                 <div style={{ fontSize: '12.5px', color: '#b5b5b5', fontWeight: 600, marginTop: '2px' }}>
-                  in validated sales · {wonDeals.length} deals won
+                  in total offers · {wonDeals.length} offers submitted
                 </div>
               </div>
 
@@ -563,7 +644,7 @@ export default function DealerDashboard() {
               <div style={{ padding: '16px 20px 4px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {wonDeals.length === 0 ? (
                   <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '24px', textAlign: 'center', color: '#6B6B6B', fontWeight: 600 }}>
-                    You haven't won any deals yet. Responded offers will show up here once accepted by buyers.
+                    You haven't submitted any offers yet. Check special requests to send quotes!
                   </div>
                 ) : (
                   wonDeals.map((item) => (
@@ -576,7 +657,20 @@ export default function DealerDashboard() {
                           <div style={{ fontSize: '13.5px', fontWeight: 800 }}>{item.request.product?.name}</div>
                           <div style={{ fontSize: '11px', color: '#6B6B6B' }}>{item.request.area} · {new Date(item.created_at).toLocaleDateString()}</div>
                         </div>
-                        <div style={{ fontSize: '16px', fontWeight: 800, color: '#16A34A' }}>₹ {item.price.toLocaleString()}</div>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                          <div style={{ fontSize: '16px', fontWeight: 800, color: item.status === 'accepted' || item.status === 'won' ? '#16A34A' : '#141414' }}>
+                            ₹ {item.price.toLocaleString()}
+                          </div>
+                          <div style={{ 
+                            display: 'inline-flex', alignItems: 'center', 
+                            padding: '3px 8px', borderRadius: '999px', fontSize: '10px', fontWeight: 700,
+                            background: item.status === 'accepted' || item.status === 'won' ? '#E7F6ED' : '#FAFAF8',
+                            color: item.status === 'accepted' || item.status === 'won' ? '#16A34A' : '#6B6B6B',
+                            border: item.status === 'accepted' || item.status === 'won' ? '1px solid #B7E4C7' : '1px solid #EBEBEB',
+                          }}>
+                            {item.status === 'accepted' || item.status === 'won' ? '✓ Won' : '⏳ Pending'}
+                          </div>
+                        </div>
                       </div>
 
                       {item.buyer_phone ? (
@@ -604,7 +698,7 @@ export default function DealerDashboard() {
               <div style={{ margin: '14px 20px 24px', background: '#F3ECF7', borderRadius: '14px', padding: '14px 16px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
                 <span style={{ fontSize: '16px' }}>📈</span>
                 <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#7A5CA0', lineHeight: 1.4 }}>
-                  You won {wonDeals.length} deals this month. Submit competitive prices on special requests to win more customers!
+                  You submitted {wonDeals.length} offers this month. Submit competitive prices on special requests to win more customers!
                 </span>
               </div>
             </div>
@@ -722,13 +816,19 @@ export default function DealerDashboard() {
               style={{ width: '100%', height: '60px', background: '#FAFAF8', border: '1px solid #EBEBEB', borderRadius: '12px', padding: '12px', marginTop: '8px', fontSize: '12.5px', outline: 'none', resize: 'none' }}
             />
 
-            <button
-              onClick={submitOffer}
-              disabled={modalLoading}
-              style={{ width: '100%', height: '52px', marginTop: '18px', background: '#F0743E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '15px', fontWeight: 700, boxShadow: '0 6px 16px rgba(240,116,62,.3)', cursor: 'pointer' }}
-            >
-              {modalLoading ? 'Submitting...' : 'Submit Offer'}
-            </button>
+            {offerSuccess ? (
+              <div style={{ width: '100%', height: '52px', marginTop: '18px', background: '#16A34A', color: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', fontWeight: 700 }}>
+                ✓ Offer Submitted!
+              </div>
+            ) : (
+              <button
+                onClick={submitOffer}
+                disabled={modalLoading}
+                style={{ width: '100%', height: '52px', marginTop: '18px', background: '#F0743E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '15px', fontWeight: 700, boxShadow: '0 6px 16px rgba(240,116,62,.3)', cursor: 'pointer' }}
+              >
+                {modalLoading ? 'Submitting...' : 'Submit Offer'}
+              </button>
+            )}
           </div>
         </div>
       )}
@@ -741,8 +841,8 @@ export default function DealerDashboard() {
         </div>
         <Link href="/dealer/prices" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
-            <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>🏷️</span>
-            <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Prices</span>
+            <span style={{ fontSize: '17px', filter: isPricesActive ? 'none' : 'grayscale(1)', opacity: isPricesActive ? 1 : .55 }}>🏷️</span>
+            <span style={{ fontSize: '9.5px', fontWeight: isPricesActive ? 800 : 600, color: isPricesActive ? '#F0743E' : '#6B6B6B' }}>Prices</span>
           </div>
         </Link>
         <div onClick={() => setActiveTab('requests')} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
@@ -751,7 +851,7 @@ export default function DealerDashboard() {
         </div>
         <div onClick={() => setActiveTab('won')} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
           <span style={{ fontSize: '17px', filter: activeTab === 'won' ? 'none' : 'grayscale(1)', opacity: activeTab === 'won' ? 1 : .55 }}>🏆</span>
-          <span style={{ fontSize: '9.5px', fontWeight: activeTab === 'won' ? 800 : 600, color: activeTab === 'won' ? '#F0743E' : '#6B6B6B' }}>Won</span>
+          <span style={{ fontSize: '9.5px', fontWeight: activeTab === 'won' ? 800 : 600, color: activeTab === 'won' ? '#F0743E' : '#6B6B6B' }}>My Offers</span>
         </div>
         <Link href="/dealer/profile" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>

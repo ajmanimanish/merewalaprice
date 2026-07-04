@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import StatusBar from '@/components/StatusBar';
 
@@ -20,6 +20,8 @@ interface DealerProfile {
 
 export default function DealerProfilePage() {
   const router = useRouter();
+  const pathname = usePathname();
+  const isPricesActive = pathname === '/dealer/prices';
   const [session, setSession] = useState<any>(null);
   const [profile, setProfile] = useState<DealerProfile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -333,8 +335,8 @@ export default function DealerProfilePage() {
         </Link>
         <Link href="/dealer/prices" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
-            <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>🏷️</span>
-            <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Prices</span>
+            <span style={{ fontSize: '17px', filter: isPricesActive ? 'none' : 'grayscale(1)', opacity: isPricesActive ? 1 : .55 }}>🏷️</span>
+            <span style={{ fontSize: '9.5px', fontWeight: isPricesActive ? 800 : 600, color: isPricesActive ? '#F0743E' : '#6B6B6B' }}>Prices</span>
           </div>
         </Link>
         <Link href="/dealer/dashboard?tab=requests" style={{ textDecoration: 'none' }}>
@@ -346,7 +348,7 @@ export default function DealerProfilePage() {
         <Link href="/dealer/dashboard?tab=won" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
             <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>🏆</span>
-            <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Won</span>
+            <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>My Offers</span>
           </div>
         </Link>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
