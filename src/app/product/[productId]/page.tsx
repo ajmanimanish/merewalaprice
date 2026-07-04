@@ -62,8 +62,13 @@ export default async function ProductPage({ params }: PageProps) {
   // 2. Fetch dealer prices
   const { data: dealerPrices } = await supabase
     .from('dealer_prices')
-    .select('*, dealers(id, shop_name, owner_name, phone, whatsapp, area, city, is_approved)')
+    .select(`
+      price, stock_status, inclusions, updated_at,
+      card_offer_bank, card_offer_text, card_offer_savings, emi_available,
+      dealers(id, shop_name, owner_name, phone, whatsapp, area, city, is_approved)
+    `)
     .eq('product_id', productId)
+    .neq('stock_status', 'out_of_stock')
     .order('price', { ascending: true });
 
   const activeDealerPrices = (dealerPrices || []).filter(

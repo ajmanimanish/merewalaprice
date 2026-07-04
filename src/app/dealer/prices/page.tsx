@@ -29,6 +29,10 @@ interface PriceConfig {
   inclusions: string[];
   hasPrice: boolean;
   isDirty?: boolean;
+  card_offer_bank?: string;
+  card_offer_text?: string;
+  card_offer_savings?: number;
+  emi_available?: boolean;
 }
 
 export default function DealerPricesPage() {
@@ -101,6 +105,10 @@ export default function DealerPricesPage() {
                 inclusions: pr.inclusions || [],
                 hasPrice: true,
                 isDirty: false,
+                card_offer_bank: pr.card_offer_bank || '',
+                card_offer_text: pr.card_offer_text || '',
+                card_offer_savings: pr.card_offer_savings || 0,
+                emi_available: pr.emi_available || false,
               };
               const t = new Date(pr.updated_at).getTime();
               if (t > latestTime) latestTime = t;
@@ -116,6 +124,10 @@ export default function DealerPricesPage() {
                   inclusions: [],
                   hasPrice: false,
                   isDirty: false,
+                  card_offer_bank: '',
+                  card_offer_text: '',
+                  card_offer_savings: 0,
+                  emi_available: false,
                 };
               }
             });
@@ -222,6 +234,10 @@ export default function DealerPricesPage() {
             price: val,
             stock_status: config.stock_status,
             inclusions: config.inclusions,
+            card_offer_bank: config.card_offer_bank || null,
+            card_offer_text: config.card_offer_text || null,
+            card_offer_savings: config.card_offer_savings || null,
+            emi_available: config.emi_available || false,
             updated_at: new Date().toISOString(),
           });
         }
@@ -446,6 +462,132 @@ export default function DealerPricesPage() {
                       </span>
                     );
                   })}
+                </div>
+
+                {/* Special Offer Section */}
+                <div style={{ marginTop: '12px', borderTop: '1px dashed #EBEBEB', paddingTop: '10px' }}>
+                  <div style={{ fontSize: '11px', fontWeight: 700, color: '#6B6B6B', marginBottom: '8px' }}>
+                    💳 My Card / EMI Offer (optional)
+                  </div>
+                  
+                  {/* Bank name + savings row */}
+                  <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+                    <select
+                      value={config.card_offer_bank || ''}
+                      onChange={(e) => setPricingState(prev => ({
+                        ...prev,
+                        [p.id]: { ...prev[p.id], card_offer_bank: e.target.value, isDirty: true }
+                      }))}
+                      style={{ 
+                        flex: 1, background: '#FAFAF8', border: '1px solid #EBEBEB', 
+                        borderRadius: '10px', padding: '8px 10px', 
+                        fontSize: '12px', fontWeight: 600, outline: 'none' 
+                      }}
+                    >
+                      <option value="">Select Bank</option>
+                      <option value="HDFC">HDFC Bank</option>
+                      <option value="ICICI">ICICI Bank</option>
+                      <option value="SBI">SBI</option>
+                      <option value="Axis">Axis Bank</option>
+                      <option value="Kotak">Kotak Bank</option>
+                      <option value="Yes">Yes Bank</option>
+                      <option value="All">All Cards</option>
+                    </select>
+                    
+                    <div style={{ 
+                      display: 'flex', alignItems: 'center', gap: '4px',
+                      background: '#FAFAF8', border: '1px solid #EBEBEB',
+                      borderRadius: '10px', padding: '8px 10px', width: '110px'
+                    }}>
+                      <span style={{ fontSize: '12px', color: '#6B6B6B' }}>₹</span>
+                      <input
+                        type="number"
+                        placeholder="0 off"
+                        value={config.card_offer_savings || ''}
+                        onChange={(e) => setPricingState(prev => ({
+                          ...prev,
+                          [p.id]: { ...prev[p.id], card_offer_savings: parseInt(e.target.value) || 0, isDirty: true }
+                        }))}
+                        style={{ 
+                          width: '100%', border: 'none', background: 'transparent', 
+                          outline: 'none', fontSize: '12px', fontWeight: 700 
+                        }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Offer description */}
+                  <input
+                    type="text"
+                    placeholder="e.g. HDFC Credit Card pe ₹500 extra off"
+                    value={config.card_offer_text || ''}
+                    onChange={(e) => setPricingState(prev => ({
+                      ...prev,
+                      [p.id]: { ...prev[p.id], card_offer_text: e.target.value, isDirty: true }
+                    }))}
+                    style={{ 
+                      width: '100%', background: '#FAFAF8', border: '1px solid #EBEBEB',
+                      borderRadius: '10px', padding: '8px 12px', fontSize: '12px',
+                      fontWeight: 500, outline: 'none', boxSizing: 'border-box'
+                    }}
+                  />
+                  
+                  {/* EMI toggle */}
+                  <div 
+                    onClick={() => setPricingState(prev => ({
+                      ...prev,
+                      [p.id]: { ...prev[p.id], emi_available: !prev[p.id]?.emi_available, isDirty: true }
+                    }))}
+                    style={{ 
+                      display: 'flex', alignItems: 'center', gap: '8px', 
+                      marginTop: '8px', cursor: 'pointer' 
+                    }}
+                  >
+                    <div style={{ 
+                      width: '36px', height: '20px', borderRadius: '999px',
+                      background: config.emi_available ? '#F0743E' : '#EBEBEB',
+                      position: 'relative', transition: 'background .2s',
+                      flexShrink: 0
+                    }}>
+                      <div style={{ 
+                        width: '16px', height: '16px', borderRadius: '50%', background: '#fff',
+                        position: 'absolute', top: '2px',
+                        left: config.emi_available ? '18px' : '2px',
+                        transition: 'left .2s',
+                        boxShadow: '0 1px 3px rgba(0,0,0,.2)'
+                      }}/>
+                    </div>
+                    <span style={{ fontSize: '12px', fontWeight: 600, color: '#141414' }}>
+                      No-cost EMI available
+                    </span>
+                  </div>
+                
+                  {/* Preview how it shows to buyer */}
+                  {(config.card_offer_bank || config.card_offer_savings || config.emi_available) ? (
+                    <div style={{ 
+                      marginTop: '10px', background: '#F0FDF4', border: '1px solid #86EFAC',
+                      borderRadius: '10px', padding: '8px 12px'
+                    }}>
+                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#16A34A', marginBottom: '3px' }}>
+                        PREVIEW — How buyers will see this:
+                      </div>
+                      {config.card_offer_bank && config.card_offer_savings ? (
+                        <div style={{ fontSize: '12px', fontWeight: 600, color: '#141414' }}>
+                          💳 {config.card_offer_bank} Card: Save ₹{config.card_offer_savings.toLocaleString('en-IN')}
+                        </div>
+                      ) : null}
+                      {config.card_offer_text && (
+                        <div style={{ fontSize: '11px', color: '#6B6B6B', marginTop: '2px' }}>
+                          {config.card_offer_text}
+                        </div>
+                      )}
+                      {config.emi_available && (
+                        <div style={{ fontSize: '11px', fontWeight: 600, color: '#16A34A', marginTop: '2px' }}>
+                          ✓ No-cost EMI available
+                        </div>
+                      )}
+                    </div>
+                  ) : null}
                 </div>
               </div>
             );

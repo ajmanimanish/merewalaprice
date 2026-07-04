@@ -22,6 +22,10 @@ interface DealerPrice {
   notes?: string;
   updated_at: string;
   dealers: Dealer;
+  card_offer_bank?: string;
+  card_offer_text?: string;
+  card_offer_savings?: number;
+  emi_available?: boolean;
 }
 
 interface DealerListProps {
@@ -143,6 +147,32 @@ export default function DealerList({ dealerPrices, lowestOnlinePrice, productNam
                   ))}
                 </div>
               )}
+
+              {/* Dealer card offer */}
+              {(item.card_offer_bank && item.card_offer_savings) ? (
+                <div style={{ 
+                  marginTop: '8px', background: '#F0FDF4', 
+                  borderRadius: '8px', padding: '6px 10px',
+                  display: 'flex', alignItems: 'center', gap: '6px'
+                }}>
+                  <span style={{ fontSize: '13px' }}>💳</span>
+                  <div>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#16A34A' }}>
+                      {item.card_offer_bank} Card saves ₹{item.card_offer_savings.toLocaleString('en-IN')}
+                    </span>
+                    {item.card_offer_text && (
+                      <div style={{ fontSize: '10px', color: '#6B6B6B' }}>{item.card_offer_text}</div>
+                    )}
+                  </div>
+                </div>
+              ) : null}
+              {item.emi_available ? (
+                <div style={{ 
+                  marginTop: '4px', fontSize: '11px', fontWeight: 600, color: '#6B6B6B' 
+                }}>
+                  ✓ No-cost EMI available
+                </div>
+              ) : null}
 
               {/* Stock and Time */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '12px' }}>
