@@ -60,7 +60,7 @@ export default function DealerProfilePage() {
         const { data: dl } = await supabase
           .from('dealers')
           .select('*')
-          .or(`id.eq.${session.user.id},auth_user_id.eq.${session.user.id},owner_email.eq.${session.user.email}`)
+          .or(`id.eq.${session.user.id},auth_user_id.eq.${session.user.id},email.eq.${session.user.email}`)
           .single();
 
         if (dl) {
@@ -325,7 +325,7 @@ export default function DealerProfilePage() {
 
       {/* Bottom Nav Bar */}
       <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', padding: '10px 6px 24px', background: '#fff', borderTop: '1px solid #EBEBEB', position: 'fixed', bottom: 0, left: 'calc(50% - 195px)', width: '100%', maxWidth: '390px', zIndex: 40 }}>
-        <Link href="/dealer/dashboard" style={{ textDecoration: 'none' }}>
+        <Link href="/dealer/dashboard?tab=dashboard" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
             <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>📊</span>
             <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Dashboard</span>
@@ -337,13 +337,13 @@ export default function DealerProfilePage() {
             <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Prices</span>
           </div>
         </Link>
-        <Link href="/dealer/dashboard" style={{ textDecoration: 'none' }}>
+        <Link href="/dealer/dashboard?tab=requests" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
             <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>📩</span>
             <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Requests</span>
           </div>
         </Link>
-        <Link href="/dealer/dashboard" style={{ textDecoration: 'none' }}>
+        <Link href="/dealer/dashboard?tab=won" style={{ textDecoration: 'none' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', cursor: 'pointer' }}>
             <span style={{ fontSize: '17px', filter: 'grayscale(1)', opacity: .55 }}>🏆</span>
             <span style={{ fontSize: '9.5px', fontWeight: 600, color: '#6B6B6B' }}>Won</span>

@@ -75,7 +75,7 @@ export default function DealerPricesPage() {
         const { data: dl } = await supabase
           .from('dealers')
           .select('*')
-          .or(`id.eq.${session.user.id},auth_user_id.eq.${session.user.id},owner_email.eq.${session.user.email}`)
+          .or(`id.eq.${session.user.id},auth_user_id.eq.${session.user.id},email.eq.${session.user.email}`)
           .single();
 
         if (dl) {
