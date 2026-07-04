@@ -55,7 +55,7 @@ export async function GET(request: Request) {
   }
 
   const passwords = ['bhopalprice123', 'MWP@Admin2024'];
-  const host = '[2406:da12:1f1:f802:77fd:3ed:b6cb:b46d]';
+  const host = '2406:da12:1f1:f802:77fd:3ed:b6cb:b46d';
   const user = 'postgres';
   const database = 'postgres';
   const port = 5432;
