@@ -39,16 +39,15 @@ export default function DealerLoginPage() {
         const { data: dealer, error: dealerError } = await supabase
           .from('dealers')
           .select('*')
-          .eq('owner_email', email)
+          .eq('email', email)
           .single();
 
-        // If they are not found as a dealer, check user metadata or just check if dealer exists
+        // If they are not found as a dealer, check by auth_user_id linkage
         if (dealerError || !dealer) {
-          // Check if there is any dealer associated with this user ID
           const { data: dealerById } = await supabase
             .from('dealers')
             .select('*')
-            .eq('id', data.user.id)
+            .eq('auth_user_id', data.user.id)
             .single();
 
           if (!dealerById) {
