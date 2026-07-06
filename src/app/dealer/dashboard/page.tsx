@@ -71,6 +71,7 @@ export default function DealerDashboard() {
   const [viewsToday, setViewsToday] = useState(0);
   const [priceUpdatedAt, setPriceUpdatedAt] = useState<Date | null>(null);
   const [offerSuccess, setOfferSuccess] = useState(false);
+  const [offerError, setOfferError] = useState<string | null>(null);
 
   // Load active tab from URL query params if present
   useEffect(() => {
@@ -315,7 +316,8 @@ export default function DealerDashboard() {
       }, 2000);
     } catch (e: any) {
       console.error(e);
-      alert(e.message || 'Error submitting offer. Please try again.');
+      setOfferError(e.message || 'Failed to submit. Please check your price and try again.');
+      setTimeout(() => setOfferError(null), 4000);
     } finally {
       setModalLoading(false);
     }
@@ -815,6 +817,16 @@ export default function DealerDashboard() {
               onChange={(e) => setNote(e.target.value)}
               style={{ width: '100%', height: '60px', background: '#FAFAF8', border: '1px solid #EBEBEB', borderRadius: '12px', padding: '12px', marginTop: '8px', fontSize: '12.5px', outline: 'none', resize: 'none' }}
             />
+
+            {offerError && (
+              <div style={{ 
+                marginTop: '12px', background: '#FEF2F2', border: '1px solid #FECACA',
+                borderRadius: '10px', padding: '10px 14px',
+                fontSize: '12.5px', fontWeight: 600, color: '#DC2626'
+              }}>
+                ⚠️ {offerError}
+              </div>
+            )}
 
             {offerSuccess ? (
               <div style={{ width: '100%', height: '52px', marginTop: '18px', background: '#16A34A', color: '#fff', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', fontWeight: 700 }}>
