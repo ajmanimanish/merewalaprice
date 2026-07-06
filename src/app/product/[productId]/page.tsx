@@ -45,6 +45,29 @@ const getSpecsList = (product: any) => {
   return ['Official Model', 'Warranty Included'];
 };
 
+function getPlatformLabel(platform: string): string {
+  const labels: Record<string, string> = {
+    amazon: 'Amazon',
+    flipkart: 'Flipkart',
+    croma: 'Croma',
+    reliance: 'Reliance Digital',
+    lotus: 'Lotus Electronics',
+  };
+  return labels[platform] || platform;
+}
+
+function getPlatformUrl(platform: string, modelNumber: string): string {
+  const q = encodeURIComponent(modelNumber);
+  const urls: Record<string, string> = {
+    amazon: `https://www.amazon.in/s?k=${q}`,
+    flipkart: `https://www.flipkart.com/search?q=${q}`,
+    croma: `https://www.croma.com/searchB?q=${q}`,
+    reliance: `https://www.reliancedigital.in/search?q=${q}`,
+    lotus: `https://www.lotuselect.com/search?q=${q}`,
+  };
+  return urls[platform] || `https://www.google.com/search?q=${q}`;
+}
+
 export default async function ProductPage({ params }: PageProps) {
   const { productId } = params;
 
@@ -116,10 +139,7 @@ export default async function ProductPage({ params }: PageProps) {
       }
     }
     if (!best) return null;
-    return {
-      text: `${best.bank} saves ₹${Math.round(bestSaving).toLocaleString('en-IN')}`,
-      truePrice: price - Math.round(bestSaving),
-    };
+    return { bank: best.bank, saving: Math.round(bestSaving) };
   };
 
   const formattedOnline = ['amazon', 'flipkart', 'croma', 'reliance'].map((plat) => {
@@ -131,10 +151,11 @@ export default async function ProductPage({ params }: PageProps) {
       plat === 'croma' ? '#12B3B3' : '#E4032E';
 
     return {
+      key: plat,
       platform: plat.charAt(0).toUpperCase() + plat.slice(1),
       price: basePrice,
       accentColor,
-      offer: basePrice ? getCardOffer(plat, basePrice) : null,
+      url: entry?.url || null,
     };
   });
 
@@ -219,35 +240,71 @@ export default async function ProductPage({ params }: PageProps) {
 
         {/* Online prices comparison grid */}
         <div style={{ padding: '12px 20px 14px', background: '#FAFAF8', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          {formattedOnline.map((item) => (
-            <div key={item.platform} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '14px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
-              <div style={{ height: '4px', width: '34px', borderRadius: '2px', background: item.accentColor }}></div>
-              <div style={{ fontSize: '13px', fontWeight: 800, marginTop: '8px' }}>{item.platform}</div>
-              
-              {item.price ? (
-                <>
-                  <div style={{ fontSize: '15px', fontWeight: 700, color: '#6B6B6B', marginTop: '6px' }}>
-                    ₹ {item.price.toLocaleString()}
+          {formattedOnline.map((item) => {
+            if (!item.price) {
+              return (
+                <div key={item.platform} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '14px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                  <div style={{ height: '4px', width: '34px', borderRadius: '2px', background: item.accentColor }}></div>
+                  <div style={{ fontSize: '13px', fontWeight: 800, marginTop: '8px' }}>{item.platform}</div>
+                  <div style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '14px', fontWeight: 600 }}>
+                    Not found
                   </div>
-                  {item.offer && (
-                    <>
-                      <div style={{ fontSize: '10.5px', fontWeight: 700, color: '#16A34A', marginTop: '4px' }}>
-                        {item.offer.text}
-                      </div>
-                      <div style={{ fontSize: '11px', color: '#6B6B6B', marginTop: '6px' }}>True price</div>
-                      <div style={{ fontSize: '17px', fontWeight: 800 }}>
-                        ₹ {item.offer.truePrice.toLocaleString()}
-                      </div>
-                    </>
-                  )}
-                </>
-              ) : (
-                <div style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '14px', fontWeight: 600 }}>
-                  Not found
                 </div>
-              )}
-            </div>
-          ))}
+              );
+            }
+
+            const offer = getCardOffer(item.key, item.price);
+
+            return (
+              <a
+                key={item.platform}
+                href={item.url || getPlatformUrl(item.key, product.model_number)}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: 'none', display: 'block' }}
+              >
+                <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '14px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,.06)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxSizing: 'border-box' }}>
+                  <div>
+                    <div style={{ height: '4px', width: '34px', borderRadius: '2px', background: item.accentColor }}></div>
+                    <div style={{ fontSize: '13px', fontWeight: 800, marginTop: '8px', color: '#141414' }}>{item.platform}</div>
+                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#6B6B6B', marginTop: '6px' }}>
+                      ₹ {item.price.toLocaleString()}
+                    </div>
+                    {offer && (
+                      <div style={{
+                        marginTop: '6px',
+                        background: '#F0FDF4',
+                        border: '1px solid #B7E4C7',
+                        borderRadius: '8px',
+                        padding: '5px 8px',
+                      }}>
+                        <div style={{ fontSize: '11px', fontWeight: 700, color: '#16A34A' }}>
+                          💳 {offer.bank} Card saves ₹{offer.saving.toLocaleString('en-IN')}
+                        </div>
+                        <div style={{ fontSize: '10px', color: '#6B6B6B', marginTop: '1px' }}>
+                          True price: ₹{(item.price - offer.saving).toLocaleString('en-IN')}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div style={{
+                    marginTop: '8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    borderTop: '1px solid #EBEBEB',
+                    paddingTop: '6px',
+                  }}>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#F0743E' }}>
+                      View on {getPlatformLabel(item.key)} →
+                    </span>
+                    <span style={{ fontSize: '10px', color: '#6B6B6B' }}>New tab</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
 
