@@ -49,7 +49,26 @@ def brand_match(brand, text):
     return b in t
 
 def model_match(model, text):
-    return re.sub(r'[\s\-_]','', model).lower() in re.sub(r'[\s\-_]','', text).lower()
+    m_clean = re.sub(r'[^a-z0-9]', '', model.lower())
+    t_clean = re.sub(r'[^a-z0-9]', '', text.lower())
+    
+    if m_clean not in t_clean:
+        return False
+        
+    if len(m_clean) < 5:
+        tokens = re.findall(r'[a-z0-9]+', text.lower())
+        has_exact = False
+        for token in tokens:
+            if token == m_clean:
+                has_exact = True
+                break
+            if token.startswith(m_clean) and token[len(m_clean):] in ['5g', '4g', 'lte', 's', 'pro']:
+                has_exact = True
+                break
+        if not has_exact:
+            return False
+            
+    return True
 
 
 # ══════════════════════════════════════════════════════════
@@ -184,8 +203,11 @@ async def scrape_croma(page: Page, model: str, brand: str, category: str) -> dic
         price = clean_price(price_text, category)
         if price:
             title_el = await page.query_selector('h1')
-            title = (await title_el.inner_text() if title_el else f"{brand} {model}")
-            return {"price": price, "url": croma_url, "title": title[:120]}
+            title = await title_el.inner_text() if title_el else ""
+            if title and brand_match(brand, title) and model_match(model, title):
+                return {"price": price, "url": croma_url, "title": title[:120]}
+            else:
+                print(f"    [Croma] Title mismatch. Expected brand: {brand}, model: {model} in title: '{title}'")
         else:
             print(f"    [Croma] Found URL but no valid price (raw: {price_text})")
 
@@ -250,8 +272,8 @@ async def scrape_flipkart(page: Page, model: str, brand: str, category: str) -> 
             href = await link_el.get_attribute('href') or ''
             img  = await link_el.query_selector('img')
             alt  = await img.get_attribute('alt') if img else ''
-            full_text = alt + ' ' + href
-            if brand_match(brand, full_text) and (model_match(model, full_text) or model_match(model, alt)):
+            # Only match against product title/image alt text to prevent search query param mismatch bug
+            if alt and brand_match(brand, alt) and model_match(model, alt):
                 matched_url   = f"https://www.flipkart.com{href}" if href.startswith('/') else href
                 matched_title = alt
                 break
@@ -301,7 +323,7 @@ async def main():
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(
-            headless=False,
+            headless=True,
             args=["--disable-blink-features=AutomationControlled"]
         )
         ctx = await browser.new_context(
