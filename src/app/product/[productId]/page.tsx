@@ -178,8 +178,24 @@ export default async function ProductPage({ params }: PageProps) {
     };
   });
 
+  const bestBhopalPrice = activeDealerPrices.length > 0 ? activeDealerPrices[0].price : null;
+  const cheapestOnlinePrice = lowestOnlinePrice || null;
+  
+  // Calculate Amazon True Price (base price - best card discount)
+  const amzBase = validOnlinePrices.find((o) => o.platform.toLowerCase() === 'amazon')?.price || null;
+  const amzOffer = amzBase ? getCardOffer('amazon', amzBase) : null;
+  const amzTruePrice = amzBase ? (amzBase - (amzOffer?.saving || 0)) : null;
+
+  // Max value for bar scaling
+  const maxVal = Math.max(bestBhopalPrice || 0, cheapestOnlinePrice || 0, amzTruePrice || 0, 1000);
+  
+  // Bhopal savings % vs cheapest online
+  const pctCheaper = (cheapestOnlinePrice && bestBhopalPrice && cheapestOnlinePrice > bestBhopalPrice)
+    ? Math.round(((cheapestOnlinePrice - bestBhopalPrice) / cheapestOnlinePrice) * 100)
+    : 0;
+
   return (
-    <div className="w-full max-w-[390px] mx-auto min-h-screen bg-[#FAFAF8] md:shadow-2xl md:border-x md:border-[#EBEBEB] flex flex-col justify-between font-sans overflow-y-auto relative pb-[134px]">
+    <div className="w-full max-w-[390px] mx-auto min-h-screen bg-[#FDFCFA] md:shadow-2xl md:border-x md:border-[#EAE6DD] flex flex-col justify-between font-sans overflow-y-auto relative pb-[134px]">
       <ProductTracker 
         productId={productId} 
         productName={product.name} 
@@ -191,60 +207,126 @@ export default async function ProductPage({ params }: PageProps) {
         <StatusBar />
 
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 18px 8px', background: '#fff' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 20px', background: '#fff' }}>
           <Link href={`/category/${product.category.toLowerCase()}`}>
-            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#FAFAF8', border: '1px solid #EBEBEB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', cursor: 'pointer' }}>←</div>
+            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#F6F4EF', border: '1px solid #EAE6DD', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16151A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg>
+            </div>
           </Link>
           <div style={{ display: 'flex', gap: '10px' }}>
-            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#FAFAF8', border: '1px solid #EBEBEB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', cursor: 'pointer' }}>↗</div>
-            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#FAFAF8', border: '1px solid #EBEBEB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', cursor: 'pointer' }}>🤍</div>
+            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#F6F4EF', border: '1px solid #EAE6DD', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16151A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </div>
+            <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#F6F4EF', border: '1px solid #EAE6DD', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16151A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C1 9.5 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5 3.5 3.5 6.5C19 16.65 12 21 12 21z"/></svg>
+            </div>
           </div>
         </div>
 
         {/* Image */}
-        <div style={{ height: '240px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '90px', position: 'relative' }}>
+        <div style={{ height: '220px', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
           {product.image_url ? (
             <img src={product.image_url} alt={product.name} style={{ height: '80%', objectFit: 'contain' }} />
           ) : (
-            getCatEmoji(product.category)
+            <span style={{ fontSize: '74px' }}>{getCatEmoji(product.category)}</span>
           )}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', padding: '2px 0 10px', background: '#fff' }}>
+          <span style={{ width: '16px', height: '4px', borderRadius: '2px', background: '#E4632E' }}></span>
+          <span style={{ width: '4px', height: '4px', borderRadius: '2px', background: '#DDD8CC' }}></span>
+          <span style={{ width: '4px', height: '4px', borderRadius: '2px', background: '#DDD8CC' }}></span>
         </div>
 
         {/* Info */}
-        <div style={{ padding: '18px 20px 14px', background: '#FAFAF8' }}>
-          <span style={{ display: 'inline-flex', fontSize: '10px', fontWeight: 800, letterSpacing: '.06em', color: '#fff', background: '#F0743E', textTransform: 'uppercase', padding: '4px 9px', borderRadius: '6px' }}>
+        <div style={{ padding: '2px 20px 16px', background: '#FDFCFA' }}>
+          <span style={{ display: 'inline-flex', fontSize: '10px', fontWeight: 800, letterSpacing: '.05em', color: '#fff', background: '#E4632E', textTransform: 'uppercase', padding: '4px 9px', borderRadius: '6px' }}>
             {product.brand}
           </span>
-          <h2 style={{ margin: '10px 0 0', fontSize: '22px', fontWeight: 800, lineHeight: 1.2, letterSpacing: '-.01em' }}>
+          <h2 style={{ margin: '10px 0 0', fontSize: '21px', fontWeight: 800, lineHeight: 1.22, letterSpacing: '-.01em', color: '#16151A' }}>
             {product.name}
           </h2>
-          <div style={{ fontSize: '13px', color: '#6B6B6B', marginTop: '4px' }}>{product.model_number}</div>
+          <div style={{ fontSize: '12.5px', color: '#6B6963', marginTop: '4px', fontWeight: 600 }}>{product.model_number}</div>
           {product.brand_url && (
-            <a href={product.brand_url} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontSize: '12px', color: '#6B6B6B', marginTop: '6px', fontWeight: 600 }}>
+            <a href={product.brand_url} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', fontSize: '12px', color: '#E4632E', marginTop: '6px', fontWeight: 700 }}>
               View on {product.brand} website →
             </a>
           )}
           
           {/* Spec Chips Scroll */}
-          <div className="scrollx" style={{ display: 'flex', gap: '6px', overflowX: 'auto', marginTop: '14px' }}>
+          <div className="scrollx" style={{ display: 'flex', gap: '6px', overflowX: 'auto', marginTop: '12px' }}>
             {getSpecsList(product).map((spec) => (
-              <span key={spec} style={{ flex: '0 0 auto', fontSize: '11px', fontWeight: 600, background: '#fff', border: '1px solid #EBEBEB', padding: '6px 11px', borderRadius: '8px' }}>
+              <span key={spec} style={{ flex: '0 0 auto', fontSize: '11px', fontWeight: 700, background: '#fff', border: '1px solid #EAE6DD', padding: '6px 11px', borderRadius: '8px', color: '#16151A' }}>
                 {spec}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Best Price Bhopal header */}
-        <div style={{ padding: '6px 20px 4px', background: '#FAFAF8' }}>
-          <div style={{ fontSize: '16px', fontWeight: 800 }}>📍 Best Price in Bhopal Today</div>
-          <div style={{ fontSize: '12.5px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>
-            {activeDealerPrices.length} {activeDealerPrices.length === 1 ? 'dealer has' : 'dealers have'} this in stock
+        {/* Comparison Bar Chart Panel */}
+        {bestBhopalPrice && (
+          <div style={{ padding: '2px 20px 18px', background: '#FDFCFA' }}>
+            <div style={{ background: '#16151A', borderRadius: '18px', padding: '18px' }}>
+              <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#B9B6AC', textTransform: 'uppercase', letterSpacing: '.04em' }}>
+                Bhopal price vs. online
+              </div>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginTop: '8px' }}>
+                <span style={{ fontSize: '28px', fontWeight: 800, color: '#fff' }}>₹{bestBhopalPrice.toLocaleString()}</span>
+                {pctCheaper > 0 && (
+                  <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#4ADE80' }}>↓ {pctCheaper}% cheaper</span>
+                )}
+              </div>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '9px', marginTop: '16px' }}>
+                {/* Bhopal Bar */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', fontWeight: 700, color: '#D8D5CC', marginBottom: '4px' }}>
+                    <span>Best Bhopal dealer</span>
+                    <span>₹{bestBhopalPrice.toLocaleString()}</span>
+                  </div>
+                  <div style={{ height: '8px', borderRadius: '4px', background: '#2A2A2E', overflow: 'hidden' }}>
+                    <div style={{ height: '100%', width: `${Math.max(15, (bestBhopalPrice / maxVal) * 85)}%`, borderRadius: '4px', background: '#E4632E' }}></div>
+                  </div>
+                </div>
+
+                {/* Online Cheapest Bar */}
+                {cheapestOnlinePrice && (
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', fontWeight: 700, color: '#D8D5CC', marginBottom: '4px' }}>
+                      <span>Cheapest online</span>
+                      <span>₹{cheapestOnlinePrice.toLocaleString()}</span>
+                    </div>
+                    <div style={{ height: '8px', borderRadius: '4px', background: '#2A2A2E', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', width: `${Math.max(15, (cheapestOnlinePrice / maxVal) * 85)}%`, borderRadius: '4px', background: '#5B5A57' }}></div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Amazon True Price Bar */}
+                {amzTruePrice && (
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', fontWeight: 700, color: '#D8D5CC', marginBottom: '4px' }}>
+                      <span>Amazon (true price)</span>
+                      <span>₹{amzTruePrice.toLocaleString()}</span>
+                    </div>
+                    <div style={{ height: '8px', borderRadius: '4px', background: '#2A2A2E', overflow: 'hidden' }}>
+                      <div style={{ height: '100%', width: `${Math.max(15, (amzTruePrice / maxVal) * 85)}%`, borderRadius: '4px', background: '#5B5A57' }}></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
+        )}
+
+        {/* Best Price Bhopal header */}
+        <div style={{ padding: '2px 20px 4px', background: '#FDFCFA', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '15px', fontWeight: 800, color: '#16151A' }}>
+            {activeDealerPrices.length} {activeDealerPrices.length === 1 ? 'dealer has' : 'dealers have'} this in stock
+          </span>
         </div>
 
         {/* Dealer prices list component */}
-        <div style={{ padding: '12px 20px 4px', background: '#FAFAF8' }}>
+        <div style={{ padding: '10px 20px 4px', background: '#FDFCFA' }}>
           <DealerList 
             dealerPrices={activeDealerPrices} 
             lowestOnlinePrice={lowestOnlinePrice} 
@@ -253,96 +335,76 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
 
         {/* Online prices header */}
-        <div style={{ padding: '14px 20px 4px', background: '#FAFAF8' }}>
-          <div style={{ fontSize: '16px', fontWeight: 800 }}>🌐 Online Prices</div>
-        </div>
+        {formattedOnline.some(x => x.price) && (
+          <>
+            <div style={{ padding: '18px 20px 4px', background: '#FDFCFA', fontSize: '15px', fontWeight: 800, color: '#16151A' }}>
+              Online prices
+            </div>
 
-        {/* Online prices comparison grid */}
-        <div style={{ padding: '12px 20px 14px', background: '#FAFAF8', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          {formattedOnline.map((item) => {
-            if (!item.price) {
-              return (
-                <div key={item.platform} style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '14px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
-                  <div style={{ height: '4px', width: '34px', borderRadius: '2px', background: item.accentColor }}></div>
-                  <div style={{ fontSize: '13px', fontWeight: 800, marginTop: '8px' }}>{item.platform}</div>
-                  <div style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '14px', fontWeight: 600 }}>
-                    Not found
-                  </div>
-                </div>
-              );
-            }
+            {/* Online prices comparison list (single-line rows) */}
+            <div style={{ padding: '10px 20px 16px', background: '#FDFCFA', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {formattedOnline.map((item) => {
+                if (!item.price) return null;
+                const offer = getCardOffer(item.key, item.price);
 
-            const offer = getCardOffer(item.key, item.price);
-
-            return (
-              <a
-                key={item.platform}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: 'none', display: 'block' }}
-              >
-                <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '14px', padding: '12px', boxShadow: '0 1px 3px rgba(0,0,0,.06)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', boxSizing: 'border-box' }}>
-                  <div>
-                    <div style={{ height: '4px', width: '34px', borderRadius: '2px', background: item.accentColor }}></div>
-                    <div style={{ fontSize: '13px', fontWeight: 800, marginTop: '8px', color: '#141414' }}>{item.platform}</div>
-                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#6B6B6B', marginTop: '6px' }}>
-                      ₹ {item.price.toLocaleString()}
-                    </div>
-                    {offer && (
-                      <div style={{
-                        marginTop: '6px',
-                        background: '#F0FDF4',
-                        border: '1px solid #B7E4C7',
-                        borderRadius: '8px',
-                        padding: '5px 8px',
-                      }}>
-                        <div style={{ fontSize: '11px', fontWeight: 700, color: '#16A34A' }}>
-                          💳 {offer.bank} Card saves ₹{offer.saving.toLocaleString('en-IN')}
-                        </div>
-                        <div style={{ fontSize: '10px', color: '#6B6B6B', marginTop: '1px' }}>
-                          True price: ₹{(item.price - offer.saving).toLocaleString('en-IN')}
-                        </div>
+                return (
+                  <a
+                    key={item.platform}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: 'none', display: 'block' }}
+                  >
+                    <div style={{ background: '#fff', border: '1px solid #EAE6DD', borderRadius: '12px', padding: '11px 14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.accentColor, flexShrink: 0 }}></span>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#16151A' }}>{item.platform}</div>
+                        {offer && (
+                          <div style={{ fontSize: '10.5px', color: '#1F8A5C', fontWeight: 700, marginTop: '1px' }}>
+                            💳 {offer.bank} Card saves ₹{offer.saving.toLocaleString('en-IN')}
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-
-                  <div style={{
-                    marginTop: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    borderTop: '1px solid #EBEBEB',
-                    paddingTop: '6px',
-                  }}>
-                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#F0743E' }}>
-                      View on {getPlatformLabel(item.key)} →
-                    </span>
-                    <span style={{ fontSize: '10px', color: '#6B6B6B' }}>New tab</span>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+                      
+                      {offer ? (
+                        <div style={{ textAlign: 'right' }}>
+                          <span style={{ fontSize: '11.5px', color: '#9A978E', textDecoration: 'line-through', marginRight: '6px' }}>
+                            ₹{item.price.toLocaleString()}
+                          </span>
+                          <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>
+                            ₹{(item.price - offer.saving).toLocaleString()}
+                          </span>
+                        </div>
+                      ) : (
+                        <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>
+                          ₹{item.price.toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
 
       {/* Floating AI chat bubble */}
       <Link href="/search">
-        <div style={{ position: 'fixed', right: 'calc(50% - 175px)', bottom: '84px', width: '52px', height: '52px', borderRadius: '50%', background: '#CDBCDB', boxShadow: '0 8px 20px rgba(20,20,20,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', cursor: 'pointer', zIndex: 30 }} className="hover:scale-105 transition-transform">
+        <div style={{ position: 'fixed', right: 'calc(50% - 175px)', bottom: '120px', width: '52px', height: '52px', borderRadius: '50%', background: '#F1ECF7', border: '1px solid #EAE6DD', boxShadow: '0 8px 20px rgba(22,21,26,.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', cursor: 'pointer', zIndex: 30 }} className="hover:scale-105 transition-transform">
           ✨
         </div>
       </Link>
 
       {/* Sticky Bottom Special Request */}
       <div style={{ position: 'fixed', bottom: '58px', left: 0, right: 0, zIndex: 40 }} className="flex justify-center">
-        <div style={{ width: '100%', maxWidth: '390px', padding: '14px 20px 22px', background: '#141414', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', boxShadow: '0 -4px 20px rgba(0,0,0,.15)' }}>
-          <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff', lineHeight: 1.35 }}>
-            Need 2 Ton or different colour?
+        <div style={{ width: '100%', maxWidth: '390px', padding: '14px 20px 24px', background: '#16151A', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', boxShadow: '0 -4px 20px rgba(0,0,0,.15)' }}>
+          <span style={{ fontSize: '12.5px', fontWeight: 700, color: '#fff', lineHeight: 1.35 }}>
+            Need a different size or colour?
           </span>
           <Link href={`/request/${productId}`}>
-            <button style={{ flexShrink: 0, background: '#F0743E', color: '#fff', border: 'none', borderRadius: '10px', fontFamily: 'inherit', fontSize: '12.5px', fontWeight: 700, padding: '10px 14px', cursor: 'pointer' }}>
-              Post Request →
+            <button style={{ flexShrink: 0, background: '#E4632E', color: '#fff', border: 'none', borderRadius: '11px', fontFamily: 'inherit', fontSize: '12.5px', fontWeight: 700, padding: '11px 15px', cursor: 'pointer' }}>
+              Post request
             </button>
           </Link>
         </div>

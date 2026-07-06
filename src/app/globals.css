@@ -3,22 +3,28 @@
 @tailwind utilities;
 
 :root {
-  --background: #FAFAF8;
-  --foreground: #141414;
-  --primary: #F0743E;
-  --primary-light: #FEF0E8;
-  --accent: #FDDB48;
-  --viola: #CDBCDB;
-  --text-secondary: #6B6B6B;
-  --text-tertiary: #A0A0A0;
-  --border: #EBEBEB;
-  --success: #16A34A;
+  --background: #F6F4EF;
+  --foreground: #16151A;
+  --primary: #E4632E;
+  --primary-light: #FBEEE7;
+  --accent: #F6C453;
+  --viola: #F1ECF7;
+  --trust: #6E5A99;
+  --text-secondary: #6B6963;
+  --text-tertiary: #9A978E;
+  --border: #EAE6DD;
+  --border-dashed: #D8D2C4;
+  --success: #1F8A5C;
+  --success-bg: #E7F5EE;
+  --warning: #C97C1D;
+  --warning-bg: #FCF1DF;
   --error: #DC2626;
+  --dark-panel: #16151A;
 }
 
 body {
   color: var(--foreground);
-  background-color: #FAFAF8;
+  background-color: var(--background);
 }
 
 /* Custom scrollbar to keep it looking like a clean app */
@@ -30,11 +36,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #EBEBEB;
+  background: #EAE6DD;
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #CDBCDB;
+  background: #F1ECF7;
 }
 
 /* Font override classes */
@@ -49,27 +55,27 @@ body {
 /* Base custom utility classes */
 @layer components {
   .btn-primary {
-    @apply flex h-[54px] items-center justify-center gap-2 bg-[#F0743E] text-white font-bold text-base px-6 rounded-[14px] border-none outline-none transition-all duration-100 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none focus:ring-0;
+    @apply flex h-[54px] items-center justify-center gap-2 bg-[#E4632E] text-white font-bold text-base px-6 rounded-[14px] border-none outline-none transition-all duration-100 active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none focus:ring-0;
   }
   
   .btn-secondary {
-    @apply flex h-[54px] items-center justify-center gap-2 border-[0.5px] border-[#EBEBEB] bg-white text-[#141414] font-bold text-[15px] px-6 rounded-[14px] outline-none transition-all duration-100 active:scale-[0.97] active:bg-[#FAFAF8] disabled:opacity-50 disabled:pointer-events-none focus:ring-0;
+    @apply flex h-[54px] items-center justify-center gap-2 border-[0.5px] border-[#EAE6DD] bg-white text-[#16151A] font-bold text-[15px] px-6 rounded-[14px] outline-none transition-all duration-100 active:scale-[0.97] active:bg-[#F6F4EF] disabled:opacity-50 disabled:pointer-events-none focus:ring-0;
   }
   
   .card-premium {
-    @apply bg-white border-[0.5px] border-[#EBEBEB] rounded-[16px] p-5 transition-all duration-150 active:bg-[#F8F8F6] shadow-none;
+    @apply bg-white border-[0.5px] border-[#EAE6DD] rounded-[16px] p-5 transition-all duration-150 active:bg-[#F6F4EF] shadow-none;
   }
   
   .input-premium {
-    @apply w-full h-[52px] border-[1.5px] border-[#EBEBEB] rounded-[12px] px-4 py-3 outline-none focus:border-[#F0743E] focus:bg-white focus:ring-0 transition-all duration-200 text-[15px] font-normal placeholder-[#C0C0C0] bg-[#FAFAF8] text-[#141414];
+    @apply w-full h-[52px] border-[1.5px] border-[#EAE6DD] rounded-[12px] px-4 py-3 outline-none focus:border-[#E4632E] focus:bg-white focus:ring-0 transition-all duration-200 text-[15px] font-normal placeholder-[#9A978E] bg-[#F6F4EF] text-[#16151A];
   }
   
   /* Pill selectors (Fix 8 urgency/purchase type styling) */
   .pill-selector {
-    @apply inline-flex items-center justify-center bg-white border-[1.5px] border-[#EBEBEB] rounded-[24px] px-[18px] py-[10px] text-[14px] font-medium text-[#141414] cursor-pointer transition-all duration-100 select-none hover:bg-slate-50;
+    @apply inline-flex items-center justify-center bg-white border-[1.5px] border-[#EAE6DD] rounded-[24px] px-[18px] py-[10px] text-[14px] font-medium text-[#16151A] cursor-pointer transition-all duration-100 select-none hover:bg-slate-50;
   }
   
   .pill-selector-active {
-    @apply bg-[#F0743E] border-[#F0743E] text-white font-bold;
+    @apply bg-[#E4632E] border-[#E4632E] text-white font-bold;
   }
 }

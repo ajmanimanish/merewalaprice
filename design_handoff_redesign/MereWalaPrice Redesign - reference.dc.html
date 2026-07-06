@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .scrollx::-webkit-scrollbar{display:none;}
+    .mwp-icon{display:inline-block;vertical-align:middle;}
+  </style>
+</helmet>
+
+<div style="background:#F6F4EF;font-family:'Plus Jakarta Sans',sans-serif;color:#16151A;padding:56px 64px 120px;min-width:1400px;">
+
+  <div style="max-width:1300px;margin:0 auto 40px;">
+    <div style="display:inline-flex;align-items:center;gap:10px;background:#16151A;color:#fff;padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;">
+      <span style="width:7px;height:7px;border-radius:50%;background:#E4632E;"></span>
+      MereWalaPrice — Design Improvement Pass
+    </div>
+    <h1 style="margin:18px 0 8px;font-size:38px;font-weight:800;letter-spacing:-0.03em;">Three screens, refined <span style="color:#E4632E;">for trust &amp; speed</span></h1>
+    <p style="margin:0;font-size:15px;color:#6B6963;font-weight:600;max-width:720px;line-height:1.6;">Same information architecture — upgraded with a real icon system, a clearer price-comparison visual, and dealer tools built for fast one-thumb updates. Jump to <a href="#1a" style="color:#E4632E;">1a</a> Home, <a href="#1b" style="color:#E4632E;">1b</a> Product &amp; Compare, <a href="#1c" style="color:#E4632E;">1c</a> Dealer Price Manager.</p>
+  </div>
+
+  <div style="max-width:1300px;margin:0 auto;display:flex;flex-wrap:wrap;gap:56px;align-items:flex-start;">
+
+    <!-- ============================================================ -->
+    <!-- 1a — HOME / BROWSE -->
+    <!-- ============================================================ -->
+    <figure id="1a" style="margin:0;display:flex;flex-direction:column;gap:16px;width:390px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:26px;padding:0 8px;background:#16151A;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">1a</span>
+        <span style="font-size:14px;font-weight:700;">Home / Browse</span>
+      </div>
+
+      <div style="width:390px;background:#FDFCFA;border-radius:46px;box-shadow:0 30px 70px -20px rgba(22,21,26,0.28),0 1px 0 rgba(22,21,26,0.04);border:1px solid #EAE6DD;overflow:hidden;">
+        <div style="min-height:844px;display:flex;flex-direction:column;">
+
+          <!-- status bar -->
+          <div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;flex-shrink:0;">
+            <span style="font-size:14px;font-weight:800;">9:41</span>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg class="mwp-icon" width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="0.5" fill="#16151A"/><rect x="4.5" y="5" width="3" height="6" rx="0.5" fill="#16151A"/><rect x="9" y="3" width="3" height="8" rx="0.5" fill="#16151A"/><rect x="13" y="0" width="3" height="11" rx="0.5" fill="#16151A"/></svg>
+              <div style="width:22px;height:11px;border:1.4px solid #16151A;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#16151A;border-radius:1px;"></div></div>
+            </div>
+          </div>
+
+          <!-- header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 22px 12px;">
+            <span style="font-size:21px;font-weight:800;letter-spacing:-.02em;">MereWala<span style="color:#E4632E;">Price</span></span>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EAE6DD;display:flex;align-items:center;justify-content:center;">
+                <svg class="mwp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div style="width:38px;height:38px;border-radius:50%;background:#fff;border:1px solid #EAE6DD;display:flex;align-items:center;justify-content:center;position:relative;">
+                <svg class="mwp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 5.2 1.6 6.4 1.6 6.4H4.4S6 13.2 6 8z"/><path d="M10 18.4a2 2 0 004 0"/></svg>
+                <span style="position:absolute;top:8px;right:9px;width:7px;height:7px;border-radius:50%;background:#E4632E;border:1.5px solid #fff;"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- location pill -->
+          <div style="padding:0 22px;">
+            <div style="display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid #EAE6DD;padding:8px 14px;border-radius:999px;">
+              <svg class="mwp-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11.5A7 7 0 105 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.3" r="2.4"/></svg>
+              <span style="font-size:13px;font-weight:700;">Bhopal</span>
+              <span style="font-size:13px;color:#B9B6AC;">·</span>
+              <span style="font-size:13px;font-weight:700;color:#E4632E;">Change</span>
+            </div>
+          </div>
+
+          <!-- hero -->
+          <div style="padding:18px 22px 4px;">
+            <h2 style="margin:0;font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.22;">Best price. Local dealer.<br>Verified <span style="color:#E4632E;">today.</span></h2>
+          </div>
+
+          <!-- trust strip -->
+          <div style="display:flex;gap:8px;padding:14px 22px 4px;">
+            <div style="flex:1;background:#fff;border:1px solid #EAE6DD;border-radius:14px;padding:10px 8px;text-align:center;">
+              <div style="font-size:15px;font-weight:800;">47</div>
+              <div style="font-size:9.5px;font-weight:700;color:#6B6963;margin-top:1px;">verified dealers</div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid #EAE6DD;border-radius:14px;padding:10px 8px;text-align:center;">
+              <div style="font-size:15px;font-weight:800;color:#1F8A5C;">Today</div>
+              <div style="font-size:9.5px;font-weight:700;color:#6B6963;margin-top:1px;">prices refreshed</div>
+            </div>
+            <div style="flex:1;background:#fff;border:1px solid #EAE6DD;border-radius:14px;padding:10px 8px;text-align:center;">
+              <div style="font-size:15px;font-weight:800;">312</div>
+              <div style="font-size:9.5px;font-weight:700;color:#6B6963;margin-top:1px;">products listed</div>
+            </div>
+          </div>
+
+          <!-- category grid -->
+          <div style="padding:18px 22px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div style="background:#E4632E;border-radius:18px;padding:16px;box-shadow:0 10px 24px -8px rgba(228,99,46,.55);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 15v3M18 15v3M2 10h20"/></svg>
+              <div style="font-size:14px;font-weight:700;color:#fff;margin-top:12px;">Air Conditioners</div>
+              <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,.85);margin-top:2px;">43 products</div>
+            </div>
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <div style="font-size:14px;font-weight:700;margin-top:12px;">Televisions</div>
+              <div style="font-size:11px;font-weight:600;color:#6B6963;margin-top:2px;">61 products</div>
+            </div>
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+              <div style="font-size:14px;font-weight:700;margin-top:12px;">Washing Machine</div>
+              <div style="font-size:11px;font-weight:600;color:#6B6963;margin-top:2px;">38 products</div>
+            </div>
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 9h14"/></svg>
+              <div style="font-size:14px;font-weight:700;margin-top:12px;">Refrigerators</div>
+              <div style="font-size:11px;font-weight:600;color:#6B6963;margin-top:2px;">52 products</div>
+            </div>
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:16px;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M1 19h22"/></svg>
+              <div style="font-size:14px;font-weight:700;margin-top:12px;">Laptops</div>
+              <div style="font-size:11px;font-weight:600;color:#6B6963;margin-top:2px;">44 products</div>
+            </div>
+            <div style="background:#fff;border:1px dashed #D8D2C4;border-radius:18px;padding:16px;display:flex;flex-direction:column;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg>
+              <div style="font-size:14px;font-weight:700;margin-top:10px;">View all</div>
+              <div style="font-size:11px;font-weight:600;color:#6B6963;margin-top:2px;">312 total</div>
+            </div>
+          </div>
+
+          <!-- popular -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:24px 22px 12px;">
+            <span style="font-size:16px;font-weight:800;">Popular right now</span>
+            <span style="font-size:12px;font-weight:700;color:#E4632E;">See all</span>
+          </div>
+          <div class="scrollx" style="display:flex;gap:12px;overflow-x:auto;padding:0 22px 4px;">
+            <div style="flex:0 0 158px;background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:12px;position:relative;">
+              <div style="position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:50%;background:#F6F4EF;display:flex;align-items:center;justify-content:center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B6963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C1 9.5 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5 3.5 3.5 6.5C19 16.65 12 21 12 21z"/></svg>
+              </div>
+              <div style="height:88px;border-radius:12px;background:#F6F4EF;display:flex;align-items:center;justify-content:center;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 15v3M18 15v3M2 10h20"/></svg>
+              </div>
+              <div style="font-size:10.5px;font-weight:800;color:#E4632E;text-transform:uppercase;margin-top:10px;">Voltas</div>
+              <div style="font-size:12.5px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">1T 3★ Inverter Vectra</div>
+              <div style="font-size:15px;font-weight:800;margin-top:8px;">From ₹28,499</div>
+              <div style="margin-top:8px;display:inline-flex;align-items:center;gap:4px;background:#E7F5EE;color:#1F8A5C;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1F8A5C" stroke-width="3" stroke-linecap="round"><line x1="17" y1="7" x2="7" y2="17"/><polyline points="17 17 17 7 7 7"/></svg>
+                ₹3,491 less
+              </div>
+            </div>
+            <div style="flex:0 0 158px;background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:12px;position:relative;">
+              <div style="position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:50%;background:#FBEEE7;display:flex;align-items:center;justify-content:center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="#E4632E" stroke="#E4632E" stroke-width="1"><path d="M12 21s-7-4.35-9.5-8.5C1 9.5 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5 3.5 3.5 6.5C19 16.65 12 21 12 21z"/></svg>
+              </div>
+              <div style="height:88px;border-radius:12px;background:#F6F4EF;display:flex;align-items:center;justify-content:center;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div style="font-size:10.5px;font-weight:800;color:#E4632E;text-transform:uppercase;margin-top:10px;">Samsung</div>
+              <div style="font-size:12.5px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">55" Crystal 4K UHD</div>
+              <div style="font-size:15px;font-weight:800;margin-top:8px;">From ₹42,990</div>
+              <div style="margin-top:8px;display:inline-flex;align-items:center;gap:4px;background:#E7F5EE;color:#1F8A5C;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1F8A5C" stroke-width="3" stroke-linecap="round"><line x1="17" y1="7" x2="7" y2="17"/><polyline points="17 17 17 7 7 7"/></svg>
+                ₹5,000 less
+              </div>
+            </div>
+            <div style="flex:0 0 158px;background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:12px;position:relative;">
+              <div style="position:absolute;top:16px;right:16px;width:26px;height:26px;border-radius:50%;background:#F6F4EF;display:flex;align-items:center;justify-content:center;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#6B6963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C1 9.5 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5 3.5 3.5 6.5C19 16.65 12 21 12 21z"/></svg>
+              </div>
+              <div style="height:88px;border-radius:12px;background:#F6F4EF;display:flex;align-items:center;justify-content:center;">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 9h14"/></svg>
+              </div>
+              <div style="font-size:10.5px;font-weight:800;color:#E4632E;text-transform:uppercase;margin-top:10px;">LG</div>
+              <div style="font-size:12.5px;font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">260L Frost-Free Fridge</div>
+              <div style="font-size:15px;font-weight:800;margin-top:8px;">From ₹24,700</div>
+              <div style="margin-top:8px;display:inline-flex;align-items:center;gap:4px;background:#E7F5EE;color:#1F8A5C;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1F8A5C" stroke-width="3" stroke-linecap="round"><line x1="17" y1="7" x2="7" y2="17"/><polyline points="17 17 17 7 7 7"/></svg>
+                ₹2,300 less
+              </div>
+            </div>
+          </div>
+
+          <div style="flex:1;min-height:16px;"></div>
+
+          <!-- bottom nav -->
+          <div style="display:flex;justify-content:space-around;align-items:center;padding:12px 8px 26px;background:#fff;border-top:1px solid #EAE6DD;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 14px;border-radius:12px;background:#FBEEE7;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+              <span style="font-size:9.5px;font-weight:800;color:#E4632E;">Home</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+              <span style="font-size:9.5px;font-weight:600;color:#9A978E;">Browse</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <span style="font-size:9.5px;font-weight:600;color:#9A978E;">Search</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4z"/></svg>
+              <span style="font-size:9.5px;font-weight:600;color:#9A978E;">Requests</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:5px 14px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+              <span style="font-size:9.5px;font-weight:600;color:#9A978E;">Profile</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #EAE6DD;border-radius:16px;padding:16px 18px;font-size:12.5px;line-height:1.6;color:#4E4C47;">
+        <strong style="color:#16151A;">What changed:</strong> emoji glyphs replaced with a consistent line-icon system; a 3-stat trust strip (dealer count, freshness, catalog size) sits right under the fold so buyers trust the data before they browse; active tab gets a soft pill instead of just a color change.
+      </div>
+    </figure>
+
+    <!-- ============================================================ -->
+    <!-- 1b — PRODUCT DETAIL & COMPARE -->
+    <!-- ============================================================ -->
+    <figure id="1b" style="margin:0;display:flex;flex-direction:column;gap:16px;width:390px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:26px;padding:0 8px;background:#16151A;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">1b</span>
+        <span style="font-size:14px;font-weight:700;">Product Detail &amp; Compare</span>
+      </div>
+
+      <div style="width:390px;background:#FDFCFA;border-radius:46px;box-shadow:0 30px 70px -20px rgba(22,21,26,0.28),0 1px 0 rgba(22,21,26,0.04);border:1px solid #EAE6DD;overflow:hidden;">
+        <div style="display:flex;flex-direction:column;">
+
+          <div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;background:#fff;"><span style="font-size:14px;font-weight:800;">9:41</span>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="0.5" fill="#16151A"/><rect x="4.5" y="5" width="3" height="6" rx="0.5" fill="#16151A"/><rect x="9" y="3" width="3" height="8" rx="0.5" fill="#16151A"/><rect x="13" y="0" width="3" height="11" rx="0.5" fill="#16151A"/></svg>
+              <div style="width:22px;height:11px;border:1.4px solid #16151A;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#16151A;border-radius:1px;"></div></div>
+            </div>
+          </div>
+
+          <!-- header -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:#fff;">
+            <div style="width:38px;height:38px;border-radius:50%;background:#F6F4EF;border:1px solid #EAE6DD;display:flex;align-items:center;justify-content:center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <div style="width:38px;height:38px;border-radius:50%;background:#F6F4EF;border:1px solid #EAE6DD;display:flex;align-items:center;justify-content:center;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </div>
+              <div style="width:38px;height:38px;border-radius:50%;background:#F6F4EF;border:1px solid #EAE6DD;display:flex;align-items:center;justify-content:center;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C1 9.5 2.5 6 6 6c2 0 3.5 1.2 4 2.3C10.5 7.2 12 6 14 6c3.5 0 5 3.5 3.5 6.5C19 16.65 12 21 12 21z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- image -->
+          <div style="height:220px;background:#fff;display:flex;align-items:center;justify-content:center;">
+            <svg width="86" height="86" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 15v3M18 15v3M2 10h20"/></svg>
+          </div>
+          <div style="display:flex;justify-content:center;gap:5px;padding:2px 0 10px;">
+            <span style="width:16px;height:4px;border-radius:2px;background:#E4632E;"></span>
+            <span style="width:4px;height:4px;border-radius:2px;background:#DDD8CC;"></span>
+            <span style="width:4px;height:4px;border-radius:2px;background:#DDD8CC;"></span>
+          </div>
+
+          <!-- info -->
+          <div style="padding:2px 20px 16px;background:#FDFCFA;">
+            <span style="display:inline-flex;font-size:10px;font-weight:800;letter-spacing:.05em;color:#fff;background:#E4632E;text-transform:uppercase;padding:4px 9px;border-radius:6px;">Blue Star</span>
+            <h2 style="margin:10px 0 0;font-size:21px;font-weight:800;line-height:1.22;letter-spacing:-.01em;">1.5 Ton 5★ Inverter Split AC</h2>
+            <div style="font-size:12.5px;color:#6B6963;margin-top:4px;font-weight:600;">IE518PNU</div>
+            <div class="scrollx" style="display:flex;gap:6px;overflow-x:auto;margin-top:12px;">
+              <span style="flex:0 0 auto;font-size:11px;font-weight:700;background:#fff;border:1px solid #EAE6DD;padding:6px 11px;border-radius:8px;">1.5 Ton</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:700;background:#fff;border:1px solid #EAE6DD;padding:6px 11px;border-radius:8px;">5 Star</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:700;background:#fff;border:1px solid #EAE6DD;padding:6px 11px;border-radius:8px;">Inverter</span>
+              <span style="flex:0 0 auto;font-size:11px;font-weight:700;background:#fff;border:1px solid #EAE6DD;padding:6px 11px;border-radius:8px;">R32</span>
+            </div>
+          </div>
+
+          <!-- comparison bar chart -->
+          <div style="padding:2px 20px 18px;background:#FDFCFA;">
+            <div style="background:#16151A;border-radius:18px;padding:18px;">
+              <div style="font-size:11.5px;font-weight:700;color:#B9B6AC;text-transform:uppercase;letter-spacing:.04em;">Bhopal price vs. online</div>
+              <div style="display:flex;align-items:baseline;gap:10px;margin-top:8px;">
+                <span style="font-size:28px;font-weight:800;color:#fff;">₹35,800</span>
+                <span style="font-size:12.5px;font-weight:700;color:#4ADE80;">↓ 8% cheaper</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px;">
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:#D8D5CC;margin-bottom:4px;"><span>Best Bhopal dealer</span><span>₹35,800</span></div>
+                  <div style="height:8px;border-radius:4px;background:#2A2A2E;overflow:hidden;"><div style="height:100%;width:78%;border-radius:4px;background:#E4632E;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:#D8D5CC;margin-bottom:4px;"><span>Cheapest online (Flipkart)</span><span>₹36,740</span></div>
+                  <div style="height:8px;border-radius:4px;background:#2A2A2E;overflow:hidden;"><div style="height:100%;width:80%;border-radius:4px;background:#5B5A57;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;color:#D8D5CC;margin-bottom:4px;"><span>Amazon (true price)</span><span>₹37,490</span></div>
+                  <div style="height:8px;border-radius:4px;background:#2A2A2E;overflow:hidden;"><div style="height:100%;width:82%;border-radius:4px;background:#5B5A57;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- best price bhopal -->
+          <div style="padding:2px 20px 4px;background:#FDFCFA;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:15px;font-weight:800;">3 dealers have this in stock</span>
+          </div>
+          <div style="padding:10px 20px 4px;background:#FDFCFA;display:flex;flex-direction:column;gap:12px;">
+            <!-- dealer 1 BEST DEAL -->
+            <div style="background:#fff;border:1.5px solid #E4632E;border-radius:18px;padding:16px;box-shadow:0 10px 26px -10px rgba(228,99,46,.4);position:relative;">
+              <span style="position:absolute;top:-11px;left:16px;background:#F6C453;color:#16151A;font-size:10px;font-weight:800;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="#16151A"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7.1L12 17.9 5.8 21.3 7 14.2 2 9.3l7.1-.7L12 2z"/></svg>
+                BEST DEAL
+              </span>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:#E4632E;color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;">SE</div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:5px;"><span style="font-size:15px;font-weight:800;">Sharma Electronics</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1F8A5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+                  </div>
+                  <div style="font-size:11.5px;color:#6B6963;font-weight:600;">MP Nagar · 4.8 rating</div>
+                </div>
+                <div style="font-size:23px;font-weight:800;">₹35,800</div>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;">
+                <span style="font-size:10px;font-weight:700;background:#F1ECF7;color:#6E5A99;padding:5px 10px;border-radius:999px;">Free Install</span>
+                <span style="font-size:10px;font-weight:700;background:#F1ECF7;color:#6E5A99;padding:5px 10px;border-radius:999px;">Free Copper Pipe</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;">
+                <div style="display:flex;align-items:center;gap:6px;"><span style="width:7px;height:7px;border-radius:50%;background:#1F8A5C;"></span><span style="font-size:12px;font-weight:700;color:#1F8A5C;">In stock today</span></div>
+                <span style="font-size:11px;color:#9A978E;font-weight:600;">Updated 2h ago</span>
+              </div>
+              <button style="width:100%;height:48px;margin-top:12px;background:#E4632E;color:#fff;border:none;border-radius:13px;font-family:inherit;font-size:14px;font-weight:700;">View contact</button>
+            </div>
+            <!-- dealer 2 -->
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:15px;display:flex;align-items:center;gap:12px;">
+              <div style="width:34px;height:34px;border-radius:50%;background:#F6F4EF;color:#6B6963;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;">BH</div>
+              <div style="flex:1;"><div style="font-size:13.5px;font-weight:800;">Bansal Home Appliances</div><div style="font-size:11px;color:#6B6963;font-weight:600;">Bittan Market · 4.6 rating</div></div>
+              <div style="text-align:right;"><div style="font-size:16px;font-weight:800;">₹36,200</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="2.4" stroke-linecap="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </div>
+            <!-- dealer 3 -->
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:15px;display:flex;align-items:center;gap:12px;">
+              <div style="width:34px;height:34px;border-radius:50%;background:#F6F4EF;color:#6B6963;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;">CP</div>
+              <div style="flex:1;"><div style="font-size:13.5px;font-weight:800;">Cool Point Kolar</div><div style="font-size:11px;color:#C97C1D;font-weight:700;">Kolar Road · Limited stock</div></div>
+              <div style="text-align:right;"><div style="font-size:16px;font-weight:800;">₹36,900</div></div>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="2.4" stroke-linecap="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </div>
+          </div>
+
+          <!-- online prices -->
+          <div style="padding:18px 20px 4px;background:#FDFCFA;font-size:15px;font-weight:800;">Online prices</div>
+          <div style="padding:10px 20px 16px;background:#FDFCFA;display:flex;flex-direction:column;gap:8px;">
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#FF9900;flex-shrink:0;"></span>
+              <span style="font-size:12.5px;font-weight:700;flex:1;">Amazon</span>
+              <span style="font-size:11px;color:#9A978E;text-decoration:line-through;">₹38,990</span>
+              <span style="font-size:13.5px;font-weight:800;">₹37,490</span>
+            </div>
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#2874F0;flex-shrink:0;"></span>
+              <span style="font-size:12.5px;font-weight:700;flex:1;">Flipkart</span>
+              <span style="font-size:11px;color:#9A978E;text-decoration:line-through;">₹37,490</span>
+              <span style="font-size:13.5px;font-weight:800;">₹36,740</span>
+            </div>
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:10px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#12B3B3;flex-shrink:0;"></span>
+              <span style="font-size:12.5px;font-weight:700;flex:1;">Croma</span>
+              <span style="font-size:11px;color:#9A978E;text-decoration:line-through;">₹41,200</span>
+              <span style="font-size:13.5px;font-weight:800;">₹39,200</span>
+            </div>
+          </div>
+
+          <!-- sticky bottom -->
+          <div style="padding:14px 20px 24px;background:#16151A;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+            <span style="font-size:12.5px;font-weight:700;color:#fff;line-height:1.35;">Need a different size or colour?</span>
+            <button style="flex-shrink:0;background:#E4632E;color:#fff;border:none;border-radius:11px;font-family:inherit;font-size:12.5px;font-weight:700;padding:11px 15px;">Post request</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #EAE6DD;border-radius:16px;padding:16px 18px;font-size:12.5px;line-height:1.6;color:#4E4C47;">
+        <strong style="color:#16151A;">What changed:</strong> a single dark comparison panel replaces scattered numbers, so the savings story reads at a glance. Dealer ratings and a verified checkmark build trust before the buyer taps "View contact." Lower-priority dealers collapsed to one-line rows so the top offer stays dominant.
+      </div>
+    </figure>
+
+    <!-- ============================================================ -->
+    <!-- 1c — DEALER PRICE MANAGER -->
+    <!-- ============================================================ -->
+    <figure id="1c" style="margin:0;display:flex;flex-direction:column;gap:16px;width:390px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:26px;padding:0 8px;background:#16151A;color:#fff;border-radius:8px;font-size:12px;font-weight:800;">1c</span>
+        <span style="font-size:14px;font-weight:700;">Dealer Price Manager</span>
+      </div>
+
+      <div style="width:390px;background:#FDFCFA;border-radius:46px;box-shadow:0 30px 70px -20px rgba(22,21,26,0.28),0 1px 0 rgba(22,21,26,0.04);border:1px solid #EAE6DD;overflow:hidden;">
+        <div style="min-height:844px;display:flex;flex-direction:column;">
+
+          <div style="height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;background:#16151A;"><span style="font-size:14px;font-weight:800;color:#fff;">9:41</span>
+            <div style="display:flex;align-items:center;gap:6px;">
+              <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="0.5" fill="#fff"/><rect x="4.5" y="5" width="3" height="6" rx="0.5" fill="#fff"/><rect x="9" y="3" width="3" height="8" rx="0.5" fill="#fff"/><rect x="13" y="0" width="3" height="11" rx="0.5" fill="#fff"/></svg>
+              <div style="width:22px;height:11px;border:1.4px solid #fff;border-radius:3px;padding:1.5px;display:flex;"><div style="flex:1;background:#fff;border-radius:1px;"></div></div>
+            </div>
+          </div>
+
+          <!-- header -->
+          <div style="background:#16151A;padding:14px 22px 20px;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="display:flex;align-items:center;gap:7px;">
+                <span style="font-size:16px;font-weight:800;color:#fff;">Sharma Electronics</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+              </div>
+              <div style="font-size:11px;color:#9A978E;font-weight:600;margin-top:2px;">MP Nagar · Bhopal</div>
+            </div>
+            <div style="width:36px;height:36px;border-radius:50%;background:#232226;display:flex;align-items:center;justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 5.2 1.6 6.4 1.6 6.4H4.4S6 13.2 6 8z"/><path d="M10 18.4a2 2 0 004 0"/></svg>
+            </div>
+          </div>
+
+          <div style="padding:16px 20px 8px;display:flex;flex-direction:column;gap:14px;">
+            <!-- autosave / freshness -->
+            <div style="background:#E7F5EE;border:1px solid #C7E8D6;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1F8A5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="8 12.5 11 15.5 16 9"/></svg>
+              <span style="font-size:12.5px;font-weight:700;color:#16803D;flex:1;">All changes saved · fresh as of 9:14am</span>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:17px;font-weight:800;">My price list</span>
+              <span style="font-size:12px;font-weight:700;color:#6B6963;">20 products</span>
+            </div>
+
+            <!-- category tabs -->
+            <div class="scrollx" style="display:flex;gap:8px;overflow-x:auto;">
+              <span style="flex:0 0 auto;background:#E4632E;color:#fff;font-size:12px;font-weight:700;padding:8px 15px;border-radius:999px;">All</span>
+              <span style="flex:0 0 auto;background:#fff;border:1px solid #EAE6DD;font-size:12px;font-weight:600;padding:8px 15px;border-radius:999px;">AC</span>
+              <span style="flex:0 0 auto;background:#fff;border:1px solid #EAE6DD;font-size:12px;font-weight:600;padding:8px 15px;border-radius:999px;">TV</span>
+              <span style="flex:0 0 auto;background:#fff;border:1px solid #EAE6DD;font-size:12px;font-weight:600;padding:8px 15px;border-radius:999px;">WM</span>
+              <span style="flex:0 0 auto;background:#fff;border:1px solid #EAE6DD;font-size:12px;font-weight:600;padding:8px 15px;border-radius:999px;">Fridge</span>
+            </div>
+
+            <!-- product row: big steppers, segmented stock control -->
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:16px;">
+              <div style="display:flex;gap:12px;align-items:center;">
+                <div style="width:46px;height:46px;border-radius:11px;background:#F6F4EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="10" rx="2"/><path d="M6 15v3M18 15v3M2 10h20"/></svg>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:9.5px;font-weight:800;color:#E4632E;text-transform:uppercase;">Blue Star</div>
+                  <div style="font-size:13.5px;font-weight:700;line-height:1.25;">1.5T 5★ Inverter Split AC</div>
+                  <div style="font-size:10.5px;color:#9A978E;font-weight:600;">IE518PNU</div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;gap:8px;margin-top:14px;background:#F6F4EF;border-radius:13px;padding:6px;">
+                <button style="width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #EAE6DD;font-size:18px;font-weight:800;color:#16151A;display:flex;align-items:center;justify-content:center;flex-shrink:0;">−</button>
+                <div style="flex:1;text-align:center;font-size:17px;font-weight:800;">₹35,800</div>
+                <button style="width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #EAE6DD;font-size:18px;font-weight:800;color:#16151A;display:flex;align-items:center;justify-content:center;flex-shrink:0;">+</button>
+              </div>
+
+              <div style="display:flex;gap:6px;margin-top:10px;">
+                <span style="flex:1;text-align:center;background:#E7F5EE;color:#1F8A5C;border:1.5px solid #1F8A5C;font-size:11.5px;font-weight:700;padding:9px 4px;border-radius:10px;">In Stock</span>
+                <span style="flex:1;text-align:center;background:#fff;color:#6B6963;border:1px solid #EAE6DD;font-size:11.5px;font-weight:600;padding:9px 4px;border-radius:10px;">Limited</span>
+                <span style="flex:1;text-align:center;background:#fff;color:#6B6963;border:1px solid #EAE6DD;font-size:11.5px;font-weight:600;padding:9px 4px;border-radius:10px;">Out</span>
+              </div>
+
+              <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+                <span style="font-size:10.5px;font-weight:700;background:#FBEEE7;color:#E4632E;border:1px solid #E4632E;padding:6px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="3" stroke-linecap="round"><polyline points="4 12 9 17 20 6"/></svg>
+                  Free Install
+                </span>
+                <span style="font-size:10.5px;font-weight:700;background:#FBEEE7;color:#E4632E;border:1px solid #E4632E;padding:6px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:4px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="3" stroke-linecap="round"><polyline points="4 12 9 17 20 6"/></svg>
+                  Free Pipe
+                </span>
+                <span style="font-size:10.5px;font-weight:600;background:#F6F4EF;color:#6B6963;border:1px solid #EAE6DD;padding:6px 11px;border-radius:999px;">+ Warranty</span>
+              </div>
+            </div>
+
+            <!-- listed row 2, condensed -->
+            <div style="background:#fff;border:1px solid #EAE6DD;border-radius:18px;padding:16px;">
+              <div style="display:flex;gap:12px;align-items:center;">
+                <div style="width:46px;height:46px;border-radius:11px;background:#F6F4EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:9.5px;font-weight:800;color:#E4632E;text-transform:uppercase;">Samsung</div>
+                  <div style="font-size:13.5px;font-weight:700;line-height:1.25;">55" Crystal 4K UHD TV</div>
+                  <div style="font-size:10.5px;color:#9A978E;font-weight:600;">UA55CUE60</div>
+                </div>
+                <div style="text-align:right;"><div style="font-size:15px;font-weight:800;">₹42,990</div><div style="font-size:10px;font-weight:700;color:#C97C1D;margin-top:2px;">Limited</div></div>
+              </div>
+            </div>
+
+            <!-- unlisted row -->
+            <div style="background:#fff;border:1.5px dashed #D8D2C4;border-radius:18px;padding:16px;">
+              <div style="display:flex;gap:12px;align-items:center;">
+                <div style="width:46px;height:46px;border-radius:11px;background:#F6F4EF;display:flex;align-items:center;justify-content:center;flex-shrink:0;opacity:.55;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16151A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 9h14"/></svg>
+                </div>
+                <div style="flex:1;min-width:0;"><div style="font-size:9.5px;font-weight:800;color:#9A978E;text-transform:uppercase;">LG</div><div style="font-size:13.5px;font-weight:700;line-height:1.25;">260L Frost-Free Fridge</div></div>
+                <button style="flex-shrink:0;width:36px;height:36px;border-radius:10px;background:#FBEEE7;border:none;display:flex;align-items:center;justify-content:center;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style="flex:1;min-height:8px;"></div>
+
+          <!-- bottom nav -->
+          <div style="display:flex;justify-content:space-around;align-items:center;padding:12px 6px 26px;background:#fff;border-top:1px solid #EAE6DD;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span style="font-size:9.5px;font-weight:600;color:#9A978E;">Dashboard</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 12px;border-radius:11px;background:#FBEEE7;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E4632E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12.6L12.6 20.6a2 2 0 01-2.8 0l-8-8A2 2 0 011.2 11V4a2.8 2.8 0 012.8-2.8h7a2 2 0 011.4.6l8 8a2 2 0 010 2.8z"/><circle cx="7" cy="7.5" r="1.2" fill="#E4632E" stroke="none"/></svg><span style="font-size:9.5px;font-weight:800;color:#E4632E;">Prices</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4z"/></svg><span style="font-size:9.5px;font-weight:600;color:#9A978E;">Requests</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7.1L12 17.9 5.8 21.3 7 14.2 2 9.3l7.1-.7L12 2z"/></svg><span style="font-size:9.5px;font-weight:600;color:#9A978E;">Won</span></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:5px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9A978E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span style="font-size:9.5px;font-weight:600;color:#9A978E;">Profile</span></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #EAE6DD;border-radius:16px;padding:16px 18px;font-size:12.5px;line-height:1.6;color:#4E4C47;">
+        <strong style="color:#16151A;">What changed:</strong> price edits use large +/− steppers instead of a text field — fast and hard to mis-tap. Stock status is a 3-way segmented control, not a dropdown. Autosave replaces a "Save All" button, with a persistent freshness banner so dealers always know buyers are seeing today's price.
+      </div>
+    </figure>
+
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

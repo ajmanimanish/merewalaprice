@@ -50,7 +50,7 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${instrumentSerif.variable} font-sans bg-slate-100 min-h-screen antialiased flex flex-col justify-start items-center`}
       >
-        <div className="w-full max-w-[420px] min-h-screen bg-[#FAFAF8] flex flex-col relative border-x border-[#EBEBEB] shadow-sm">
+        <div className="w-full max-w-[420px] min-h-screen bg-[#F6F4EF] flex flex-col relative border-x border-[#EAE6DD] shadow-sm">
           {children}
           <PWARegistration />
         </div>
