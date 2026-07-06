@@ -48,6 +48,7 @@ export default function PricesClient({ initialProducts }: PricesClientProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [pricingState, setPricingState] = useState<Record<string, PriceConfig>>({});
   const [activeTab, setActiveTab] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [lastUpdatedText, setLastUpdatedText] = useState('Never');
   const [saveLoading, setSaveLoading] = useState(false);
 
@@ -290,10 +291,19 @@ export default function PricesClient({ initialProducts }: PricesClientProps) {
     }
   };
 
-  // Filter products by tab
+  // Filter products by tab and search query
   const filteredProducts = products.filter((p) => {
-    if (activeTab === 'All') return true;
-    return p.category.toLowerCase() === activeTab.toLowerCase() || (activeTab === 'Fridge' && p.category === 'FRIDGE');
+    const matchesTab = activeTab === 'All' || 
+      p.category.toLowerCase() === activeTab.toLowerCase() || 
+      (activeTab === 'Fridge' && p.category === 'FRIDGE');
+
+    if (!matchesTab) return false;
+
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return p.name.toLowerCase().includes(q) || 
+           p.brand.toLowerCase().includes(q) || 
+           p.model_number.toLowerCase().includes(q);
   });
 
   if (loading) {
@@ -352,6 +362,39 @@ export default function PricesClient({ initialProducts }: PricesClientProps) {
               </span>
             );
           })}
+        </div>
+
+        {/* Search input bar */}
+        <div style={{ padding: '8px 20px 8px' }}>
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+            <span style={{ position: 'absolute', left: '12px', fontSize: '14px', color: '#888', pointerEvents: 'none' }}>🔍</span>
+            <input
+              type="text"
+              placeholder="Search by brand, name or model..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              style={{
+                width: '100%',
+                background: '#fff',
+                border: '1px solid #EBEBEB',
+                borderRadius: '12px',
+                padding: '10px 12px 10px 36px',
+                fontSize: '13px',
+                fontWeight: 600,
+                color: '#141414',
+                outline: 'none',
+                boxSizing: 'border-box'
+              }}
+            />
+            {searchQuery && (
+              <span 
+                onClick={() => setSearchQuery('')}
+                style={{ position: 'absolute', right: '12px', fontSize: '13px', color: '#888', cursor: 'pointer', fontWeight: 700 }}
+              >
+                ✕
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Count and quick action */}
