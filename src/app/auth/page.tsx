@@ -47,12 +47,12 @@ function AuthContent() {
   return (
     <div className="w-full max-w-sm bg-white border border-[#EBEBEB] rounded-[24px] p-8 text-center shadow-sm">
       {/* Stylized M logo */}
-      <div className="w-16 h-16 bg-[#F0743E] rounded-[16px] flex items-center justify-center mx-auto mb-6 text-white font-extrabold text-[32px] tracking-tight">
+      <div className="w-16 h-16 bg-[#E4632E] rounded-[16px] flex items-center justify-center mx-auto mb-6 text-white font-extrabold text-[32px] tracking-tight">
         M
       </div>
 
-      <h1 className="text-[24px] font-extrabold tracking-tight text-[#141414]">
-        Welcome to MereWalaPrice
+      <h1 className="text-[24px] font-extrabold tracking-tight text-[#16151A]">
+        Welcome to MeraWalaPrice
       </h1>
       <p className="text-[14px] text-[#6B6B6B] mt-2 mb-8 font-medium">
         Verify your account to receive local dealer quotes and track pricing.

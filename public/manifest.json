@@ -1,6 +1,6 @@
 {
-  "name": "MereWalaPrice",
-  "short_name": "MereWalaPrice",
+  "name": "MeraWalaPrice",
+  "short_name": "MeraWalaPrice",
   "description": "Bhopal ka sabse sahi price - Hyperlocal Price Comparison Platform",
   "start_url": "/",
   "display": "standalone",

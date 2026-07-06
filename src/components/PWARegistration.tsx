@@ -68,7 +68,7 @@ export default function PWARegistration() {
           <Download className="w-4.5 h-4.5" />
         </div>
         <div>
-          <h4 className="text-xs font-black uppercase tracking-wider">MereWalaPrice App</h4>
+          <h4 className="text-xs font-black uppercase tracking-wider">MeraWalaPrice App</h4>
           <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
             Add to your home screen for quick access!
           </p>

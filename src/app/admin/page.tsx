@@ -181,9 +181,9 @@ export default function AdminDashboard() {
       <div className="flex flex-col min-h-screen justify-center px-5 py-12 bg-[#FAFAF8] font-sans">
         <div className="w-full bg-white border-[0.5px] border-[#EBEBEB] p-6 rounded-[16px] flex flex-col">
           <div className="text-center mb-6">
-            <h1 className="text-[20px] font-bold text-[#141414] tracking-tight">MereWala<span className="text-[#F0743E]">Price</span></h1>
-            <p className="text-[12px] font-bold text-[#6B6B6B] uppercase tracking-wider mt-2">Admin Dashboard Lock</p>
-            <p className="text-[11px] text-[#A0A0A0] mt-1">Authorized admin access only.</p>
+            <h1 className="text-[20px] font-bold text-[#16151A] tracking-tight">MeraWala<span className="text-[#E4632E]">Price</span></h1>
+            <p className="text-[12px] font-bold text-[#6B6963] uppercase tracking-wider mt-2">Admin Dashboard Lock</p>
+            <p className="text-[11px] text-[#9A978E] mt-1">Authorized admin access only.</p>
           </div>
 
           {authError && (
@@ -200,8 +200,8 @@ export default function AdminDashboard() {
             className="space-y-4"
           >
             <div>
-              <label className="block text-[12px] font-semibold text-[#6B6B6B] uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <Lock className="w-3.5 h-3.5 text-[#F0743E]" />
+              <label className="block text-[12px] font-semibold text-[#6B6963] uppercase tracking-wider mb-1.5 flex items-center gap-1">
+                <Lock className="w-3.5 h-3.5 text-[#E4632E]" />
                 Admin Password
               </label>
               <input
@@ -223,7 +223,7 @@ export default function AdminDashboard() {
             </button>
           </form>
 
-          <Link href="/" className="text-xs text-[#A0A0A0] hover:text-[#6B6B6B] font-bold text-center mt-6">
+          <Link href="/" className="text-xs text-[#9A978E] hover:text-[#6B6963] font-bold text-center mt-6">
             ← Back to Home
           </Link>
         </div>
@@ -232,15 +232,15 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAFAF8] pb-16 font-sans">
+    <div className="flex flex-col min-h-screen bg-[#F6F4EF] pb-16 font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-30 bg-white h-[60px] border-b-[0.5px] border-[#EBEBEB] px-5 flex items-center justify-between shadow-none flex-shrink-0">
+      <header className="sticky top-0 z-30 bg-white h-[60px] border-b-[0.5px] border-[#EAE6DD] px-5 flex items-center justify-between shadow-none flex-shrink-0">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-5 h-5 text-[#F0743E]" />
+          <ShieldCheck className="w-5 h-5 text-[#E4632E]" />
           <div>
-            <h1 className="text-[14px] font-bold text-[#141414] leading-none">Admin Console</h1>
-            <span className="text-[10px] text-[#A0A0A0] font-bold uppercase tracking-wider">
-              MereWalaPrice Bhopal
+            <h1 className="text-[14px] font-bold text-[#16151A] leading-none">Admin Console</h1>
+            <span className="text-[10px] text-[#9A978E] font-bold uppercase tracking-wider">
+              MeraWalaPrice Bhopal
             </span>
           </div>
         </div>

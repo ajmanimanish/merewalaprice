@@ -74,7 +74,7 @@ export async function POST(request: Request) {
         ? `91${cleanDealerPhone}`
         : cleanDealerPhone;
 
-    const greetingText = `Hi ${dealer.shop_name}, I accepted your offer of ₹${quotedPrice.toLocaleString('en-IN')} for ${productName} on MereWalaPrice. Please confirm availability.`;
+    const greetingText = `Hi ${dealer.shop_name}, I accepted your offer of ₹${quotedPrice.toLocaleString('en-IN')} for ${productName} on MeraWalaPrice. Please confirm availability.`;
     const whatsappRedirectUrl = `https://wa.me/${formattedDealerPhone}?text=${encodeURIComponent(
       greetingText
     )}`;

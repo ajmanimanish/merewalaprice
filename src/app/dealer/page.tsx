@@ -73,10 +73,10 @@ export default function DealerLoginPage() {
         <StatusBar theme="dark" />
 
         {/* Dark Header */}
-        <div style={{ background: '#141414', padding: '16px 24px 26px' }}>
+        <div style={{ background: '#16151A', padding: '16px 24px 26px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '16px', fontWeight: 800, color: '#fff' }}>
-              MereWala<span style={{ color: '#F0743E' }}>Price</span>
+              MeraWala<span style={{ color: '#E4632E' }}>Price</span>
             </span>
             <span style={{ fontSize: '11px', fontWeight: 700, color: '#9a9a9a' }}>· Dealer Portal</span>
           </div>

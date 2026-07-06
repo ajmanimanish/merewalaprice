@@ -100,7 +100,7 @@ export async function POST(request: Request) {
     }
 
     // 3. Send WhatsApp Confirmation to Dealer
-    const welcomeMessage = `MereWalaPrice Registration Submitted!
+    const welcomeMessage = `MeraWalaPrice Registration Submitted!
 
 Shop Name: ${shopName}
 Owner: ${ownerName}

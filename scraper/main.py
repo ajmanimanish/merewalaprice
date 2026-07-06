@@ -13,7 +13,7 @@ from playwright.async_api import async_playwright
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("price-fetcher")
 
-app = FastAPI(title="MereWalaPrice Online Price Fetcher")
+app = FastAPI(title="MeraWalaPrice Online Price Fetcher")
 
 # Config from Env
 SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL", "")
@@ -260,7 +260,7 @@ async def trigger_scrape(req: ScrapeRequest, background_tasks: BackgroundTasks):
 
 @app.get("/")
 def read_root():
-    return {"status": "online", "message": "MereWalaPrice Price Fetcher API"}
+    return {"status": "online", "message": "MeraWalaPrice Price Fetcher API"}
 
 if __name__ == "__main__":
     import uvicorn

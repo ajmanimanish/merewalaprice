@@ -251,7 +251,7 @@ export default function DealerRegisterPage() {
             Shop Registration
           </h1>
           <p className="text-[10px] text-[#6B6B6B] font-bold uppercase tracking-wider">
-            MereWalaPrice Bhopal
+            MeraWalaPrice Bhopal
           </p>
         </div>
       </header>
@@ -273,7 +273,7 @@ export default function DealerRegisterPage() {
             </div>
             <h2 className="text-[20px] font-bold text-[#141414]">Registration Request Sent!</h2>
             <p className="text-[13px] text-[#6B6B6B] font-medium mt-4 leading-relaxed max-w-xs">
-              Thank you! MereWalaPrice Admin will review and approve your registration request shortly.
+              Thank you! MeraWalaPrice Admin will review and approve your registration request shortly.
             </p>
             <p className="text-[12px] text-[#A0A0A0] font-medium mt-2 max-w-xs">
               An approval notification will be sent to your WhatsApp number (+91 {whatsapp}).

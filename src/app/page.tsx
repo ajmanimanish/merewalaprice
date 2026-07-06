@@ -181,7 +181,7 @@ export default function HomePage() {
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 20px 10px' }}>
           <span style={{ fontSize: '21px', fontWeight: 800, letterSpacing: '-.02em', color: '#16151A' }}>
-            MereWala<span style={{ color: '#E4632E' }}>Price</span>
+            MeraWala<span style={{ color: '#E4632E' }}>Price</span>
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
             <Link href="/search">

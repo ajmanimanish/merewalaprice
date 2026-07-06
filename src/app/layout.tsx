@@ -18,13 +18,13 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "MereWalaPrice - Hyperlocal Price Comparison",
+  title: "MeraWalaPrice - Hyperlocal Price Comparison",
   description: "Bhopal's hyperlocal price comparison platform. Connect with local dealers for appliances and electronics, and get prices lower than online!",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "MereWalaPrice",
+    title: "MeraWalaPrice",
   },
 };
 
