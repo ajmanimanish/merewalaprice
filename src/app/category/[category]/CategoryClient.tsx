@@ -33,6 +33,53 @@ const cleanNames: Record<string, string> = {
   LAPTOP: 'Laptops',
 };
 
+const BESTSELLERS_BY_CAT: Record<string, string[]> = {
+  AC: [
+    'AS-Q19YNZE1', 'RS-Q18YNZE', 'RS-Q14YNZE',  // LG
+    'IE518PNU',                                     // Blue Star
+    '185V Vectra CAR', '123INV', '243INV',         // Voltas
+    'AR18CYNYBWK',                                  // Samsung
+    'FTKR50TV', 'FTKC35TV', 'FTKU50TV',           // Daikin
+  ],
+  FRIDGE: [
+    'RT28C3122S8', 'RT34C4522S8', 'RT42CB66228THL', // Samsung
+    'GL-S292RDSY', 'GL-T302SPZX', 'GL-B201AESY',    // LG
+    'IF278ELT', 'IF325ELT',                          // Whirlpool
+    'HRB-2764BS-E',                                  // Haier
+  ],
+  WM: [
+    'WW70FG4S02AXTL', 'WA70BG4441YY', 'WA70BG4441YY', // Samsung
+    'FHM1408BDL', 'T70SKSF4Z', 'P7020NGAZ',           // LG
+    'WAJ2006WIN',                                       // Bosch
+    '31256', '31257',                                   // Whirlpool
+    'IFB-TL-RCSS-7.5KG',                              // IFB
+  ],
+  TV: [
+    'UA43DUE70AKLXL', 'QA43Q60DAKLXL', 'UA55CU7700KLXL', 'QA55Q60DAKLXL', // Samsung
+    '43UR7500PSC', '55UR7500PSC',                                             // LG
+    'KD-43X74L', 'KD-55X74L',                                                // Sony
+    '43P635', '55P635',                                                        // TCL
+    'L43M8-5AIN',                                                              // Xiaomi
+  ],
+  LAPTOP: [], // too few products to rank
+};
+
+const NEW_LAUNCH_BY_CAT: Record<string, string[]> = {
+  AC: ['AS-Q19YNZE1', 'RS-Q18YNZE', 'RS-Q14YNZE', 'FTKR50TV', 'FTKC35TV', 'AR18CYNYBWK', '185V Vectra CAR'],
+  FRIDGE: ['RT28C3122S8', 'RT34C4522S8', 'GL-S292RDSY', 'GL-T302SPZX'],
+  WM: ['WW70FG4S02AXTL', 'FHM1408BDL', 'WA70BG4441YY'],
+  TV: ['UA43DUE70AKLXL', 'QA43Q60DAKLXL', 'QA55Q60DAKLXL', 'L43M8-5AIN'],
+  LAPTOP: [],
+};
+
+const FILTER_CHIPS_BY_CAT: Record<string, string[]> = {
+  AC: ['All', '1 Ton', '1.5 Ton', '2 Ton', '3★', '5★', 'Inverter', 'Under ₹35K'],
+  TV: ['All', '32 inch', '43 inch', '55 inch', '4K', 'QLED', 'Under ₹30K'],
+  WM: ['All', 'Front Load', 'Top Load', 'Semi Auto', '7 Kg', '8 Kg', 'Under ₹20K'],
+  FRIDGE: ['All', 'Single Door', 'Double Door', '250L+', '300L+', 'Frost Free', 'Under ₹20K'],
+  LAPTOP: ['All', 'Under ₹40K', 'Under ₹60K', 'Gaming', 'Business'],
+};
+
 const getCatEmoji = (cat: string) => {
   switch (cat.toUpperCase()) {
     case 'AC': return '❄️';
@@ -107,16 +154,8 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
       return m ? parseInt(m[0]) : 2024;
     })();
 
-    const isNewLaunch = modelYear >= 2025;
-
-    // Known bestsellers by model number
-    const BESTSELLERS = [
-      'IE518PNU', '185V Vectra CAR', '123INV', 'AS-Q19YNZE1', 'RS-Q18YNZE',
-      'FTKR50TV', 'FTKC35TV', 'WW70FG4S02AXTL', 'RT28C3122S8', 'GL-S292RDSY',
-      'UA43DUE70AKLXL', 'QA43Q60DAKLXL', '43UR7500PSC', 'KD-43X74L',
-      'FHM1408BDL', 'T70SKSF4Z', 'HW80-BD12876NZP5', 'WAJ2006WIN'
-    ];
-    const isBestseller = BESTSELLERS.includes(p.model_number);
+    const isNewLaunch = (NEW_LAUNCH_BY_CAT[p.category] || []).includes(p.model_number) || modelYear >= 2025;
+    const isBestseller = (BESTSELLERS_BY_CAT[p.category] || []).includes(p.model_number);
 
     return {
       id: p.id,
@@ -182,20 +221,40 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
     if (chip === 'All') return true;
     const f = chip.toLowerCase();
     const fullText = `${p.brand} ${p.name} ${p.model_number} ${JSON.stringify(p.specs)}`.toLowerCase();
-    if (f.includes('★') || f.includes('star')) {
-      const rating = f.replace(/[^35]/g, '');
-      return fullText.includes(`${rating} star`) || fullText.includes(`${rating}★`) || fullText.includes(`${rating} Star`);
+
+    // Price filters
+    if (f === 'under ₹35k') return p.lowest_price > 0 && p.lowest_price < 35000;
+    if (f === 'under ₹30k') return p.lowest_price > 0 && p.lowest_price < 30000;
+    if (f === 'under ₹20k') return p.lowest_price > 0 && p.lowest_price < 20000;
+    if (f === 'under ₹40k') return p.lowest_price > 0 && p.lowest_price < 40000;
+    if (f === 'under ₹60k') return p.lowest_price > 0 && p.lowest_price < 60000;
+
+    // AC filters
+    if (f.includes('ton')) { const t = f.split(' ')[0]; return fullText.includes(`${t}t`) || fullText.includes(`${t} ton`); }
+    if (f.includes('★') || f.includes('star')) { const r = f.replace(/[^35]/g, ''); return fullText.includes(`${r} star`) || fullText.includes(`${r}★`); }
+    if (f === 'inverter') return fullText.includes('inverter');
+
+    // TV filters
+    if (f.includes('inch')) return fullText.includes(f.replace(' inch', '"')) || fullText.includes(f) || fullText.includes(f.replace(' inch', ' inch'));
+    if (f === '4k') return fullText.includes('4k') || fullText.includes('uhd') || fullText.includes('ultra hd');
+    if (f === 'qled') return fullText.includes('qled') || fullText.includes('oled');
+
+    // WM filters
+    if (f === 'front load') return fullText.includes('front load') || fullText.includes('front-load');
+    if (f === 'top load') return fullText.includes('top load') || fullText.includes('top-load');
+    if (f === 'semi auto') return fullText.includes('semi') || fullText.includes('semi-auto');
+    if (f.includes('kg')) { const kg = f.split(' ')[0]; return fullText.includes(`${kg} kg`) || fullText.includes(`${kg}kg`); }
+
+    // Fridge filters
+    if (f === 'single door') return fullText.includes('single door') || fullText.includes('direct cool');
+    if (f === 'double door') return fullText.includes('double door') || fullText.includes('frost free') || fullText.includes('multi door');
+    if (f === 'frost free') return fullText.includes('frost free') || fullText.includes('no frost');
+    if (f.includes('l+')) {
+      const litres = parseInt(f);
+      const volMatch = fullText.match(/(\d{3})l?\b/g);
+      return volMatch ? volMatch.some(v => parseInt(v) >= litres) : false;
     }
-    if (f.includes('ton')) {
-      const tonVal = f.split(' ')[0];
-      return fullText.includes(`${tonVal}t`) || fullText.includes(`${tonVal} ton`) || fullText.includes(`${tonVal} Ton`);
-    }
-    if (f === 'inverter') {
-      return fullText.includes('inverter');
-    }
-    if (f === 'under ₹35k') {
-      return p.lowest_price > 0 && p.lowest_price < 35000;
-    }
+
     return fullText.includes(f);
   };
 
@@ -282,17 +341,35 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
   }, [products, activeFilter, selectedBrands, selectedYears, sortOption]);
 
   const getFilterChips = () => {
+    return FILTER_CHIPS_BY_CAT[categoryCode] || ['All'];
+  };
+
+  const getProductGroup = (p: ProductCard): string => {
+    const text = `${p.name} ${JSON.stringify(p.specs)}`.toLowerCase();
     switch (categoryCode) {
       case 'AC':
-        return ['All', '1 Ton', '1.5 Ton', '2 Ton', '3★', '5★', 'Inverter', 'Under ₹35K'];
+        if (text.includes('1 ton') || text.includes('1t ')) return '1 Ton';
+        if (text.includes('1.5 ton') || text.includes('1.5t')) return '1.5 Ton';
+        if (text.includes('2 ton') || text.includes('2t ')) return '2 Ton';
+        return 'Other';
       case 'TV':
-        return ['All', '32 inch', '43 inch', '55 inch', '4K', 'QLED'];
-      case 'FRIDGE':
-        return ['All', 'Single Door', 'Double Door', 'French Door', 'Frost-Free'];
+        if (text.includes('32') || text.includes('32"')) return '32 Inch';
+        if (text.includes('43') || text.includes('43"')) return '43 Inch';
+        if (text.includes('55') || text.includes('55"')) return '55 Inch';
+        if (text.includes('65') || text.includes('65"')) return '65 Inch';
+        return 'Other';
       case 'WM':
-        return ['All', 'Front Load', 'Top Load', 'Semi-Automatic', '7 Kg', '8 Kg'];
+        if (text.includes('front load')) return 'Front Load';
+        if (text.includes('top load')) return 'Top Load';
+        if (text.includes('semi')) return 'Semi Automatic';
+        return 'Other';
+      case 'FRIDGE':
+        if (text.includes('single door') || text.includes('direct cool')) return 'Single Door';
+        if (text.includes('double door') || text.includes('frost free')) return 'Double Door';
+        if (text.includes('french door') || text.includes('multi door')) return 'French / Multi Door';
+        return 'Other';
       default:
-        return ['All'];
+        return '';
     }
   };
 
@@ -457,146 +534,167 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
               No models matched your selection.
             </div>
           ) : (
-            filteredProducts.map((p) => (
-              <div
-                key={p.id}
-                onClick={() => router.push(`/product/${p.id}`)}
-                style={{
-                  background: '#fff',
-                  border: '1px solid #EBEBEB',
-                  borderRadius: '16px',
-                  padding: '14px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,.06)',
-                  display: 'flex',
-                  gap: '14px',
-                  cursor: 'pointer',
-                  transition: 'transform 0.15s ease',
-                }}
-                className="hover:scale-[1.01]"
-              >
-                <div style={{
-                  width: '80px', height: '80px', borderRadius: '12px',
-                  background: '#F5F5F5', flexShrink: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  overflow: 'hidden',
-                }}>
-                  {p.image_url ? (
-                    <img
-                      src={p.image_url}
-                      alt={`${p.brand} ${p.model_number}`}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                        (e.target as HTMLImageElement).parentElement!.innerHTML = 
-                          `<span style="font-size:28px">${getCatEmoji(p.category)}</span>`;
-                      }}
-                    />
-                  ) : (
-                    <span style={{ fontSize: '28px' }}>{getCatEmoji(p.category)}</span>
-                  )}
-                </div>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  {/* Brand pill */}
-                  <div style={{ fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', color: '#F0743E', textTransform: 'uppercase', marginBottom: '2px' }}>
-                    {p.brand}
-                  </div>
-
-                  {/* Badges row — NEW */}
-                  <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                    {p.is_bestseller && (
-                      <div style={{ 
-                        background: '#FDDB48', color: '#141414',
-                        fontSize: '9px', fontWeight: 800, padding: '2px 6px',
-                        borderRadius: '999px', letterSpacing: '0.04em'
-                      }}>
-                        🏆 BESTSELLER
-                      </div>
-                    )}
-                    {p.is_new_launch && (
-                      <div style={{ 
-                        background: '#EEF2FF', color: '#4F46E5',
-                        fontSize: '9px', fontWeight: 800, padding: '2px 6px',
-                        borderRadius: '999px', letterSpacing: '0.04em'
-                      }}>
-                        ✨ NEW {p.year}
-                      </div>
-                    )}
-                    {p.dealers_count > 0 && (
-                      <div style={{ 
-                        background: '#E7F6ED', color: '#16A34A',
-                        fontSize: '9px', fontWeight: 800, padding: '2px 6px',
-                        borderRadius: '999px'
-                      }}>
-                        📍 {p.dealers_count} local dealer{p.dealers_count > 1 ? 's' : ''}
-                      </div>
-                    )}
-                  </div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, marginTop: '2px', lineHeight: '1.25', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {p.name}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#6B6B6B', marginTop: '1px' }}>{p.model_number}</div>
-                  <div style={{ display: 'flex', gap: '5px', marginTop: '7px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '9px', fontWeight: 600, color: '#6B6B6B', background: '#FAFAF8', border: '1px solid #EBEBEB', padding: '3px 7px', borderRadius: '6px' }}>
-                      {getSpecsString(p)}
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '9px' }}>
-                    {p.lowest_price > 0 ? (
-                      <>
-                        <span style={{ fontSize: '20px', fontWeight: 800 }}>
-                          From ₹{p.lowest_price.toLocaleString('en-IN')}
-                        </span>
-                        {p.online_price > p.lowest_price && (
-                          <span style={{ fontSize: '11px', color: '#6B6B6B', textDecoration: 'line-through' }}>
-                            {p.online_platform} ₹{p.online_price.toLocaleString('en-IN')}
-                          </span>
-                        )}
-                      </>
-                    ) : p.mrp ? (
-                      <span style={{ fontSize: '15px', color: '#6B6963', fontWeight: 700 }}>
-                        ₹{p.mrp.toLocaleString('en-IN')} (MRP)
-                      </span>
-                    ) : (
-                      <span style={{ fontSize: '15px', fontWeight: 700, color: '#9A978E' }}>
-                        Price coming soon
-                      </span>
-                    )}
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '9px' }}>
-                    {p.saving > 0 ? (
-                      <span style={{ display: 'inline-flex', background: '#E7F6ED', color: '#16A34A', fontSize: '10px', fontWeight: 700, padding: '4px 9px', borderRadius: '999px' }}>
-                        Save ₹{p.saving.toLocaleString('en-IN')} vs online
-                      </span>
-                    ) : (
-                      <span style={{ display: 'inline-flex', background: '#FAFAF8', border: '1px solid #EBEBEB', color: '#6B6B6B', fontSize: '10px', fontWeight: 700, padding: '4px 9px', borderRadius: '999px' }}>
-                        Official Model
-                      </span>
-                    )}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span style={{ fontSize: '11px', fontWeight: 600, color: '#6B6B6B' }}>
-                        {p.dealers_count} {p.dealers_count === 1 ? 'dealer' : 'dealers'}
-                      </span>
-                      <span style={{ fontSize: '15px' }}>🤍</span>
-                    </div>
-                  </div>
-
-                  {/* Card discount hint */}
-                  {p.online_price > 0 && (() => {
-                    const offer = getBestOffer(p.online_platform, p.online_price, bankOffers);
-                    return offer ? (
+            (() => {
+              let lastGroup = '';
+              return filteredProducts.map((p) => {
+                const group = sortOption === 'Best Seller' ? getProductGroup(p) : '';
+                const showHeader = group && group !== lastGroup;
+                if (showHeader) lastGroup = group;
+                return (
+                  <React.Fragment key={p.id}>
+                    {showHeader && (
                       <div style={{
-                        fontSize: '10px',
-                        fontWeight: 600,
-                        color: '#16A34A',
-                        marginTop: '6px',
+                        padding: '10px 16px 4px',
+                        fontSize: '12px', fontWeight: 800,
+                        color: '#6B6B6B', letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        borderBottom: '1px solid #EBEBEB',
+                        marginBottom: '8px'
                       }}>
-                        💳 {offer.bank} card saves ₹{offer.save.toLocaleString('en-IN')} online
+                        {group}
                       </div>
-                    ) : null;
-                  })()}
-                </div>
-              </div>
-            ))
+                    )}
+                    <div
+                      onClick={() => router.push(`/product/${p.id}`)}
+                      style={{
+                        background: '#fff',
+                        border: '1px solid #EBEBEB',
+                        borderRadius: '16px',
+                        padding: '14px',
+                        boxShadow: '0 1px 3px rgba(0,0,0,.06)',
+                        display: 'flex',
+                        gap: '14px',
+                        cursor: 'pointer',
+                        transition: 'transform 0.15s ease',
+                      }}
+                      className="hover:scale-[1.01]"
+                    >
+                      <div style={{
+                        width: '80px', height: '80px', borderRadius: '12px',
+                        background: '#F5F5F5', flexShrink: 0,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        overflow: 'hidden',
+                      }}>
+                        {p.image_url ? (
+                          <img
+                            src={p.image_url}
+                            alt={`${p.brand} ${p.model_number}`}
+                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                              (e.target as HTMLImageElement).parentElement!.innerHTML = 
+                                `<span style="font-size:28px">${getCatEmoji(p.category)}</span>`;
+                            }}
+                          />
+                        ) : (
+                          <span style={{ fontSize: '28px' }}>{getCatEmoji(p.category)}</span>
+                        )}
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        {/* Brand pill */}
+                        <div style={{ fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', color: '#F0743E', textTransform: 'uppercase', marginBottom: '2px' }}>
+                          {p.brand}
+                        </div>
+
+                        {/* Badges row — NEW */}
+                        <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                          {p.is_bestseller && (
+                            <div style={{ 
+                              background: '#FDDB48', color: '#141414',
+                              fontSize: '9px', fontWeight: 800, padding: '2px 6px',
+                              borderRadius: '999px', letterSpacing: '0.04em'
+                            }}>
+                              🏆 BESTSELLER
+                            </div>
+                          )}
+                          {p.is_new_launch && (
+                            <div style={{ 
+                              background: '#EEF2FF', color: '#4F46E5',
+                              fontSize: '9px', fontWeight: 800, padding: '2px 6px',
+                              borderRadius: '999px', letterSpacing: '0.04em'
+                            }}>
+                              ✨ NEW {p.year}
+                            </div>
+                          )}
+                          {p.dealers_count > 0 && (
+                            <div style={{ 
+                              background: '#E7F6ED', color: '#16A34A',
+                              fontSize: '9px', fontWeight: 800, padding: '2px 6px',
+                              borderRadius: '999px'
+                            }}>
+                              📍 {p.dealers_count} local dealer{p.dealers_count > 1 ? 's' : ''}
+                            </div>
+                          )}
+                        </div>
+                        <div style={{ fontSize: '14px', fontWeight: 700, marginTop: '2px', lineHeight: '1.25', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {p.name}
+                        </div>
+                        <div style={{ fontSize: '11px', color: '#6B6B6B', marginTop: '1px' }}>{p.model_number}</div>
+                        <div style={{ display: 'flex', gap: '5px', marginTop: '7px', flexWrap: 'wrap' }}>
+                          <span style={{ fontSize: '9px', fontWeight: 600, color: '#6B6B6B', background: '#FAFAF8', border: '1px solid #EBEBEB', padding: '3px 7px', borderRadius: '6px' }}>
+                            {getSpecsString(p)}
+                          </span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '9px' }}>
+                          {p.lowest_price > 0 ? (
+                            <>
+                              <span style={{ fontSize: '20px', fontWeight: 800 }}>
+                                From ₹{p.lowest_price.toLocaleString('en-IN')}
+                              </span>
+                              {p.online_price > p.lowest_price && (
+                                <span style={{ fontSize: '11px', color: '#6B6B6B', textDecoration: 'line-through' }}>
+                                  {p.online_platform} ₹{p.online_price.toLocaleString('en-IN')}
+                                </span>
+                              )}
+                            </>
+                          ) : p.mrp ? (
+                            <span style={{ fontSize: '15px', color: '#6B6963', fontWeight: 700 }}>
+                              ₹{p.mrp.toLocaleString('en-IN')} (MRP)
+                            </span>
+                          ) : (
+                            <span style={{ fontSize: '15px', fontWeight: 700, color: '#9A978E' }}>
+                              Price coming soon
+                            </span>
+                          )}
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '9px' }}>
+                          {p.saving > 0 ? (
+                            <span style={{ display: 'inline-flex', background: '#E7F6ED', color: '#16A34A', fontSize: '10px', fontWeight: 700, padding: '4px 9px', borderRadius: '999px' }}>
+                              Save ₹{p.saving.toLocaleString('en-IN')} vs online
+                            </span>
+                          ) : (
+                            <span style={{ display: 'inline-flex', background: '#FAFAF8', border: '1px solid #EBEBEB', color: '#6B6B6B', fontSize: '10px', fontWeight: 700, padding: '4px 9px', borderRadius: '999px' }}>
+                              Official Model
+                            </span>
+                          )}
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <span style={{ fontSize: '11px', fontWeight: 600, color: '#6B6B6B' }}>
+                              {p.dealers_count} {p.dealers_count === 1 ? 'dealer' : 'dealers'}
+                            </span>
+                            <span style={{ fontSize: '15px' }}>🤍</span>
+                          </div>
+                        </div>
+
+                        {/* Card discount hint */}
+                        {p.online_price > 0 && (() => {
+                          const offer = getBestOffer(p.online_platform, p.online_price, bankOffers);
+                          return offer ? (
+                            <div style={{
+                              fontSize: '10px',
+                              fontWeight: 600,
+                              color: '#16A34A',
+                              marginTop: '6px',
+                            }}>
+                              💳 {offer.bank} card saves ₹{offer.save.toLocaleString('en-IN')} online
+                            </div>
+                          ) : null;
+                        })()}
+                      </div>
+                    </div>
+                  </React.Fragment>
+                );
+              });
+            })()
           )}
         </div>
       </div>
