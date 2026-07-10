@@ -16,7 +16,7 @@ export default async function CategoryPage({ params }: { params: { category: str
   const { data: products } = await supabase
     .from('products')
     .select(`
-      id, brand, model_number, name, category, specs, image_url,
+      id, brand, model_number, name, category, specs, image_url, year, mrp,
       online_prices ( platform, price )
     `)
     .eq('category', categoryCode)

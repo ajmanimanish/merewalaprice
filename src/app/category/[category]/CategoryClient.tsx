@@ -19,6 +19,8 @@ interface ProductCard {
   dealers_count: number;
   saving: number;
   image_url: string | null;
+  year?: number;
+  mrp?: number | null;
 }
 
 const cleanNames: Record<string, string> = {
@@ -78,12 +80,14 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
       (dp: any) => dp.stock_status !== 'out_of_stock'
     );
     
-    const lowestOnline = onlinePrices.length > 0
-      ? Math.min(...onlinePrices.map((o: any) => o.price).filter(Boolean))
+    const onlinePricesVal = onlinePrices.map((o: any) => o.price).filter(Boolean);
+    const lowestOnline = onlinePricesVal.length > 0
+      ? Math.min(...onlinePricesVal)
       : 0;
 
-    const lowestDealer = dealerPrices.length > 0
-      ? Math.min(...dealerPrices.map((d: any) => d.price).filter(Boolean))
+    const dealerPricesVal = dealerPrices.map((d: any) => d.price).filter(Boolean);
+    const lowestDealer = dealerPricesVal.length > 0
+      ? Math.min(...dealerPricesVal)
       : 0;
 
     const lowestPrice = lowestDealer || lowestOnline || 0;
@@ -107,6 +111,8 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
       dealers_count: dealersCount,
       saving: saving,
       image_url: p.image_url || null,
+      year: p.year,
+      mrp: p.mrp,
     };
   });
 
@@ -115,30 +121,112 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
   const [activeFilter, setActiveFilter] = useState('All');
   const [sortOption, setSortOption] = useState('Best Savings');
 
+  // Brand and Year Filter States
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedYears, setSelectedYears] = useState<number[]>([]);
+  const [showFiltersSheet, setShowFiltersSheet] = useState(false);
+
+  // Sync URL search params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const brandParam = params.get('brand');
+    const yearParam = params.get('year');
+    if (brandParam) {
+      setSelectedBrands(brandParam.split(',').filter(Boolean));
+    }
+    if (yearParam) {
+      setSelectedYears(yearParam.split(',').map(Number).filter(Boolean));
+    }
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (selectedBrands.length > 0) {
+      params.set('brand', selectedBrands.join(','));
+    } else {
+      params.delete('brand');
+    }
+    if (selectedYears.length > 0) {
+      params.set('year', selectedYears.join(','));
+    } else {
+      params.delete('year');
+    }
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.history.replaceState({ ...window.history.state, as: newUrl, url: newUrl }, '', newUrl);
+  }, [selectedBrands, selectedYears]);
+
+  // Helper matching function
+  const matchesChipFilter = (p: ProductCard, chip: string): boolean => {
+    if (chip === 'All') return true;
+    const f = chip.toLowerCase();
+    const fullText = `${p.brand} ${p.name} ${p.model_number} ${JSON.stringify(p.specs)}`.toLowerCase();
+    if (f.includes('★') || f.includes('star')) {
+      const rating = f.replace(/[^35]/g, '');
+      return fullText.includes(`${rating} star`) || fullText.includes(`${rating}★`) || fullText.includes(`${rating} Star`);
+    }
+    if (f.includes('ton')) {
+      const tonVal = f.split(' ')[0];
+      return fullText.includes(`${tonVal}t`) || fullText.includes(`${tonVal} ton`) || fullText.includes(`${tonVal} Ton`);
+    }
+    if (f === 'inverter') {
+      return fullText.includes('inverter');
+    }
+    if (f === 'under ₹35k') {
+      return p.lowest_price > 0 && p.lowest_price < 35000;
+    }
+    return fullText.includes(f);
+  };
+
+  // Get distinct brands and distinct years
+  const distinctBrands = Array.from(new Set(products.map(p => p.brand))).sort();
+  const distinctYears = Array.from(new Set(products.map(p => p.year).filter(Boolean) as number[])).sort((a, b) => b - a);
+
+  // Live Faceted Counts
+  const getBrandCounts = () => {
+    const counts: Record<string, number> = {};
+    products.forEach(p => {
+      const matchesChip = matchesChipFilter(p, activeFilter);
+      const matchesYear = selectedYears.length === 0 || selectedYears.includes(p.year || 0);
+      if (matchesChip && matchesYear) {
+        counts[p.brand] = (counts[p.brand] || 0) + 1;
+      }
+    });
+    return counts;
+  };
+
+  const getYearCounts = () => {
+    const counts: Record<string, number> = {};
+    products.forEach(p => {
+      const matchesChip = matchesChipFilter(p, activeFilter);
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(p.brand);
+      if (matchesChip && matchesBrand) {
+        const yr = p.year || 0;
+        counts[yr] = (counts[yr] || 0) + 1;
+      }
+    });
+    return counts;
+  };
+
+  const brandCounts = getBrandCounts();
+  const yearCounts = getYearCounts();
+
   // Apply filters and sorting
   useEffect(() => {
     let result = [...products];
 
+    // Chip Filter
     if (activeFilter !== 'All') {
-      const f = activeFilter.toLowerCase();
-      result = result.filter(p => {
-        const fullText = `${p.brand} ${p.name} ${p.model_number} ${JSON.stringify(p.specs)}`.toLowerCase();
-        if (f.includes('★') || f.includes('star')) {
-          const rating = f.replace(/[^35]/g, ''); // Extract '3' or '5'
-          return fullText.includes(`${rating} star`) || fullText.includes(`${rating}★`) || fullText.includes(`${rating} Star`);
-        }
-        if (f.includes('ton')) {
-          const tonVal = f.split(' ')[0]; // '1', '1.5', '2'
-          return fullText.includes(`${tonVal}t`) || fullText.includes(`${tonVal} ton`) || fullText.includes(`${tonVal} Ton`);
-        }
-        if (f === 'inverter') {
-          return fullText.includes('inverter');
-        }
-        if (f === 'under ₹35k') {
-          return p.lowest_price > 0 && p.lowest_price < 35000;
-        }
-        return fullText.includes(f);
-      });
+      result = result.filter(p => matchesChipFilter(p, activeFilter));
+    }
+
+    // Brand Filter (AND)
+    if (selectedBrands.length > 0) {
+      result = result.filter(p => selectedBrands.includes(p.brand));
+    }
+
+    // Year Filter (AND)
+    if (selectedYears.length > 0) {
+      result = result.filter(p => selectedYears.includes(p.year || 0));
     }
 
     // Sort
@@ -151,7 +239,7 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
     }
 
     setFilteredProducts(result);
-  }, [products, activeFilter, sortOption]);
+  }, [products, activeFilter, selectedBrands, selectedYears, sortOption]);
 
   const getFilterChips = () => {
     switch (categoryCode) {
@@ -208,7 +296,12 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
           <span style={{ fontSize: '16px', fontWeight: 800 }}>
             {categoryName} <span style={{ color: '#6B6B6B', fontWeight: 700 }}>({filteredProducts.length})</span>
           </span>
-          <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#fff', border: '1px solid #EBEBEB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', cursor: 'pointer' }}>⚙️</div>
+          <button
+            onClick={() => setShowFiltersSheet(true)}
+            style={{ width: '38px', height: '38px', borderRadius: '50%', background: selectedBrands.length > 0 || selectedYears.length > 0 ? '#FBEEE7' : '#fff', border: selectedBrands.length > 0 || selectedYears.length > 0 ? '1.5px solid #E4632E' : '1px solid #EBEBEB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', cursor: 'pointer', outline: 'none' }}
+          >
+            ⚙️
+          </button>
         </div>
 
         {/* Filter Chips */}
@@ -256,6 +349,39 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
             {filteredProducts.length} results
           </span>
         </div>
+
+        {/* Active Filters Display */}
+        {(selectedBrands.length > 0 || selectedYears.length > 0) && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', padding: '8px 18px 4px', alignItems: 'center' }}>
+            {selectedBrands.map(brand => (
+              <span
+                key={brand}
+                onClick={() => setSelectedBrands(prev => prev.filter(b => b !== brand))}
+                style={{ fontSize: '11px', fontWeight: 700, background: '#FBEEE7', color: '#E4632E', border: '1px solid #EAE6DD', padding: '4px 10px', borderRadius: '999px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+              >
+                {brand} <span style={{ fontSize: '10px', fontWeight: 800 }}>✕</span>
+              </span>
+            ))}
+            {selectedYears.map(yr => (
+              <span
+                key={yr}
+                onClick={() => setSelectedYears(prev => prev.filter(y => y !== yr))}
+                style={{ fontSize: '11px', fontWeight: 700, background: '#F1ECF7', color: '#6E5A99', border: '1px solid #EAE6DD', padding: '4px 10px', borderRadius: '999px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+              >
+                {yr} <span style={{ fontSize: '10px', fontWeight: 800 }}>✕</span>
+              </span>
+            ))}
+            <button
+              onClick={() => {
+                setSelectedBrands([]);
+                setSelectedYears([]);
+              }}
+              style={{ fontSize: '11px', fontWeight: 700, background: 'none', border: 'none', color: '#6B6963', cursor: 'pointer', padding: '4px 8px', textDecoration: 'underline' }}
+            >
+              Clear all
+            </button>
+          </div>
+        )}
 
         {/* List of Products */}
         <div style={{ padding: '8px 18px 24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -316,14 +442,24 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '9px' }}>
-                    <span style={{ fontSize: '20px', fontWeight: 800 }}>
-                      {p.lowest_price > 0 
-                        ? `From ₹${p.lowest_price.toLocaleString('en-IN')}`
-                        : 'Price coming soon'}
-                    </span>
-                    {p.online_price > p.lowest_price && p.lowest_price > 0 && (
-                      <span style={{ fontSize: '11px', color: '#6B6B6B', textDecoration: 'line-through' }}>
-                        {p.online_platform} ₹{p.online_price.toLocaleString('en-IN')}
+                    {p.lowest_price > 0 ? (
+                      <>
+                        <span style={{ fontSize: '20px', fontWeight: 800 }}>
+                          From ₹{p.lowest_price.toLocaleString('en-IN')}
+                        </span>
+                        {p.online_price > p.lowest_price && (
+                          <span style={{ fontSize: '11px', color: '#6B6B6B', textDecoration: 'line-through' }}>
+                            {p.online_platform} ₹{p.online_price.toLocaleString('en-IN')}
+                          </span>
+                        )}
+                      </>
+                    ) : p.mrp ? (
+                      <span style={{ fontSize: '15px', color: '#6B6963', fontWeight: 700 }}>
+                        ₹{p.mrp.toLocaleString('en-IN')} (MRP)
+                      </span>
+                    ) : (
+                      <span style={{ fontSize: '15px', fontWeight: 700, color: '#9A978E' }}>
+                        Price coming soon
                       </span>
                     )}
                   </div>
@@ -368,6 +504,142 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
 
       {/* Bottom Tab Bar */}
       <BottomNav active="browse" />
+
+      {/* Slide-Up Filters Bottom Sheet */}
+      {showFiltersSheet && (
+        <div
+          style={{ position: 'fixed', inset: 0, background: 'rgba(22,21,26,.45)', zIndex: 100, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}
+          onClick={() => setShowFiltersSheet(false)}
+        >
+          <div
+            style={{ background: '#fff', width: '100%', borderRadius: '24px 24px 0 0', padding: '20px 22px 30px', maxWidth: '390px', boxShadow: '0 -8px 30px rgba(0,0,0,.15)', position: 'relative', display: 'flex', flexDirection: 'column', gap: '18px' }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '16px', fontWeight: 800, color: '#16151A' }}>Filters</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                {(selectedBrands.length > 0 || selectedYears.length > 0) && (
+                  <button
+                    onClick={() => {
+                      setSelectedBrands([]);
+                      setSelectedYears([]);
+                    }}
+                    style={{ background: 'none', border: 'none', color: '#E4632E', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
+                  >
+                    Reset all
+                  </button>
+                )}
+                <button
+                  onClick={() => setShowFiltersSheet(false)}
+                  style={{ border: 'none', background: 'transparent', fontSize: '16px', cursor: 'pointer', color: '#6B6963', fontWeight: 700 }}
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            {/* Brand Filter */}
+            <div>
+              <span style={{ fontSize: '13px', fontWeight: 800, color: '#16151A', display: 'block', marginBottom: '8px' }}>Brands</span>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', maxHeight: '110px', overflowY: 'auto', paddingRight: '4px' }}>
+                {distinctBrands.map(brand => {
+                  const isChecked = selectedBrands.includes(brand);
+                  const count = brandCounts[brand] || 0;
+                  return (
+                    <span
+                      key={brand}
+                      onClick={() => {
+                        if (isChecked) {
+                          setSelectedBrands(prev => prev.filter(b => b !== brand));
+                        } else {
+                          setSelectedBrands(prev => [...prev, brand]);
+                        }
+                      }}
+                      style={{
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        background: isChecked ? '#FBEEE7' : '#fff',
+                        border: isChecked ? '1.5px solid #E4632E' : '1px solid #EAE6DD',
+                        color: isChecked ? '#E4632E' : '#16151A',
+                        padding: '6px 12px',
+                        borderRadius: '999px',
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        opacity: count === 0 && !isChecked ? 0.45 : 1,
+                        pointerEvents: count === 0 && !isChecked ? 'none' : 'auto',
+                        transition: 'all 0.15s ease'
+                      }}
+                    >
+                      {brand} <span style={{ fontSize: '10px', fontWeight: 600, color: isChecked ? '#E4632E' : '#6B6963' }}>({count})</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Year Filter */}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13px', fontWeight: 800, color: '#16151A' }}>Launch Year</span>
+                <button
+                  onClick={() => {
+                    setSelectedYears([2025, 2026]);
+                  }}
+                  style={{ background: 'none', border: 'none', color: '#6E5A99', fontSize: '11px', fontWeight: 700, cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  2025 & 2026 only
+                </button>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {distinctYears.map(yr => {
+                  const isChecked = selectedYears.includes(yr);
+                  const count = yearCounts[yr] || 0;
+                  return (
+                    <span
+                      key={yr}
+                      onClick={() => {
+                        if (isChecked) {
+                          setSelectedYears(prev => prev.filter(y => y !== yr));
+                        } else {
+                          setSelectedYears(prev => [...prev, yr]);
+                        }
+                      }}
+                      style={{
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        background: isChecked ? '#F1ECF7' : '#fff',
+                        border: isChecked ? '1.5px solid #6E5A99' : '1px solid #EAE6DD',
+                        color: isChecked ? '#6E5A99' : '#16151A',
+                        padding: '6px 12px',
+                        borderRadius: '999px',
+                        cursor: 'pointer',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        opacity: count === 0 && !isChecked ? 0.45 : 1,
+                        pointerEvents: count === 0 && !isChecked ? 'none' : 'auto',
+                        transition: 'all 0.15s ease'
+                      }}
+                    >
+                      {yr} <span style={{ fontSize: '10px', fontWeight: 600, color: isChecked ? '#6E5A99' : '#6B6963' }}>({count})</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowFiltersSheet(false)}
+              style={{ width: '100%', height: '48px', background: '#16151A', color: '#fff', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: 700, cursor: 'pointer', marginTop: '6px' }}
+            >
+              Apply Filters ({filteredProducts.length} models)
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

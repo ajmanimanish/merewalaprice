@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 
 interface Dealer {
@@ -39,6 +39,85 @@ export default function DealerList({ dealerPrices, lowestOnlinePrice, productNam
   const [selectedPrice, setSelectedPrice] = useState<DealerPrice | null>(null);
   const [permissionType, setPermissionType] = useState<'yes' | 'no' | null>(null);
   const [revealedPriceId, setRevealedPriceId] = useState<string | null>(null);
+
+  const [showLockModal, setShowLockModal] = useState<string | null>(null);
+  const [lockName, setLockName] = useState('');
+  const [lockPhone, setLockPhone] = useState('');
+  const [sharePhone, setSharePhone] = useState(true);
+  const [lockLoading, setLockLoading] = useState(false);
+  const [lockSuccess, setLockSuccess] = useState(false);
+  const [interestCounts, setInterestCounts] = useState<Record<string, number>>({});
+
+  const productId = dealerPrices[0]?.product_id;
+
+  // Prefill from auth session
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setLockName(session.user.user_metadata?.full_name || '');
+      }
+    });
+  }, []);
+
+  // Fetch real-time active interest counts
+  useEffect(() => {
+    const fetchInterestCounts = async () => {
+      try {
+        const { data } = await supabase
+          .from('price_locks')
+          .select('dealer_id')
+          .eq('product_id', productId)
+          .eq('status', 'active')
+          .gt('expires_at', new Date().toISOString());
+        if (data) {
+          const counts: Record<string, number> = {};
+          data.forEach((lock: any) => {
+            counts[lock.dealer_id] = (counts[lock.dealer_id] || 0) + 1;
+          });
+          setInterestCounts(counts);
+        }
+      } catch (err) {
+        console.error('Error fetching interest counts:', err);
+      }
+    };
+    if (productId) {
+      fetchInterestCounts();
+    }
+  }, [productId]);
+
+  const handleLockPrice = async () => {
+    if (!lockName || lockPhone.length < 10 || !showLockModal) return;
+    setLockLoading(true);
+    const dp = dealerPrices.find(d => d.dealer_id === showLockModal);
+    if (!dp) return;
+
+    try {
+      const res = await fetch('/api/price-locks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          product_id: productId,
+          dealer_id: showLockModal,
+          buyer_name: lockName,
+          buyer_phone: lockPhone,
+          locked_price: dp.price,
+          phone_shared: sharePhone,
+        })
+      });
+      if (res.ok) {
+        setLockSuccess(true);
+        // Snappy UI count update
+        setInterestCounts(prev => ({
+          ...prev,
+          [showLockModal]: (prev[showLockModal] || 0) + 1
+        }));
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLockLoading(false);
+    }
+  };
 
   const getStockLabel = (status: string) => {
     switch (status) {
@@ -212,24 +291,25 @@ export default function DealerList({ dealerPrices, lowestOnlinePrice, productNam
                   )}
                 </div>
               ) : (
-                <button
-                  onClick={() => handleShowContact(item)}
-                  style={{
-                    width: '100%',
-                    height: '48px',
-                    marginTop: '12px',
-                    background: '#E4632E',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '13px',
-                    fontFamily: 'inherit',
-                    fontSize: '14px',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                  }}
-                >
-                  View contact
-                </button>
+                <div style={{ width: '100%' }}>
+                  <button
+                    onClick={() => setShowLockModal(item.dealer_id)}
+                    style={{
+                      marginTop: '12px', width: '100%', height: '48px',
+                      background: '#E4632E', color: '#fff', border: 'none',
+                      borderRadius: '12px', fontSize: '15px', fontWeight: 700,
+                      cursor: 'pointer', display: 'flex', alignItems: 'center',
+                      justifyContent: 'center', gap: '8px'
+                    }}
+                  >
+                    🔒 Contact & Lock Price
+                  </button>
+                  {(interestCounts[item.dealer_id] || 0) > 0 && (
+                    <div style={{ fontSize: '11px', color: '#6B6B6B', textAlign: 'center', marginTop: '4px' }}>
+                      {interestCounts[item.dealer_id]} buyer{(interestCounts[item.dealer_id] || 0) > 1 ? 's' : ''} interested today
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           );
@@ -239,7 +319,7 @@ export default function DealerList({ dealerPrices, lowestOnlinePrice, productNam
         return (
           <div
             key={item.id}
-            onClick={() => !isRevealed && handleShowContact(item)}
+            onClick={() => setShowLockModal(item.dealer_id)}
             style={{
               background: '#fff',
               border: '1px solid #EAE6DD',
@@ -248,7 +328,7 @@ export default function DealerList({ dealerPrices, lowestOnlinePrice, productNam
               display: 'flex',
               alignItems: 'center',
               gap: '12px',
-              cursor: isRevealed ? 'default' : 'pointer'
+              cursor: 'pointer'
             }}
           >
             <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: '#F6F4EF', color: '#6B6963', fontSize: '13px', fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -257,60 +337,144 @@ export default function DealerList({ dealerPrices, lowestOnlinePrice, productNam
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>{item.dealers?.shop_name}</div>
               <div style={{ fontSize: '11px', color: item.stock_status === 'limited' ? '#C97C1D' : '#6B6963', fontWeight: item.stock_status === 'limited' ? 700 : 600 }}>
-                {item.dealers?.area} · {item.stock_status === 'limited' ? 'Limited stock' : '4.6 rating'}
+                {item.dealers?.area} · {item.stock_status === 'limited' ? 'Limited stock' : '4.8 rating'}
               </div>
             </div>
             <div style={{ textStyle: 'right', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '3px' }}>
               <div style={{ fontSize: '16px', fontWeight: 800, color: '#16151A' }}>₹ {item.price.toLocaleString()}</div>
-              {isRevealed && (
-                <a href={`tel:${item.dealers?.phone}`} style={{ fontSize: '11.5px', fontWeight: 700, color: '#E4632E' }}>
-                  Call: {item.dealers?.phone}
-                </a>
+              {(interestCounts[item.dealer_id] || 0) > 0 && (
+                <span style={{ fontSize: '10.5px', color: '#6B6B6B', fontWeight: 600 }}>
+                  🔥 {interestCounts[item.dealer_id]} interested
+                </span>
               )}
             </div>
-            {!isRevealed && (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A978E" strokeWidth="2.4" strokeLinecap="round"><polyline points="9 6 15 12 9 18"/></svg>
-            )}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9A978E" strokeWidth="2.4" strokeLinecap="round"><polyline points="9 6 15 12 9 18"/></svg>
           </div>
         );
       })}
 
-      {/* Screen 4b Bottom Sheet Contact Modal */}
-      {selectedPrice && (
-        <div style={{ position: 'fixed', inset: 0, background: 'rgba(22,21,26,.45)', zIndex: 100, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
-          <div style={{ width: '100%', maxWidth: '390px', background: '#fff', borderRadius: '24px 24px 0 0', padding: '20px 22px 30px', boxShadow: '0 -8px 30px rgba(0,0,0,.15)', position: 'relative' }}>
-            <button
-              onClick={() => setSelectedPrice(null)}
-              style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'transparent', fontSize: '18px', cursor: 'pointer', color: '#6B6963' }}
+      {/* Screen 4b Bottom Sheet Lock Price Modal */}
+      {showLockModal && (() => {
+        const dp = dealerPrices.find(d => d.dealer_id === showLockModal);
+        if (!dp) return null;
+        return (
+          <div
+            style={{ position: 'fixed', inset: 0, background: 'rgba(22,21,26,.45)', zIndex: 100, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}
+            onClick={() => {
+              setShowLockModal(null);
+              setLockSuccess(false);
+            }}
+          >
+            <div
+              style={{ background: '#fff', width: '100%', borderRadius: '24px 24px 0 0', padding: '24px', paddingBottom: '40px', maxWidth: '420px', margin: '0 auto', boxShadow: '0 -8px 30px rgba(0,0,0,.15)', position: 'relative' }}
+              onClick={e => e.stopPropagation()}
             >
-              ✕
-            </button>
-            <div style={{ width: '40px', height: '4px', borderRadius: '2px', background: '#EAE6DD', margin: '0 auto 18px' }} />
-            <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: '#FBEEE7', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '24px', marginBottom: '14px' }}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E4632E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <button
+                onClick={() => {
+                  setShowLockModal(null);
+                  setLockSuccess(false);
+                }}
+                style={{ position: 'absolute', top: '16px', right: '16px', border: 'none', background: 'transparent', fontSize: '18px', cursor: 'pointer', color: '#6B6963' }}
+              >
+                ✕
+              </button>
+              <div style={{ width: '40px', height: '4px', background: '#EBEBEB', borderRadius: '999px', margin: '0 auto 20px' }}/>
+              
+              {/* Price confirmation */}
+              <div style={{ background: '#F0FDF4', border: '1px solid #B7E4C7', borderRadius: '16px', padding: '16px', marginBottom: '20px' }}>
+                <div style={{ fontSize: '13px', color: '#6B6B6B', fontWeight: 600 }}>Lock this price for 4 hours</div>
+                <div style={{ fontSize: '28px', fontWeight: 800, color: '#141414', margin: '4px 0' }}>
+                  ₹{dp.price.toLocaleString('en-IN')}
+                </div>
+                <div style={{ fontSize: '12px', color: '#16A34A', fontWeight: 600 }}>
+                  {dp.dealers?.shop_name} · {dp.dealers?.area} · ✅ In Stock
+                </div>
+                {dp.inclusions?.length > 0 && (
+                  <div style={{ fontSize: '11px', color: '#6B6B6B', marginTop: '4px' }}>
+                    Includes: {dp.inclusions.join(', ')}
+                  </div>
+                )}
+              </div>
+
+              {!lockSuccess ? (
+                <>
+                  <div style={{ marginBottom: '16px' }}>
+                    <label style={{ fontSize: '13px', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Your name</label>
+                    <input
+                      type="text"
+                      placeholder="Rahul Sharma"
+                      value={lockName}
+                      onChange={e => setLockName(e.target.value)}
+                      style={{ width: '100%', height: '46px', border: '1px solid #EBEBEB', borderRadius: '10px', padding: '0 14px', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
+                    />
+                  </div>
+                  <div style={{ marginBottom: '16px' }}>
+                    <label style={{ fontSize: '13px', fontWeight: 700, display: 'block', marginBottom: '6px' }}>Your phone number</label>
+                    <input
+                      type="tel"
+                      placeholder="9826XXXXXX"
+                      value={lockPhone}
+                      onChange={e => setLockPhone(e.target.value)}
+                      style={{ width: '100%', height: '46px', border: '1px solid #EBEBEB', borderRadius: '10px', padding: '0 14px', fontSize: '14px', outline: 'none', boxSizing: 'border-box' }}
+                    />
+                  </div>
+
+                  {/* Phone sharing toggle */}
+                  <div
+                    onClick={() => setSharePhone(!sharePhone)}
+                    style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', cursor: 'pointer' }}
+                  >
+                    <div style={{ width: '44px', height: '24px', borderRadius: '999px', background: sharePhone ? '#E4632E' : '#EBEBEB', position: 'relative', flexShrink: 0, transition: 'background .2s' }}>
+                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#fff', position: 'absolute', top: '2px', left: sharePhone ? '22px' : '2px', transition: 'left .2s', boxShadow: '0 1px 3px rgba(0,0,0,.2)' }}/>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '13px', fontWeight: 700 }}>Share my number with dealer</div>
+                      <div style={{ fontSize: '11px', color: '#6B6B6B' }}>Dealer can call you to confirm</div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={handleLockPrice}
+                    disabled={!lockName || lockPhone.length < 10 || lockLoading}
+                    style={{ width: '100%', height: '52px', background: lockName && lockPhone.length >= 10 ? '#E4632E' : '#EBEBEB', color: lockName && lockPhone.length >= 10 ? '#fff' : '#6B6B6B', border: 'none', borderRadius: '12px', fontSize: '15px', fontWeight: 700, cursor: 'pointer', transition: 'background .2s' }}
+                  >
+                    {lockLoading ? 'Locking...' : '🔒 Lock Price for 4 Hours'}
+                  </button>
+                  <div style={{ fontSize: '11px', color: '#6B6B6B', textAlign: 'center', marginTop: '10px' }}>
+                    No payment required. Price is guaranteed by dealer.
+                  </div>
+                </>
+              ) : (
+                /* Success state */
+                <div style={{ textAlign: 'center', padding: '10px 0' }}>
+                  <div style={{ fontSize: '40px', marginBottom: '12px' }}>🎉</div>
+                  <div style={{ fontSize: '20px', fontWeight: 800, marginBottom: '8px' }}>Price Locked!</div>
+                  <div style={{ fontSize: '14px', color: '#6B6B6B', marginBottom: '20px', lineHeight: 1.5 }}>
+                    ₹{dp.price.toLocaleString('en-IN')} guaranteed for 4 hours.<br/>
+                    {dp.dealers?.shop_name} will contact you shortly.
+                  </div>
+                  
+                  <a
+                    href={`tel:${dp.dealers?.phone}`}
+                    style={{ display: 'block', width: '100%', height: '52px', background: '#141414', color: '#fff', borderRadius: '12px', fontSize: '15px', fontWeight: 700, textDecoration: 'none', lineHeight: '52px', textAlign: 'center' }}
+                  >
+                    📞 Call {dp.dealers?.shop_name} Now
+                  </a>
+                  <button
+                    onClick={() => {
+                      setShowLockModal(null);
+                      setLockSuccess(false);
+                    }}
+                    style={{ marginTop: '12px', background: 'none', border: 'none', color: '#6B6B6B', fontSize: '13px', cursor: 'pointer', fontWeight: 600 }}
+                  >
+                    I'll wait for their call
+                  </button>
+                </div>
+              )}
             </div>
-            <h3 style={{ margin: 0, fontSize: '19px', fontWeight: 800, lineHeight: 1.25, color: '#16151A' }}>
-              Share your number with {selectedPrice.dealers?.shop_name}?
-            </h3>
-            <p style={{ margin: '8px 0 0', fontSize: '13.5px', color: '#6B6963', fontWeight: 500, lineHeight: 1.5 }}>
-              They'll only use it to confirm this deal. Your number is never shown publicly.
-            </p>
-            
-            <button
-              onClick={handleShareNumber}
-              style={{ width: '100%', height: '52px', marginTop: '20px', background: '#E4632E', color: '#fff', border: 'none', borderRadius: '12px', fontFamily: 'inherit', fontSize: '15px', fontWeight: 700, cursor: 'pointer' }}
-            >
-              Yes, share my number
-            </button>
-            <button
-              onClick={handleJustShow}
-              style={{ width: '100%', height: '50px', marginTop: '12px', background: '#fff', color: '#16151A', border: '1px solid #EAE6DD', borderRadius: '12px', fontFamily: 'inherit', fontSize: '14px', fontWeight: 700, cursor: 'pointer' }}
-            >
-              No, just show their number
-            </button>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 }

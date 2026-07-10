@@ -120,8 +120,9 @@ export default async function ProductPage({ params }: PageProps) {
   const validOnlinePrices = onlinePrices || [];
 
   // Find lowest online price
-  const lowestOnlinePrice = validOnlinePrices.length > 0
-    ? Math.min(...validOnlinePrices.map((o: any) => o.price))
+  const validOnlinePricesVal = validOnlinePrices.map((o: any) => o.price).filter(Boolean);
+  const lowestOnlinePrice = validOnlinePricesVal.length > 0
+    ? Math.min(...validOnlinePricesVal)
     : undefined;
 
   // Fetch real bank offers
@@ -335,58 +336,67 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
 
         {/* Online prices header */}
-        {formattedOnline.some(x => x.price) && (
-          <>
-            <div style={{ padding: '18px 20px 4px', background: '#FDFCFA', fontSize: '15px', fontWeight: 800, color: '#16151A' }}>
-              Online prices
-            </div>
+        <div style={{ padding: '18px 20px 4px', background: '#FDFCFA', fontSize: '15px', fontWeight: 800, color: '#16151A' }}>
+          Online prices
+        </div>
 
-            {/* Online prices comparison list (single-line rows) */}
-            <div style={{ padding: '10px 20px 16px', background: '#FDFCFA', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {formattedOnline.map((item) => {
-                if (!item.price) return null;
-                const offer = getCardOffer(item.key, item.price);
+        {/* Online prices comparison list (single-line rows) or fallbacks */}
+        <div style={{ padding: '10px 20px 16px', background: '#FDFCFA', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {formattedOnline.some(x => x.price) ? (
+            formattedOnline.map((item) => {
+              if (!item.price) return null;
+              const offer = getCardOffer(item.key, item.price);
 
-                return (
-                  <a
-                    key={item.platform}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: 'none', display: 'block' }}
-                  >
-                    <div style={{ background: '#fff', border: '1px solid #EAE6DD', borderRadius: '12px', padding: '11px 14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                      <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.accentColor, flexShrink: 0 }}></span>
-                      <div style={{ flex: 1 }}>
-                        <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#16151A' }}>{item.platform}</div>
-                        {offer && (
-                          <div style={{ fontSize: '10.5px', color: '#1F8A5C', fontWeight: 700, marginTop: '1px' }}>
-                            💳 {offer.bank} Card saves ₹{offer.saving.toLocaleString('en-IN')}
-                          </div>
-                        )}
-                      </div>
-                      
-                      {offer ? (
-                        <div style={{ textAlign: 'right' }}>
-                          <span style={{ fontSize: '11.5px', color: '#9A978E', textDecoration: 'line-through', marginRight: '6px' }}>
-                            ₹{item.price.toLocaleString()}
-                          </span>
-                          <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>
-                            ₹{(item.price - offer.saving).toLocaleString()}
-                          </span>
+              return (
+                <a
+                  key={item.platform}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: 'none', display: 'block' }}
+                >
+                  <div style={{ background: '#fff', border: '1px solid #EAE6DD', borderRadius: '12px', padding: '11px 14px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.accentColor, flexShrink: 0 }}></span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#16151A' }}>{item.platform}</div>
+                      {offer && (
+                        <div style={{ fontSize: '10.5px', color: '#1F8A5C', fontWeight: 700, marginTop: '1px' }}>
+                          💳 {offer.bank} Card saves ₹{offer.saving.toLocaleString('en-IN')}
                         </div>
-                      ) : (
-                        <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>
-                          ₹{item.price.toLocaleString()}
-                        </span>
                       )}
                     </div>
-                  </a>
-                );
-              })}
+                    
+                    {offer ? (
+                      <div style={{ textAlign: 'right' }}>
+                        <span style={{ fontSize: '11.5px', color: '#9A978E', textDecoration: 'line-through', marginRight: '6px' }}>
+                          ₹{item.price.toLocaleString()}
+                        </span>
+                        <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>
+                          ₹{(item.price - offer.saving).toLocaleString()}
+                        </span>
+                      </div>
+                    ) : (
+                      <span style={{ fontSize: '13.5px', fontWeight: 800, color: '#16151A' }}>
+                        ₹{item.price.toLocaleString()}
+                      </span>
+                    )}
+                  </div>
+                </a>
+              );
+            })
+          ) : product.mrp ? (
+            <div style={{ background: '#fff', border: '1px solid #EAE6DD', borderRadius: '12px', padding: '14px', textAlign: 'center' }}>
+              <div style={{ fontSize: '12.5px', color: '#6B6963', fontWeight: 600 }}>Manufacturer Price</div>
+              <div style={{ fontSize: '18px', fontWeight: 700, color: '#16151A', marginTop: '4px' }}>
+                ₹{product.mrp.toLocaleString('en-IN')} (MRP)
+              </div>
             </div>
-          </>
-        )}
+          ) : (
+            <div style={{ background: '#fff', border: '1px dashed #DDD8CC', borderRadius: '12px', padding: '16px', textAlign: 'center', color: '#9A978E', fontSize: '13px', fontWeight: 600 }}>
+              Coming Soon
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Floating AI chat bubble */}

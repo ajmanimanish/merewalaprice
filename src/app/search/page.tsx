@@ -15,6 +15,7 @@ interface SearchResult {
   category: string;
   lowest_price: number;
   image_url: string | null;
+  mrp?: number | null;
 }
 
 const getCatEmoji = (cat: string) => {
@@ -104,19 +105,19 @@ export default function SearchPage() {
         const [byBrand, byName, byModel] = await Promise.all([
           supabase
             .from('products')
-            .select(`id, brand, model_number, name, category, image_url, online_prices ( price )`)
+            .select(`id, brand, model_number, name, category, image_url, mrp, online_prices ( price )`)
             .eq('is_active', true)
             .ilike('brand', pat)
             .limit(20),
           supabase
             .from('products')
-            .select(`id, brand, model_number, name, category, image_url, online_prices ( price )`)
+            .select(`id, brand, model_number, name, category, image_url, mrp, online_prices ( price )`)
             .eq('is_active', true)
             .ilike('name', pat)
             .limit(20),
           supabase
             .from('products')
-            .select(`id, brand, model_number, name, category, image_url, online_prices ( price )`)
+            .select(`id, brand, model_number, name, category, image_url, mrp, online_prices ( price )`)
             .eq('is_active', true)
             .ilike('model_number', pat)
             .limit(20),
@@ -137,8 +138,9 @@ export default function SearchPage() {
 
         const mapped: SearchResult[] = deduped.map((p: any) => {
           const onlinePrices = p.online_prices || [];
-          const lowest = onlinePrices.length > 0
-            ? Math.min(...onlinePrices.map((o: any) => o.price).filter(Boolean))
+          const onlinePricesVal = onlinePrices.map((o: any) => o.price).filter(Boolean);
+          const lowest = onlinePricesVal.length > 0
+            ? Math.min(...onlinePricesVal)
             : 0;
           return {
             id: p.id,
@@ -148,6 +150,7 @@ export default function SearchPage() {
             category: p.category,
             lowest_price: lowest,
             image_url: p.image_url || null,
+            mrp: p.mrp,
           };
         });
         setResults(mapped);
@@ -354,11 +357,26 @@ export default function SearchPage() {
                                   </div>
                                   <div style={{ fontSize: '11px', color: '#6B6B6B' }}>{item.model_number}</div>
                                 </div>
-                                <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                                  <div style={{ fontSize: '10px', color: '#6B6B6B' }}>From</div>
-                                  <div style={{ fontSize: '15px', fontWeight: 800 }}>
-                                    {item.lowest_price > 0 ? `₹ ${item.lowest_price.toLocaleString()}` : '—'}
-                                  </div>
+                                 <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                                  {item.lowest_price > 0 ? (
+                                    <>
+                                      <div style={{ fontSize: '10px', color: '#6B6B6B' }}>From</div>
+                                      <div style={{ fontSize: '15px', fontWeight: 800 }}>
+                                        ₹ {item.lowest_price.toLocaleString()}
+                                      </div>
+                                    </>
+                                  ) : item.mrp ? (
+                                    <>
+                                      <div style={{ fontSize: '10px', color: '#6B6B6B' }}>MRP</div>
+                                      <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#6B6963' }}>
+                                        ₹{item.mrp.toLocaleString()}
+                                      </div>
+                                    </>
+                                  ) : (
+                                    <div style={{ fontSize: '11px', color: '#9A978E', fontWeight: 600, marginTop: '8px' }}>
+                                      Coming Soon
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             ))}

@@ -14,6 +14,7 @@ interface PopularProduct {
   name: string;
   category: string;
   price: number;
+  mrp?: number | null;
   diffText: string;
   image_url: string | null;
 }
@@ -103,6 +104,7 @@ export default function HomePage() {
             name,
             category,
             image_url,
+            mrp,
             online_prices (
               platform,
               price
@@ -116,25 +118,29 @@ export default function HomePage() {
             .map((p: any) => {
               const onlinePrices = p.online_prices || [];
               const dealerPrices = p.dealer_prices || [];
-              const minPrice = dealerPrices.length > 0 
-                ? Math.min(...dealerPrices.map((x: any) => x.price))
-                : (onlinePrices.length > 0 ? Math.min(...onlinePrices.map((x: any) => x.price)) : 30000);
+              const onlinePricesVal = onlinePrices.map((x: any) => x.price).filter(Boolean);
+              const dealerPricesVal = dealerPrices.map((x: any) => x.price).filter(Boolean);
+              const minPrice = dealerPricesVal.length > 0 
+                ? Math.min(...dealerPricesVal)
+                : (onlinePricesVal.length > 0 ? Math.min(...onlinePricesVal) : 0);
 
               const amz = onlinePrices.find((x: any) => x.platform.toLowerCase() === 'amazon')?.price;
               const fk = onlinePrices.find((x: any) => x.platform.toLowerCase() === 'flipkart')?.price;
               const cr = onlinePrices.find((x: any) => x.platform.toLowerCase() === 'croma')?.price;
               
               let diffText = '';
-              if (amz && minPrice < amz) {
-                diffText = `₹${(amz - minPrice).toLocaleString('en-IN')} less than Amazon`;
-              } else if (fk && minPrice < fk) {
-                diffText = `₹${(fk - minPrice).toLocaleString('en-IN')} less than Flipkart`;
-              } else if (cr && minPrice < cr) {
-                diffText = `₹${(cr - minPrice).toLocaleString('en-IN')} less than Croma`;
-              } else if (amz) {
-                diffText = 'Check local vs online';
-              } else {
-                diffText = 'Local dealer price';
+              if (minPrice > 0) {
+                if (amz && minPrice < amz) {
+                  diffText = `₹${(amz - minPrice).toLocaleString('en-IN')} less than Amazon`;
+                } else if (fk && minPrice < fk) {
+                  diffText = `₹${(fk - minPrice).toLocaleString('en-IN')} less than Flipkart`;
+                } else if (cr && minPrice < cr) {
+                  diffText = `₹${(cr - minPrice).toLocaleString('en-IN')} less than Croma`;
+                } else if (amz) {
+                  diffText = 'Check local vs online';
+                } else {
+                  diffText = 'Local dealer price';
+                }
               }
 
               return {
@@ -144,6 +150,7 @@ export default function HomePage() {
                 name: p.name || p.model_number,
                 category: p.category,
                 price: minPrice,
+                mrp: p.mrp,
                 diffText,
                 image_url: p.image_url || null,
               };
@@ -330,7 +337,19 @@ export default function HomePage() {
               </div>
               <div style={{ fontSize: '10.5px', fontWeight: 800, color: '#E4632E', textTransform: 'uppercase', marginTop: '10px' }}>{p.brand}</div>
               <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#16151A', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</div>
-              <div style={{ fontSize: '15px', fontWeight: 800, color: '#16151A', marginTop: '8px' }}>From ₹ {p.price.toLocaleString()}</div>
+              {p.price > 0 ? (
+                <div style={{ fontSize: '15px', fontWeight: 800, color: '#16151A', marginTop: '8px' }}>
+                  From ₹ {p.price.toLocaleString()}
+                </div>
+              ) : p.mrp ? (
+                <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#6B6963', marginTop: '8px' }}>
+                  ₹ {p.mrp.toLocaleString()} (MRP)
+                </div>
+              ) : (
+                <div style={{ fontSize: '12px', fontWeight: 700, color: '#9A978E', marginTop: '8px' }}>
+                  Coming Soon
+                </div>
+              )}
               {p.diffText && p.diffText.includes('less') && (
                 <div style={{
                   marginTop: '8px',

@@ -1,0 +1,3474 @@
+MeraWalaPrice — Complete Price Fix
+============================================================
+Found 183 active products in Supabase
+
+
+[1/183] Haier HW120-B1558 (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HW120-B1558
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=HW120-B1558
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=HW120-B1558
+    [Croma] No product found
+
+[2/183] IFB Senator WSS (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=Senator+WSS
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=Senator+WSS
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=Senator%20WSS
+    [Croma] No product found
+
+[3/183] Whirlpool 31514 (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=31514
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=31514
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=31514
+    [Croma] No product found
+
+[4/183] Voltas RDC215B (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC215B
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC215B
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=RDC215B
+    [Croma] No product found
+
+[5/183] Whirlpool WHITEMAGIC ELITE (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WHITEMAGIC+ELITE
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=WHITEMAGIC+ELITE
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=WHITEMAGIC%20ELITE
+    [Croma] No product found
+
+[6/183] Whirlpool STAINWASH PRO H (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=STAINWASH+PRO+H
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=STAINWASH+PRO+H
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=STAINWASH%20PRO%20H
+    [Croma] No product found
+
+[7/183] Samsung WW70T4020EE (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WW70T4020EE
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=WW70T4020EE
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=WW70T4020EE
+    [Croma] No product found
+
+[8/183] LG PS-Q19YNZE (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=PS-Q19YNZE
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=PS-Q19YNZE
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=PS-Q19YNZE
+    [Croma] Error: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=PS-Q19YNZE", waiting until "domcontentloaded"
+
+
+[9/183] Samsung RR21C2H25CU (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RR21C2H25CU
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=RR21C2H25CU
+    [Flipkart] Error: Page.goto: Timeout 25000ms exceeded.
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RR21C2H25CU", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RR21C2H25CU
+    [Croma] No product found
+
+[10/183] Daikin FTKR50TV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKR50TV
+    [Amazon] Error: Page.goto: Timeout 25000ms exceeded.
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKR50TV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKR50TV
+    [Flipkart] Error: Page.goto: Timeout 25000ms exceeded.
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKR50TV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKR50TV
+    [Croma] No product found
+
+── Cooldown 10s ──
+
+
+[11/183] LG GL-B201APZY (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GL-B201APZY
+    [Amazon] No exact model match in search
+    [Flipkart] Search: https://www.flipkart.com/search?q=GL-B201APZY
+    [Flipkart] Verification block detected! Please verify in browser...
+    [Flipkart] No product found
+    [Croma] Search: https://www.croma.com/searchB?q=GL-B201APZY
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GL-B201APZY
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GL-B201APZY", waiting until "domcontentloaded"
+
+
+[12/183] Blue Star SPLIT-AC-5STAR (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=SPLIT-AC-5STAR
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=SPLIT-AC-5STAR
+Call log:
+  - navigating to "https://www.amazon.in/s?k=SPLIT-AC-5STAR", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=SPLIT-AC-5STAR
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=SPLIT-AC-5STAR
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=SPLIT-AC-5STAR", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=SPLIT-AC-5STAR
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=SPLIT-AC-5STAR
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=SPLIT-AC-5STAR", waiting until "domcontentloaded"
+
+
+[13/183] ASUS X1502ZA-EJ522WS (LAPTOP)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=X1502ZA-EJ522WS
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=X1502ZA-EJ522WS
+Call log:
+  - navigating to "https://www.amazon.in/s?k=X1502ZA-EJ522WS", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=X1502ZA-EJ522WS
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=X1502ZA-EJ522WS
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=X1502ZA-EJ522WS", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=X1502ZA-EJ522WS
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=X1502ZA-EJ522WS
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=X1502ZA-EJ522WS", waiting until "domcontentloaded"
+
+
+[14/183] Samsung AR18CYNYBWK (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=AR18CYNYBWK
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=AR18CYNYBWK
+Call log:
+  - navigating to "https://www.amazon.in/s?k=AR18CYNYBWK", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=AR18CYNYBWK
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=AR18CYNYBWK
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=AR18CYNYBWK", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=AR18CYNYBWK
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=AR18CYNYBWK
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=AR18CYNYBWK", waiting until "domcontentloaded"
+
+
+[15/183] Voltas 125INV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=125INV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=125INV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=125INV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=125INV
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=125INV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=125INV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=125INV
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=125INV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=125INV", waiting until "domcontentloaded"
+
+
+[16/183] HP 15s-eq2143AU (LAPTOP)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=15s-eq2143AU
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=15s-eq2143AU
+Call log:
+  - navigating to "https://www.amazon.in/s?k=15s-eq2143AU", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=15s-eq2143AU
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=15s-eq2143AU
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=15s-eq2143AU", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=15s-eq2143AU
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=15s-eq2143AU
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=15s-eq2143AU", waiting until "domcontentloaded"
+
+
+[17/183] Lenovo 82RK00VDIN (LAPTOP)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=82RK00VDIN
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=82RK00VDIN
+Call log:
+  - navigating to "https://www.amazon.in/s?k=82RK00VDIN", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=82RK00VDIN
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=82RK00VDIN
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=82RK00VDIN", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=82RK00VDIN
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=82RK00VDIN
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=82RK00VDIN", waiting until "domcontentloaded"
+
+
+[18/183] Whirlpool IF325ELT (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=IF325ELT
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=IF325ELT
+Call log:
+  - navigating to "https://www.amazon.in/s?k=IF325ELT", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=IF325ELT
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=IF325ELT
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=IF325ELT", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=IF325ELT
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=IF325ELT
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=IF325ELT", waiting until "domcontentloaded"
+
+
+[19/183] OnePlus 43Y1S Pro (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=43Y1S+Pro
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=43Y1S+Pro
+Call log:
+  - navigating to "https://www.amazon.in/s?k=43Y1S+Pro", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=43Y1S+Pro
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=43Y1S+Pro
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=43Y1S+Pro", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=43Y1S%20Pro
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=43Y1S%20Pro
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=43Y1S%20Pro", waiting until "domcontentloaded"
+
+
+[20/183] LG T70SKSF4Z (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=T70SKSF4Z
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=T70SKSF4Z
+Call log:
+  - navigating to "https://www.amazon.in/s?k=T70SKSF4Z", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=T70SKSF4Z
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=T70SKSF4Z
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=T70SKSF4Z", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=T70SKSF4Z
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=T70SKSF4Z
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=T70SKSF4Z", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[21/183] Samsung AR12TYHYCWK (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=AR12TYHYCWK
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=AR12TYHYCWK
+Call log:
+  - navigating to "https://www.amazon.in/s?k=AR12TYHYCWK", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=AR12TYHYCWK
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=AR12TYHYCWK
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=AR12TYHYCWK", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=AR12TYHYCWK
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=AR12TYHYCWK
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=AR12TYHYCWK", waiting until "domcontentloaded"
+
+
+[22/183] Samsung RT28C3122S8 (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RT28C3122S8
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RT28C3122S8
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RT28C3122S8", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RT28C3122S8
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RT28C3122S8
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RT28C3122S8", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RT28C3122S8
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RT28C3122S8
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RT28C3122S8", waiting until "domcontentloaded"
+
+
+[23/183] Whirlpool IF INV CNV 278 (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=IF+INV+CNV+278
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=IF+INV+CNV+278
+Call log:
+  - navigating to "https://www.amazon.in/s?k=IF+INV+CNV+278", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=IF+INV+CNV+278
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=IF+INV+CNV+278
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=IF+INV+CNV+278", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=IF%20INV%20CNV%20278
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=IF%20INV%20CNV%20278
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=IF%20INV%20CNV%20278", waiting until "domcontentloaded"
+
+
+[24/183] Samsung RF57C4012S9 (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF57C4012S9
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF57C4012S9
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF57C4012S9", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF57C4012S9
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF57C4012S9
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF57C4012S9", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF57C4012S9
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF57C4012S9
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF57C4012S9", waiting until "domcontentloaded"
+
+
+[25/183] Haier HSU18K-PZAW5BN-INV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HSU18K-PZAW5BN-INV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HSU18K-PZAW5BN-INV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HSU18K-PZAW5BN-INV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HSU18K-PZAW5BN-INV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HSU18K-PZAW5BN-INV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HSU18K-PZAW5BN-INV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HSU18K-PZAW5BN-INV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HSU18K-PZAW5BN-INV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HSU18K-PZAW5BN-INV", waiting until "domcontentloaded"
+
+
+[26/183] Daikin 10_MARACANA_STADIUM (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=10_MARACANA_STADIUM
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=10_MARACANA_STADIUM
+Call log:
+  - navigating to "https://www.amazon.in/s?k=10_MARACANA_STADIUM", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=10_MARACANA_STADIUM
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=10_MARACANA_STADIUM
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=10_MARACANA_STADIUM", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=10_MARACANA_STADIUM
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=10_MARACANA_STADIUM
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=10_MARACANA_STADIUM", waiting until "domcontentloaded"
+
+
+[27/183] Voltas VA3150 (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=VA3150
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=VA3150
+Call log:
+  - navigating to "https://www.amazon.in/s?k=VA3150", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=VA3150
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=VA3150
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=VA3150", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=VA3150
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=VA3150
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=VA3150", waiting until "domcontentloaded"
+
+
+[28/183] Acer A515-57G (LAPTOP)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=A515-57G
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=A515-57G
+Call log:
+  - navigating to "https://www.amazon.in/s?k=A515-57G", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=A515-57G
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=A515-57G
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=A515-57G", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=A515-57G
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=A515-57G
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=A515-57G", waiting until "domcontentloaded"
+
+
+[29/183] Samsung AR50H12D1LHNNA (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=AR50H12D1LHNNA
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=AR50H12D1LHNNA
+Call log:
+  - navigating to "https://www.amazon.in/s?k=AR50H12D1LHNNA", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=AR50H12D1LHNNA
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=AR50H12D1LHNNA
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=AR50H12D1LHNNA", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=AR50H12D1LHNNA
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=AR50H12D1LHNNA
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=AR50H12D1LHNNA", waiting until "domcontentloaded"
+
+
+[30/183] Blue Star SPLIT-AC-3STAR (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=SPLIT-AC-3STAR
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=SPLIT-AC-3STAR
+Call log:
+  - navigating to "https://www.amazon.in/s?k=SPLIT-AC-3STAR", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=SPLIT-AC-3STAR
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=SPLIT-AC-3STAR
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=SPLIT-AC-3STAR", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=SPLIT-AC-3STAR
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=SPLIT-AC-3STAR
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=SPLIT-AC-3STAR", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[31/183] Daikin 30_PINNACLE_INFOTECH (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=30_PINNACLE_INFOTECH
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=30_PINNACLE_INFOTECH
+Call log:
+  - navigating to "https://www.amazon.in/s?k=30_PINNACLE_INFOTECH", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=30_PINNACLE_INFOTECH
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=30_PINNACLE_INFOTECH
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=30_PINNACLE_INFOTECH", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=30_PINNACLE_INFOTECH
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=30_PINNACLE_INFOTECH
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=30_PINNACLE_INFOTECH", waiting until "domcontentloaded"
+
+
+[32/183] Voltas VA4090 (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=VA4090
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=VA4090
+Call log:
+  - navigating to "https://www.amazon.in/s?k=VA4090", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=VA4090
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=VA4090
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=VA4090", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=VA4090
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=VA4090
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=VA4090", waiting until "domcontentloaded"
+
+
+[33/183] Samsung AR50H12D1XHNNA (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=AR50H12D1XHNNA
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=AR50H12D1XHNNA
+Call log:
+  - navigating to "https://www.amazon.in/s?k=AR50H12D1XHNNA", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=AR50H12D1XHNNA
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=AR50H12D1XHNNA
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=AR50H12D1XHNNA", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=AR50H12D1XHNNA
+    [Croma] Error: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=AR50H12D1XHNNA", waiting until "domcontentloaded"
+
+
+[34/183] Blue Star SPLIT-AC-2STAR (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=SPLIT-AC-2STAR
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=SPLIT-AC-2STAR
+Call log:
+  - navigating to "https://www.amazon.in/s?k=SPLIT-AC-2STAR", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=SPLIT-AC-2STAR
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=SPLIT-AC-2STAR
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=SPLIT-AC-2STAR", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=SPLIT-AC-2STAR
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=SPLIT-AC-2STAR
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=SPLIT-AC-2STAR", waiting until "domcontentloaded"
+
+
+[35/183] Voltas VA4130 (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=VA4130
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=VA4130
+Call log:
+  - navigating to "https://www.amazon.in/s?k=VA4130", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=VA4130
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=VA4130
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=VA4130", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=VA4130
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=VA4130
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=VA4130", waiting until "domcontentloaded"
+
+
+[36/183] Haier HW80-BD12876NZP5 (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HW80-BD12876NZP5
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HW80-BD12876NZP5
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HW80-BD12876NZP5", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HW80-BD12876NZP5
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HW80-BD12876NZP5
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HW80-BD12876NZP5", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HW80-BD12876NZP5
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HW80-BD12876NZP5
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HW80-BD12876NZP5", waiting until "domcontentloaded"
+
+
+[37/183] Voltas 243V DZW (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=243V+DZW
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=243V+DZW
+Call log:
+  - navigating to "https://www.amazon.in/s?k=243V+DZW", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=243V+DZW
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=243V+DZW
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=243V+DZW", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=243V%20DZW
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=243V%20DZW
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=243V%20DZW", waiting until "domcontentloaded"
+
+
+[38/183] IFB IFB-TL-RCSS-7.5KG (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=IFB-TL-RCSS-7.5KG
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=IFB-TL-RCSS-7.5KG
+Call log:
+  - navigating to "https://www.amazon.in/s?k=IFB-TL-RCSS-7.5KG", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=IFB-TL-RCSS-7.5KG
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=IFB-TL-RCSS-7.5KG
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=IFB-TL-RCSS-7.5KG", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=IFB-TL-RCSS-7.5KG
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=IFB-TL-RCSS-7.5KG
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=IFB-TL-RCSS-7.5KG", waiting until "domcontentloaded"
+
+
+[39/183] LG AS-Q19YNZE1 (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=AS-Q19YNZE1
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=AS-Q19YNZE1
+Call log:
+  - navigating to "https://www.amazon.in/s?k=AS-Q19YNZE1", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=AS-Q19YNZE1
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=AS-Q19YNZE1
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=AS-Q19YNZE1", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=AS-Q19YNZE1
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=AS-Q19YNZE1
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=AS-Q19YNZE1", waiting until "domcontentloaded"
+
+
+[40/183] Samsung QA55Q60DAKLXL (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=QA55Q60DAKLXL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=QA55Q60DAKLXL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=QA55Q60DAKLXL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=QA55Q60DAKLXL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=QA55Q60DAKLXL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=QA55Q60DAKLXL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=QA55Q60DAKLXL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=QA55Q60DAKLXL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=QA55Q60DAKLXL", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[41/183] Sony KD-43X74L (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=KD-43X74L
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=KD-43X74L
+Call log:
+  - navigating to "https://www.amazon.in/s?k=KD-43X74L", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=KD-43X74L
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=KD-43X74L
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=KD-43X74L", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=KD-43X74L
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=KD-43X74L
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=KD-43X74L", waiting until "domcontentloaded"
+
+
+[42/183] Samsung UA43DUE70AKLXL (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=UA43DUE70AKLXL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=UA43DUE70AKLXL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=UA43DUE70AKLXL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=UA43DUE70AKLXL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=UA43DUE70AKLXL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=UA43DUE70AKLXL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=UA43DUE70AKLXL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=UA43DUE70AKLXL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=UA43DUE70AKLXL", waiting until "domcontentloaded"
+
+
+[43/183] LG 55QNED756SRA (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=55QNED756SRA
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=55QNED756SRA
+Call log:
+  - navigating to "https://www.amazon.in/s?k=55QNED756SRA", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=55QNED756SRA
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=55QNED756SRA
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=55QNED756SRA", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=55QNED756SRA
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=55QNED756SRA
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=55QNED756SRA", waiting until "domcontentloaded"
+
+
+[44/183] Daikin ATKL35XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=ATKL35XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=ATKL35XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=ATKL35XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=ATKL35XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=ATKL35XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=ATKL35XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=ATKL35XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=ATKL35XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=ATKL35XV", waiting until "domcontentloaded"
+
+
+[45/183] Haier LE55M600 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE55M600
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE55M600
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE55M600", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE55M600
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE55M600
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE55M600", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE55M600
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE55M600
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE55M600", waiting until "domcontentloaded"
+
+
+[46/183] Daikin FTXF50XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTXF50XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTXF50XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTXF50XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTXF50XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTXF50XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTXF50XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTXF50XV
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=FTXF50XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTXF50XV", waiting until "domcontentloaded"
+
+
+[47/183] Samsung UA55CU7700KLXL (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=UA55CU7700KLXL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=UA55CU7700KLXL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=UA55CU7700KLXL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=UA55CU7700KLXL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=UA55CU7700KLXL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=UA55CU7700KLXL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=UA55CU7700KLXL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=UA55CU7700KLXL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=UA55CU7700KLXL", waiting until "domcontentloaded"
+
+
+[48/183] Dell Inspiron 3520 (LAPTOP)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=Inspiron+3520
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=Inspiron+3520
+Call log:
+  - navigating to "https://www.amazon.in/s?k=Inspiron+3520", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=Inspiron+3520
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=Inspiron+3520
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=Inspiron+3520", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=Inspiron%203520
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=Inspiron%203520
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=Inspiron%203520", waiting until "domcontentloaded"
+
+
+[49/183] Samsung QA43Q60DAKLXL (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=QA43Q60DAKLXL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=QA43Q60DAKLXL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=QA43Q60DAKLXL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=QA43Q60DAKLXL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=QA43Q60DAKLXL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=QA43Q60DAKLXL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=QA43Q60DAKLXL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=QA43Q60DAKLXL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=QA43Q60DAKLXL", waiting until "domcontentloaded"
+
+
+[50/183] Samsung RT42CB66228THL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RT42CB66228THL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RT42CB66228THL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RT42CB66228THL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RT42CB66228THL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RT42CB66228THL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RT42CB66228THL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RT42CB66228THL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RT42CB66228THL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RT42CB66228THL", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[51/183] Samsung RF65DG90BDSGTL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF65DG90BDSGTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF65DG90BDSGTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF65DG90BDSGTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF65DG90BDSGTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF65DG90BDSGTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF65DG90BDSGTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF65DG90BDSGTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF65DG90BDSGTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF65DG90BDSGTL", waiting until "domcontentloaded"
+
+
+[52/183] Samsung RB45DG6005B1TL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RB45DG6005B1TL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RB45DG6005B1TL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RB45DG6005B1TL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RB45DG6005B1TL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RB45DG6005B1TL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RB45DG6005B1TL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RB45DG6005B1TL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RB45DG6005B1TL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RB45DG6005B1TL", waiting until "domcontentloaded"
+
+
+[53/183] Samsung 5IN1 (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=5IN1
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=5IN1
+Call log:
+  - navigating to "https://www.amazon.in/s?k=5IN1", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=5IN1
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=5IN1
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=5IN1", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=5IN1
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=5IN1
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=5IN1", waiting until "domcontentloaded"
+
+
+[54/183] Samsung WA40F08H2BTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA40F08H2BTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA40F08H2BTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA40F08H2BTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA40F08H2BTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA40F08H2BTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA40F08H2BTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA40F08H2BTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA40F08H2BTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA40F08H2BTL", waiting until "domcontentloaded"
+
+
+[55/183] Samsung RF71DB9950QDTL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF71DB9950QDTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF71DB9950QDTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF71DB9950QDTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF71DB9950QDTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF71DB9950QDTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF71DB9950QDTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF71DB9950QDTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF71DB9950QDTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF71DB9950QDTL", waiting until "domcontentloaded"
+
+
+[56/183] LG GV-K25FFGFB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-K25FFGFB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-K25FFGFB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-K25FFGFB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-K25FFGFB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GV-K25FFGFB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-K25FFGFB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-K25FFGFB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GV-K25FFGFB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-K25FFGFB", waiting until "domcontentloaded"
+
+
+[57/183] LG GV-B23FFGMB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-B23FFGMB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-B23FFGMB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-B23FFGMB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-B23FFGMB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GV-B23FFGMB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-B23FFGMB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-B23FFGMB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GV-B23FFGMB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-B23FFGMB", waiting until "domcontentloaded"
+
+
+[58/183] Samsung RM90F66CNCTL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RM90F66CNCTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RM90F66CNCTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RM90F66CNCTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RM90F66CNCTL
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=RM90F66CNCTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RM90F66CNCTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RM90F66CNCTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RM90F66CNCTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RM90F66CNCTL", waiting until "domcontentloaded"
+
+
+[59/183] Samsung RF57A5032B1-TL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF57A5032B1-TL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF57A5032B1-TL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF57A5032B1-TL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF57A5032B1-TL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF57A5032B1-TL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF57A5032B1-TL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF57A5032B1-TL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF57A5032B1-TL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF57A5032B1-TL", waiting until "domcontentloaded"
+
+
+[60/183] Samsung RF57A5032S9-TL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF57A5032S9-TL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF57A5032S9-TL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF57A5032S9-TL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF57A5032S9-TL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF57A5032S9-TL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF57A5032S9-TL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF57A5032S9-TL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF57A5032S9-TL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF57A5032S9-TL", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[61/183] Haier HRB-3654PSG-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654PSG-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654PSG-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654PSG-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654PSG-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654PSG-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654PSG-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654PSG-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654PSG-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654PSG-E", waiting until "domcontentloaded"
+
+
+[62/183] Voltas WTT120ABRT (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTT120ABRT
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTT120ABRT
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTT120ABRT", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTT120ABRT
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTT120ABRT
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTT120ABRT", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTT120ABRT
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTT120ABRT
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTT120ABRT", waiting until "domcontentloaded"
+
+
+[63/183] Samsung WA40F10H2CTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA40F10H2CTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA40F10H2CTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA40F10H2CTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA40F10H2CTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA40F10H2CTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA40F10H2CTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA40F10H2CTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA40F10H2CTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA40F10H2CTL", waiting until "domcontentloaded"
+
+
+[64/183] Samsung WA70A4022FS-TL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA70A4022FS-TL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA70A4022FS-TL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA70A4022FS-TL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA70A4022FS-TL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA70A4022FS-TL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA70A4022FS-TL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA70A4022FS-TL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA70A4022FS-TL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA70A4022FS-TL", waiting until "domcontentloaded"
+
+
+[65/183] Samsung WA70BG4441BYTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA70BG4441BYTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA70BG4441BYTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA70BG4441BYTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA70BG4441BYTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA70BG4441BYTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA70BG4441BYTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA70BG4441BYTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA70BG4441BYTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA70BG4441BYTL", waiting until "domcontentloaded"
+
+
+[66/183] Samsung WA70BG4441BGTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA70BG4441BGTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA70BG4441BGTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA70BG4441BGTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA70BG4441BGTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA70BG4441BGTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA70BG4441BGTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA70BG4441BGTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA70BG4441BGTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA70BG4441BGTL", waiting until "domcontentloaded"
+
+
+[67/183] Haier LE65K6500UB (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE65K6500UB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE65K6500UB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE65K6500UB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE65K6500UB
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=LE65K6500UB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE65K6500UB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE65K6500UB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE65K6500UB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE65K6500UB", waiting until "domcontentloaded"
+
+
+[68/183] Haier LE65B8500U (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE65B8500U
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE65B8500U
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE65B8500U", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE65B8500U
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE65B8500U
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE65B8500U", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE65B8500U
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE65B8500U
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE65B8500U", waiting until "domcontentloaded"
+
+
+[69/183] Haier LE50B9000M (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE50B9000M
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE50B9000M
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE50B9000M", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE50B9000M
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE50B9000M
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE50B9000M", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE50B9000M
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE50B9000M
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE50B9000M", waiting until "domcontentloaded"
+
+
+[70/183] Haier LE32K6000B (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B0D6RL8DB9
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B0D6RL8DB9
+Call log:
+  - navigating to "https://www.amazon.in/dp/B0D6RL8DB9", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE32K6000B
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE32K6000B
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE32K6000B", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE32K6000B
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE32K6000B
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE32K6000B", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[71/183] Haier HW60-10636NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B08CDG1RP8
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B08CDG1RP8
+Call log:
+  - navigating to "https://www.amazon.in/dp/B08CDG1RP8", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HW60-10636NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HW60-10636NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HW60-10636NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HW60-10636NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HW60-10636NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HW60-10636NZP", waiting until "domcontentloaded"
+
+
+[72/183] Haier HRB-2764BS-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-2764BS-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-2764BS-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-2764BS-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-2764BS-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-2764BS-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-2764BS-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-2764BS-E
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=HRB-2764BS-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-2764BS-E", waiting until "domcontentloaded"
+
+
+[73/183] Daikin FTKC35XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKC35XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKC35XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKC35XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKC35XV
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=FTKC35XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKC35XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKC35XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTKC35XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKC35XV", waiting until "domcontentloaded"
+
+
+[74/183] Samsung UA43CUE60KLXL (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=UA43CUE60KLXL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=UA43CUE60KLXL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=UA43CUE60KLXL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=UA43CUE60KLXL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=UA43CUE60KLXL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=UA43CUE60KLXL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=UA43CUE60KLXL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=UA43CUE60KLXL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=UA43CUE60KLXL", waiting until "domcontentloaded"
+
+
+[75/183] Voltas 183INV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=183INV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=183INV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=183INV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=183INV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=183INV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=183INV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=183INV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=183INV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=183INV", waiting until "domcontentloaded"
+
+
+[76/183] Samsung WA40F08H2CTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA40F08H2CTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA40F08H2CTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA40F08H2CTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA40F08H2CTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA40F08H2CTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA40F08H2CTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA40F08H2CTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA40F08H2CTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA40F08H2CTL", waiting until "domcontentloaded"
+
+
+[77/183] Haier LE32B9000M (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE32B9000M
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE32B9000M
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE32B9000M", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE32B9000M
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE32B9000M
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE32B9000M", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE32B9000M
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE32B9000M
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE32B9000M", waiting until "domcontentloaded"
+
+
+[78/183] Samsung AR18CY3ZAGP (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=AR18CY3ZAGP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=AR18CY3ZAGP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=AR18CY3ZAGP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=AR18CY3ZAGP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=AR18CY3ZAGP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=AR18CY3ZAGP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=AR18CY3ZAGP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=AR18CY3ZAGP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=AR18CY3ZAGP", waiting until "domcontentloaded"
+
+
+[79/183] Samsung RT34C4522S8 (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RT34C4522S8
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RT34C4522S8
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RT34C4522S8", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RT34C4522S8
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RT34C4522S8
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RT34C4522S8", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RT34C4522S8
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RT34C4522S8
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RT34C4522S8", waiting until "domcontentloaded"
+
+
+[80/183] LG RS-Q14YNZE (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RS-Q14YNZE
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RS-Q14YNZE
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RS-Q14YNZE", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RS-Q14YNZE
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=RS-Q14YNZE
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RS-Q14YNZE", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RS-Q14YNZE
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RS-Q14YNZE
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RS-Q14YNZE", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[81/183] LG RS-Q18YNZE (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RS-Q18YNZE
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RS-Q18YNZE
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RS-Q18YNZE", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RS-Q18YNZE
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=RS-Q18YNZE
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RS-Q18YNZE", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RS-Q18YNZE
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RS-Q18YNZE
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RS-Q18YNZE", waiting until "domcontentloaded"
+
+
+[82/183] LG 43UR7500PSC (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=43UR7500PSC
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=43UR7500PSC
+Call log:
+  - navigating to "https://www.amazon.in/s?k=43UR7500PSC", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=43UR7500PSC
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=43UR7500PSC
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=43UR7500PSC", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=43UR7500PSC
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=43UR7500PSC
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=43UR7500PSC", waiting until "domcontentloaded"
+
+
+[83/183] Haier HWM60-707NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HWM60-707NZP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HWM60-707NZP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HWM60-707NZP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HWM60-707NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HWM60-707NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HWM60-707NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HWM60-707NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HWM60-707NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HWM60-707NZP", waiting until "domcontentloaded"
+
+
+[84/183] Voltas WTL70UPSCXX (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTL70UPSCXX
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTL70UPSCXX
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTL70UPSCXX", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTL70UPSCXX
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTL70UPSCXX
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTL70UPSCXX", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTL70UPSCXX
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTL70UPSCXX
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTL70UPSCXX", waiting until "domcontentloaded"
+
+
+[85/183] LG P7020NGAZ (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=P7020NGAZ
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=P7020NGAZ
+Call log:
+  - navigating to "https://www.amazon.in/s?k=P7020NGAZ", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=P7020NGAZ
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=P7020NGAZ
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=P7020NGAZ", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=P7020NGAZ
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=P7020NGAZ
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=P7020NGAZ", waiting until "domcontentloaded"
+
+
+[86/183] Samsung WA40F08D1CTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA40F08D1CTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA40F08D1CTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA40F08D1CTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA40F08D1CTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA40F08D1CTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA40F08D1CTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA40F08D1CTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA40F08D1CTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA40F08D1CTL", waiting until "domcontentloaded"
+
+
+[87/183] Haier HW100-HD15G (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HW100-HD15G
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HW100-HD15G
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HW100-HD15G", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HW100-HD15G
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HW100-HD15G
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HW100-HD15G", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HW100-HD15G
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HW100-HD15G
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HW100-HD15G", waiting until "domcontentloaded"
+
+
+[88/183] Haier LE24F7000 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE24F7000
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE24F7000
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE24F7000", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE24F7000
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=LE24F7000
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE24F7000", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE24F7000
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE24F7000
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE24F7000", waiting until "domcontentloaded"
+
+
+[89/183] Haier HW60-1010AS (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HW60-1010AS
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HW60-1010AS
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HW60-1010AS", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HW60-1010AS
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HW60-1010AS
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HW60-1010AS", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HW60-1010AS
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HW60-1010AS
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HW60-1010AS", waiting until "domcontentloaded"
+
+
+[90/183] Haier HSW75-528NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HSW75-528NZP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HSW75-528NZP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HSW75-528NZP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HSW75-528NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HSW75-528NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HSW75-528NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HSW75-528NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HSW75-528NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HSW75-528NZP", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[91/183] Voltas 185V Vectra CAR (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B0CWVDN3HZ
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B0CWVDN3HZ
+Call log:
+  - navigating to "https://www.amazon.in/dp/B0CWVDN3HZ", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=185V+Vectra+CAR
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=185V+Vectra+CAR
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=185V+Vectra+CAR", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=185V%20Vectra%20CAR
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=185V%20Vectra%20CAR
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=185V%20Vectra%20CAR", waiting until "domcontentloaded"
+
+
+[92/183] Vu 43UT (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=43UT
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=43UT
+Call log:
+  - navigating to "https://www.amazon.in/s?k=43UT", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=43UT
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=43UT
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=43UT", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=43UT
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=43UT
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=43UT", waiting until "domcontentloaded"
+
+
+[93/183] LG 55UR7500PSC (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=55UR7500PSC
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=55UR7500PSC
+Call log:
+  - navigating to "https://www.amazon.in/s?k=55UR7500PSC", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=55UR7500PSC
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=55UR7500PSC
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=55UR7500PSC", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=55UR7500PSC
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=55UR7500PSC
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=55UR7500PSC", waiting until "domcontentloaded"
+
+
+[94/183] Voltas WTL8011AU (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B0F281ML91
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B0F281ML91
+Call log:
+  - navigating to "https://www.amazon.in/dp/B0F281ML91", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTL8011AU
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTL8011AU
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTL8011AU", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTL8011AU
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTL8011AU
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTL8011AU", waiting until "domcontentloaded"
+
+
+[95/183] Voltas WTL70VPSGX (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B0D2J23HRR
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B0D2J23HRR
+Call log:
+  - navigating to "https://www.amazon.in/dp/B0D2J23HRR", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTL70VPSGX
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTL70VPSGX
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTL70VPSGX", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTL70VPSGX
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTL70VPSGX
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTL70VPSGX", waiting until "domcontentloaded"
+
+
+[96/183] Haier HWM70-789NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HWM70-789NZP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HWM70-789NZP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HWM70-789NZP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HWM70-789NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HWM70-789NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HWM70-789NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HWM70-789NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HWM70-789NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HWM70-789NZP", waiting until "domcontentloaded"
+
+
+[97/183] Samsung WA70BG4441YY (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA70BG4441YY
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA70BG4441YY
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA70BG4441YY", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA70BG4441YY
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=WA70BG4441YY
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA70BG4441YY", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA70BG4441YY
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA70BG4441YY
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA70BG4441YY", waiting until "domcontentloaded"
+
+
+[98/183] Voltas WTT72ASPL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTT72ASPL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTT72ASPL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTT72ASPL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTT72ASPL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTT72ASPL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTT72ASPL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTT72ASPL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTT72ASPL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTT72ASPL", waiting until "domcontentloaded"
+
+
+[99/183] Haier HWM95-261NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HWM95-261NZP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HWM95-261NZP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HWM95-261NZP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HWM95-261NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HWM95-261NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HWM95-261NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HWM95-261NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HWM95-261NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HWM95-261NZP", waiting until "domcontentloaded"
+
+
+[100/183] Voltas WTL65UPSC (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTL65UPSC
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTL65UPSC
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTL65UPSC", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTL65UPSC
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTL65UPSC
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTL65UPSC", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTL65UPSC
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTL65UPSC
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTL65UPSC", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[101/183] LG FHM1207SDL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FHM1207SDL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FHM1207SDL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FHM1207SDL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FHM1207SDL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FHM1207SDL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FHM1207SDL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FHM1207SDL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FHM1207SDL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FHM1207SDL", waiting until "domcontentloaded"
+
+
+[102/183] Bosch WAJ2416WIN (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WAJ2416WIN
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WAJ2416WIN
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WAJ2416WIN", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WAJ2416WIN
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=WAJ2416WIN
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WAJ2416WIN", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WAJ2416WIN
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=WAJ2416WIN
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WAJ2416WIN", waiting until "domcontentloaded"
+
+
+[103/183] LG 43UQ7500PSF (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=43UQ7500PSF
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=43UQ7500PSF
+Call log:
+  - navigating to "https://www.amazon.in/s?k=43UQ7500PSF", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=43UQ7500PSF
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=43UQ7500PSF
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=43UQ7500PSF", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=43UQ7500PSF
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=43UQ7500PSF
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=43UQ7500PSF", waiting until "domcontentloaded"
+
+
+[104/183] Haier HWM70-826S (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HWM70-826S
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HWM70-826S
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HWM70-826S", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HWM70-826S
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HWM70-826S
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HWM70-826S", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HWM70-826S
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HWM70-826S
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HWM70-826S", waiting until "domcontentloaded"
+
+
+[105/183] Godrej RF EON 236B 25 HI (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF+EON+236B+25+HI
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF+EON+236B+25+HI
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF+EON+236B+25+HI", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF+EON+236B+25+HI
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF+EON+236B+25+HI
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF+EON+236B+25+HI", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF%20EON%20236B%2025%20HI
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF%20EON%20236B%2025%20HI
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF%20EON%20236B%2025%20HI", waiting until "domcontentloaded"
+
+
+[106/183] TCL 43P635 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=43P635
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=43P635
+Call log:
+  - navigating to "https://www.amazon.in/s?k=43P635", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=43P635
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=43P635
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=43P635", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=43P635
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=43P635
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=43P635", waiting until "domcontentloaded"
+
+
+[107/183] Daikin FTKR35XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKR35XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKR35XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKR35XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKR35XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTKR35XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKR35XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKR35XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTKR35XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKR35XV", waiting until "domcontentloaded"
+
+
+[108/183] Voltas 185V DZW (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=185V+DZW
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=185V+DZW
+Call log:
+  - navigating to "https://www.amazon.in/s?k=185V+DZW", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=185V+DZW
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=185V+DZW
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=185V+DZW", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=185V%20DZW
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=185V%20DZW
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=185V%20DZW", waiting until "domcontentloaded"
+
+
+[109/183] LG GL-T302SPZX (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GL-T302SPZX
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GL-T302SPZX
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GL-T302SPZX", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GL-T302SPZX
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GL-T302SPZX
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GL-T302SPZX", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GL-T302SPZX
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=GL-T302SPZX
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GL-T302SPZX", waiting until "domcontentloaded"
+
+
+[110/183] Bosch WAJ2006WIN (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WAJ2006WIN
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WAJ2006WIN
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WAJ2006WIN", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WAJ2006WIN
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WAJ2006WIN
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WAJ2006WIN", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WAJ2006WIN
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WAJ2006WIN
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WAJ2006WIN", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[111/183] Samsung WW70FG4S02AXTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WW70FG4S02AXTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WW70FG4S02AXTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WW70FG4S02AXTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WW70FG4S02AXTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WW70FG4S02AXTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WW70FG4S02AXTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WW70FG4S02AXTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WW70FG4S02AXTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WW70FG4S02AXTL", waiting until "domcontentloaded"
+
+
+[112/183] Haier HRB-3404BS-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3404BS-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3404BS-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3404BS-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3404BS-E
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=HRB-3404BS-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3404BS-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3404BS-E
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=HRB-3404BS-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3404BS-E", waiting until "domcontentloaded"
+
+
+[113/183] LG GL-S292RDSY (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GL-S292RDSY
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GL-S292RDSY
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GL-S292RDSY", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GL-S292RDSY
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GL-S292RDSY
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GL-S292RDSY", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GL-S292RDSY
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GL-S292RDSY
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GL-S292RDSY", waiting until "domcontentloaded"
+
+
+[114/183] Whirlpool IF278ELT (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=IF278ELT
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=IF278ELT
+Call log:
+  - navigating to "https://www.amazon.in/s?k=IF278ELT", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=IF278ELT
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=IF278ELT
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=IF278ELT", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=IF278ELT
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=IF278ELT
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=IF278ELT", waiting until "domcontentloaded"
+
+
+[115/183] LG GL-T322SPZX (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GL-T322SPZX
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GL-T322SPZX
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GL-T322SPZX", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GL-T322SPZX
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GL-T322SPZX
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GL-T322SPZX", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GL-T322SPZX
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GL-T322SPZX
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GL-T322SPZX", waiting until "domcontentloaded"
+
+
+[116/183] LG GL-B201AESY (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GL-B201AESY
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GL-B201AESY
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GL-B201AESY", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GL-B201AESY
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GL-B201AESY
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GL-B201AESY", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GL-B201AESY
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GL-B201AESY
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GL-B201AESY", waiting until "domcontentloaded"
+
+
+[117/183] Daikin FTKU50TV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKU50TV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKU50TV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKU50TV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKU50TV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTKU50TV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKU50TV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKU50TV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTKU50TV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKU50TV", waiting until "domcontentloaded"
+
+
+[118/183] Daikin FTKR35TV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKR35TV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKR35TV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKR35TV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKR35TV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTKR35TV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKR35TV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKR35TV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTKR35TV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKR35TV", waiting until "domcontentloaded"
+
+
+[119/183] Godrej RF EON 271B (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF+EON+271B
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF+EON+271B
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF+EON+271B", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF+EON+271B
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=RF+EON+271B
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF+EON+271B", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF%20EON%20271B
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=RF%20EON%20271B
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF%20EON%20271B", waiting until "domcontentloaded"
+
+
+[120/183] IFB SENORITA SMART (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=SENORITA+SMART
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=SENORITA+SMART
+Call log:
+  - navigating to "https://www.amazon.in/s?k=SENORITA+SMART", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=SENORITA+SMART
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=SENORITA+SMART
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=SENORITA+SMART", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=SENORITA%20SMART
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=SENORITA%20SMART
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=SENORITA%20SMART", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[121/183] TCL 55P635 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=55P635
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=55P635
+Call log:
+  - navigating to "https://www.amazon.in/s?k=55P635", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=55P635
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=55P635
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=55P635", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=55P635
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=55P635
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=55P635", waiting until "domcontentloaded"
+
+
+[122/183] Whirlpool 31257 (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=31257
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=31257
+Call log:
+  - navigating to "https://www.amazon.in/s?k=31257", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=31257
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=31257
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=31257", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=31257
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=31257
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=31257", waiting until "domcontentloaded"
+
+
+[123/183] Samsung WA40F10H2BTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA40F10H2BTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA40F10H2BTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA40F10H2BTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA40F10H2BTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA40F10H2BTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA40F10H2BTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA40F10H2BTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA40F10H2BTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA40F10H2BTL", waiting until "domcontentloaded"
+
+
+[124/183] Whirlpool 31256 (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=31256
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=31256
+Call log:
+  - navigating to "https://www.amazon.in/s?k=31256", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=31256
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=31256
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=31256", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=31256
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=31256
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=31256", waiting until "domcontentloaded"
+
+
+[125/183] Daikin ATKL50XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=ATKL50XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=ATKL50XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=ATKL50XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=ATKL50XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=ATKL50XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=ATKL50XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=ATKL50XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=ATKL50XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=ATKL50XV", waiting until "domcontentloaded"
+
+
+[126/183] Voltas 243INV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=243INV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=243INV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=243INV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=243INV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=243INV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=243INV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=243INV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=243INV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=243INV", waiting until "domcontentloaded"
+
+
+[127/183] Voltas 183VH (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=183VH
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=183VH
+Call log:
+  - navigating to "https://www.amazon.in/s?k=183VH", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=183VH
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=183VH
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=183VH", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=183VH
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=183VH
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=183VH", waiting until "domcontentloaded"
+
+
+[128/183] Daikin ATKL60XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=ATKL60XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=ATKL60XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=ATKL60XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=ATKL60XV
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=ATKL60XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=ATKL60XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=ATKL60XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=ATKL60XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=ATKL60XV", waiting until "domcontentloaded"
+
+
+[129/183] Voltas 185V (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=185V
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=185V
+Call log:
+  - navigating to "https://www.amazon.in/s?k=185V", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=185V
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=185V
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=185V", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=185V
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=185V
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=185V", waiting until "domcontentloaded"
+
+
+[130/183] Daikin FTHT71XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTHT71XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTHT71XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTHT71XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTHT71XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTHT71XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTHT71XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTHT71XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTHT71XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTHT71XV", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[131/183] Daikin FTHT60XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTHT60XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTHT60XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTHT60XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTHT60XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTHT60XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTHT60XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTHT60XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTHT60XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTHT60XV", waiting until "domcontentloaded"
+
+
+[132/183] Daikin FTHT50XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTHT50XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTHT50XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTHT50XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTHT50XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTHT50XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTHT50XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTHT50XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTHT50XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTHT50XV", waiting until "domcontentloaded"
+
+
+[133/183] Haier LE55B8000 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE55B8000
+    [Amazon] Error: Page.goto: Timeout 25000ms exceeded.
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE55B8000", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE55B8000
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=LE55B8000
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE55B8000", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE55B8000
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=LE55B8000
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE55B8000", waiting until "domcontentloaded"
+
+
+[134/183] MI L43M8-5AIN (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=L43M8-5AIN
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=L43M8-5AIN
+Call log:
+  - navigating to "https://www.amazon.in/s?k=L43M8-5AIN", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=L43M8-5AIN
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=L43M8-5AIN
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=L43M8-5AIN", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=L43M8-5AIN
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=L43M8-5AIN
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=L43M8-5AIN", waiting until "domcontentloaded"
+
+
+[135/183] Daikin FTHT35XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTHT35XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTHT35XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTHT35XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTHT35XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTHT35XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTHT35XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTHT35XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTHT35XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTHT35XV", waiting until "domcontentloaded"
+
+
+[136/183] Daikin GTKC35XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GTKC35XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GTKC35XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GTKC35XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GTKC35XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GTKC35XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GTKC35XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GTKC35XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GTKC35XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GTKC35XV", waiting until "domcontentloaded"
+
+
+[137/183] Sony KD-55X74L (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=KD-55X74L
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=KD-55X74L
+Call log:
+  - navigating to "https://www.amazon.in/s?k=KD-55X74L", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=KD-55X74L
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=KD-55X74L
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=KD-55X74L", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=KD-55X74L
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=KD-55X74L
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=KD-55X74L", waiting until "domcontentloaded"
+
+
+[138/183] Daikin FTKU50XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKU50XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKU50XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKU50XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKU50XV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FTKU50XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKU50XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKU50XV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTKU50XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKU50XV", waiting until "domcontentloaded"
+
+
+[139/183] Haier LE39B9000 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE39B9000
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE39B9000
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE39B9000", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE39B9000
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE39B9000
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE39B9000", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE39B9000
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE39B9000
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE39B9000", waiting until "domcontentloaded"
+
+
+[140/183] Voltas WTL70VPBGF (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTL70VPBGF
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTL70VPBGF
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTL70VPBGF", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTL70VPBGF
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=WTL70VPBGF
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTL70VPBGF", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTL70VPBGF
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=WTL70VPBGF
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTL70VPBGF", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[141/183] LG GR-A24FDMMB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GR-A24FDMMB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GR-A24FDMMB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GR-A24FDMMB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GR-A24FDMMB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GR-A24FDMMB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GR-A24FDMMB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GR-A24FDMMB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GR-A24FDMMB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GR-A24FDMMB", waiting until "domcontentloaded"
+
+
+[142/183] Haier HRB475SS (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB475SS
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB475SS
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB475SS", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB475SS
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=HRB475SS
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB475SS", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB475SS
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB475SS
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB475SS", waiting until "domcontentloaded"
+
+
+[143/183] Haier HRB-3404PSG-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3404PSG-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3404PSG-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3404PSG-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3404PSG-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3404PSG-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3404PSG-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3404PSG-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3404PSG-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3404PSG-E", waiting until "domcontentloaded"
+
+
+[144/183] Voltas 123INV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=123INV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=123INV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=123INV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=123INV
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=123INV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=123INV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=123INV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=123INV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=123INV", waiting until "domcontentloaded"
+
+
+[145/183] Haier HSW82-528NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HSW82-528NZP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HSW82-528NZP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HSW82-528NZP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HSW82-528NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HSW82-528NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HSW82-528NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HSW82-528NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HSW82-528NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HSW82-528NZP", waiting until "domcontentloaded"
+
+
+[146/183] Haier LE43B9000 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B08G17CR1R
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B08G17CR1R
+Call log:
+  - navigating to "https://www.amazon.in/dp/B08G17CR1R", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE43B9000
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE43B9000
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE43B9000", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE43B9000
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE43B9000
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE43B9000", waiting until "domcontentloaded"
+
+
+[147/183] Samsung WA70BG4441YYTL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WA70BG4441YYTL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WA70BG4441YYTL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WA70BG4441YYTL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WA70BG4441YYTL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WA70BG4441YYTL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WA70BG4441YYTL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WA70BG4441YYTL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WA70BG4441YYTL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WA70BG4441YYTL", waiting until "domcontentloaded"
+
+
+[148/183] Haier LE55B9500U (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE55B9500U
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE55B9500U
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE55B9500U", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE55B9500U
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE55B9500U
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE55B9500U", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE55B9500U
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE55B9500U
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE55B9500U", waiting until "domcontentloaded"
+
+
+[149/183] Haier LE65B8000 (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=LE65B8000
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=LE65B8000
+Call log:
+  - navigating to "https://www.amazon.in/s?k=LE65B8000", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE65B8000
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=LE65B8000
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE65B8000", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE65B8000
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=LE65B8000
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE65B8000", waiting until "domcontentloaded"
+
+
+[150/183] Haier HWM65-698NZP (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HWM65-698NZP
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HWM65-698NZP
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HWM65-698NZP", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HWM65-698NZP
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HWM65-698NZP
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HWM65-698NZP", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HWM65-698NZP
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HWM65-698NZP
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HWM65-698NZP", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[151/183] Voltas WTL65VPBGX (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTL65VPBGX
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTL65VPBGX
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTL65VPBGX", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTL65VPBGX
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTL65VPBGX
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTL65VPBGX", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTL65VPBGX
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTL65VPBGX
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTL65VPBGX", waiting until "domcontentloaded"
+
+
+[152/183] Blue Star IE518PNU (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B0F6CFJF78
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B0F6CFJF78
+Call log:
+  - navigating to "https://www.amazon.in/dp/B0F6CFJF78", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=IE518PNU
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=IE518PNU
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=IE518PNU", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=IE518PNU
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=IE518PNU
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=IE518PNU", waiting until "domcontentloaded"
+
+
+[153/183] LG GR-B24FQSJB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GR-B24FQSJB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GR-B24FQSJB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GR-B24FQSJB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GR-B24FQSJB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GR-B24FQSJB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GR-B24FQSJB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GR-B24FQSJB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GR-B24FQSJB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GR-B24FQSJB", waiting until "domcontentloaded"
+
+
+[154/183] Haier HRB-3654PCG-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654PCG-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654PCG-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654PCG-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654PCG-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654PCG-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654PCG-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654PCG-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654PCG-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654PCG-E", waiting until "domcontentloaded"
+
+
+[155/183] Voltas RFF493IF (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RFF493IF
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RFF493IF
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RFF493IF", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RFF493IF
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=RFF493IF
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RFF493IF", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RFF493IF
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RFF493IF
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RFF493IF", waiting until "domcontentloaded"
+
+
+[156/183] LG GR-B24FQGJB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GR-B24FQGJB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GR-B24FQGJB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GR-B24FQGJB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GR-B24FQGJB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GR-B24FQGJB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GR-B24FQGJB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GR-B24FQGJB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GR-B24FQGJB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GR-B24FQGJB", waiting until "domcontentloaded"
+
+
+[157/183] Daikin FTKL50XV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKL50XV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKL50XV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKL50XV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKL50XV
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=FTKL50XV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKL50XV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKL50XV
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=FTKL50XV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKL50XV", waiting until "domcontentloaded"
+
+
+[158/183] Haier LE40K6000B (TV)
+───────────────────────────────────────────────────────
+    [Amazon] Direct ASIN: https://www.amazon.in/dp/B0D6RL8DB9
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/dp/B0D6RL8DB9
+Call log:
+  - navigating to "https://www.amazon.in/dp/B0D6RL8DB9", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=LE40K6000B
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=LE40K6000B
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=LE40K6000B", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=LE40K6000B
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=LE40K6000B
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=LE40K6000B", waiting until "domcontentloaded"
+
+
+[159/183] Voltas RDC215A (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC215A
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC215A
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC215A", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC215A
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=RDC215A
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC215A", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC215A
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=RDC215A
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC215A", waiting until "domcontentloaded"
+
+
+[160/183] LG GV-F25FFGHB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-F25FFGHB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-F25FFGHB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-F25FFGHB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-F25FFGHB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GV-F25FFGHB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-F25FFGHB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-F25FFGHB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GV-F25FFGHB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-F25FFGHB", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[161/183] Voltas RDC215C (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC215C
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC215C
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC215C", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC215C
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RDC215C
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC215C", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC215C
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RDC215C
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC215C", waiting until "domcontentloaded"
+
+
+[162/183] Haier HRB-3654PGG-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654PGG-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654PGG-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654PGG-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654PGG-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654PGG-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654PGG-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654PGG-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654PGG-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654PGG-E", waiting until "domcontentloaded"
+
+
+[163/183] Voltas RDC215D (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC215D
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC215D
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC215D", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC215D
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RDC215D
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC215D", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC215D
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RDC215D
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC215D", waiting until "domcontentloaded"
+
+
+[164/183] Voltas RDC205D (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC205D
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC205D
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC205D", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC205D
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RDC205D
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC205D", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC205D
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RDC205D
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC205D", waiting until "domcontentloaded"
+
+
+[165/183] Samsung RF65DB90BD12TL (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF65DB90BD12TL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF65DB90BD12TL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF65DB90BD12TL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF65DB90BD12TL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF65DB90BD12TL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF65DB90BD12TL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF65DB90BD12TL
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF65DB90BD12TL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF65DB90BD12TL", waiting until "domcontentloaded"
+
+
+[166/183] LG GV-B25FFGMB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-B25FFGMB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-B25FFGMB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-B25FFGMB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-B25FFGMB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GV-B25FFGMB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-B25FFGMB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-B25FFGMB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GV-B25FFGMB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-B25FFGMB", waiting until "domcontentloaded"
+
+
+[167/183] Haier HRB-3654PRL-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654PRL-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654PRL-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654PRL-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654PRL-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654PRL-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654PRL-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654PRL-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654PRL-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654PRL-E", waiting until "domcontentloaded"
+
+
+[168/183] LG GV-F25FFLJB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-F25FFLJB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-F25FFLJB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-F25FFLJB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-F25FFLJB
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=GV-F25FFLJB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-F25FFLJB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-F25FFLJB
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=GV-F25FFLJB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-F25FFLJB", waiting until "domcontentloaded"
+
+
+[169/183] Haier HRB-3654PSL-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654PSL-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654PSL-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654PSL-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654PSL-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654PSL-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654PSL-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654PSL-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654PSL-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654PSL-E", waiting until "domcontentloaded"
+
+
+[170/183] Voltas RDC240A (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC240A
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC240A
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC240A", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC240A
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RDC240A
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC240A", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC240A
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RDC240A
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC240A", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[171/183] Voltas RDC260A (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC260A
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC260A
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC260A", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC260A
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RDC260A
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC260A", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC260A
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RDC260A
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC260A", waiting until "domcontentloaded"
+
+
+[172/183] Voltas RDC240C (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RDC240C
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RDC240C
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RDC240C", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RDC240C
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RDC240C
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RDC240C", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RDC240C
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RDC240C
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RDC240C", waiting until "domcontentloaded"
+
+
+[173/183] Voltas WTT85DBLG (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WTT85DBLG
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WTT85DBLG
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WTT85DBLG", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WTT85DBLG
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WTT85DBLG
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WTT85DBLG", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WTT85DBLG
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WTT85DBLG
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WTT85DBLG", waiting until "domcontentloaded"
+
+
+[174/183] LG GV-B25FFLMB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-B25FFLMB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-B25FFLMB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-B25FFLMB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-B25FFLMB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GV-B25FFLMB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-B25FFLMB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-B25FFLMB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GV-B25FFLMB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-B25FFLMB", waiting until "domcontentloaded"
+
+
+[175/183] Haier HRB-3654CRL-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654CRL-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654CRL-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654CRL-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654CRL-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654CRL-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654CRL-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654CRL-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654CRL-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654CRL-E", waiting until "domcontentloaded"
+
+
+[176/183] Haier HRB-3654CSL-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654CSL-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654CSL-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654CSL-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654CSL-E
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=HRB-3654CSL-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654CSL-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654CSL-E
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=HRB-3654CSL-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654CSL-E", waiting until "domcontentloaded"
+
+
+[177/183] Haier HRB-3654CBD-E (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=HRB-3654CBD-E
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=HRB-3654CBD-E
+Call log:
+  - navigating to "https://www.amazon.in/s?k=HRB-3654CBD-E", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=HRB-3654CBD-E
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=HRB-3654CBD-E
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=HRB-3654CBD-E", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=HRB-3654CBD-E
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=HRB-3654CBD-E
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=HRB-3654CBD-E", waiting until "domcontentloaded"
+
+
+[178/183] Voltas RFF265D (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RFF265D
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RFF265D
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RFF265D", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RFF265D
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RFF265D
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RFF265D", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RFF265D
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RFF265D
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RFF265D", waiting until "domcontentloaded"
+
+
+[179/183] LG GV-B23FFLMB (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=GV-B23FFLMB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=GV-B23FFLMB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=GV-B23FFLMB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=GV-B23FFLMB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=GV-B23FFLMB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=GV-B23FFLMB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=GV-B23FFLMB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=GV-B23FFLMB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=GV-B23FFLMB", waiting until "domcontentloaded"
+
+
+[180/183] Samsung WW80T504DAB (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=WW80T504DAB
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=WW80T504DAB
+Call log:
+  - navigating to "https://www.amazon.in/s?k=WW80T504DAB", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=WW80T504DAB
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=WW80T504DAB
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=WW80T504DAB", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=WW80T504DAB
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=WW80T504DAB
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=WW80T504DAB", waiting until "domcontentloaded"
+
+
+── Cooldown 10s ──
+
+
+[181/183] Godrej RF EON 236B (FRIDGE)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=RF+EON+236B
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=RF+EON+236B
+Call log:
+  - navigating to "https://www.amazon.in/s?k=RF+EON+236B", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=RF+EON+236B
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=RF+EON+236B
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=RF+EON+236B", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=RF%20EON%20236B
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=RF%20EON%20236B
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=RF%20EON%20236B", waiting until "domcontentloaded"
+
+
+[182/183] LG FHM1408BDL (WM)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FHM1408BDL
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FHM1408BDL
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FHM1408BDL", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FHM1408BDL
+    [Flipkart] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.flipkart.com/search?q=FHM1408BDL
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FHM1408BDL", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FHM1408BDL
+    [Croma] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.croma.com/searchB?q=FHM1408BDL
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FHM1408BDL", waiting until "domcontentloaded"
+
+
+[183/183] Daikin FTKC35TV (AC)
+───────────────────────────────────────────────────────
+    [Amazon] Search: https://www.amazon.in/s?k=FTKC35TV
+    [Amazon] Error: Page.goto: net::ERR_FAILED at https://www.amazon.in/s?k=FTKC35TV
+Call log:
+  - navigating to "https://www.amazon.in/s?k=FTKC35TV", waiting until "domcontentloaded"
+
+    [Flipkart] Search: https://www.flipkart.com/search?q=FTKC35TV
+    [Flipkart] Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://www.flipkart.com/search?q=FTKC35TV
+Call log:
+  - navigating to "https://www.flipkart.com/search?q=FTKC35TV", waiting until "domcontentloaded"
+
+    [Croma] Search: https://www.croma.com/searchB?q=FTKC35TV
+    [Croma] Error: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.croma.com/searchB?q=FTKC35TV
+Call log:
+  - navigating to "https://www.croma.com/searchB?q=FTKC35TV", waiting until "domcontentloaded"
+
+
+============================================================
+SUMMARY
+============================================================
+Total processed: 183
+Amazon prices:   0/183
+Flipkart prices: 0/183
+Croma prices:    0/183
+
+Products with NO prices (183):
+  ✗ Haier HW120-B1558
+  ✗ IFB Senator WSS
+  ✗ Whirlpool 31514
+  ✗ Voltas RDC215B
+  ✗ Whirlpool WHITEMAGIC ELITE
+  ✗ Whirlpool STAINWASH PRO H
+  ✗ Samsung WW70T4020EE
+  ✗ LG PS-Q19YNZE
+  ✗ Samsung RR21C2H25CU
+  ✗ Daikin FTKR50TV
+  ✗ LG GL-B201APZY
+  ✗ Blue Star SPLIT-AC-5STAR
+  ✗ ASUS X1502ZA-EJ522WS
+  ✗ Samsung AR18CYNYBWK
+  ✗ Voltas 125INV
+  ✗ HP 15s-eq2143AU
+  ✗ Lenovo 82RK00VDIN
+  ✗ Whirlpool IF325ELT
+  ✗ OnePlus 43Y1S Pro
+  ✗ LG T70SKSF4Z
+  ✗ Samsung AR12TYHYCWK
+  ✗ Samsung RT28C3122S8
+  ✗ Whirlpool IF INV CNV 278
+  ✗ Samsung RF57C4012S9
+  ✗ Haier HSU18K-PZAW5BN-INV
+  ✗ Daikin 10_MARACANA_STADIUM
+  ✗ Voltas VA3150
+  ✗ Acer A515-57G
+  ✗ Samsung AR50H12D1LHNNA
+  ✗ Blue Star SPLIT-AC-3STAR
+  ✗ Daikin 30_PINNACLE_INFOTECH
+  ✗ Voltas VA4090
+  ✗ Samsung AR50H12D1XHNNA
+  ✗ Blue Star SPLIT-AC-2STAR
+  ✗ Voltas VA4130
+  ✗ Haier HW80-BD12876NZP5
+  ✗ Voltas 243V DZW
+  ✗ IFB IFB-TL-RCSS-7.5KG
+  ✗ LG AS-Q19YNZE1
+  ✗ Samsung QA55Q60DAKLXL
+  ✗ Sony KD-43X74L
+  ✗ Samsung UA43DUE70AKLXL
+  ✗ LG 55QNED756SRA
+  ✗ Daikin ATKL35XV
+  ✗ Haier LE55M600
+  ✗ Daikin FTXF50XV
+  ✗ Samsung UA55CU7700KLXL
+  ✗ Dell Inspiron 3520
+  ✗ Samsung QA43Q60DAKLXL
+  ✗ Samsung RT42CB66228THL
+  ✗ Samsung RF65DG90BDSGTL
+  ✗ Samsung RB45DG6005B1TL
+  ✗ Samsung 5IN1
+  ✗ Samsung WA40F08H2BTL
+  ✗ Samsung RF71DB9950QDTL
+  ✗ LG GV-K25FFGFB
+  ✗ LG GV-B23FFGMB
+  ✗ Samsung RM90F66CNCTL
+  ✗ Samsung RF57A5032B1-TL
+  ✗ Samsung RF57A5032S9-TL
+  ✗ Haier HRB-3654PSG-E
+  ✗ Voltas WTT120ABRT
+  ✗ Samsung WA40F10H2CTL
+  ✗ Samsung WA70A4022FS-TL
+  ✗ Samsung WA70BG4441BYTL
+  ✗ Samsung WA70BG4441BGTL
+  ✗ Haier LE65K6500UB
+  ✗ Haier LE65B8500U
+  ✗ Haier LE50B9000M
+  ✗ Haier LE32K6000B
+  ✗ Haier HW60-10636NZP
+  ✗ Haier HRB-2764BS-E
+  ✗ Daikin FTKC35XV
+  ✗ Samsung UA43CUE60KLXL
+  ✗ Voltas 183INV
+  ✗ Samsung WA40F08H2CTL
+  ✗ Haier LE32B9000M
+  ✗ Samsung AR18CY3ZAGP
+  ✗ Samsung RT34C4522S8
+  ✗ LG RS-Q14YNZE
+  ✗ LG RS-Q18YNZE
+  ✗ LG 43UR7500PSC
+  ✗ Haier HWM60-707NZP
+  ✗ Voltas WTL70UPSCXX
+  ✗ LG P7020NGAZ
+  ✗ Samsung WA40F08D1CTL
+  ✗ Haier HW100-HD15G
+  ✗ Haier LE24F7000
+  ✗ Haier HW60-1010AS
+  ✗ Haier HSW75-528NZP
+  ✗ Voltas 185V Vectra CAR
+  ✗ Vu 43UT
+  ✗ LG 55UR7500PSC
+  ✗ Voltas WTL8011AU
+  ✗ Voltas WTL70VPSGX
+  ✗ Haier HWM70-789NZP
+  ✗ Samsung WA70BG4441YY
+  ✗ Voltas WTT72ASPL
+  ✗ Haier HWM95-261NZP
+  ✗ Voltas WTL65UPSC
+  ✗ LG FHM1207SDL
+  ✗ Bosch WAJ2416WIN
+  ✗ LG 43UQ7500PSF
+  ✗ Haier HWM70-826S
+  ✗ Godrej RF EON 236B 25 HI
+  ✗ TCL 43P635
+  ✗ Daikin FTKR35XV
+  ✗ Voltas 185V DZW
+  ✗ LG GL-T302SPZX
+  ✗ Bosch WAJ2006WIN
+  ✗ Samsung WW70FG4S02AXTL
+  ✗ Haier HRB-3404BS-E
+  ✗ LG GL-S292RDSY
+  ✗ Whirlpool IF278ELT
+  ✗ LG GL-T322SPZX
+  ✗ LG GL-B201AESY
+  ✗ Daikin FTKU50TV
+  ✗ Daikin FTKR35TV
+  ✗ Godrej RF EON 271B
+  ✗ IFB SENORITA SMART
+  ✗ TCL 55P635
+  ✗ Whirlpool 31257
+  ✗ Samsung WA40F10H2BTL
+  ✗ Whirlpool 31256
+  ✗ Daikin ATKL50XV
+  ✗ Voltas 243INV
+  ✗ Voltas 183VH
+  ✗ Daikin ATKL60XV
+  ✗ Voltas 185V
+  ✗ Daikin FTHT71XV
+  ✗ Daikin FTHT60XV
+  ✗ Daikin FTHT50XV
+  ✗ Haier LE55B8000
+  ✗ MI L43M8-5AIN
+  ✗ Daikin FTHT35XV
+  ✗ Daikin GTKC35XV
+  ✗ Sony KD-55X74L
+  ✗ Daikin FTKU50XV
+  ✗ Haier LE39B9000
+  ✗ Voltas WTL70VPBGF
+  ✗ LG GR-A24FDMMB
+  ✗ Haier HRB475SS
+  ✗ Haier HRB-3404PSG-E
+  ✗ Voltas 123INV
+  ✗ Haier HSW82-528NZP
+  ✗ Haier LE43B9000
+  ✗ Samsung WA70BG4441YYTL
+  ✗ Haier LE55B9500U
+  ✗ Haier LE65B8000
+  ✗ Haier HWM65-698NZP
+  ✗ Voltas WTL65VPBGX
+  ✗ Blue Star IE518PNU
+  ✗ LG GR-B24FQSJB
+  ✗ Haier HRB-3654PCG-E
+  ✗ Voltas RFF493IF
+  ✗ LG GR-B24FQGJB
+  ✗ Daikin FTKL50XV
+  ✗ Haier LE40K6000B
+  ✗ Voltas RDC215A
+  ✗ LG GV-F25FFGHB
+  ✗ Voltas RDC215C
+  ✗ Haier HRB-3654PGG-E
+  ✗ Voltas RDC215D
+  ✗ Voltas RDC205D
+  ✗ Samsung RF65DB90BD12TL
+  ✗ LG GV-B25FFGMB
+  ✗ Haier HRB-3654PRL-E
+  ✗ LG GV-F25FFLJB
+  ✗ Haier HRB-3654PSL-E
+  ✗ Voltas RDC240A
+  ✗ Voltas RDC260A
+  ✗ Voltas RDC240C
+  ✗ Voltas WTT85DBLG
+  ✗ LG GV-B25FFLMB
+  ✗ Haier HRB-3654CRL-E
+  ✗ Haier HRB-3654CSL-E
+  ✗ Haier HRB-3654CBD-E
+  ✗ Voltas RFF265D
+  ✗ LG GV-B23FFLMB
+  ✗ Samsung WW80T504DAB
+  ✗ Godrej RF EON 236B
+  ✗ LG FHM1408BDL
+  ✗ Daikin FTKC35TV
+
+Results saved to: /Users/manish/Desktop/merawalaprice/scraper/price_results.json
+
+All prices have been saved to Supabase directly.

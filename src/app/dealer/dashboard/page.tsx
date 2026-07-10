@@ -69,6 +69,7 @@ export default function DealerDashboard() {
 
   const [winRate, setWinRate] = useState(0);
   const [viewsToday, setViewsToday] = useState(0);
+  const [activeLocksCount, setActiveLocksCount] = useState(0);
   const [priceUpdatedAt, setPriceUpdatedAt] = useState<Date | null>(null);
   const [offerSuccess, setOfferSuccess] = useState(false);
   const [offerError, setOfferError] = useState<string | null>(null);
@@ -232,6 +233,15 @@ export default function DealerDashboard() {
             .select('*', { count: 'exact', head: true })
             .gte('viewed_at', todayStr);
           setViewsToday(views || 0);
+
+          // Fetch active price locks count
+          const { count: locks } = await supabase
+            .from('price_locks')
+            .select('*', { count: 'exact', head: true })
+            .eq('dealer_id', dl.id)
+            .eq('status', 'active')
+            .gt('expires_at', new Date().toISOString());
+          setActiveLocksCount(locks || 0);
 
           // Fetch latest price update time
           const { data: latestPrice } = await supabase
@@ -426,6 +436,13 @@ export default function DealerDashboard() {
               <div style={{ background: '#fff', border: '1px solid #EBEBEB', borderRadius: '16px', padding: '16px', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
                 <div style={{ fontSize: '26px', fontWeight: 800, color: '#16A34A' }}>{winRate}%</div>
                 <div style={{ fontSize: '12px', color: '#6B6B6B', fontWeight: 600, marginTop: '2px' }}>Win rate</div>
+              </div>
+              <div style={{ gridColumn: 'span 2', background: '#F0FDF4', border: '1.5px dashed #B7E4C7', borderRadius: '16px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0 1px 3px rgba(0,0,0,.06)' }}>
+                <div>
+                  <div style={{ fontSize: '20px', fontWeight: 800, color: '#16A34A' }}>{activeLocksCount} buyer{activeLocksCount !== 1 ? 's' : ''} interested today</div>
+                  <div style={{ fontSize: '11px', color: '#15803D', fontWeight: 600, marginTop: '2px' }}>Active price guarantees (4 hours)</div>
+                </div>
+                <span style={{ fontSize: '24px' }}>🔒</span>
               </div>
             </div>
 

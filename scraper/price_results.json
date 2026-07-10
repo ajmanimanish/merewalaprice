@@ -1,0 +1,3479 @@
+[
+  {
+    "product_id": "5832de55-069c-49f0-a344-d818528331ab",
+    "brand": "Haier",
+    "model": "HW120-B1558",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T01:57:35.812214"
+  },
+  {
+    "product_id": "f2524128-2fc6-47e2-8bf2-c19d6ad2f1ae",
+    "brand": "IFB",
+    "model": "Senator WSS",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T01:58:53.773630"
+  },
+  {
+    "product_id": "f6b42e5f-ac91-4f90-8e24-d9a5059f1b66",
+    "brand": "Whirlpool",
+    "model": "31514",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:00:12.065662"
+  },
+  {
+    "product_id": "54806e09-816b-489a-b9ea-f9f636a15c03",
+    "brand": "Voltas",
+    "model": "RDC215B",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:01:30.814655"
+  },
+  {
+    "product_id": "b33539fc-7843-4344-b49f-5427945e31e7",
+    "brand": "Whirlpool",
+    "model": "WHITEMAGIC ELITE",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:02:48.674972"
+  },
+  {
+    "product_id": "2d8fe0b2-24bf-426a-9c6d-23544b66150d",
+    "brand": "Whirlpool",
+    "model": "STAINWASH PRO H",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:04:05.436330"
+  },
+  {
+    "product_id": "e124bde4-0046-49a6-b68c-d428fa1a2546",
+    "brand": "Samsung",
+    "model": "WW70T4020EE",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:21:13.555096"
+  },
+  {
+    "product_id": "d0fa1471-e963-40a4-bd92-ddb362a66553",
+    "brand": "LG",
+    "model": "PS-Q19YNZE",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:53:25.630382"
+  },
+  {
+    "product_id": "be232f10-e3b9-493c-bc1c-5a341f854f65",
+    "brand": "Samsung",
+    "model": "RR21C2H25CU",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T02:54:04.695989"
+  },
+  {
+    "product_id": "bc260eac-93ac-4ff7-ad81-4b9f3f290252",
+    "brand": "Daikin",
+    "model": "FTKR50TV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:10:16.925189"
+  },
+  {
+    "product_id": "92815ef1-ba96-4c7e-9280-d9306253c7d7",
+    "brand": "LG",
+    "model": "GL-B201APZY",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:27:39.948545"
+  },
+  {
+    "product_id": "2a34b1fd-47d2-485a-a08f-842fe1de6f01",
+    "brand": "Blue Star",
+    "model": "SPLIT-AC-5STAR",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:27:46.426583"
+  },
+  {
+    "product_id": "8417f993-f1ff-41bf-9f4b-f99145e9bf39",
+    "brand": "ASUS",
+    "model": "X1502ZA-EJ522WS",
+    "category": "LAPTOP",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:27:53.065807"
+  },
+  {
+    "product_id": "7a428533-5f11-495a-8087-cd74aa73175f",
+    "brand": "Samsung",
+    "model": "AR18CYNYBWK",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:27:59.400769"
+  },
+  {
+    "product_id": "c68f48b8-2c2b-4420-822f-84c6249730be",
+    "brand": "Voltas",
+    "model": "125INV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:29:05.334335"
+  },
+  {
+    "product_id": "5fe85542-8bd1-4586-a780-723d14bb18fc",
+    "brand": "HP",
+    "model": "15s-eq2143AU",
+    "category": "LAPTOP",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:29:12.127449"
+  },
+  {
+    "product_id": "615f0d0c-d26a-489b-bd5b-b146faa8ee2d",
+    "brand": "Lenovo",
+    "model": "82RK00VDIN",
+    "category": "LAPTOP",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:29:18.454274"
+  },
+  {
+    "product_id": "e6384c54-0e5e-4d31-80e5-f667ea40ba1a",
+    "brand": "Whirlpool",
+    "model": "IF325ELT",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:29:25.208064"
+  },
+  {
+    "product_id": "a94ae13e-b356-442a-abf6-c32483d8e483",
+    "brand": "OnePlus",
+    "model": "43Y1S Pro",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:29:31.676348"
+  },
+  {
+    "product_id": "348e1229-36df-452b-9737-3ad37eb65607",
+    "brand": "LG",
+    "model": "T70SKSF4Z",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:29:38.204399"
+  },
+  {
+    "product_id": "c707f38c-97a6-42ad-b5e8-aee2fbd270df",
+    "brand": "Samsung",
+    "model": "AR12TYHYCWK",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:30:54.655619"
+  },
+  {
+    "product_id": "8c50405a-7c08-44e9-9410-c39b86ca2c5f",
+    "brand": "Samsung",
+    "model": "RT28C3122S8",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:31:01.477997"
+  },
+  {
+    "product_id": "02c214af-6fe3-4f22-b7d3-edf9f63dfb4f",
+    "brand": "Whirlpool",
+    "model": "IF INV CNV 278",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:31:07.841148"
+  },
+  {
+    "product_id": "cf8c2033-1ce2-49cf-a84a-5721e06887f9",
+    "brand": "Samsung",
+    "model": "RF57C4012S9",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:31:14.687044"
+  },
+  {
+    "product_id": "6614098b-116e-4b0e-b07b-5025fb01fd16",
+    "brand": "Haier",
+    "model": "HSU18K-PZAW5BN-INV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:31:21.244321"
+  },
+  {
+    "product_id": "7f1fa3bc-5070-4112-b91a-fd6dfb3a97d8",
+    "brand": "Daikin",
+    "model": "10_MARACANA_STADIUM",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:31:27.806941"
+  },
+  {
+    "product_id": "39a6fe61-30d7-482e-bafc-631fc15dd291",
+    "brand": "Voltas",
+    "model": "VA3150",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:32:34.264691"
+  },
+  {
+    "product_id": "dd40b962-aa03-4fcb-a6e2-8e6f7233981a",
+    "brand": "Acer",
+    "model": "A515-57G",
+    "category": "LAPTOP",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:32:40.429008"
+  },
+  {
+    "product_id": "48e1f3fa-4f80-4407-b425-8b801613c4cf",
+    "brand": "Samsung",
+    "model": "AR50H12D1LHNNA",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:32:47.080189"
+  },
+  {
+    "product_id": "434d9cf3-2e9b-4b79-8c9b-47560ebdbf07",
+    "brand": "Blue Star",
+    "model": "SPLIT-AC-3STAR",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:32:53.403621"
+  },
+  {
+    "product_id": "ca201c54-9c33-43e1-a5ef-8c17ef40f90c",
+    "brand": "Daikin",
+    "model": "30_PINNACLE_INFOTECH",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:33:09.906400"
+  },
+  {
+    "product_id": "74f74eb7-cbe3-4d60-8140-c665c31c001b",
+    "brand": "Voltas",
+    "model": "VA4090",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:33:16.342402"
+  },
+  {
+    "product_id": "3bd4fe23-c683-4f35-a281-87dec98dfc22",
+    "brand": "Samsung",
+    "model": "AR50H12D1XHNNA",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:34:23.271823"
+  },
+  {
+    "product_id": "17f5e690-892c-41bd-adbf-313ac7b5ba24",
+    "brand": "Blue Star",
+    "model": "SPLIT-AC-2STAR",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:34:29.836526"
+  },
+  {
+    "product_id": "ecad933a-3a89-41f0-96a3-af875798ae4d",
+    "brand": "Voltas",
+    "model": "VA4130",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:34:36.286961"
+  },
+  {
+    "product_id": "eb75160e-ca25-4a43-a0db-75320c402de2",
+    "brand": "Haier",
+    "model": "HW80-BD12876NZP5",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:34:42.574683"
+  },
+  {
+    "product_id": "5d5ed9ad-46b0-4c38-ac86-ea53fa3c5798",
+    "brand": "Voltas",
+    "model": "243V DZW",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:34:49.308353"
+  },
+  {
+    "product_id": "8ede02dd-2e23-4145-b27a-9767884603c6",
+    "brand": "IFB",
+    "model": "IFB-TL-RCSS-7.5KG",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:34:55.778192"
+  },
+  {
+    "product_id": "78590421-2e40-4dbf-8348-8f69d8f190dc",
+    "brand": "LG",
+    "model": "AS-Q19YNZE1",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:35:02.227626"
+  },
+  {
+    "product_id": "38789ae7-59d8-4d96-b314-13502ff15e27",
+    "brand": "Samsung",
+    "model": "QA55Q60DAKLXL",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:36:08.679370"
+  },
+  {
+    "product_id": "6d408ff1-a676-40a7-9bfe-f10c8a77e320",
+    "brand": "Sony",
+    "model": "KD-43X74L",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:36:25.361772"
+  },
+  {
+    "product_id": "bbea15a1-cbd8-4369-b007-88d66cb58ef5",
+    "brand": "Samsung",
+    "model": "UA43DUE70AKLXL",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:36:31.735019"
+  },
+  {
+    "product_id": "540522ab-f487-48fe-993e-921b010e231d",
+    "brand": "LG",
+    "model": "55QNED756SRA",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:36:38.363266"
+  },
+  {
+    "product_id": "8142b4cf-5f3e-4918-98ce-4dfa946ae01e",
+    "brand": "Daikin",
+    "model": "ATKL35XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:36:44.831109"
+  },
+  {
+    "product_id": "87869191-680d-4bf3-9f47-26057424a528",
+    "brand": "Haier",
+    "model": "LE55M600",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:36:51.373519"
+  },
+  {
+    "product_id": "077aa0b0-86ed-47d0-b962-67228e0de40d",
+    "brand": "Daikin",
+    "model": "FTXF50XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:37:57.880968"
+  },
+  {
+    "product_id": "782e0fe6-2687-4ad9-942a-3693b959f709",
+    "brand": "Samsung",
+    "model": "UA55CU7700KLXL",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:38:04.243018"
+  },
+  {
+    "product_id": "2efacf69-4e5e-4811-983b-f1d37b65774e",
+    "brand": "Dell",
+    "model": "Inspiron 3520",
+    "category": "LAPTOP",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:38:10.727592"
+  },
+  {
+    "product_id": "fd453914-76ff-49a9-8f1b-1c9f209ddb01",
+    "brand": "Samsung",
+    "model": "QA43Q60DAKLXL",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:38:17.308571"
+  },
+  {
+    "product_id": "6c4bac7d-2813-4835-8d3e-88767418b8c8",
+    "brand": "Samsung",
+    "model": "RT42CB66228THL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:38:23.837986"
+  },
+  {
+    "product_id": "748cbbcc-46cc-4ec2-b14f-96e4048b02b9",
+    "brand": "Samsung",
+    "model": "RF65DG90BDSGTL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:39:40.534247"
+  },
+  {
+    "product_id": "734c13d6-7cb2-4450-b167-9085f83ae217",
+    "brand": "Samsung",
+    "model": "RB45DG6005B1TL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:39:46.899157"
+  },
+  {
+    "product_id": "4677dee8-7e72-4b8f-8ada-606ae009ead4",
+    "brand": "Samsung",
+    "model": "5IN1",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:39:53.455598"
+  },
+  {
+    "product_id": "475cc56b-ed0d-40bb-b087-21f73ea7488f",
+    "brand": "Samsung",
+    "model": "WA40F08H2BTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:39:59.980638"
+  },
+  {
+    "product_id": "0dbc28dc-6c54-48e5-a2fe-c96074e87002",
+    "brand": "Samsung",
+    "model": "RF71DB9950QDTL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:40:06.368823"
+  },
+  {
+    "product_id": "e087b40f-466c-449f-ae6a-a48e7d83b7fa",
+    "brand": "LG",
+    "model": "GV-K25FFGFB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:40:12.691644"
+  },
+  {
+    "product_id": "51a6e6d9-38c5-4179-b02f-34f5898ad4c6",
+    "brand": "LG",
+    "model": "GV-B23FFGMB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:41:19.274709"
+  },
+  {
+    "product_id": "a61b2d0b-0aef-469c-9514-f4b3ba368134",
+    "brand": "Samsung",
+    "model": "RM90F66CNCTL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:41:25.672187"
+  },
+  {
+    "product_id": "488e91e6-df4e-4bcc-ba41-44aadbcb1b85",
+    "brand": "Samsung",
+    "model": "RF57A5032B1-TL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:41:32.782843"
+  },
+  {
+    "product_id": "b5671d1a-a434-408b-a272-77b5c0f075da",
+    "brand": "Samsung",
+    "model": "RF57A5032S9-TL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:41:39.322047"
+  },
+  {
+    "product_id": "8e7e807c-ed67-4ea1-a3d6-a90b4214434e",
+    "brand": "Haier",
+    "model": "HRB-3654PSG-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:42:56.433095"
+  },
+  {
+    "product_id": "57222dce-5320-4904-90b3-7964bd9d490f",
+    "brand": "Voltas",
+    "model": "WTT120ABRT",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:43:02.871536"
+  },
+  {
+    "product_id": "a42f41bb-b57b-4d9e-b77e-49e686886629",
+    "brand": "Samsung",
+    "model": "WA40F10H2CTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:43:09.727867"
+  },
+  {
+    "product_id": "2a2f07a7-5bf9-4451-badd-1cda4b763b45",
+    "brand": "Samsung",
+    "model": "WA70A4022FS-TL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:43:16.319287"
+  },
+  {
+    "product_id": "b9c9f40b-cb66-49b7-afb1-6b364dae8713",
+    "brand": "Samsung",
+    "model": "WA70BG4441BYTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:43:22.655802"
+  },
+  {
+    "product_id": "552dd403-7cf3-4cce-88c7-e74483692519",
+    "brand": "Samsung",
+    "model": "WA70BG4441BGTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:44:29.320402"
+  },
+  {
+    "product_id": "8372d927-dc5a-4136-9db4-d80956d5275f",
+    "brand": "Haier",
+    "model": "LE65K6500UB",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:44:35.504100"
+  },
+  {
+    "product_id": "654acae0-6495-48cf-bb88-689477dc3ccf",
+    "brand": "Haier",
+    "model": "LE65B8500U",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:44:41.822090"
+  },
+  {
+    "product_id": "7b52bf7e-24c9-477e-aba3-84b86398470d",
+    "brand": "Haier",
+    "model": "LE50B9000M",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:44:48.025440"
+  },
+  {
+    "product_id": "fe4c924e-b69d-41f9-ba10-a0b6dc1c2aab",
+    "brand": "Haier",
+    "model": "LE32K6000B",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:44:54.465310"
+  },
+  {
+    "product_id": "477bc1d5-7c66-453f-81cb-7e9be286ce2d",
+    "brand": "Haier",
+    "model": "HW60-10636NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:45:11.082670"
+  },
+  {
+    "product_id": "cea45282-75c3-4328-92c2-ae29bb7578af",
+    "brand": "Haier",
+    "model": "HRB-2764BS-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:17.499615"
+  },
+  {
+    "product_id": "f0cc3ab0-537f-4e16-a672-c2c76fb3f496",
+    "brand": "Daikin",
+    "model": "FTKC35XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:23.687616"
+  },
+  {
+    "product_id": "6a50fe40-dd01-4aa3-9bcb-0151b7f7a5ea",
+    "brand": "Samsung",
+    "model": "UA43CUE60KLXL",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:30.161074"
+  },
+  {
+    "product_id": "8fa6c244-3b27-4056-bda5-e08701e6d209",
+    "brand": "Voltas",
+    "model": "183INV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:36.676336"
+  },
+  {
+    "product_id": "ce248877-b157-4aa9-99fe-c325917e09b6",
+    "brand": "Samsung",
+    "model": "WA40F08H2CTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:43.048306"
+  },
+  {
+    "product_id": "7235d281-e7d6-498a-bcfa-7d268a3a8e0a",
+    "brand": "Haier",
+    "model": "LE32B9000M",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:49.744705"
+  },
+  {
+    "product_id": "1bcb0539-5c3c-4050-baa3-c3b6ba5ef82f",
+    "brand": "Samsung",
+    "model": "AR18CY3ZAGP",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:46:56.351022"
+  },
+  {
+    "product_id": "6445a7c7-1bf4-4fc1-919c-def350643a5c",
+    "brand": "Samsung",
+    "model": "RT34C4522S8",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:48:03.058528"
+  },
+  {
+    "product_id": "4595e70e-38b6-40e0-9687-3037dbf8aa1d",
+    "brand": "LG",
+    "model": "RS-Q14YNZE",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:48:09.305602"
+  },
+  {
+    "product_id": "bc2f3328-5330-49d7-92e2-9a4666f6b787",
+    "brand": "LG",
+    "model": "RS-Q18YNZE",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:49:25.972803"
+  },
+  {
+    "product_id": "ebf4e20f-3bda-4674-9106-59567b3402eb",
+    "brand": "LG",
+    "model": "43UR7500PSC",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:49:32.436494"
+  },
+  {
+    "product_id": "2b7735e5-02d2-4df9-a9d5-39ca155cabd0",
+    "brand": "Haier",
+    "model": "HWM60-707NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:49:38.785129"
+  },
+  {
+    "product_id": "c8d92bb0-3dab-410e-9994-601d2673dd57",
+    "brand": "Voltas",
+    "model": "WTL70UPSCXX",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:49:45.956866"
+  },
+  {
+    "product_id": "cc17dfe8-fbdf-4aac-a554-14e7dc89a120",
+    "brand": "LG",
+    "model": "P7020NGAZ",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:49:52.558991"
+  },
+  {
+    "product_id": "a8e66e07-a687-40d8-b125-c35a33ae74d0",
+    "brand": "Samsung",
+    "model": "WA40F08D1CTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:49:59.145540"
+  },
+  {
+    "product_id": "8415b63f-e07a-4a34-9ff8-2b967f2691fb",
+    "brand": "Haier",
+    "model": "HW100-HD15G",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:51:05.723398"
+  },
+  {
+    "product_id": "f5f9f633-c40e-4390-9745-0ede729becb2",
+    "brand": "Haier",
+    "model": "LE24F7000",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:51:11.912292"
+  },
+  {
+    "product_id": "1dcf4626-4fbe-4b8e-88ad-b58a22c0dfc2",
+    "brand": "Haier",
+    "model": "HW60-1010AS",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:51:18.449638"
+  },
+  {
+    "product_id": "b7b09be3-af73-432d-9f72-f8e27d43106a",
+    "brand": "Haier",
+    "model": "HSW75-528NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:51:25.260961"
+  },
+  {
+    "product_id": "065c423b-ccbc-4398-a2b4-ad3fb1a3b77f",
+    "brand": "Voltas",
+    "model": "185V Vectra CAR",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:52:41.460702"
+  },
+  {
+    "product_id": "cde83fb5-d758-47d1-82ca-ef5797fa32db",
+    "brand": "Vu",
+    "model": "43UT",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:52:47.703662"
+  },
+  {
+    "product_id": "f446665b-6174-406c-bcae-70847d42e5a7",
+    "brand": "LG",
+    "model": "55UR7500PSC",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:52:54.881335"
+  },
+  {
+    "product_id": "b4a372ea-aa09-43cc-988f-f18b7223d43e",
+    "brand": "Voltas",
+    "model": "WTL8011AU",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:53:01.386597"
+  },
+  {
+    "product_id": "d8d78127-7c42-4edb-ab70-08068b741f0e",
+    "brand": "Voltas",
+    "model": "WTL70VPSGX",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:53:07.663172"
+  },
+  {
+    "product_id": "5d4fef4d-8c8a-45b2-a661-01591a1af593",
+    "brand": "Haier",
+    "model": "HWM70-789NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:54:14.189424"
+  },
+  {
+    "product_id": "ee10c451-12fc-4aa7-a15b-fb9da19b0bf1",
+    "brand": "Samsung",
+    "model": "WA70BG4441YY",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:54:20.545789"
+  },
+  {
+    "product_id": "2ebfcec4-77ec-4af1-a80a-cc70ab0c7242",
+    "brand": "Voltas",
+    "model": "WTT72ASPL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:54:26.837468"
+  },
+  {
+    "product_id": "45a19b8a-a88b-401c-9436-f4b0bde77686",
+    "brand": "Haier",
+    "model": "HWM95-261NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:54:33.389635"
+  },
+  {
+    "product_id": "2cd143ca-7b67-4fec-9522-fc29f9604a5d",
+    "brand": "Voltas",
+    "model": "WTL65UPSC",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:54:40.146277"
+  },
+  {
+    "product_id": "7808a772-f9ce-4fa7-80b0-e982921a820d",
+    "brand": "LG",
+    "model": "FHM1207SDL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:54:56.731349"
+  },
+  {
+    "product_id": "0b1cf75c-d034-4a3a-b118-1b0e67c68fe2",
+    "brand": "Bosch",
+    "model": "WAJ2416WIN",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:03.692141"
+  },
+  {
+    "product_id": "a9a9b9d8-7642-4263-a202-4e979d2b5217",
+    "brand": "LG",
+    "model": "43UQ7500PSF",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:10.041150"
+  },
+  {
+    "product_id": "c87ed113-d9a9-4f46-8cb8-6638124909ec",
+    "brand": "Haier",
+    "model": "HWM70-826S",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:16.490201"
+  },
+  {
+    "product_id": "495eb671-c82d-403b-b5a7-0d96ea866198",
+    "brand": "Godrej",
+    "model": "RF EON 236B 25 HI",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:23.158949"
+  },
+  {
+    "product_id": "3705e15d-4ca5-4498-9385-5cf02b07a492",
+    "brand": "TCL",
+    "model": "43P635",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:29.733264"
+  },
+  {
+    "product_id": "1888fc68-953d-42f4-a1b1-433f2e65a4a2",
+    "brand": "Daikin",
+    "model": "FTKR35XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:36.420121"
+  },
+  {
+    "product_id": "f1f673f0-a17c-4ca0-9edc-147755fee4f2",
+    "brand": "Voltas",
+    "model": "185V DZW",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:56:42.993129"
+  },
+  {
+    "product_id": "ab3e3b16-0e65-4552-b02a-4bfc0600e7ee",
+    "brand": "LG",
+    "model": "GL-T302SPZX",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:57:49.534864"
+  },
+  {
+    "product_id": "f5a64b54-4b85-473d-ab5e-7cb3529da382",
+    "brand": "Bosch",
+    "model": "WAJ2006WIN",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:57:55.735786"
+  },
+  {
+    "product_id": "b1df8e1c-0866-4b2a-8d6e-19dabf5207cf",
+    "brand": "Samsung",
+    "model": "WW70FG4S02AXTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:12.555775"
+  },
+  {
+    "product_id": "63ebe901-927b-4042-bfee-11713259cc56",
+    "brand": "Haier",
+    "model": "HRB-3404BS-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:18.743665"
+  },
+  {
+    "product_id": "1752cd43-5d1b-4c7f-ab74-c0d8a06225c5",
+    "brand": "LG",
+    "model": "GL-S292RDSY",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:25.520783"
+  },
+  {
+    "product_id": "c80cb5bd-70af-470f-b557-0bac49277a5d",
+    "brand": "Whirlpool",
+    "model": "IF278ELT",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:31.990048"
+  },
+  {
+    "product_id": "f3166b48-5cee-42e4-b120-3a4f453dee8a",
+    "brand": "LG",
+    "model": "GL-T322SPZX",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:38.682476"
+  },
+  {
+    "product_id": "a8778134-3244-403a-bd9b-690a7c929802",
+    "brand": "LG",
+    "model": "GL-B201AESY",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:45.185033"
+  },
+  {
+    "product_id": "912383a1-110c-4e98-bcdb-b1cdd412f79b",
+    "brand": "Daikin",
+    "model": "FTKU50TV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:51.661509"
+  },
+  {
+    "product_id": "cad45fa5-66fd-4938-8c7f-ec6da6ab5b88",
+    "brand": "Daikin",
+    "model": "FTKR35TV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T03:59:58.191035"
+  },
+  {
+    "product_id": "754b58a3-57fd-48ef-b80c-b3ec5cc9dc39",
+    "brand": "Godrej",
+    "model": "RF EON 271B",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:01:04.615347"
+  },
+  {
+    "product_id": "380bec84-3f22-46d2-80e9-a1eef5607619",
+    "brand": "IFB",
+    "model": "SENORITA SMART",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:01:11.239134"
+  },
+  {
+    "product_id": "7c077a18-8ca2-4e60-8de8-b714fa466ba2",
+    "brand": "TCL",
+    "model": "55P635",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:02:27.390679"
+  },
+  {
+    "product_id": "c3d82e88-c8d9-4b10-b99e-a04954c541a8",
+    "brand": "Whirlpool",
+    "model": "31257",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:02:33.838130"
+  },
+  {
+    "product_id": "33651c52-8772-46ca-bfe7-68a7e4195125",
+    "brand": "Samsung",
+    "model": "WA40F10H2BTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:02:40.307774"
+  },
+  {
+    "product_id": "a7373b86-d93a-4cf3-92cd-d3db6c6bc21f",
+    "brand": "Whirlpool",
+    "model": "31256",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:02:47.050674"
+  },
+  {
+    "product_id": "4ec9f78b-d754-4b1f-9f57-57880dbcc4fb",
+    "brand": "Daikin",
+    "model": "ATKL50XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:02:53.429926"
+  },
+  {
+    "product_id": "6360b9fa-2e15-4802-9c2d-99376a8d7115",
+    "brand": "Voltas",
+    "model": "243INV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:02:59.934411"
+  },
+  {
+    "product_id": "1eaea2f7-cce3-40cd-bd7b-aba78565c159",
+    "brand": "Voltas",
+    "model": "183VH",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:04:06.501187"
+  },
+  {
+    "product_id": "a632ecd5-3ed1-4084-9c78-e1fe004f2d72",
+    "brand": "Daikin",
+    "model": "ATKL60XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:04:12.669405"
+  },
+  {
+    "product_id": "3258debe-d0f2-46fd-817c-99cb9a7ffe44",
+    "brand": "Voltas",
+    "model": "185V",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:04:18.934390"
+  },
+  {
+    "product_id": "46dfc240-d196-4d0c-b43a-8d150be7e544",
+    "brand": "Daikin",
+    "model": "FTHT71XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:04:25.266089"
+  },
+  {
+    "product_id": "00ec1293-9545-4ddd-ab42-fd745d3da2d1",
+    "brand": "Daikin",
+    "model": "FTHT60XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:05:41.842830"
+  },
+  {
+    "product_id": "53bc6a94-cddc-4de0-8c2a-214b33f5902a",
+    "brand": "Daikin",
+    "model": "FTHT50XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:05:48.411698"
+  },
+  {
+    "product_id": "55c4d194-403c-4271-b9ca-9cc2a202ba31",
+    "brand": "Haier",
+    "model": "LE55B8000",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:06:55.447504"
+  },
+  {
+    "product_id": "2a8db883-86bb-4477-a4ce-3cff63b17fda",
+    "brand": "MI",
+    "model": "L43M8-5AIN",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:07:02.055909"
+  },
+  {
+    "product_id": "30c49c0f-406d-42c3-b444-d4dcf1ce0548",
+    "brand": "Daikin",
+    "model": "FTHT35XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:07:08.373637"
+  },
+  {
+    "product_id": "47d2a4b4-f10f-4316-99e8-57b3c0282e7b",
+    "brand": "Daikin",
+    "model": "GTKC35XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:07:14.968092"
+  },
+  {
+    "product_id": "7affeb9a-e16c-48f4-8bb6-b307e247496e",
+    "brand": "Sony",
+    "model": "KD-55X74L",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:07:21.706290"
+  },
+  {
+    "product_id": "2888ddbd-f60b-4b57-894e-5198e83ceae8",
+    "brand": "Daikin",
+    "model": "FTKU50XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:07:28.059428"
+  },
+  {
+    "product_id": "b7a51454-a867-4a26-a2d3-c3e4e6329d92",
+    "brand": "Haier",
+    "model": "LE39B9000",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:07:34.591513"
+  },
+  {
+    "product_id": "9586fe91-e20b-458c-87ca-2790fe0ad623",
+    "brand": "Voltas",
+    "model": "WTL70VPBGF",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:08:40.951152"
+  },
+  {
+    "product_id": "9d8d2d4d-4c3c-4f92-9eff-1522d1a3f11b",
+    "brand": "LG",
+    "model": "GR-A24FDMMB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:09:57.803856"
+  },
+  {
+    "product_id": "c6fbe525-a92f-425a-b888-82b9646e2e8a",
+    "brand": "Haier",
+    "model": "HRB475SS",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:04.008916"
+  },
+  {
+    "product_id": "4f28eeb3-c990-478a-8973-4dc5a5ee3522",
+    "brand": "Haier",
+    "model": "HRB-3404PSG-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:10.345910"
+  },
+  {
+    "product_id": "016078ce-6241-433f-a2f3-e6056ec81af8",
+    "brand": "Voltas",
+    "model": "123INV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:16.691696"
+  },
+  {
+    "product_id": "d2658ada-43a0-44e7-b8b3-5f82b3503a76",
+    "brand": "Haier",
+    "model": "HSW82-528NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:22.999691"
+  },
+  {
+    "product_id": "1b230383-e5bf-4b72-9819-1e7a50c55559",
+    "brand": "Haier",
+    "model": "LE43B9000",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:29.902863"
+  },
+  {
+    "product_id": "b43c251e-dcf4-4ca5-ace9-cbf2cb2d6b93",
+    "brand": "Samsung",
+    "model": "WA70BG4441YYTL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:36.182057"
+  },
+  {
+    "product_id": "cc21bca2-f0ad-4a28-9249-43f03b926f8d",
+    "brand": "Haier",
+    "model": "LE55B9500U",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:10:43.111550"
+  },
+  {
+    "product_id": "0c6e18df-71d4-44c1-b6c6-fa13e25ed130",
+    "brand": "Haier",
+    "model": "LE65B8000",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:11:49.406323"
+  },
+  {
+    "product_id": "3e441849-49ff-411b-8bb5-184e344c505b",
+    "brand": "Haier",
+    "model": "HWM65-698NZP",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:11:55.917033"
+  },
+  {
+    "product_id": "53764ea3-4d45-4e7d-b94d-1065f82df3d8",
+    "brand": "Voltas",
+    "model": "WTL65VPBGX",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:12:12.442246"
+  },
+  {
+    "product_id": "04cfd9bf-a1c1-49a4-93cb-0024666b74d7",
+    "brand": "Blue Star",
+    "model": "IE518PNU",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:12:19.057433"
+  },
+  {
+    "product_id": "d6bbc2b6-bf4f-4347-b5cc-c53bd8081073",
+    "brand": "LG",
+    "model": "GR-B24FQSJB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:12:25.632420"
+  },
+  {
+    "product_id": "7af4821c-3a43-4aaa-9f6e-6eb4e75e9381",
+    "brand": "Haier",
+    "model": "HRB-3654PCG-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:13:32.303320"
+  },
+  {
+    "product_id": "125cb243-ea4e-42ea-93e4-ebda006f6dc4",
+    "brand": "Voltas",
+    "model": "RFF493IF",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:13:38.625544"
+  },
+  {
+    "product_id": "1074edcd-1a0d-4b73-a97d-697c1a79649d",
+    "brand": "LG",
+    "model": "GR-B24FQGJB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:13:45.276014"
+  },
+  {
+    "product_id": "2edd136a-4fae-4224-a865-6547741d08d3",
+    "brand": "Daikin",
+    "model": "FTKL50XV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:14:51.710883"
+  },
+  {
+    "product_id": "ef63d674-f5d8-4d1c-8957-aa7c020f9fa9",
+    "brand": "Haier",
+    "model": "LE40K6000B",
+    "category": "TV",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:14:58.206915"
+  },
+  {
+    "product_id": "3db8aab6-bf9b-4cd6-9ddc-f3d2713febb9",
+    "brand": "Voltas",
+    "model": "RDC215A",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:16:04.261902"
+  },
+  {
+    "product_id": "62fbf103-cc92-4831-bca0-6097d24d68b3",
+    "brand": "LG",
+    "model": "GV-F25FFGHB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:16:10.842079"
+  },
+  {
+    "product_id": "e136db6e-176f-40f9-bf51-84d7674d28d0",
+    "brand": "Voltas",
+    "model": "RDC215C",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:17:27.210384"
+  },
+  {
+    "product_id": "f9caf48e-3b3a-458b-998c-e9e5a228a28b",
+    "brand": "Haier",
+    "model": "HRB-3654PGG-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:17:33.536923"
+  },
+  {
+    "product_id": "7f16672c-a0dd-418b-b9ce-356a63ffd366",
+    "brand": "Voltas",
+    "model": "RDC215D",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:17:39.788449"
+  },
+  {
+    "product_id": "4a4d6cd2-b025-4612-b65d-f36ae891d7bf",
+    "brand": "Voltas",
+    "model": "RDC205D",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:17:46.573631"
+  },
+  {
+    "product_id": "644e92a3-967c-498a-9208-45725b60d1d8",
+    "brand": "Samsung",
+    "model": "RF65DB90BD12TL",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:17:52.911410"
+  },
+  {
+    "product_id": "fbdf70e6-b154-4fef-a605-cc5b13a84cb2",
+    "brand": "LG",
+    "model": "GV-B25FFGMB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:17:59.471005"
+  },
+  {
+    "product_id": "98925332-c30c-4caa-8603-d753bcb24cc0",
+    "brand": "Haier",
+    "model": "HRB-3654PRL-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:19:05.912244"
+  },
+  {
+    "product_id": "236b08ff-ef63-4bb7-a1e6-5215050c55c4",
+    "brand": "LG",
+    "model": "GV-F25FFLJB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:19:12.088994"
+  },
+  {
+    "product_id": "c7101894-2c62-42c7-b0af-07fea5e7c5f7",
+    "brand": "Haier",
+    "model": "HRB-3654PSL-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:19:18.519021"
+  },
+  {
+    "product_id": "a995292f-a7d4-4f8a-b812-8703d6ce472c",
+    "brand": "Voltas",
+    "model": "RDC240A",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:19:25.254912"
+  },
+  {
+    "product_id": "1558966a-c86d-4431-95cc-afec15d0e1fe",
+    "brand": "Voltas",
+    "model": "RDC260A",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:20:41.457881"
+  },
+  {
+    "product_id": "97238084-be6b-4560-b594-d93d2dcf2f84",
+    "brand": "Voltas",
+    "model": "RDC240C",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:20:48.003040"
+  },
+  {
+    "product_id": "236059fd-f209-4003-9c0f-144de0fc2e54",
+    "brand": "Voltas",
+    "model": "WTT85DBLG",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:20:54.614272"
+  },
+  {
+    "product_id": "88514c9f-ba81-4f96-8ce5-bf80779a0678",
+    "brand": "LG",
+    "model": "GV-B25FFLMB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:21:01.426653"
+  },
+  {
+    "product_id": "ffbe21f6-23c8-4945-a00b-80a841666ac7",
+    "brand": "Haier",
+    "model": "HRB-3654CRL-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:21:07.877837"
+  },
+  {
+    "product_id": "e316f0ca-a9a3-4377-ba6e-5140beea1b9c",
+    "brand": "Haier",
+    "model": "HRB-3654CSL-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:22:14.486276"
+  },
+  {
+    "product_id": "2e7f40bb-4b22-48ad-84a3-452a41756112",
+    "brand": "Haier",
+    "model": "HRB-3654CBD-E",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:22:20.648835"
+  },
+  {
+    "product_id": "6bb6fc8d-6e74-4e13-a663-28c4f8f329c3",
+    "brand": "Voltas",
+    "model": "RFF265D",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:22:27.240864"
+  },
+  {
+    "product_id": "5f8e52c8-43ba-4662-8d7d-37742d6c035e",
+    "brand": "LG",
+    "model": "GV-B23FFLMB",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:22:33.680969"
+  },
+  {
+    "product_id": "8794803c-d90a-4ac6-8ce7-8f4179ea0099",
+    "brand": "Samsung",
+    "model": "WW80T504DAB",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:22:40.676173"
+  },
+  {
+    "product_id": "10a42de8-d9dd-40a2-a2e7-925fc3c5e274",
+    "brand": "Godrej",
+    "model": "RF EON 236B",
+    "category": "FRIDGE",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:22:57.124152"
+  },
+  {
+    "product_id": "427f71c0-7355-45b0-ab4e-c7a089db76fc",
+    "brand": "LG",
+    "model": "FHM1408BDL",
+    "category": "WM",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:24:03.539812"
+  },
+  {
+    "product_id": "b6e440ae-6824-4012-914a-9c832a8d973d",
+    "brand": "Daikin",
+    "model": "FTKC35TV",
+    "category": "AC",
+    "amazon": {
+      "price": null,
+      "url": null
+    },
+    "flipkart": {
+      "price": null,
+      "url": null
+    },
+    "croma": {
+      "price": null,
+      "url": null
+    },
+    "done_at": "2026-07-07T04:24:09.875382"
+  }
+]
