@@ -19,8 +19,10 @@ interface ProductCard {
   dealers_count: number;
   saving: number;
   image_url: string | null;
-  year?: number;
+  year: number;
   mrp?: number | null;
+  is_new_launch: boolean;
+  is_bestseller: boolean;
 }
 
 const cleanNames: Record<string, string> = {
@@ -98,6 +100,24 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
     const onlinePlatform = onlinePrices[0]?.platform || 'Online';
     const dealersCount = dealerPrices.length;
 
+    const modelYear = p.year || (() => {
+      // Detect year from model name or specs
+      const text = `${p.name} ${p.model_number} ${JSON.stringify(p.specs)}`;
+      const m = text.match(/202[3-6]/);
+      return m ? parseInt(m[0]) : 2024;
+    })();
+
+    const isNewLaunch = modelYear >= 2025;
+
+    // Known bestsellers by model number
+    const BESTSELLERS = [
+      'IE518PNU', '185V Vectra CAR', '123INV', 'AS-Q19YNZE1', 'RS-Q18YNZE',
+      'FTKR50TV', 'FTKC35TV', 'WW70FG4S02AXTL', 'RT28C3122S8', 'GL-S292RDSY',
+      'UA43DUE70AKLXL', 'QA43Q60DAKLXL', '43UR7500PSC', 'KD-43X74L',
+      'FHM1408BDL', 'T70SKSF4Z', 'HW80-BD12876NZP5', 'WAJ2006WIN'
+    ];
+    const isBestseller = BESTSELLERS.includes(p.model_number);
+
     return {
       id: p.id,
       brand: p.brand,
@@ -111,15 +131,17 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
       dealers_count: dealersCount,
       saving: saving,
       image_url: p.image_url || null,
-      year: p.year,
+      year: modelYear,
       mrp: p.mrp,
+      is_new_launch: isNewLaunch,
+      is_bestseller: isBestseller,
     };
   });
 
   const [products] = useState<ProductCard[]>(processedProducts);
   const [filteredProducts, setFilteredProducts] = useState<ProductCard[]>(processedProducts);
   const [activeFilter, setActiveFilter] = useState('All');
-  const [sortOption, setSortOption] = useState('Best Savings');
+  const [sortOption, setSortOption] = useState('Best Match');
 
   // Brand and Year Filter States
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -230,7 +252,25 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
     }
 
     // Sort
-    if (sortOption === 'Best Savings') {
+    if (sortOption === 'Best Match') {
+      result.sort((a, b) => {
+        // 1. Bestsellers first
+        if (a.is_bestseller && !b.is_bestseller) return -1;
+        if (!a.is_bestseller && b.is_bestseller) return 1;
+        // 2. New launches second
+        if (a.is_new_launch && !b.is_new_launch) return -1;
+        if (!a.is_new_launch && b.is_new_launch) return 1;
+        // 3. Has price vs no price
+        if (a.lowest_price && !b.lowest_price) return -1;
+        if (!a.lowest_price && b.lowest_price) return 1;
+        // 4. By year descending
+        if (a.year !== b.year) return b.year - a.year;
+        // 5. By savings descending
+        return b.saving - a.saving;
+      });
+    } else if (sortOption === 'New Launches First') {
+      result.sort((a, b) => b.year - a.year || b.lowest_price - a.lowest_price);
+    } else if (sortOption === 'Best Savings') {
       result.sort((a, b) => b.saving - a.saving);
     } else if (sortOption === 'Low to High') {
       result.sort((a, b) => (a.lowest_price || Infinity) - (b.lowest_price || Infinity));
@@ -331,23 +371,50 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
           })}
         </div>
 
-        {/* Sort Banner */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px 4px' }}>
-          <span style={{ fontSize: '13px', fontWeight: 700 }}>
-            Sort:{' '}
-            <select
-              value={sortOption}
-              onChange={(e) => setSortOption(e.target.value)}
-              style={{ color: '#F0743E', background: 'transparent', border: 'none', fontWeight: 700, outline: 'none', cursor: 'pointer' }}
-            >
-              <option value="Best Savings">Best Savings</option>
-              <option value="Low to High">Price: Low to High</option>
-              <option value="High to Low">Price: High to Low</option>
-            </select>
-          </span>
+        {/* Results Counter & Sort Label */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px 8px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 800, color: '#16151A' }}>Sort By</span>
           <span style={{ fontSize: '12px', fontWeight: 600, color: '#6B6B6B' }}>
             {filteredProducts.length} results
           </span>
+        </div>
+
+        {/* Sort chips — replaces dropdown */}
+        <div className="scrollx" style={{ 
+          display: 'flex', gap: '8px', overflowX: 'auto', 
+          padding: '0 20px 12px', scrollbarWidth: 'none'
+        }}>
+          {['Best Match', 'New Launches', 'Price ↑', 'Price ↓', 'Best Savings'].map(opt => {
+            const isSelected = sortOption === opt || 
+              (opt === 'Price ↑' && sortOption === 'Price: Low to High') ||
+              (opt === 'Price ↓' && sortOption === 'Price: High to Low') ||
+              (opt === 'New Launches' && sortOption === 'New Launches First');
+            return (
+              <button
+                key={opt}
+                onClick={() => setSortOption(
+                  opt === 'Price ↑' ? 'Price: Low to High' :
+                  opt === 'Price ↓' ? 'Price: High to Low' :
+                  opt === 'New Launches' ? 'New Launches First' : opt
+                )}
+                style={{
+                  flexShrink: 0,
+                  padding: '6px 14px',
+                  borderRadius: '999px',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  border: '1px solid',
+                  cursor: 'pointer',
+                  background: isSelected ? '#F0743E' : '#fff',
+                  color: isSelected ? '#fff' : '#141414',
+                  borderColor: isSelected ? '#F0743E' : '#EBEBEB',
+                  outline: 'none',
+                }}
+              >
+                {opt}
+              </button>
+            );
+          })}
         </div>
 
         {/* Active Filters Display */}
@@ -429,9 +496,41 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
                   )}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <span style={{ fontSize: '9px', fontWeight: 800, letterSpacing: '.06em', color: '#F0743E', textTransform: 'uppercase' }}>
+                  {/* Brand pill */}
+                  <div style={{ fontSize: '9px', fontWeight: 800, letterSpacing: '0.08em', color: '#F0743E', textTransform: 'uppercase', marginBottom: '2px' }}>
                     {p.brand}
-                  </span>
+                  </div>
+
+                  {/* Badges row — NEW */}
+                  <div style={{ display: 'flex', gap: '4px', marginBottom: '4px', flexWrap: 'wrap' }}>
+                    {p.is_bestseller && (
+                      <div style={{ 
+                        background: '#FDDB48', color: '#141414',
+                        fontSize: '9px', fontWeight: 800, padding: '2px 6px',
+                        borderRadius: '999px', letterSpacing: '0.04em'
+                      }}>
+                        🏆 BESTSELLER
+                      </div>
+                    )}
+                    {p.is_new_launch && (
+                      <div style={{ 
+                        background: '#EEF2FF', color: '#4F46E5',
+                        fontSize: '9px', fontWeight: 800, padding: '2px 6px',
+                        borderRadius: '999px', letterSpacing: '0.04em'
+                      }}>
+                        ✨ NEW {p.year}
+                      </div>
+                    )}
+                    {p.dealers_count > 0 && (
+                      <div style={{ 
+                        background: '#E7F6ED', color: '#16A34A',
+                        fontSize: '9px', fontWeight: 800, padding: '2px 6px',
+                        borderRadius: '999px'
+                      }}>
+                        📍 {p.dealers_count} local dealer{p.dealers_count > 1 ? 's' : ''}
+                      </div>
+                    )}
+                  </div>
                   <div style={{ fontSize: '14px', fontWeight: 700, marginTop: '2px', lineHeight: '1.25', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {p.name}
                   </div>
