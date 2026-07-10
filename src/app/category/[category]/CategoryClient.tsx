@@ -141,7 +141,7 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
   const [products] = useState<ProductCard[]>(processedProducts);
   const [filteredProducts, setFilteredProducts] = useState<ProductCard[]>(processedProducts);
   const [activeFilter, setActiveFilter] = useState('All');
-  const [sortOption, setSortOption] = useState('Best Match');
+  const [sortOption, setSortOption] = useState('Best Seller');
 
   // Brand and Year Filter States
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -252,7 +252,7 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
     }
 
     // Sort
-    if (sortOption === 'Best Match') {
+    if (sortOption === 'Best Seller') {
       result.sort((a, b) => {
         // 1. Bestsellers first
         if (a.is_bestseller && !b.is_bestseller) return -1;
@@ -384,7 +384,7 @@ export default function CategoryClient({ initialProducts, bankOffers, categoryCo
           display: 'flex', gap: '8px', overflowX: 'auto', 
           padding: '0 20px 12px', scrollbarWidth: 'none'
         }}>
-          {['Best Match', 'New Launches', 'Price ↑', 'Price ↓', 'Best Savings'].map(opt => {
+          {['Best Seller', 'New Launches', 'Price ↑', 'Price ↓', 'Best Savings'].map(opt => {
             const isSelected = sortOption === opt || 
               (opt === 'Price ↑' && sortOption === 'Price: Low to High') ||
               (opt === 'Price ↓' && sortOption === 'Price: High to Low') ||
