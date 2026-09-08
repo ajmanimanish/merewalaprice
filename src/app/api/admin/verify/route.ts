@@ -5,7 +5,14 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { password } = body;
 
-    const adminPassword = process.env.ADMIN_PASSWORD || 'bhopalprice123';
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+      return NextResponse.json(
+        { error: 'Server misconfigured: ADMIN_PASSWORD not set' },
+        { status: 500 }
+      );
+    }
 
     if (password === adminPassword) {
       return NextResponse.json({ success: true });
